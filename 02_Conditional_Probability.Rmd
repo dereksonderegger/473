@@ -1,0 +1,34 @@
+---
+title: "Chapter 2 Questions"
+author: "Derek Sonderegger"
+date: "`r format(date(), format='%Y-%b-%d')`"
+output: pdf_document
+---
+
+# Conditional Probability
+## Defining Conditional Probability (D&S 2.1)
+
+1. Out of $n=17$ students in a class, I will chose one at random student to give gummi bears to. In this class there are $12$ men and $5$ women. Student $A$ is very interested in her probability of being selected. Denote the event $A$ as being that the student gets the gummi bears.  Denote event $W$ as a woman is selected.
+    a) What is the probability that student $A$ is selected?
+    b) What is the probability that a woman is selected?
+    c) Suppose I restricted my selection to _only_ the women? What is the probability that student $A$ is selected. Can you write this probability as a function of your answers in parts (a) and (b)?
+
+2. Consider the case where we take the sum of 2 six-sided dice. Define $A$ as the event that the sum is greater than or equal to 9, and $B$ being the event that the sum is greater than or equal to 6.
+    a) Create a table of the possible outcomes. Notice that each outcome is equally likely. What is the probability that $A$ occurs?  _Use correct notation and leave it as a fraction $\frac{???}{36}$_ 
+    b) Suppose that you are told that event $B$ has occured. How many equally likely outcomes are there and what is the probability that $A$ occurs? This will be denoted as $Pr(A|B)$. _(Leave this as a fraction)_.
+    c) Notice that you the numerator in answer in part (a) is the same as the numerator as you had in part (b), but the denominators are different. What number do you need to multiple your part (a) answer by to get your part (b) answer. How does this relate to $P(B)$? 
+
+3. It seems that my children (Casey and Elise) get sick with annoying frequency. Suppose the probability that my son Casey gets sick is $Pr(C) = 0.05$ and furthermore the probability that **both** children get sick is $Pr(E \cap C) = 0.03$ If Casey is sick right now, what is the probability that Elise is also sick?
+
+
+When we talk about events $A$ and $B$, we defined them as possible outcomes, but it isn't until we define probability of the events $Pr(A)$ $Pr(B)$ that we care about the sample space $\mathcal{S}$ of all possible events.  What we are now trying to do is to claim that some addition knowledge allows us to refine the sample space to some smaller subset of $\mathcal{S}$, perhaps $B\subset \mathcal{S}$. So for events in $B$, we now need to re-scale all the probabilities to reflect that we now know that event $B$ did happen.
+
+If we previously know that $Pr(A\cap B)=0.3$ and $Pr(B)=0.6$, then half of the probability associated with $B$ is overlapping with $A$.  So if we just restrict ourselves to cases where $B$ occurs, then the probability that $A$ will occur is $1/2$.
+
+Notice that our notation $Pr( A | B)$ is addressing the refinement of the sample space, but we've just defined our notation this way.  We have not, and will not ever define $A|B$ because event $A$ is event $A$, regardless of the sample space we use to figure out its probability.
+
+We formally define the conditional probability of $A$ given $B$ as
+$$Pr(A|B) = \frac{ Pr(A \cap B)}{Pr(B)} \;\;\; \textrm{Assuming } Pr(B) \ne 0$$
+If $Pr(B)=0$ then the conditional probablity is undefined.
+
+4. 
