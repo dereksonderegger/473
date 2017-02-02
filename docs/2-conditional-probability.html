@@ -65,7 +65,8 @@
 
 <ul class="summary">
 <li><a href="./">Probability</a></li>
-<li><a href="https://dereksonderegger.github.io/573/Probability.pdf" target="blank">PDF version</a></li>
+<li><a href="https://dereksonderegger.github.io/473/Probability.pdf" target="blank">PDF version</a></li>
+<li><a href="https://github.com/dereksonderegger/473/issues">Report an error</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction to Probability</a><ul>
@@ -78,6 +79,7 @@
 </ul></li>
 <li class="chapter" data-level="2" data-path="2-conditional-probability.html"><a href="2-conditional-probability.html"><i class="fa fa-check"></i><b>2</b> Conditional Probability</a><ul>
 <li class="chapter" data-level="2.1" data-path="2-conditional-probability.html"><a href="2-conditional-probability.html#defining-conditional-probability-ds-2.1"><i class="fa fa-check"></i><b>2.1</b> Defining Conditional Probability (D&amp;S 2.1)</a></li>
+<li class="chapter" data-level="2.2" data-path="2-conditional-probability.html"><a href="2-conditional-probability.html#independence"><i class="fa fa-check"></i><b>2.2</b> Independence</a></li>
 </ul></li>
 </ul>
 
@@ -118,9 +120,108 @@
 <p>When we talk about events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, we defined them as possible outcomes, but it isn’t until we define probability of the events <span class="math inline">\(Pr(A)\)</span> <span class="math inline">\(Pr(B)\)</span> that we care about the sample space <span class="math inline">\(\mathcal{S}\)</span> of all possible events. What we are now trying to do is to claim that some addition knowledge allows us to refine the sample space to some smaller subset of <span class="math inline">\(\mathcal{S}\)</span>, perhaps <span class="math inline">\(B\subset \mathcal{S}\)</span>. So for events in <span class="math inline">\(B\)</span>, we now need to re-scale all the probabilities to reflect that we now know that event <span class="math inline">\(B\)</span> did happen.</p>
 <p>If we previously know that <span class="math inline">\(Pr(A\cap B)=0.3\)</span> and <span class="math inline">\(Pr(B)=0.6\)</span>, then half of the probability associated with <span class="math inline">\(B\)</span> is overlapping with <span class="math inline">\(A\)</span>. So if we just restrict ourselves to cases where <span class="math inline">\(B\)</span> occurs, then the probability that <span class="math inline">\(A\)</span> will occur is <span class="math inline">\(1/2\)</span>.</p>
 <p>Notice that our notation <span class="math inline">\(Pr( A | B)\)</span> is addressing the refinement of the sample space, but we’ve just defined our notation this way. We have not, and will not ever define <span class="math inline">\(A|B\)</span> because event <span class="math inline">\(A\)</span> is event <span class="math inline">\(A\)</span>, regardless of the sample space we use to figure out its probability.</p>
-<p>We formally define the conditional probability of <span class="math inline">\(A\)</span> given <span class="math inline">\(B\)</span> as <span class="math display">\[Pr(A|B) = \frac{ Pr(A \cap B)}{Pr(B)} \;\;\; \textrm{Assuming } Pr(B) \ne 0\]</span> If <span class="math inline">\(Pr(B)=0\)</span> then the conditional probablity is undefined.</p>
+<p>We formally define the conditional probability of <span class="math inline">\(A\)</span> given <span class="math inline">\(B\)</span> as <span class="math display">\[Pr(A|B) = \frac{ Pr(A \cap B)}{Pr(B)} \;\;\; \textrm{Assuming } Pr(B) \ne 0\]</span> If <span class="math inline">\(Pr(B)=0\)</span> then the conditional probablity is undefined. Notice that this can be happily re-arranged to <span class="math display">\[ Pr( A \cap B) = Pr(A | B) Pr(B) \]</span> I can also notice that I could condition on either event <span class="math inline">\(A\)</span> or event <span class="math inline">\(B\)</span>, so we could also have <span class="math display">\[Pr( A \cap B) = Pr(B|A)Pr(A)\]</span></p>
 <ol start="4" style="list-style-type: decimal">
-<li></li>
+<li><p>If <span class="math inline">\(B \subset A\)</span> and <span class="math inline">\(Pr(B)&gt;0\)</span>, what is <span class="math inline">\(Pr(A|B)\)</span></p></li>
+<li><p>If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are disjoint and <span class="math inline">\(Pr(B)&gt;0\)</span>, what is <span class="math inline">\(Pr(A|B)\)</span>?</p></li>
+<li><p>Suppose that events <span class="math inline">\(A_1,A_2,\dots,A_n\)</span> are events such that <span class="math inline">\(Pr\left( \bigcap_{i=1}^n A_i \right) &gt; 0\)</span>. Show that <span class="math display">\[Pr\left( \bigcap_{i=1}^n A_i \right) = Pr\left( A_n  \Big\rvert \bigcap_{i=1}^{n-1}A_i \right)
+                                     Pr\left( A_{n-1}  \Big\rvert \bigcap_{i=1}^{n-2}A_i \right)\dots
+                                     Pr\left( A_3 \Big\rvert A_2 \cap A_1 \right) 
+                                     Pr\left( A_2 \Big\rvert A_1 \right)
+                                     Pr\left( A_1 \right)\]</span></p></li>
+<li>For events <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, and <span class="math inline">\(D\)</span> such that <span class="math inline">\(Pr(D)&gt;0\)</span> show that:
+<ol style="list-style-type: lower-alpha">
+<li><span class="math inline">\(Pr(A^C | D) = 1 - Pr(A | D)\)</span>.</li>
+<li><span class="math inline">\(Pr( A \cup B \Big\rvert D) = Pr(A | D) + Pr(B|D) - Pr( A \cap B | D)\)</span></li>
+</ol></li>
+</ol>
+<p>Suppose that we have <span class="math inline">\(K\)</span> events <span class="math inline">\(B_k\)</span> such that the <span class="math inline">\(B_1, B_2, \dots, B_K\)</span> are disjoint and <span class="math inline">\(\bigcup B_k=\mathcal{S}\)</span>. Then we call the events <span class="math inline">\(B_1,\dots,B_K\)</span> a <em>partition</em> of the sample space <span class="math inline">\(\mathcal{S}\)</span>. A partition of <span class="math inline">\(\mathcal{S}\)</span> is often useful for caculating probabilities due to the disjoint nature of the <span class="math inline">\(B_k\)</span> elements.</p>
+<ol start="6" style="list-style-type: decimal">
+<li><strong>Law of Total Probability</strong> Prove that for for a partition <span class="math inline">\(B_1, \dots, B_K\)</span> of <span class="math inline">\(\mathcal{S}\)</span>, that <span class="math display">\[Pr(A) = \sum_{k=1}^K Pr(A \cap B_k) = \sum_{k=1}^K Pr(A \Big\rvert B_k) Pr( B_k )\]</span></li>
+</ol>
+<p><em>Note:</em> There is a conditional version of the Law of Total probability, which is proved in an analogous fashion: <span class="math display">\[Pr(A|C) = \sum_{k=1}^K Pr(A \cap B_k \big\rvert C) = \sum_{k=1}^K Pr(A \big\rvert B_k \cap C) Pr( B_k \big\rvert C)\]</span></p>
+<ol start="7" style="list-style-type: decimal">
+<li><p>A child’s bookshelf contains three shelves. On the shelves are <span class="math inline">\(n_1=10\)</span>,<span class="math inline">\(n_2=20\)</span> and <span class="math inline">\(n_3=30\)</span> books. Within each set of books, there are some number of Dr Suess books <span class="math inline">\(m_1=5\)</span>, <span class="math inline">\(m_2=4\)</span>, <span class="math inline">\(m_3=2\)</span>. The child will select a shelf at random (equal probability) and then from the shelf will select a book at random. What is the probability the child selects a Dr Suess book?</p></li>
+<li>A camera with a motion detector was mounted facing a forest trail. <span class="math inline">\(50\%\)</span> of the pictures were taken during the daytime, <span class="math inline">\(15\%\)</span> were taken during twilight hours (dawn and dusk), and <span class="math inline">\(35\%\)</span> were taken during the night. Of the pictures taken during the daytime, <span class="math inline">\(80\%\)</span> were of hikers and <span class="math inline">\(20\%\)</span> were of wild animals. Of the pictures taken at twilight <span class="math inline">\(30\%\)</span> were of hikers and <span class="math inline">\(70\%\)</span> were of wild animals. Finally, of the pictures taken during the night, <span class="math inline">\(100\%\)</span> were wild animals.
+<ol style="list-style-type: lower-alpha">
+<li>What is the probability that a randomly selected photo is of a hiker and was taken at twilight?</li>
+<li>What is the probability a photo was taken at night given that is of a wild animal?</li>
+</ol></li>
+<li><p>I have kept track of the probabilities of how many cats will sit with me and/or my wife on the couch. Below is a table of probabilities.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right"></th>
+<th align="center">0 Cats</th>
+<th align="center">1 Cat</th>
+<th align="center">2 Cats</th>
+<th align="center">3 Cats</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right"><strong>0 People</strong></td>
+<td align="center">0.08</td>
+<td align="center">0.08</td>
+<td align="center">0.03</td>
+<td align="center">0.01</td>
+</tr>
+<tr class="even">
+<td align="right"><strong>1 Person</strong></td>
+<td align="center">0.1</td>
+<td align="center">0.25</td>
+<td align="center">0.125</td>
+<td align="center">0.025</td>
+</tr>
+<tr class="odd">
+<td align="right"><strong>2 People</strong></td>
+<td align="center">0.03</td>
+<td align="center">0.09</td>
+<td align="center">0.12</td>
+<td align="center">0.06</td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: lower-alpha">
+<li>What is the probability that one human is sitting on the couch?</li>
+<li>What is the probability that at least two cats are sitting on the couch?</li>
+<li>Given that there are two cats sitting on the couch, what is the probability that there are two humans also on the couch?</li>
+</ol></li>
+<li><p>My cat Kaylee occasionally likes to sit on people’s laps while they are seated at the table. My wife is strongly opposed to this and will scold the cat when she catches her in the act. Suppose that that Kaylee will select my lap <span class="math inline">\(60\%\)</span> of the time and the remaining <span class="math inline">\(40\%\)</span> of the time she jumps into my wife’s lap. If Kaylee jumps into my wife’s lap, there is a <span class="math inline">\(100\%\)</span> chance of being scolded, while if she jumps into mine, there is only a <span class="math inline">\(20\%\)</span> chance of being scolded. Given that Kaylee was just scolded for being in a lap, what is the probability she was in my wife’s lap?</p></li>
+<li><p>There are two brands of Mac &amp; Cheese that my daughter will eat. When I go shopping I will pick from the two brands with a <span class="math inline">\(70\%\)</span> probability of choosing the brand that I bought the previous time. The first time I went shopping, I chose from the two brands with equal probability. What is the probability that I chose brand <span class="math inline">\(A\)</span> on the first and second trips, and brand <span class="math inline">\(B\)</span> on the third and fourth trips?</p></li>
+</ol>
+</div>
+<div id="independence" class="section level2">
+<h2><span class="header-section-number">2.2</span> Independence</h2>
+<p><em>Definition:</em> Two events, <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent if <span class="math inline">\(Pr( A \cap B) = Pr(A)Pr(B)\)</span>. <em>Definition:</em> Events <span class="math inline">\(A_1, A_2,\dots,A_K\)</span> are pairwise independent if <span class="math inline">\(A_i\)</span> and <span class="math inline">\(A_j\)</span> are independent for any <span class="math inline">\(i,j\)</span>. <em>Definition:</em> Events <span class="math inline">\(A_1, A_2,\dots,A_K\)</span> are mutually independent if for all subsets <span class="math inline">\(I\)</span> of <span class="math inline">\(1,2,\dots,K\)</span>, <span class="math inline">\(Pr( \bigcap_{i\in I} A_i) = \prod_{i \in I} Pr(A_i)\)</span></p>
+<ol style="list-style-type: decimal">
+<li><p>Show that if <span class="math inline">\(Pr(A)&gt;0\)</span> and <span class="math inline">\(Pr(B)&gt;0\)</span>, then <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent if and only if <span class="math inline">\(Pr(A|B)=Pr(A)\)</span> and <span class="math inline">\(Pr(B|A)=Pr(A)\)</span></p></li>
+<li><p>Give an example of three events that are pairwise independent but not mutually independent.</p></li>
+</ol>
+<p><em>Convention</em> If I say that a set of events are “independent”“, then we intend to say”mutually independent“” but are being lazy.</p>
+<ol start="3" style="list-style-type: decimal">
+<li><p>Show that if <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are indendent, then <span class="math inline">\(A\)</span> and <span class="math inline">\(B^c\)</span> are also independent.</p></li>
+<li>Suppose that we flip a fair coin three times. Denote <span class="math inline">\(H_i\)</span> as the event that I flip a head on the <span class="math inline">\(i\)</span>th flip.
+<ol style="list-style-type: lower-alpha">
+<li>Find <span class="math inline">\(Pr( H_1 \cap H_2 \cap H_3 )\)</span></li>
+<li>Find <span class="math inline">\(Pr( H_1 \cap H_2^c \cap H_3)\)</span></li>
+<li>Find <span class="math inline">\(Pr( H_1^c \cap H_2 \cap H_3)\)</span></li>
+<li>How many ways can we have 2 heads?</li>
+<li>What is the probability of 2 heads?</li>
+</ol></li>
+<li>I will roll a 20-sided die three times. Define the event <span class="math inline">\(H_i\)</span> as the event that I roll a 17 or greater on the <span class="math inline">\(i\)</span>th roll.
+<ol style="list-style-type: lower-alpha">
+<li>Find <span class="math inline">\(Pr( H_1 \cap H_2 \cap H_3 )\)</span></li>
+<li>Find <span class="math inline">\(Pr( H_1 \cap H_2^c \cap H_3)\)</span></li>
+<li>Find <span class="math inline">\(Pr( H_1^c \cap H_2 \cap H_3)\)</span></li>
+<li>How many ways can we have 2 <span class="math inline">\(H\)</span> events happen?</li>
+<li>What is the probability of 2 <span class="math inline">\(H\)</span> events happening?</li>
+</ol></li>
+<li>I will roll my 20-sided die until I roll a 20.
+<ol style="list-style-type: lower-alpha">
+<li>What is the probability that I roll a 20 on my first roll?</li>
+<li>What is the probability that the first 20 I roll is on the <span class="math inline">\(5\)</span>th roll?</li>
+</ol></li>
 </ol>
 
 </div>
@@ -159,7 +260,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/dereksonderegger/473/raw/master/02_Conditional_Probability.Rmd",
+"link": "https://github.com/dereksonderegger/edit/master/473/02_Conditional_Probability.Rmd",
 "text": "Edit"
 },
 "download": ["Probability.pdf", "Probability.epub"],

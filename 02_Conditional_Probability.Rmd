@@ -29,6 +29,85 @@ Notice that our notation $Pr( A | B)$ is addressing the refinement of the sample
 
 We formally define the conditional probability of $A$ given $B$ as
 $$Pr(A|B) = \frac{ Pr(A \cap B)}{Pr(B)} \;\;\; \textrm{Assuming } Pr(B) \ne 0$$
-If $Pr(B)=0$ then the conditional probablity is undefined.
+If $Pr(B)=0$ then the conditional probablity is undefined.  Notice that this can be happily re-arranged to 
+$$ Pr( A \cap B) = Pr(A | B) Pr(B) $$
+I can also notice that I could condition on either event $A$ or event $B$, so we could also have 
+$$Pr( A \cap B) = Pr(B|A)Pr(A)$$ 
 
-4. 
+4. If $B \subset A$ and $Pr(B)>0$, what is $Pr(A|B)$
+
+5. If $A$ and $B$ are disjoint and $Pr(B)>0$, what is $Pr(A|B)$?
+
+4. Suppose that events $A_1,A_2,\dots,A_n$ are events such that $Pr\left( \bigcap_{i=1}^n A_i \right) > 0$. Show that
+$$Pr\left( \bigcap_{i=1}^n A_i \right) = Pr\left( A_n  \Big\rvert \bigcap_{i=1}^{n-1}A_i \right)
+                                         Pr\left( A_{n-1}  \Big\rvert \bigcap_{i=1}^{n-2}A_i \right)\dots
+                                         Pr\left( A_3 \Big\rvert A_2 \cap A_1 \right) 
+                                         Pr\left( A_2 \Big\rvert A_1 \right)
+                                         Pr\left( A_1 \right)$$
+
+5. For events $A$, $B$, and $D$ such that $Pr(D)>0$ show that:
+    a) $Pr(A^C | D) = 1 - Pr(A | D)$.
+    b) $Pr( A \cup B \Big\rvert D) = Pr(A | D) + Pr(B|D) - Pr( A \cap B | D)$
+
+
+Suppose that we have $K$ events $B_k$ such that the $B_1, B_2, \dots, B_K$ are disjoint and $\bigcup B_k=\mathcal{S}$. Then we call the events $B_1,\dots,B_K$ a  _partition_ of the sample space $\mathcal{S}$.  A partition of $\mathcal{S}$ is often useful for caculating probabilities due to the disjoint nature of the $B_k$ elements.
+
+6. **Law of Total Probability** Prove that for for a partition $B_1, \dots, B_K$ of $\mathcal{S}$, that 
+$$Pr(A) = \sum_{k=1}^K Pr(A \cap B_k) = \sum_{k=1}^K Pr(A \Big\rvert B_k) Pr( B_k )$$
+
+*Note:* There is a conditional version of the Law of Total probability, which is proved in an analogous fashion:
+$$Pr(A|C) = \sum_{k=1}^K Pr(A \cap B_k \big\rvert C) = \sum_{k=1}^K Pr(A \big\rvert B_k \cap C) Pr( B_k \big\rvert C)$$
+
+7. A child's bookshelf contains three shelves. On the shelves are $n_1=10$,$n_2=20$ and $n_3=30$ books. Within each set of books, there are some number of Dr Suess books $m_1=5$, $m_2=4$, $m_3=2$. The child will select a shelf at random (equal probability) and then from the shelf will select a book at random. What is the probability the child selects a Dr Suess book?
+
+8. A camera with a motion detector was mounted facing a forest trail. $50\%$ of the pictures were taken during the daytime, $15\%$ were taken during twilight hours (dawn and dusk), and $35\%$ were taken during the night. Of the pictures taken during the daytime, $80\%$ were of hikers and $20\%$ were of wild animals. Of the pictures taken at twilight $30\%$ were of hikers and $70\%$ were of wild animals. Finally, of the pictures taken during the night, $100\%$ were wild animals.
+    a) What is the probability that a randomly selected photo is of a hiker and was taken at twilight?
+    b) What is the probability a photo was taken at night given that is of a wild animal? 
+    
+9. I have kept track of the probabilities of how many cats will sit with me and/or my wife on the couch. Below is a table of probabilities.
+    
+    |               |    0 Cats   |   1 Cat   |  2 Cats   |  3 Cats   |
+    |--------------:|:-----------:|:---------:|:---------:|:---------:|
+    | **0 People**  |   0.08      |  0.08     |  0.03     |   0.01    |
+    | **1 Person**  |   0.1       |  0.25     |  0.125    |  0.025    |
+    | **2 People**  |  0.03       |  0.09     |   0.12    |   0.06    |
+    
+    a) What is the probability that one human is sitting on the couch?
+    b) What is the probability that at least two cats are sitting on the couch?
+    c) Given that there are two cats sitting on the couch, what is the probability that there are two humans also on the couch?
+    
+10. My cat Kaylee occasionally likes to sit on people's laps while they are seated at the table. My wife is strongly opposed to this and will scold the cat when she catches her in the act. Suppose that that Kaylee will select my lap $60\%$ of the time and the remaining $40\%$ of the time she jumps into my wife's lap. If Kaylee jumps into my wife's lap, there is a $100\%$ chance of being scolded, while if she jumps into mine, there is only a $20\%$ chance of being scolded. Given that Kaylee was just scolded for being in a lap, what is the probability she was in my wife's lap?
+
+11. There are two brands of Mac & Cheese that my daughter will eat. When I go shopping I will pick from the two brands with a $70\%$ probability of choosing the brand that I bought the previous time. The first time I went shopping, I chose from the two brands with equal probability.  What is the probability that I chose brand $A$ on the first and second trips, and brand $B$ on the third and fourth trips?
+
+## Independence
+
+*Definition:* Two events, $A$ and $B$ are independent if $Pr( A \cap B) = Pr(A)Pr(B)$. 
+*Definition:* Events $A_1, A_2,\dots,A_K$ are pairwise independent if $A_i$ and $A_j$ are independent for any $i,j$.
+*Definition:* Events $A_1, A_2,\dots,A_K$ are mutually independent if for all subsets $I$ of $1,2,\dots,K$, $Pr( \bigcap_{i\in I} A_i) = \prod_{i \in I} Pr(A_i)$
+
+1. Show that if $Pr(A)>0$ and $Pr(B)>0$, then $A$ and $B$ are independent if and only if $Pr(A|B)=Pr(A)$ and $Pr(B|A)=Pr(A)$
+
+2. Give an example of three events that are pairwise independent but not mutually independent.
+
+*Convention* If I say that a set of events are "independent"", then we intend to say "mutually independent"" but are being lazy.
+
+3. Show that if $A$ and $B$ are indendent, then $A$ and $B^c$ are also independent. 
+
+4. Suppose that we flip a fair coin three times. Denote $H_i$ as the event that I flip a head on the $i$th flip.
+    a) Find $Pr( H_1 \cap H_2 \cap H_3 )$
+    b) Find $Pr( H_1 \cap H_2^c \cap H_3)$
+    c) Find $Pr( H_1^c \cap H_2 \cap H_3)$
+    d) How many ways can we have 2 heads?
+    e) What is the probability of 2 heads?
+
+5. I will roll a 20-sided die three times. Define the event $H_i$ as the event that I roll a 17 or greater on the $i$th roll.
+    a) Find $Pr( H_1 \cap H_2 \cap H_3 )$
+    b) Find $Pr( H_1 \cap H_2^c \cap H_3)$
+    c) Find $Pr( H_1^c \cap H_2 \cap H_3)$
+    d) How many ways can we have 2 $H$ events happen?
+    e) What is the probability of 2 $H$ events happening?
+    
+6. I will roll my 20-sided die until I roll a 20.  
+    a) What is the probability that I roll a 20 on my first roll?
+    b) What is the probability that the first 20 I roll is on the $5$th roll?
