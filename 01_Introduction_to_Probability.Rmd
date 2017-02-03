@@ -1,5 +1,10 @@
 
 # Introduction to Probability
+
+## History of Probability
+## Interpretations of Probability
+## Experiments and Events
+
 ## Review of Set Theory (D&S 1.4)
 
 1. Create a sample space $\mathcal{S}$ where 
