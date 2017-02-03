@@ -6,9 +6,6 @@ bookdown::gitbook:
       collapse: section
       scroll_highlight: true
       before: |
-        <li><a href="./">Probability</a></li>
-        <li><a href="https://dereksonderegger.github.io/473/Probability.pdf" target="blank">PDF version</a></li>
-        <li><a href="https://github.com/dereksonderegger/473/issues">Report an error</a></li>
       after: |
     edit:
       link: https://github.com/dereksonderegger/edit/master/473/%s

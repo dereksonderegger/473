@@ -26,7 +26,7 @@
 <meta name="author" content="Derek L. Sonderegger">
 
 
-<meta name="date" content="2017-02-02">
+<meta name="date" content="2017-02-03">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -34,7 +34,7 @@
   
   
 
-<link rel="next" href="2-conditional-probability.html">
+<link rel="next" href="1-introduction-to-probability.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -64,18 +64,16 @@
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Probability</a></li>
-<li><a href="https://dereksonderegger.github.io/473/Probability.pdf" target="blank">PDF version</a></li>
-<li><a href="https://github.com/dereksonderegger/473/issues">Report an error</a></li>
-
-<li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction to Probability</a><ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#review-of-set-theory-ds-1.4"><i class="fa fa-check"></i><b>1.1</b> Review of Set Theory (D&amp;S 1.4)</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#definition-of-probability-ds-1.5"><i class="fa fa-check"></i><b>1.2</b> Definition of Probability (D&amp;S 1.5)</a></li>
-<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#finite-sample-spaces-ds-1.6"><i class="fa fa-check"></i><b>1.3</b> Finite Sample Spaces (D&amp;S 1.6)</a></li>
-<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#ordered-counting-ds-1.7"><i class="fa fa-check"></i><b>1.4</b> Ordered Counting (D&amp;S 1.7)</a></li>
-<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#combinations-ds-1.8"><i class="fa fa-check"></i><b>1.5</b> Combinations (D&amp;S 1.8)</a></li>
-<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#multinomial-coefficients-ds-1.9"><i class="fa fa-check"></i><b>1.6</b> Multinomial Coefficients (D&amp;S 1.9)</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="1-introduction-to-probability.html"><a href="1-introduction-to-probability.html"><i class="fa fa-check"></i><b>1</b> Introduction to Probability</a><ul>
+<li class="chapter" data-level="1.1" data-path="1-introduction-to-probability.html"><a href="1-introduction-to-probability.html#review-of-set-theory-ds-1.4"><i class="fa fa-check"></i><b>1.1</b> Review of Set Theory (D&amp;S 1.4)</a></li>
+<li class="chapter" data-level="1.2" data-path="1-introduction-to-probability.html"><a href="1-introduction-to-probability.html#definition-of-probability-ds-1.5"><i class="fa fa-check"></i><b>1.2</b> Definition of Probability (D&amp;S 1.5)</a></li>
+<li class="chapter" data-level="1.3" data-path="1-introduction-to-probability.html"><a href="1-introduction-to-probability.html#finite-sample-spaces-ds-1.6"><i class="fa fa-check"></i><b>1.3</b> Finite Sample Spaces (D&amp;S 1.6)</a></li>
+<li class="chapter" data-level="1.4" data-path="1-introduction-to-probability.html"><a href="1-introduction-to-probability.html#ordered-counting-ds-1.7"><i class="fa fa-check"></i><b>1.4</b> Ordered Counting (D&amp;S 1.7)</a></li>
+<li class="chapter" data-level="1.5" data-path="1-introduction-to-probability.html"><a href="1-introduction-to-probability.html#combinations-ds-1.8"><i class="fa fa-check"></i><b>1.5</b> Combinations (D&amp;S 1.8)</a></li>
+<li class="chapter" data-level="1.6" data-path="1-introduction-to-probability.html"><a href="1-introduction-to-probability.html#multinomial-coefficients-ds-1.9"><i class="fa fa-check"></i><b>1.6</b> Multinomial Coefficients (D&amp;S 1.9)</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="2-conditional-probability.html"><a href="2-conditional-probability.html"><i class="fa fa-check"></i><b>2</b> Conditional Probability</a><ul>
 <li class="chapter" data-level="2.1" data-path="2-conditional-probability.html"><a href="2-conditional-probability.html#defining-conditional-probability-ds-2.1"><i class="fa fa-check"></i><b>2.1</b> Defining Conditional Probability (D&amp;S 2.1)</a></li>
@@ -101,172 +99,14 @@
 <div id="header">
 <h1 class="title">STA 473 - Probability</h1>
 <h4 class="author"><em>Derek L. Sonderegger</em></h4>
-<h4 class="date"><em>2017-02-02</em></h4>
+<h4 class="date"><em>2017-02-03</em></h4>
 </div>
-<div id="introduction-to-probability" class="section level1">
-<h1><span class="header-section-number">Chapter 1</span> Introduction to Probability</h1>
-<div id="review-of-set-theory-ds-1.4" class="section level2">
-<h2><span class="header-section-number">1.1</span> Review of Set Theory (D&amp;S 1.4)</h2>
-<ol style="list-style-type: decimal">
-<li>Create a sample space <span class="math inline">\(\mathcal{S}\)</span> where
-<ol style="list-style-type: lower-alpha">
-<li>Where the the number of outcomes is finite.</li>
-<li>Define events (subsets of <span class="math inline">\(\mathcal{S}\)</span>) that do not have a 1-to-1 correspondence with the outcomes.</li>
-</ol></li>
-<li>Create a sample space <span class="math inline">\(\mathcal{S}\)</span> where
-<ol style="list-style-type: lower-alpha">
-<li>Where the the number of outcomes is countably infinite.</li>
-<li>Define a finite number of events (subsets of <span class="math inline">\(\mathcal{S}\)</span>) that do not have a 1-to-1 correspondence with the outcomes and that the union of all your events is <span class="math inline">\(\mathcal{S}\)</span>.</li>
-<li>Define an infinite number of events (subsets of <span class="math inline">\(\mathcal{S}\)</span>) that do not have a 1-to-1 correspondence with the outcomes and that the union of all your events is <span class="math inline">\(\mathcal{S}\)</span>.</li>
-</ol></li>
-<li>Create a sample space <span class="math inline">\(\mathcal{S}\)</span> where
-<ol style="list-style-type: lower-alpha">
-<li>Where the the number of outcomes is uncountably infinite.</li>
-<li>Define a finite number of events (subsets of <span class="math inline">\(\mathcal{S}\)</span>) that do not have a 1-to-1 correspondence with the outcomes and that the union of all your events is <span class="math inline">\(\mathcal{S}\)</span>.</li>
-<li>Define an countably infinite number of events (subsets of <span class="math inline">\(\mathcal{S}\)</span>) that do not have a 1-to-1 correspondence with the outcomes and that the union of all your events is <span class="math inline">\(\mathcal{S}\)</span>.</li>
-</ol></li>
-</ol>
-<p>It is time to define the set of events more carefully. The take-home idea is that if you add an event, say <span class="math inline">\(A\)</span>, you also add some other events related to <span class="math inline">\(A\)</span>. The rules are summarized below.</p>
-<ul>
-<li><span class="math inline">\(\mathcal{S}\)</span> is an event. This is to say <em>something</em> will happen.</li>
-<li>If <span class="math inline">\(A\)</span> is an event, then <span class="math inline">\(A^c\)</span> is also an event.</li>
-<li>If <span class="math inline">\(A_i\)</span> is a countable sequence of events, then <span class="math inline">\(\cup_{i=1}^\infty A_i\)</span> is also an event.</li>
-</ul>
-<ol start="4" style="list-style-type: decimal">
-<li><p>Prove that <span class="math inline">\(\emptyset\)</span> is is an event.</p></li>
-<li><p>Prove two of the conclusions of theorem 1.4.4. I would expect a proof of <span class="math inline">\(A \cup A^c=\mathcal{S}\)</span> to look something like, <em>“Let <span class="math inline">\(e\)</span> be an arbitrary event in <span class="math inline">\(\mathcal{S}\)</span>. Due to the nature of complements, either <span class="math inline">\(e \in A\)</span> or <span class="math inline">\(e \in A^c\)</span>. Therefore <span class="math inline">\(e in A \cup A^c\)</span> but because <span class="math inline">\(e\)</span> was an arbitrary element of <span class="math inline">\(\mathcal{S}\)</span> then <span class="math inline">\(\mathcal{S} \subset A \cup A^c\)</span>. However because <span class="math inline">\(\mathcal{S}\)</span> is the set of all possible events, then <span class="math inline">\(A \cup A^c \subset \mathcal{S}\)</span> and thus <span class="math inline">\(A \cup A^c = \mathcal{S}\)</span>.”</em></p></li>
-<li><p>Chapter problem 1.4.1. Suppose <span class="math inline">\(A \subset B\)</span>. Show that <span class="math inline">\(B^c \subset A^c\)</span>. <em>Do this in a similar fashion as problem 5</em>.</p></li>
-<li><p>Chapter problem 1.4.2. <em>Show this by Venn diagrams.</em></p></li>
-<li><p>Chpater problem 1.4.3. Prove DeMorgan’s Laws. <em>Prove this via Venn diagrams.</em></p></li>
-<li><p>Chapter problem 1.4.6.</p></li>
-<li><p>Chapter problem 1.4.7</p></li>
-<li><p>Chapter problem 1.4.13</p></li>
-<li><p>Chapter problem 1.4.14</p></li>
-</ol>
-</div>
-<div id="definition-of-probability-ds-1.5" class="section level2">
-<h2><span class="header-section-number">1.2</span> Definition of Probability (D&amp;S 1.5)</h2>
-<p><em>Axiom 1</em> For every event <span class="math inline">\(A\)</span>, the probabilitity of the event, denoted <span class="math inline">\(Pr(A)\)</span> has the property <span class="math inline">\(Pr(A) \ge 0\)</span></p>
-<p><em>Axiom 2</em> If an event is sure to occur, then the event has probability 1. That is, <span class="math inline">\(Pr(\mathcal{S})=1\)</span>.</p>
-<p><em>Axiom 3</em> For every finite or countably infinite sequence of events <span class="math inline">\(A_1, \, A_2, \, \dots\)</span> where <span class="math inline">\(A_i \cap A_j = \emptyset \;\;\forall\; i,j\)</span> (that is the sequence <span class="math inline">\(A_i\)</span> is pairwise disjoint), then <span class="math display">\[Pr\left( \bigcup_{i=1}^\infty A_i \right) = \sum_{i=1}^\infty Pr\left(A_i\right)\]</span></p>
-<ol style="list-style-type: decimal">
-<li><p>Consider drawing a single card from a well shuffled deck of playing cards (4 suits, each with 13 cards Ace, two, …, Queen, King). Consider the events <span class="math inline">\(H,S,C,D\)</span>, which are drawing a <span class="math inline">\(H\)</span>eart, <span class="math inline">\(S\)</span>pade, <span class="math inline">\(C\)</span>lub, and <span class="math inline">\(D\)</span>iamond. Explain why <span class="math inline">\(H\)</span> and <span class="math inline">\(S\)</span> are disjoint but <span class="math inline">\(H^c\)</span> and <span class="math inline">\(S^c\)</span> are not.</p></li>
-<li><p>Prove <span class="math inline">\(Pr(\emptyset) = 0\)</span></p></li>
-<li><p>Argue that <em>Axiom 3</em> should have been “For every countably infinite sequence of events <span class="math inline">\(A_i\)</span>” because you can pad any finite sequence with an infinite sequence of empty sets.</p></li>
-<li><p>Prove <span class="math inline">\(Pr(A^c) = 1 - Pr(A)\)</span></p></li>
-</ol>
-<p>Often we will draw Venn diagrams where the area of the event is its probability.</p>
-<p><img src="Probability_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
-<p>Many of the probability calculations can be most easily understood using a Venn diagram along with the algebraic proof.</p>
-<ol start="5" style="list-style-type: decimal">
-<li><p>Prove if <span class="math inline">\(A \subset B\)</span> then <span class="math inline">\(Pr(A) \le Pr(B)\)</span>. <em>Show this formally and via Venn diagrams</em></p></li>
-<li><p>Prove that <span class="math inline">\(Pr(A) = Pr(A \cap B) + Pr( A \cap B^c)\)</span> <em>Show this formally and via Venn diagrams</em></p></li>
-<li><p>Prove that <span class="math inline">\(Pr( A \cup B) = Pr(A) + Pr(B) - Pr( A \cap B)\)</span> <em>Show this formally and via Venn diagrams. Notice our Axiom 3 addresses the case where <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are disjoint.</em></p></li>
-<li>Consider events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> where <span class="math inline">\(Pr(A)=1/3\)</span> and <span class="math inline">\(Pr(B) = 1/2\)</span>. Determine the value of <span class="math inline">\(Pr(A \cap B^c)\)</span> when
-<ol style="list-style-type: lower-alpha">
-<li><span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are disjoint</li>
-<li><span class="math inline">\(A \subset B\)</span></li>
-<li><span class="math inline">\(Pr(A \cap B) = 1/8\)</span></li>
-</ol></li>
-<li>Suppose that Adam has a probability of failing an exam of <span class="math inline">\(Pr(A) = 0.5\)</span> while Bob only has a probability of failing the exam of <span class="math inline">\(Pr(B) = 0.2\)</span>. Suppose the probability of both students failing is <span class="math inline">\(0.1\)</span>
-<ol style="list-style-type: lower-alpha">
-<li>What is the probability that at least one of these two students will fail?</li>
-<li>What is the probability that neither student will fail?</li>
-<li>What is the probability that exactly one student will fail?</li>
-</ol></li>
-<li>A point <span class="math inline">\((x,y)\)</span> is to be selected from the unit square <span class="math inline">\(\mathcal{S}\)</span> (<span class="math inline">\(0\le x\le 1,\; 0\le y \le 1\)</span>). Suppose that the probability that the point is selected from a specific region is equal to the area of the region. Find the probabiliy the point selected is from each of the following regions:
-<ol style="list-style-type: lower-alpha">
-<li><span class="math inline">\((x,y)\)</span> such that <span class="math inline">\((x-1/2)^2 + (y-1/2)^2 \ge 1/4\)</span></li>
-<li><span class="math inline">\((x,y)\)</span> such that <span class="math inline">\(1/2 \le x+y \le 3/2\)</span></li>
-<li><span class="math inline">\((x,y)\)</span> such that <span class="math inline">\(y \le 1-x^2\)</span></li>
-<li><span class="math inline">\((x,y)\)</span> such that <span class="math inline">\(x=y\)</span></li>
-</ol></li>
-<li>Bonferroni’s Inequality. Let <span class="math inline">\(A_1, A_2, \dots\)</span> be an arbitrary infinite squence of events. Define the seqence of events <span class="math inline">\(B_1, B_2, \dots\)</span> as <span class="math display">\[B_1=A_1\]</span> <span class="math display">\[B_2 = A_1^c \cap A_2\]</span> <span class="math display">\[B_3 = A_1^c \cap A_2^c \cap A_3\]</span> <span class="math display">\[B_4 = A_1^c \cap A_2^c \cap A_3^c \cap A_4\]</span>
-<ol style="list-style-type: lower-alpha">
-<li>Prove that <span class="math inline">\(B_i \subset A_i\)</span>, <span class="math inline">\(B_i \cap B_j = \emptyset\)</span> for <span class="math inline">\(i\ne j\)</span>, and that <span class="math inline">\(\bigcup_{i=1}^n A_i \;=\; \bigcup_{i=1}^n B_i\)</span>.</li>
-<li>Prove that <span class="math display">\[Pr\left( \bigcup_{i=1}^n A_i \right) = \sum_{i=1}^n Pr(B_i)\]</span></li>
-<li>Prove that <span class="math display">\[Pr\left( \bigcup_{i=1}^n A_i \right) \le \sum_{i=1}^n Pr(A_i)\]</span></li>
-<li>Using the previous result (b), prove that for sets <span class="math inline">\(D_1,D_2,\dots,D_n\)</span> that <span class="math display">\[Pr\left( \bigcap_{i=1}^n D_i \right) \ge 1 - \sum_{i=1}^n Pr(D_i^c)\]</span></li>
-</ol></li>
-</ol>
-</div>
-<div id="finite-sample-spaces-ds-1.6" class="section level2">
-<h2><span class="header-section-number">1.3</span> Finite Sample Spaces (D&amp;S 1.6)</h2>
-<p>When dealing with sample spaces with only a finite number of outcomes (say <span class="math inline">\(n\)</span> outputcomes <span class="math inline">\(s_i\)</span>), it is often convenient to define each outcome as an event.</p>
-<p>Let <span class="math inline">\(s_i\)</span> be outcomes in the sample space <span class="math inline">\(\mathcal{S}\)</span>. Let each of these outcomes have probability <span class="math inline">\(p_i\)</span>.</p>
-<p>For the axioms of probability to hold then: <span class="math display">\[p_i \ge 0\]</span> <span class="math display">\[\sum_{i=1}^n p_i = 1\]</span></p>
-<ol style="list-style-type: decimal">
-<li><p>When fair dice, we assume that each side has equal probability of being rolled. For rolling a 6-sided die, what is the probability of rolling an even number?</p></li>
-<li><p>When rolling two (or more) differently colored dice, we assume that the die do not affect the outcome of the other and that every pair of is equally likely. Alternatively you can think of rolling 1 die and then the other. So for rolling two six sided dice, there are 36 possible rolls, and notice, for example, <span class="math inline">\((2,3)\)</span> is a different roll that <span class="math inline">\((3,2)\)</span>. What is the probability that the sum of the two rolls is even?</p></li>
-<li>If a fair coin is flipped three times…
-<ol style="list-style-type: lower-alpha">
-<li>What are the possible outcomes (enumerate these)?</li>
-<li>Explain why it is reasonable that each outcome is equally probable?</li>
-<li>What is the probability that all three faces will be the same?</li>
-</ol></li>
-</ol>
-</div>
-<div id="ordered-counting-ds-1.7" class="section level2">
-<h2><span class="header-section-number">1.4</span> Ordered Counting (D&amp;S 1.7)</h2>
-<p>Often we situations where it is reasonable to beleve that each outcome of an event is equally likely and therefore we can figure out the probability if we knew how many events there were. E.g. there are 36 different outcomes for rolling two fair 6-sided dice, so each outcome has a 1/36 probability.</p>
-<ol style="list-style-type: decimal">
-<li><p>Prove/argue/justify that if the outcome of experiment is composed of 2 parts, where the first part has <span class="math inline">\(m\)</span> outcomes <span class="math inline">\(x_1, \dots, x_m\)</span> and the second part has <span class="math inline">\(n\)</span> outcomes, <span class="math inline">\(y_1,\dots,y_n\)</span> then there is a total of <span class="math inline">\(mn\)</span> outcomes <span class="math inline">\((x_i,y_j)\)</span>. This is often called the Multiplication Rule for Counting.</p></li>
-<li><p>I own 3 pair of pants that are “work appropriate.” I also own 6 different shirts and 5 pairs of shoes that are “work appropriate.” How many different outfits are possible?</p></li>
-<li><p>How many way can the numbers <span class="math inline">\(1,2,3,4,\)</span> and <span class="math inline">\(5\)</span> be arranged?</p></li>
-<li><p><strong>Ordered Sampling without Replacement</strong> For distinct objects <span class="math inline">\(1,2,\dots,n\)</span> prove that there are are <span class="math inline">\(P_{n,k}=\frac{n!}{(n-k)!}\)</span> arrangements of <span class="math inline">\(k\)</span> elements (where the order is important, i.e. <span class="math inline">\(1,2,3\)</span> is distinct from <span class="math inline">\(2,1,3\)</span>) and <span class="math inline">\(n! = n\cdot(n-1)\cdot(n-2)\dots\cdot(2)\cdot(1)\)</span> and by definition <span class="math inline">\(0!=1\)</span>. We call <span class="math inline">\(P_{n,k}\)</span> the number of <em>permutations</em> of <span class="math inline">\(k\)</span> elements taken from a set of <span class="math inline">\(n\)</span> distinct objects. <em>Hint: First consider base cases of <span class="math inline">\(k=1\)</span> and then <span class="math inline">\(k=2\)</span> and that the formula is appropriate. Then, to complete the induction arguement, show that if we have a <span class="math inline">\(P_{n,k}\)</span> permutations of <span class="math inline">\(k\)</span> objects, then increasing to <span class="math inline">\(k+1\)</span> elements simply results in <span class="math inline">\((n-k) \cdot P_{n,k}\)</span> arrangements due to the Multiplation Rule of counting.</em></p></li>
-<li><p>From <span class="math inline">\(n=17\)</span> students, one student will get a candy bar, another will get a soda, and a third will receive some gummi bears. How many different ways could the treats be distributed to the students?</p></li>
-<li><p>Suppose we are going to randomly select <span class="math inline">\(3\)</span> elements from the digits <span class="math inline">\(0,1,2,\dots,9\)</span> but we will select these <em>with replacement</em> (so we could get the <span class="math inline">\(022\)</span>). How many outcomes are there?</p></li>
-<li><p><strong>Ordered Sampling with Replacement</strong> Suppose that we have <span class="math inline">\(n\)</span> distinct objects labeled <span class="math inline">\(1,2,\dots,n\)</span> and we are going to sample <span class="math inline">\(k\)</span> of these objects <em>with replacement</em>. Justify/derive a formula for the number of outcomes.</p></li>
-<li><p>Consider the sequence of numbers <span class="math inline">\(0000, 0001, 0002, \dots, 9998, 9999\)</span>. How many of these numbers are composed of 4 different digits?</p></li>
-</ol>
-<p>Often times I am interested in calculating the probability of a particular event and we can often do it in the following manner:</p>
-<ul>
-<li>First count the number of equally likely outcomes there are.<br />
-</li>
-<li>Count the number of outcomes where the event of interest occures.</li>
-<li>Then calculate</li>
-</ul>
-<p><span class="math display">\[Pr\left( \textrm{Event} \right ) = \frac{\textrm{Number of outcomes where event happens}}{\textrm{Total number of equally likely outcomes}}\]</span></p>
-<ol start="9" style="list-style-type: decimal">
-<li><p>As I work in the evenings, I often listen to music. Suppose that I have a playlist of <span class="math inline">\(n=300\)</span> songs and I listen to them on shuffle where the software always selects from the list with equal probability when selecting which song to play next. If I listen to <span class="math inline">\(k=10\)</span> songs, what is the probability that at least one of the songs will be duplicated? What about if I listen to <span class="math inline">\(k=30\)</span> songs?</p></li>
-<li><p>If 14 balls are randomly thrown into 25 boxes such that there is equal chance for a ball to land in any box, what is the probability that no box recieves more than one ball?</p></li>
-</ol>
-</div>
-<div id="combinations-ds-1.8" class="section level2">
-<h2><span class="header-section-number">1.5</span> Combinations (D&amp;S 1.8)</h2>
-<p>Often we want to count the number of arrangements of <span class="math inline">\(k\)</span> elements selected without replacement from <span class="math inline">\(n\)</span> distinct objects but where the order doesn’t matter. Another way of saying this is that we want to count the number of sets of size <span class="math inline">\(k\)</span> taken from <span class="math inline">\(n\)</span> distinct objects.</p>
-<ol style="list-style-type: decimal">
-<li><p><strong>Unordered Sampling without Replacement</strong>For a set of <span class="math inline">\(k\)</span> elements, prove that there are <span class="math inline">\(k!\)</span> permutations of those elements. Using this information, argue that the number of distinct sets of <span class="math inline">\(k\)</span> objects taken from <span class="math inline">\(n\)</span> elements is (which the book denotes as <span class="math inline">\(C_{n,k}\)</span> and many others denote <span class="math inline">\(\binom{n}{k}\)</span>) is <span class="math display">\[C_{n,k} = \binom{n}{k} = \frac{P_{n,k}}{k!} = \frac{n!}{k!(n-k)!}\]</span></p></li>
-<li><p>I have 3 identical cans of soda that I will distribute randomly to 17 students. I will select (with equal probabilities per student) 3 students. How many ways could I choose 3 students?</p></li>
-<li><p>Suppose I have a character string composed of only 0s and 1s. The character string is <span class="math inline">\(20\)</span> characters long and <span class="math inline">\(8\)</span> of them are 0s. How many different strings are there?</p></li>
-<li><p><strong>Unordered Sampling with Replacement</strong> Suppose that I have <span class="math inline">\(n=7\)</span> boxes into which I will randomly throw <span class="math inline">\(k=3\)</span> balls.</p>
-<pre><code>     n=7 boxes
-     +----+-----+-----+-----+-----+-----+-----+
-     | 1  |  2  |  3  |  4  |  5  |  6  |  7  |
-     +----+-----+-----+-----+-----+-----+-----+</code></pre>
-<p>Now suppose that we throw, at random, <span class="math inline">\(k=3\)</span> balls into the boxes. We might end up with one ball in box 3 and two in box 6.</p>
-<pre><code>     n=7 boxes
-    +----+-----+-----+-----+-----+-----+----+
-    |    |     | 0   |     |     | 00  |    |
-    +----+-----+-----+-----+-----+-----+----+</code></pre>
-<ol style="list-style-type: lower-alpha">
-<li><p>Argue that throwing <span class="math inline">\(k\)</span> balls randomly into <span class="math inline">\(n\)</span> boxes is equivalent to selecting a set of <span class="math inline">\(k\)</span> elements from <span class="math inline">\(n\)</span> distinct objects with replacement. <em>Hint show that every set chosen with resampling can be represented via boxes/balls and that every boxes/balls combination represents a possible set of <span class="math inline">\(k\)</span> elements from <span class="math inline">\(n\)</span> distinct objects with replacement.</em></p></li>
-<li><p>The guts of the boxes/balls diagram is the arrangement of box partitions and balls because the outer box walls don’t matter because the balls get into a box.</p>
-<pre><code>    |    |     | 0   |    |    | 00  |     |</code></pre>
-<p>which we can clean up a bit by remembering that the other walls have to be there and we’ll represent the balls with 0 and the box partitions with a 1. <strong>|</strong>110111001<strong>|</strong>. This reduces the problem into how many binary strings can I produce with <span class="math inline">\(n-1\)</span> 1s and <span class="math inline">\(k\)</span> 0s.</p></li>
-</ol></li>
-<li><p>Suppose that I will distribute my tree soda cans to 17 students by drawing names out of a hat, but replacing the student’s name after it is draw. How many different outcomes could occur?</p></li>
-<li><p>Suppose I draw 2 cards from a standard deck of 52 cards, what is the probability that I draw two cards of the same suit?</p></li>
-<li><p>Ten teams are playing in a tournament. In the first round there, there will be five games played. How many possible arrangements are there? What is the probability that the Ashville Avalanch plays the Boston Behemoths (these are two of the ten teams playing)?</p></li>
-<li><p>Suppose that I flip a fair coin 10 times. What is the probability I observe 3 heads?</p></li>
-</ol>
-</div>
-<div id="multinomial-coefficients-ds-1.9" class="section level2">
-<h2><span class="header-section-number">1.6</span> Multinomial Coefficients (D&amp;S 1.9)</h2>
-<ol style="list-style-type: decimal">
-<li><p>From the Math/Stat department faculty, a committee of 5 members is to be selected. There are 8 Math, 4 Statistics, and 4 Math Ed Professors. What is the probability that committee is composed of 3 Math, 1 Stats, and 1 Math Ed professor.</p></li>
-<li><p>Suppose that we are creating a string of beads from 9 red, 7 blue, and 10 yellow beads. How many different arrangements can be made?</p></li>
-</ol>
+<div id="preface" class="section level1 unnumbered">
+<h1>Preface</h1>
+<p>This is a set of questions to be used in an <em>Inquiry Based Learning</em> class for an undergraduate level course in probability.</p>
+<div id="acknowledgements" class="section level2 unnumbered">
+<h2>Acknowledgements</h2>
+<p>Many people have helped. I should thank them.</p>
 
 </div>
 </div>
@@ -276,7 +116,7 @@
         </div>
       </div>
 
-<a href="2-conditional-probability.html" class="navigation navigation-next navigation-unique" aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="1-introduction-to-probability.html" class="navigation navigation-next navigation-unique" aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
