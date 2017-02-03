@@ -9,7 +9,9 @@ bookdown::gitbook:
       after: |
     edit:
       link: https://github.com/dereksonderegger/edit/master/473/%s
-    download: yes
+    download:
+      - ["Probability.pdf",  "PDF"]
+      - ["Probability.epub", "EPUB"]
     search: yes
     fontsettings:
       theme: white
