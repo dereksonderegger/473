@@ -113,3 +113,52 @@ $$Pr(A|C) = \sum_{k=1}^K Pr(A \cap B_k \big\rvert C) = \sum_{k=1}^K Pr(A \big\rv
 6. I will roll my 20-sided die until I roll a 20.  
     a) What is the probability that I roll a 20 on my first roll?
     b) What is the probability that the first 20 I roll is on the $5$th roll?
+    
+7. A family has two children. It is known that at least one is a boy.  What is the probability that the family has two boys, given that at least is one a boy?  Assume that genders are equally likely and that genders of siblings are independent.
+
+
+## Bayes' Theorem
+
+The goal of Bayes' Theorem is to reverse the order of conditioning. Suppose we are interested in two events $A$ and $B$. We might be given some information about $P(A|B)$ but we want to know about $P(B|A)$.  We start by recalling that because $B$ and $B^c$ form a partition of $\mathcal{S}$ then 
+$$Pr(A) = Pr(A \cap B) + Pr(A \cap B^c)$$
+
+Now we can go back to our conditional probability formula and see
+$$\begin{aligned} Pr(B|A) 
+    &= \frac{Pr(A\cap B)}{Pr(A)}  \\ 
+    &\\
+    &= \frac{Pr(A|B)Pr(B)}{Pr(A\cap B)+Pr(A\cap B^c)} \\
+    &\\
+    &= \frac{Pr(A|B)Pr(B)}{Pr(A|B)Pr(B)+Pr(A\cap B^c)Pr(B^c)}
+    \end{aligned}$$
+          
+If we were to consider any partition of $\mathcal{S}$, say $B_k$ $k=1,\dots,K$, then   
+
+$$Pr(A) = \sum_{i=1}^K Pr( A \cap B_k ) = \sum_{i=1}^K Pr(A | B_k)Pr(B_k)$$
+
+and 
+
+$$\begin{aligned} Pr(B_k|A) 
+    &= \frac{Pr(A\cap B_k)}{Pr(A)}  \\ 
+    &\\
+    &= \frac{Pr(A|B_k)Pr(B_k)}{\sum_{i=1}^K Pr(A\cap B_k)} \\
+    &\\
+    &= \frac{Pr(A|B_k)Pr(B_k)}{\sum_{i=1}^K Pr(A| B_k)Pr(B_k)}
+    \end{aligned}$$
+
+
+1. A softball team has two pitchers, Jeff and Bob. Of the two Jeff is the better pitcher and wins 80% of the games he pitches for but can only play in 30% of the games. Bob pitches in the rest of the games, but only wins 40% of his games. 
+    a) What is the probability that the softball team wins a game?
+    b) Given that the team won, what is the probability that Jeff pitched?
+    
+2. One card is selected at random from a standard deck of 52 playing cards. It is inserted into a second standard deck and the second deck is then well shuffled. 
+    a) A card is drawn at random from the second deck. What is the probability it is an ace?
+    b) Given that an ace was drawn from the second deck, what is the probability that an ace was transfered from the first deck?
+    
+3. My three cats love licking up the milk out of my cereal bowl if I leave it unattended. If unattended, there is a 30% chance that Beau will clean the bowl, a 50% chance that Tess will, and 20% chance that Kaylee will.  Unfortunately the milk makes the cats nauseous and if a cat gets milk there is a good chance the cat will puke.  In particular the probability that Beau will puke given he has had milk is 30%, for Tess it is 60%, and for Kaylee it is 40%.  My daughter recently left a cereal bowl out and a cat finished the milk.
+    a) What is the probability that a cat has puked as a result.
+    b) Given that a cat has puked in response, what is the probability it was Kaylee?
+    
+4. I have two decks of cards. The first deck has 40 red cards and 10 black.  The second deck has 25 red and 25 black.  I select a deck at random, and then draw two cards. Given that I've selected two red cards, what is the probability that I initially chose the first deck?
+
+5. An inexpensive and convenient enzyme immunoassay screening tests for HIV in a human.  If the person is actually HIV negative then the test returns negative with a probability of $0.985$. If the person is HIV positive, the test returns a positive result with probability $0.9997$. HIV is a major epidemic in Sub-Saharan Africa with approximately 5% of the adult population having HIV.  Major aid organizations want to help identify people with HIV for treatment and will use this cheap and convenient test in their efforts.  Suppose that an adult in Sub-Sahran Africa is selected and tested and the test result is that the person has HIV.  What is the probability that the person actual has HIV?
+
