@@ -45,7 +45,7 @@ $$Pr\left( \bigcap_{i=1}^n A_i \right) = Pr\left( A_n  \Big\rvert \bigcap_{i=1}^
                                          Pr\left( A_2 \Big\rvert A_1 \right)
                                          Pr\left( A_1 \right)$$
 
-6. For events $A$, $B$, and $D$ such that $Pr(D)>0$ show that:
+7. For events $A$, $B$, and $D$ such that $Pr(D)>0$ show that:
     a) $Pr(A^C | D) = 1 - Pr(A | D)$.
     b) $Pr( A \cup B \Big\rvert D) = Pr(A | D) + Pr(B|D) - Pr( A \cap B | D)$
 
