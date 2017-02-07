@@ -26,7 +26,7 @@
 <meta name="author" content="Derek L. Sonderegger">
 
 
-<meta name="date" content="2017-02-03">
+<meta name="date" content="2017-02-06">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -64,20 +64,8 @@
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
-</ul></li>
-<li class="chapter" data-level="1" data-path="1-introduction-to-probability.html"><a href="1-introduction-to-probability.html"><i class="fa fa-check"></i><b>1</b> Introduction to Probability</a><ul>
-<li class="chapter" data-level="1.1" data-path="1-introduction-to-probability.html"><a href="1-introduction-to-probability.html#history-of-probability"><i class="fa fa-check"></i><b>1.1</b> History of Probability</a></li>
-<li class="chapter" data-level="1.2" data-path="1-introduction-to-probability.html"><a href="1-introduction-to-probability.html#interpretations-of-probability"><i class="fa fa-check"></i><b>1.2</b> Interpretations of Probability</a></li>
-<li class="chapter" data-level="1.3" data-path="1-introduction-to-probability.html"><a href="1-introduction-to-probability.html#experiments-and-events"><i class="fa fa-check"></i><b>1.3</b> Experiments and Events</a></li>
-<li class="chapter" data-level="1.4" data-path="1-introduction-to-probability.html"><a href="1-introduction-to-probability.html#review-of-set-theory-ds-1.4"><i class="fa fa-check"></i><b>1.4</b> Review of Set Theory (D&amp;S 1.4)</a></li>
-<li class="chapter" data-level="1.5" data-path="1-introduction-to-probability.html"><a href="1-introduction-to-probability.html#definition-of-probability-ds-1.5"><i class="fa fa-check"></i><b>1.5</b> Definition of Probability (D&amp;S 1.5)</a></li>
-<li class="chapter" data-level="1.6" data-path="1-introduction-to-probability.html"><a href="1-introduction-to-probability.html#finite-sample-spaces-ds-1.6"><i class="fa fa-check"></i><b>1.6</b> Finite Sample Spaces (D&amp;S 1.6)</a></li>
-<li class="chapter" data-level="1.7" data-path="1-introduction-to-probability.html"><a href="1-introduction-to-probability.html#ordered-counting-ds-1.7"><i class="fa fa-check"></i><b>1.7</b> Ordered Counting (D&amp;S 1.7)</a></li>
-<li class="chapter" data-level="1.8" data-path="1-introduction-to-probability.html"><a href="1-introduction-to-probability.html#combinations-ds-1.8"><i class="fa fa-check"></i><b>1.8</b> Combinations (D&amp;S 1.8)</a></li>
-<li class="chapter" data-level="1.9" data-path="1-introduction-to-probability.html"><a href="1-introduction-to-probability.html#multinomial-coefficients-ds-1.9"><i class="fa fa-check"></i><b>1.9</b> Multinomial Coefficients (D&amp;S 1.9)</a></li>
-</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="1-introduction-to-probability.html"><a href="1-introduction-to-probability.html"><i class="fa fa-check"></i><b>1</b> Introduction to Probability</a></li>
 <li class="chapter" data-level="2" data-path="2-conditional-probability.html"><a href="2-conditional-probability.html"><i class="fa fa-check"></i><b>2</b> Conditional Probability</a><ul>
 <li class="chapter" data-level="2.1" data-path="2-conditional-probability.html"><a href="2-conditional-probability.html#defining-conditional-probability-ds-2.1"><i class="fa fa-check"></i><b>2.1</b> Defining Conditional Probability (D&amp;S 2.1)</a></li>
 <li class="chapter" data-level="2.2" data-path="2-conditional-probability.html"><a href="2-conditional-probability.html#independence"><i class="fa fa-check"></i><b>2.2</b> Independence</a></li>
@@ -137,11 +125,11 @@
 </ol></li>
 </ol>
 <p>Suppose that we have <span class="math inline">\(K\)</span> events <span class="math inline">\(B_k\)</span> such that the <span class="math inline">\(B_1, B_2, \dots, B_K\)</span> are disjoint and <span class="math inline">\(\bigcup B_k=\mathcal{S}\)</span>. Then we call the events <span class="math inline">\(B_1,\dots,B_K\)</span> a <em>partition</em> of the sample space <span class="math inline">\(\mathcal{S}\)</span>. A partition of <span class="math inline">\(\mathcal{S}\)</span> is often useful for caculating probabilities due to the disjoint nature of the <span class="math inline">\(B_k\)</span> elements.</p>
-<ol start="6" style="list-style-type: decimal">
+<ol start="8" style="list-style-type: decimal">
 <li><strong>Law of Total Probability</strong> Prove that for for a partition <span class="math inline">\(B_1, \dots, B_K\)</span> of <span class="math inline">\(\mathcal{S}\)</span>, that <span class="math display">\[Pr(A) = \sum_{k=1}^K Pr(A \cap B_k) = \sum_{k=1}^K Pr(A \Big\rvert B_k) Pr( B_k )\]</span></li>
 </ol>
 <p><em>Note:</em> There is a conditional version of the Law of Total probability, which is proved in an analogous fashion: <span class="math display">\[Pr(A|C) = \sum_{k=1}^K Pr(A \cap B_k \big\rvert C) = \sum_{k=1}^K Pr(A \big\rvert B_k \cap C) Pr( B_k \big\rvert C)\]</span></p>
-<ol start="7" style="list-style-type: decimal">
+<ol start="9" style="list-style-type: decimal">
 <li><p>A child’s bookshelf contains three shelves. On the shelves are <span class="math inline">\(n_1=10\)</span>,<span class="math inline">\(n_2=20\)</span> and <span class="math inline">\(n_3=30\)</span> books. Within each set of books, there are some number of Dr Suess books <span class="math inline">\(m_1=5\)</span>, <span class="math inline">\(m_2=4\)</span>, <span class="math inline">\(m_3=2\)</span>. The child will select a shelf at random (equal probability) and then from the shelf will select a book at random. What is the probability the child selects a Dr Suess book?</p></li>
 <li>A camera with a motion detector was mounted facing a forest trail. <span class="math inline">\(50\%\)</span> of the pictures were taken during the daytime, <span class="math inline">\(15\%\)</span> were taken during twilight hours (dawn and dusk), and <span class="math inline">\(35\%\)</span> were taken during the night. Of the pictures taken during the daytime, <span class="math inline">\(80\%\)</span> were of hikers and <span class="math inline">\(20\%\)</span> were of wild animals. Of the pictures taken at twilight <span class="math inline">\(30\%\)</span> were of hikers and <span class="math inline">\(70\%\)</span> were of wild animals. Finally, of the pictures taken during the night, <span class="math inline">\(100\%\)</span> were wild animals.
 <ol style="list-style-type: lower-alpha">
@@ -194,7 +182,9 @@
 </div>
 <div id="independence" class="section level2">
 <h2><span class="header-section-number">2.2</span> Independence</h2>
-<p><em>Definition:</em> Two events, <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent if <span class="math inline">\(Pr( A \cap B) = Pr(A)Pr(B)\)</span>. <em>Definition:</em> Events <span class="math inline">\(A_1, A_2,\dots,A_K\)</span> are pairwise independent if <span class="math inline">\(A_i\)</span> and <span class="math inline">\(A_j\)</span> are independent for any <span class="math inline">\(i,j\)</span>. <em>Definition:</em> Events <span class="math inline">\(A_1, A_2,\dots,A_K\)</span> are mutually independent if for all subsets <span class="math inline">\(I\)</span> of <span class="math inline">\(1,2,\dots,K\)</span>, <span class="math inline">\(Pr( \bigcap_{i\in I} A_i) = \prod_{i \in I} Pr(A_i)\)</span></p>
+<p><em>Definition:</em> Two events, <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent if <span class="math inline">\(Pr( A \cap B) = Pr(A)Pr(B)\)</span>.</p>
+<p><em>Definition:</em> Events <span class="math inline">\(A_1, A_2,\dots,A_K\)</span> are pairwise independent if <span class="math inline">\(A_i\)</span> and <span class="math inline">\(A_j\)</span> are independent for any <span class="math inline">\(i,j\)</span>.</p>
+<p><em>Definition:</em> Events <span class="math inline">\(A_1, A_2,\dots,A_K\)</span> are mutually independent if for all subsets <span class="math inline">\(I\)</span> of <span class="math inline">\(1,2,\dots,K\)</span>, <span class="math inline">\(Pr( \bigcap_{i\in I} A_i) = \prod_{i \in I} Pr(A_i)\)</span></p>
 <ol style="list-style-type: decimal">
 <li><p>Show that if <span class="math inline">\(Pr(A)&gt;0\)</span> and <span class="math inline">\(Pr(B)&gt;0\)</span>, then <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent if and only if <span class="math inline">\(Pr(A|B)=Pr(A)\)</span> and <span class="math inline">\(Pr(B|A)=Pr(A)\)</span></p></li>
 <li><p>Give an example of three events that are pairwise independent but not mutually independent.</p></li>
