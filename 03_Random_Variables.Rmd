@@ -1,0 +1,78 @@
+
+# Random Variables and Distributions
+
+## Defining Random Variables and Discrete Distributions
+
+A random variable is a _function_ that takes outcomes in the sample space $\mathcal{S}$ and maps them to numeric values in $\mathbb{R}$. Often times we abbreviate random variable as RV.
+
+The idea is that random events such as flipping Heads, a medical test showing the patient has a disease, Chris Froome winning the Tour de France, or rolling a Leaning Jowler in _Pass the Pigs_ are all random events but to do math on them, we need to turn them into numbers.
+
+In cases where the sample space $\mathcal{S}$ is already numeric, the random variable can just be the identity, but in other cases, we might have to be more careful.  For example, if my experiment is flipping a fair coin $n=4$ times, I could define the random variable $X=$ number of heads and $X$ could take on any of the values $x \in \{0,1,2,3,4\}$.  I could similarly define 
+
+$$Y= \begin{cases} 
+  0 \;\;\; \textrm{ if # heads } < 2 \\ 
+  1 \;\;\; \textrm{ if # heads } > 2 
+\end{cases}$$ 
+                   
+A RV function doesn't have to be one-to-one and it doesn't have to map to the entire set of real values.
+
+Because events in the sample space $\mathcal{S}$ have an associated probability, then it is natural to define an event, say $B$ to be all the outcomes $s \in \mathcal{S}$ such that $X(s) = x$ and then define $Pr(X=x) = Pr(B)$.
+
+Notation: We will refer to the random variable using the capital letters, (e.g. $X$, $Y$, $Z$, $W$) and the possible values they take on using lower case letters. With this notation, the RV $X$ could take on values $x \in \{0,1,2,3,4\}$
+
+1. We consider flipping a fair coin $n=4$ times.
+    a) What is the set of outcomes?  As usual, we will define an event for each outcome.
+    b) What is the probability of each outcome?
+    c) For the RV $X$ defined above, what outcomes define the event $B$ such that $s \in B \implies X(s)=2$?
+    d) What is $Pr(B)$? Therefore what is $Pr(X=2)$?
+    e) For the RV $Y$ defined above, what outcomes define the event $A$ such that $s \in A \implies Y(s)=1$?
+    f) What is $Pr(A)$? Therefore what is $Pr(Y=1)$?
+    
+For each value that $X$ or $Y$ could take on, we could figure out the probability of the associated event.  We define the random variables _distribution_ as a description of what values the RV can take on and $Pr(X \in C)$, for any interval $C = \{c: a\le c \le b\}$ for any $a<b$.  This is actually a very awkward definition and we will examine more convenient ways to specify these same probabilities.
+
+**Discrete** random variables are RVs that can only take on a finite or countably infinite set of values.
+
+**Continuous** random variables are RVs that can take on an unaccountably infinite set of values.
+
+We now define the _probability function_ of a discrete RV $X$ as 
+$$f(x) = Pr(X = x)$$
+and the closure of the set $\{x: \textrm{ such that } f(x) > 0\}$ is referred to as the _support of $X$_. Notice that this function is defined for all $x\in \mathbb{R}$, but for only a countable number of cases is $f(x)>0$.
+
+2. Suppose that RV $X$ can take on the values $\{x_1,x_2,\dots,x_K\}$. Prove that $$\sum_{k=1}^K f(x_k) = 1$$
+
+3. **Bernoulli Distribution**.  Suppose that the random variable $W$ takes on the values $0$ and $1$ with the probabilities $Pr(W=1) = p$ and $Pr(W=0) = 1-p$.  Then we say that $W$ has a Bernoulli distribution with probability of success $p$, which I might write as $W \sim Bernoulli(p)$. Show that for any interval $C =\{a,b\}$ in $\mathbb{R}$, you can find $Pr(X \in C)$.
+
+4. **Uniform Distribution on Integers**. Suppose that we have integers $a$ and $b$ such that $a < b$.  Suppose that the RV $X$ is equally likely to any integer $a,\dots,b$. What is $f(x)$? _(Make sure your definition applies to any $x\in\mathbb{R}$)_
+
+5. **Binomial Distribution** Suppose that we have an experiment that consists of $n$ independent Bernoulli($p$) trials. We are interested in the distribution of $X=$ # of successful trials. That is $X\sim Binomial(n,p)$.
+    a) For any integer $x \in \{0,1,\dots,n\}$, what is $Pr(X=x)$?
+    b) Define $f(x)$ for all values of $x \in \mathbb{R}$.
+
+6. Give two examples of random variables which have Bernoulli($p=1/2$) distributions.  These two RVs should not the same RVs, but they have the same distribution.  That is to say, RVs have distributions, but distributions are not RVs.
+
+7. Suppose that two fair six-sided dice are rolled and the RV of interest is the absolute value of the difference between the dice. Give the probability distribution along with an illuminating graph.
+
+8. Suppose that a box contains 7 red balls and 3 green balls. If five balls are selected at random, without replacement, determine the probability function of $X$ where $X$ is the number of red balls selected.
+
+9. Suppose that a random variable $X$ has a discrete distribution with the following probability function:
+$$f(x) = \begin{cases} 
+  \frac{c}{2^x} \;\textrm{ for } x = 0, 1, 2, \dots \\
+  0 \;\;\;\; \textrm{otherwise}
+\end{cases}$$
+Find the value for $c$ that forces the requirement that $\sum f(x) = 1$
+
+For the binomial distribution (and many distributions we will consider this semester), it would be nice to not have to calculate various probabilities by hand. Most mathematical software packages include some way to calculate these probabilities.  
+
+|  System     |     Documentation Link or site link                                                |
+|:-----------:|:-----------------------------------------------------------------------------------|
+| Matlab      |  https://www.mathworks.com/help/stats/working-with-probability-distributions.html  |
+| Mathematica |  http://reference.wolfram.com/language/howto/WorkWithStatisticalDistributions.html |
+| R           |  https://dereksonderegger.github.io/570L/3-statistical-tables.html                 |
+| Web App     |  https://ismay.shinyapps.io/ProbApp/                                               |
+
+10. Each time I ride home or to work, there is a $p=0.1$ probability that I will get stopped by a train.  Let $X$ be the number of times I'm stopped by the train in the next 10 trips. Assume that the probability I'm stopped on trip $i$ is independent of all other trips $j$.
+    a) What is the distribution of $X$? Remember, to specify the distribution by name, you must specify the name and the value of all parameters.
+    b) What is $Pr(X =6)$?
+    c) What is $Pr(X < 6)$?
+    d) What is $Pr(X \ge 6)$?
+

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>STA 473 - Probability</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="STA 473 - Probability">
+  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+
+  <meta property="og:title" content="STA 473 - Probability" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="dereksonderegger/473" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="STA 473 - Probability" />
+  
+  
+  
+
+<meta name="author" content="Derek L. Sonderegger">
+
+
+<meta name="date" content="2017-02-07">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="2-conditional-probability.html">
+
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="1-introduction-to-probability.html"><a href="1-introduction-to-probability.html"><i class="fa fa-check"></i><b>1</b> Introduction to Probability</a><ul>
+<li class="chapter" data-level="1.1" data-path="1-introduction-to-probability.html"><a href="1-introduction-to-probability.html#history-of-probability"><i class="fa fa-check"></i><b>1.1</b> History of Probability</a></li>
+<li class="chapter" data-level="1.2" data-path="1-introduction-to-probability.html"><a href="1-introduction-to-probability.html#interpretations-of-probability"><i class="fa fa-check"></i><b>1.2</b> Interpretations of Probability</a></li>
+<li class="chapter" data-level="1.3" data-path="1-introduction-to-probability.html"><a href="1-introduction-to-probability.html#experiments-and-events"><i class="fa fa-check"></i><b>1.3</b> Experiments and Events</a></li>
+<li class="chapter" data-level="1.4" data-path="1-introduction-to-probability.html"><a href="1-introduction-to-probability.html#review-of-set-theory-ds-1.4"><i class="fa fa-check"></i><b>1.4</b> Review of Set Theory (D&amp;S 1.4)</a></li>
+<li class="chapter" data-level="1.5" data-path="1-introduction-to-probability.html"><a href="1-introduction-to-probability.html#definition-of-probability-ds-1.5"><i class="fa fa-check"></i><b>1.5</b> Definition of Probability (D&amp;S 1.5)</a></li>
+<li class="chapter" data-level="1.6" data-path="1-introduction-to-probability.html"><a href="1-introduction-to-probability.html#finite-sample-spaces-ds-1.6"><i class="fa fa-check"></i><b>1.6</b> Finite Sample Spaces (D&amp;S 1.6)</a></li>
+<li class="chapter" data-level="1.7" data-path="1-introduction-to-probability.html"><a href="1-introduction-to-probability.html#ordered-counting-ds-1.7"><i class="fa fa-check"></i><b>1.7</b> Ordered Counting (D&amp;S 1.7)</a></li>
+<li class="chapter" data-level="1.8" data-path="1-introduction-to-probability.html"><a href="1-introduction-to-probability.html#combinations-ds-1.8"><i class="fa fa-check"></i><b>1.8</b> Combinations (D&amp;S 1.8)</a></li>
+<li class="chapter" data-level="1.9" data-path="1-introduction-to-probability.html"><a href="1-introduction-to-probability.html#multinomial-coefficients-ds-1.9"><i class="fa fa-check"></i><b>1.9</b> Multinomial Coefficients (D&amp;S 1.9)</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="2-conditional-probability.html"><a href="2-conditional-probability.html"><i class="fa fa-check"></i><b>2</b> Conditional Probability</a><ul>
+<li class="chapter" data-level="2.1" data-path="2-conditional-probability.html"><a href="2-conditional-probability.html#defining-conditional-probability-ds-2.1"><i class="fa fa-check"></i><b>2.1</b> Defining Conditional Probability (D&amp;S 2.1)</a></li>
+<li class="chapter" data-level="2.2" data-path="2-conditional-probability.html"><a href="2-conditional-probability.html#independence"><i class="fa fa-check"></i><b>2.2</b> Independence</a></li>
+<li class="chapter" data-level="2.3" data-path="2-conditional-probability.html"><a href="2-conditional-probability.html#bayes-theorem"><i class="fa fa-check"></i><b>2.3</b> Bayes’ Theorem</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html"><i class="fa fa-check"></i><b>3</b> Random Variables and Distributions</a><ul>
+<li class="chapter" data-level="3.1" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#defining-random-variables-and-discrete-distributions"><i class="fa fa-check"></i><b>3.1</b> Defining Random Variables and Discrete Distributions</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">STA 473 - Probability</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="random-variables-and-distributions" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> Random Variables and Distributions</h1>
+<div id="defining-random-variables-and-discrete-distributions" class="section level2">
+<h2><span class="header-section-number">3.1</span> Defining Random Variables and Discrete Distributions</h2>
+<p>A random variable is a <em>function</em> that takes outcomes in the sample space <span class="math inline">\(\mathcal{S}\)</span> and maps them to numeric values in <span class="math inline">\(\mathbb{R}\)</span>. Often times we abbreviate random variable as RV.</p>
+<p>The idea is that random events such as flipping Heads, a medical test showing the patient has a disease, Chris Froome winning the Tour de France, or rolling a Leaning Jowler in <em>Pass the Pigs</em> are all random events but to do math on them, we need to turn them into numbers.</p>
+<p>In cases where the sample space <span class="math inline">\(\mathcal{S}\)</span> is already numeric, the random variable can just be the identity, but in other cases, we might have to be more careful. For example, if my experiment is flipping a fair coin <span class="math inline">\(n=4\)</span> times, I could define the random variable <span class="math inline">\(X=\)</span> number of heads and <span class="math inline">\(X\)</span> could take on any of the values <span class="math inline">\(x \in \{0,1,2,3,4\}\)</span>. I could similarly define</p>
+<p><span class="math display">\[Y= \begin{cases} 
+  0 \;\;\; \textrm{ if # heads } &lt; 2 \\ 
+  1 \;\;\; \textrm{ if # heads } &gt; 2 
+\end{cases}\]</span></p>
+<p>A RV function doesn’t have to be one-to-one and it doesn’t have to map to the entire set of real values.</p>
+<p>Because events in the sample space <span class="math inline">\(\mathcal{S}\)</span> have an associated probability, then it is natural to define an event, say <span class="math inline">\(B\)</span> to be all the outcomes <span class="math inline">\(s \in \mathcal{S}\)</span> such that <span class="math inline">\(X(s) = x\)</span> and then define <span class="math inline">\(Pr(X=x) = Pr(B)\)</span>.</p>
+<p>Notation: We will refer to the random variable using the capital letters, (e.g. <span class="math inline">\(X\)</span>, <span class="math inline">\(Y\)</span>, <span class="math inline">\(Z\)</span>, <span class="math inline">\(W\)</span>) and the possible values they take on using lower case letters. With this notation, the RV <span class="math inline">\(X\)</span> could take on values <span class="math inline">\(x \in \{0,1,2,3,4\}\)</span></p>
+<ol style="list-style-type: decimal">
+<li>We consider flipping a fair coin <span class="math inline">\(n=4\)</span> times.
+<ol style="list-style-type: lower-alpha">
+<li>What is the set of outcomes? As usual, we will define an event for each outcome.</li>
+<li>What is the probability of each outcome?</li>
+<li>For the RV <span class="math inline">\(X\)</span> defined above, what outcomes define the event <span class="math inline">\(B\)</span> such that <span class="math inline">\(s \in B \implies X(s)=2\)</span>?</li>
+<li>What is <span class="math inline">\(Pr(B)\)</span>? Therefore what is <span class="math inline">\(Pr(X=2)\)</span>?</li>
+<li>For the RV <span class="math inline">\(Y\)</span> defined above, what outcomes define the event <span class="math inline">\(A\)</span> such that <span class="math inline">\(s \in A \implies Y(s)=1\)</span>?</li>
+<li>What is <span class="math inline">\(Pr(A)\)</span>? Therefore what is <span class="math inline">\(Pr(Y=1)\)</span>?</li>
+</ol></li>
+</ol>
+<p>For each value that <span class="math inline">\(X\)</span> or <span class="math inline">\(Y\)</span> could take on, we could figure out the probability of the associated event. We define the random variables <em>distribution</em> as a description of what values the RV can take on and <span class="math inline">\(Pr(X \in C)\)</span>, for any interval <span class="math inline">\(C = \{c: a\le c \le b\}\)</span> for any <span class="math inline">\(a&lt;b\)</span>. This is actually a very awkward definition and we will examine more convenient ways to specify these same probabilities.</p>
+<p><strong>Discrete</strong> random variables are RVs that can only take on a finite or countably infinite set of values.</p>
+<p><strong>Continuous</strong> random variables are RVs that can take on an unaccountably infinite set of values.</p>
+<p>We now define the <em>probability function</em> of a discrete RV <span class="math inline">\(X\)</span> as <span class="math display">\[f(x) = Pr(X = x)\]</span> and the closure of the set <span class="math inline">\(\{x: \textrm{ such that } f(x) &gt; 0\}\)</span> is referred to as the <em>support of <span class="math inline">\(X\)</span></em>. Notice that this function is defined for all <span class="math inline">\(x\in \mathbb{R}\)</span>, but for only a countable number of cases is <span class="math inline">\(f(x)&gt;0\)</span>.</p>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Suppose that RV <span class="math inline">\(X\)</span> can take on the values <span class="math inline">\(\{x_1,x_2,\dots,x_K\}\)</span>. Prove that <span class="math display">\[\sum_{k=1}^K f(x_k) = 1\]</span></p></li>
+<li><p><strong>Bernoulli Distribution</strong>. Suppose that the random variable <span class="math inline">\(W\)</span> takes on the values <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span> with the probabilities <span class="math inline">\(Pr(W=1) = p\)</span> and <span class="math inline">\(Pr(W=0) = 1-p\)</span>. Then we say that <span class="math inline">\(W\)</span> has a Bernoulli distribution with probability of success <span class="math inline">\(p\)</span>, which I might write as <span class="math inline">\(W \sim Bernoulli(p)\)</span>. Show that for any interval <span class="math inline">\(C =\{a,b\}\)</span> in <span class="math inline">\(\mathbb{R}\)</span>, you can find <span class="math inline">\(Pr(X \in C)\)</span>.</p></li>
+<li><p><strong>Uniform Distribution on Integers</strong>. Suppose that we have integers <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> such that <span class="math inline">\(a &lt; b\)</span>. Suppose that the RV <span class="math inline">\(X\)</span> is equally likely to any integer <span class="math inline">\(a,\dots,b\)</span>. What is <span class="math inline">\(f(x)\)</span>? <em>(Make sure your definition applies to any <span class="math inline">\(x\in\mathbb{R}\)</span>)</em></p></li>
+<li><strong>Binomial Distribution</strong> Suppose that we have an experiment that consists of <span class="math inline">\(n\)</span> independent Bernoulli(<span class="math inline">\(p\)</span>) trials. We are interested in the distribution of <span class="math inline">\(X=\)</span> # of successful trials. That is <span class="math inline">\(X\sim Binomial(n,p)\)</span>.
+<ol style="list-style-type: lower-alpha">
+<li>For any integer <span class="math inline">\(x \in \{0,1,\dots,n\}\)</span>, what is <span class="math inline">\(Pr(X=x)\)</span>?</li>
+<li>Define <span class="math inline">\(f(x)\)</span> for all values of <span class="math inline">\(x \in \mathbb{R}\)</span>.</li>
+</ol></li>
+<li><p>Give two examples of random variables which have Bernoulli(<span class="math inline">\(p=1/2\)</span>) distributions. These two RVs should not the same RVs, but they have the same distribution. That is to say, RVs have distributions, but distributions are not RVs.</p></li>
+<li><p>Suppose that two fair six-sided dice are rolled and the RV of interest is the absolute value of the difference between the dice. Give the probability distribution along with an illuminating graph.</p></li>
+<li><p>Suppose that a box contains 7 red balls and 3 green balls. If five balls are selected at random, without replacement, determine the probability function of <span class="math inline">\(X\)</span> where <span class="math inline">\(X\)</span> is the number of red balls selected.</p></li>
+<li><p>Suppose that a random variable <span class="math inline">\(X\)</span> has a discrete distribution with the following probability function: <span class="math display">\[f(x) = \begin{cases} 
+  \frac{c}{2^x} \;\textrm{ for } x = 0, 1, 2, \dots \\
+  0 \;\;\;\; \textrm{otherwise}
+\end{cases}\]</span> Find the value for <span class="math inline">\(c\)</span> that forces the requirement that <span class="math inline">\(\sum f(x) = 1\)</span></p></li>
+</ol>
+<p>For the binomial distribution (and many distributions we will consider this semester), it would be nice to not have to calculate various probabilities by hand. Most mathematical software packages include some way to calculate these probabilities.</p>
+<table>
+<colgroup>
+<col width="14%" />
+<col width="85%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">System</th>
+<th align="left">Documentation Link or site link</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Matlab</td>
+<td align="left"><a href="https://www.mathworks.com/help/stats/working-with-probability-distributions.html" class="uri">https://www.mathworks.com/help/stats/working-with-probability-distributions.html</a></td>
+</tr>
+<tr class="even">
+<td align="center">Mathematica</td>
+<td align="left"><a href="http://reference.wolfram.com/language/howto/WorkWithStatisticalDistributions.html" class="uri">http://reference.wolfram.com/language/howto/WorkWithStatisticalDistributions.html</a></td>
+</tr>
+<tr class="odd">
+<td align="center">R</td>
+<td align="left"><a href="https://dereksonderegger.github.io/570L/3-statistical-tables.html" class="uri">https://dereksonderegger.github.io/570L/3-statistical-tables.html</a></td>
+</tr>
+<tr class="even">
+<td align="center">Web App</td>
+<td align="left"><a href="https://ismay.shinyapps.io/ProbApp/" class="uri">https://ismay.shinyapps.io/ProbApp/</a></td>
+</tr>
+</tbody>
+</table>
+<ol start="10" style="list-style-type: decimal">
+<li>Each time I ride home or to work, there is a <span class="math inline">\(p=0.1\)</span> probability that I will get stopped by a train. Let <span class="math inline">\(X\)</span> be the number of times I’m stopped by the train in the next 10 trips. Assume that the probability I’m stopped on trip <span class="math inline">\(i\)</span> is independent of all other trips <span class="math inline">\(j\)</span>.
+<ol style="list-style-type: lower-alpha">
+<li>What is the distribution of <span class="math inline">\(X\)</span>? Remember, to specify the distribution by name, you must specify the name and the value of all parameters.</li>
+<li>What is <span class="math inline">\(Pr(X =6)\)</span>?</li>
+<li>What is <span class="math inline">\(Pr(X &lt; 6)\)</span>?</li>
+<li>What is <span class="math inline">\(Pr(X \ge 6)\)</span>?</li>
+</ol></li>
+</ol>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="2-conditional-probability.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/dereksonderegger/edit/master/473/03_Random_Variables.Rmd",
+"text": "Edit"
+},
+"download": [["Probability.pdf", "PDF"], ["Probability.epub", "EPUB"]],
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+},
+"search": true
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
