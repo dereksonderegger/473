@@ -26,7 +26,7 @@
 <meta name="author" content="Derek L. Sonderegger">
 
 
-<meta name="date" content="2017-02-07">
+<meta name="date" content="2017-02-08">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -85,6 +85,7 @@
 </ul></li>
 <li class="chapter" data-level="3" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html"><i class="fa fa-check"></i><b>3</b> Random Variables and Distributions</a><ul>
 <li class="chapter" data-level="3.1" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#defining-random-variables-and-discrete-distributions"><i class="fa fa-check"></i><b>3.1</b> Defining Random Variables and Discrete Distributions</a></li>
+<li class="chapter" data-level="3.2" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#continuous-distributions"><i class="fa fa-check"></i><b>3.2</b> Continuous Distributions</a></li>
 </ul></li>
 </ul>
 
@@ -234,25 +235,15 @@
 </div>
 <div id="bayes-theorem" class="section level2">
 <h2><span class="header-section-number">2.3</span> Bayes’ Theorem</h2>
-<p>The goal of Bayes’ Theorem is to reverse the order of conditioning. Suppose we are interested in two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>. We might be given some information about <span class="math inline">\(P(A|B)\)</span> but we want to know about <span class="math inline">\(P(B|A)\)</span>. We start by recalling that because <span class="math inline">\(B\)</span> and <span class="math inline">\(B^c\)</span> form a partition of <span class="math inline">\(\mathcal{S}\)</span> then <span class="math display">\[Pr(A) = Pr(A \cap B) + Pr(A \cap B^c)\]</span></p>
-<p>Now we can go back to our conditional probability formula and see <span class="math display">\[\begin{aligned} Pr(B|A) 
-    &amp;= \frac{Pr(A\cap B)}{Pr(A)}  \\ 
-    &amp;\\
-    &amp;= \frac{Pr(A|B)Pr(B)}{Pr(A\cap B)+Pr(A\cap B^c)} \\
-    &amp;\\
-    &amp;= \frac{Pr(A|B)Pr(B)}{Pr(A|B)Pr(B)+Pr(A\cap B^c)Pr(B^c)}
-    \end{aligned}\]</span></p>
-<p>If we were to consider any partition of <span class="math inline">\(\mathcal{S}\)</span>, say <span class="math inline">\(B_k\)</span> <span class="math inline">\(k=1,\dots,K\)</span>, then</p>
-<p><span class="math display">\[Pr(A) = \sum_{i=1}^K Pr( A \cap B_k ) = \sum_{i=1}^K Pr(A | B_k)Pr(B_k)\]</span></p>
-<p>and</p>
-<p><span class="math display">\[\begin{aligned} Pr(B_k|A) 
-    &amp;= \frac{Pr(A\cap B_k)}{Pr(A)}  \\ 
-    &amp;\\
-    &amp;= \frac{Pr(A|B_k)Pr(B_k)}{\sum_{i=1}^K Pr(A\cap B_k)} \\
-    &amp;\\
-    &amp;= \frac{Pr(A|B_k)Pr(B_k)}{\sum_{i=1}^K Pr(A| B_k)Pr(B_k)}
-    \end{aligned}\]</span></p>
+<p>The goal of Bayes’ Theorem is to reverse the order of conditioning. Suppose we are interested in two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>. We might be given some information about <span class="math inline">\(P(A|B)\)</span> but we want to know about <span class="math inline">\(P(B|A)\)</span>.</p>
 <ol style="list-style-type: decimal">
+<li><p><strong>Bayes’ Theorem</strong> Prove that for two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> such that <span class="math inline">\(Pr(A)&gt;0\)</span> then <span class="math display">\[\begin{aligned} Pr(B|A) 
+&amp;= \frac{Pr(A|B)Pr(B)}{Pr(A|B)Pr(B)+Pr(A\cap B^c)Pr(B^c)}
+\end{aligned}\]</span></p></li>
+<li><p><strong>Bayes’ Theorem (general case)</strong> Again consider an event <span class="math inline">\(A\)</span> such that <span class="math inline">\(Pr(A)&gt;0\)</span>. For an arbitrary partition of <span class="math inline">\(\mathcal{S}\)</span>, say <span class="math inline">\(B_k\)</span> <span class="math inline">\(k=1,\dots,K\)</span>, prove that<br />
+<span class="math display">\[\begin{aligned} Pr(B_k|A) 
+&amp;= \frac{Pr(A|B_k)Pr(B_k)}{\sum_{i=1}^K Pr(A| B_k)Pr(B_k)}
+\end{aligned}\]</span></p></li>
 <li>A softball team has two pitchers, Jeff and Bob. Of the two Jeff is the better pitcher and wins 80% of the games he pitches for but can only play in 30% of the games. Bob pitches in the rest of the games, but only wins 40% of his games.
 <ol style="list-style-type: lower-alpha">
 <li>What is the probability that the softball team wins a game?</li>

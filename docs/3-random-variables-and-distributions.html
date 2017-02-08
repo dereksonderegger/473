@@ -26,7 +26,7 @@
 <meta name="author" content="Derek L. Sonderegger">
 
 
-<meta name="date" content="2017-02-07">
+<meta name="date" content="2017-02-08">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -85,6 +85,7 @@
 </ul></li>
 <li class="chapter" data-level="3" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html"><i class="fa fa-check"></i><b>3</b> Random Variables and Distributions</a><ul>
 <li class="chapter" data-level="3.1" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#defining-random-variables-and-discrete-distributions"><i class="fa fa-check"></i><b>3.1</b> Defining Random Variables and Discrete Distributions</a></li>
+<li class="chapter" data-level="3.2" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#continuous-distributions"><i class="fa fa-check"></i><b>3.2</b> Continuous Distributions</a></li>
 </ul></li>
 </ul>
 
@@ -111,8 +112,8 @@
 <p>The idea is that random events such as flipping Heads, a medical test showing the patient has a disease, Chris Froome winning the Tour de France, or rolling a Leaning Jowler in <em>Pass the Pigs</em> are all random events but to do math on them, we need to turn them into numbers.</p>
 <p>In cases where the sample space <span class="math inline">\(\mathcal{S}\)</span> is already numeric, the random variable can just be the identity, but in other cases, we might have to be more careful. For example, if my experiment is flipping a fair coin <span class="math inline">\(n=4\)</span> times, I could define the random variable <span class="math inline">\(X=\)</span> number of heads and <span class="math inline">\(X\)</span> could take on any of the values <span class="math inline">\(x \in \{0,1,2,3,4\}\)</span>. I could similarly define</p>
 <p><span class="math display">\[Y= \begin{cases} 
-  0 \;\;\; \textrm{ if # heads } &lt; 2 \\ 
-  1 \;\;\; \textrm{ if # heads } &gt; 2 
+  0 \;\;\; \textrm{ if number of heads } &lt; 2 \\ 
+  1 \;\;\; \textrm{ if number of heads } &gt; 2 
 \end{cases}\]</span></p>
 <p>A RV function doesn’t have to be one-to-one and it doesn’t have to map to the entire set of real values.</p>
 <p>Because events in the sample space <span class="math inline">\(\mathcal{S}\)</span> have an associated probability, then it is natural to define an event, say <span class="math inline">\(B\)</span> to be all the outcomes <span class="math inline">\(s \in \mathcal{S}\)</span> such that <span class="math inline">\(X(s) = x\)</span> and then define <span class="math inline">\(Pr(X=x) = Pr(B)\)</span>.</p>
@@ -189,6 +190,10 @@
 <li>What is <span class="math inline">\(Pr(X \ge 6)\)</span>?</li>
 </ol></li>
 </ol>
+</div>
+<div id="continuous-distributions" class="section level2">
+<h2><span class="header-section-number">3.2</span> Continuous Distributions</h2>
+<p>We wish to define something similar to the probability function for continuous RVs. However, because there are an uncountable number of values that the RV could take on, we have to be careful and define probability on intervals of the form <span class="math inline">\([a,b]\)</span>. We define the <em>probability density function</em> (usually denoted pdf) as the function <span class="math inline">\(f(x)\)</span> such that <span class="math display">\[Pr( a \le X \le b) = \int_a^b f(x) dx\]</span></p>
 
 </div>
 </div>

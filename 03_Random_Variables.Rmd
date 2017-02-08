@@ -10,8 +10,8 @@ The idea is that random events such as flipping Heads, a medical test showing th
 In cases where the sample space $\mathcal{S}$ is already numeric, the random variable can just be the identity, but in other cases, we might have to be more careful.  For example, if my experiment is flipping a fair coin $n=4$ times, I could define the random variable $X=$ number of heads and $X$ could take on any of the values $x \in \{0,1,2,3,4\}$.  I could similarly define 
 
 $$Y= \begin{cases} 
-  0 \;\;\; \textrm{ if # heads } < 2 \\ 
-  1 \;\;\; \textrm{ if # heads } > 2 
+  0 \;\;\; \textrm{ if number of heads } < 2 \\ 
+  1 \;\;\; \textrm{ if number of heads } > 2 
 \end{cases}$$ 
                    
 A RV function doesn't have to be one-to-one and it doesn't have to map to the entire set of real values.
@@ -75,4 +75,10 @@ For the binomial distribution (and many distributions we will consider this seme
     b) What is $Pr(X =6)$?
     c) What is $Pr(X < 6)$?
     d) What is $Pr(X \ge 6)$?
+
+
+## Continuous Distributions
+
+We wish to define something similar to the probability function for continuous RVs. However, because there are an uncountable number of values that the RV could take on, we have to be careful and define probability on intervals of the form $[a,b]$. We define the _probability density function_ (usually denoted pdf) as the function $f(x)$ such that 
+$$Pr( a \le X \le b) = \int_a^b f(x) dx$$
 
