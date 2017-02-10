@@ -88,7 +88,7 @@ $$Pr(A|C) = \sum_{k=1}^K Pr(A \cap B_k \big\rvert C) = \sum_{k=1}^K Pr(A \big\rv
 
 *Definition:* Events $A_1, A_2,\dots,A_K$ are mutually independent if for all subsets $I$ of $1,2,\dots,K$, $Pr( \bigcap_{i\in I} A_i) = \prod_{i \in I} Pr(A_i)$
 
-1. Show that if $Pr(A)>0$ and $Pr(B)>0$, then $A$ and $B$ are independent if and only if $Pr(A|B)=Pr(A)$ and $Pr(B|A)=Pr(A)$
+1. Show that if $Pr(A)>0$ and $Pr(B)>0$, then $A$ and $B$ are independent if and only if $Pr(A|B)=Pr(A)$ and $Pr(B|A)=Pr(B)$
 
 2. Give an example of three events that are pairwise independent but not mutually independent.
 

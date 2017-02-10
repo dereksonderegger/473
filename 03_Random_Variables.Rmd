@@ -59,7 +59,7 @@ $$f(x) = \begin{cases}
   \frac{c}{2^x} \;\textrm{ for } x = 0, 1, 2, \dots \\
   0 \;\;\;\; \textrm{otherwise}
 \end{cases}$$
-Find the value for $c$ that forces the requirement that $\sum f(x) = 1$
+Find the value for $c$ that forces the requirement that $$\sum_{x=0}^\infty f(x) = 1$$ _Hint: This is a particular power series. Go to any Calculus book (or internet) for an appropriate result. Make sure you introduce the result and show why the result applies to $f(x)$ in your solution._
 
 For the binomial distribution (and many distributions we will consider this semester), it would be nice to not have to calculate various probabilities by hand. Most mathematical software packages include some way to calculate these probabilities.  
 
