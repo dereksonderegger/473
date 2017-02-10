@@ -123,7 +123,7 @@ The goal of Bayes' Theorem is to reverse the order of conditioning. Suppose we a
 
 1. **Bayes' Theorem** Prove that for two events $A$ and $B$ such that $Pr(A)>0$ then 
 $$\begin{aligned} Pr(B|A) 
-    &= \frac{Pr(A|B)Pr(B)}{Pr(A|B)Pr(B)+Pr(A\cap B^c)Pr(B^c)}
+    &= \frac{Pr(A|B)Pr(B)}{Pr(A|B)Pr(B)+Pr(A| B^c)Pr(B^c)}
     \end{aligned}$$
           
 2. **Bayes' Theorem (general case)** Again consider an event $A$ such that $Pr(A)>0$. For an arbitrary partition of $\mathcal{S}$, say $B_k$ $k=1,\dots,K$, prove that    
