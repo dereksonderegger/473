@@ -107,8 +107,8 @@ $$Pr(A|C) = \sum_{k=1}^K Pr(A \cap B_k \big\rvert C) = \sum_{k=1}^K Pr(A \big\rv
     a) Find $Pr( H_1 \cap H_2 \cap H_3 )$
     b) Find $Pr( H_1 \cap H_2^c \cap H_3)$
     c) Find $Pr( H_1^c \cap H_2 \cap H_3)$
-    d) How many ways can we have 2 $H$ events happen?
-    e) What is the probability of 2 $H$ events happening?
+    d) How many ways can we have exactly 2 $H$ events happen?
+    e) What is the probability of exactly 2 $H$ events happening?
     
 6. I will roll my 20-sided die until I roll a 20.  
     a) What is the probability that I roll a 20 on my first roll?

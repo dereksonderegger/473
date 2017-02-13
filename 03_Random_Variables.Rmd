@@ -40,7 +40,7 @@ and the closure of the set $\{x: \textrm{ such that } f(x) > 0\}$ is referred to
 
 2. Suppose that RV $X$ can take on the values $\{x_1,x_2,\dots,x_K\}$. Prove that $$\sum_{k=1}^K f(x_k) = 1$$
 
-3. **Bernoulli Distribution**.  Suppose that the random variable $W$ takes on the values $0$ and $1$ with the probabilities $Pr(W=1) = p$ and $Pr(W=0) = 1-p$.  Then we say that $W$ has a Bernoulli distribution with probability of success $p$, which I might write as $W \sim Bernoulli(p)$. Show that for any interval $C =\{a,b\}$ in $\mathbb{R}$, you can find $Pr(X \in C)$.
+3. **Bernoulli Distribution**.  Suppose that the random variable $W$ takes on the values $0$ and $1$ with the probabilities $Pr(W=1) = p$ and $Pr(W=0) = 1-p$.  Then we say that $W$ has a Bernoulli distribution with probability of success $p$, which I might write as $W \sim Bernoulli(p)$. Show that for any interval $C =\{c: a\le c \le b\}$ in $\mathbb{R}$, you can find $Pr(X \in C)$.
 
 4. **Uniform Distribution on Integers**. Suppose that we have integers $a$ and $b$ such that $a < b$.  Suppose that the RV $X$ is equally likely to any integer $a,\dots,b$. What is $f(x)$? _(Make sure your definition applies to any $x\in\mathbb{R}$)_
 
@@ -81,4 +81,71 @@ For the binomial distribution (and many distributions we will consider this seme
 
 We wish to define something similar to the probability function for continuous RVs. However, because there are an uncountable number of values that the RV could take on, we have to be careful and define probability on intervals of the form $[a,b]$. We define the _probability density function_ (usually denoted pdf) as the function $f(x)$ such that 
 $$Pr( a \le X \le b) = \int_a^b f(x) dx$$
+
+We further define the support of the distribution as the closure of the set ${x: f(x)>0}$. This is the second time we've defined the support as the _closure_ of the set.  In the discrete case, it didn't really matter, but here it does. If we define the pdf on the set $[0,1]$ versus $(0,1)$, we want the support to contain the end points of the interval, that is the support is the closure of $(0,1)$ which is $[0,1]$.
+
+1. Show that $Pr( X = a ) = 0$ for any $a$.  _Hint: What happens as $b-a$ gets small?  Take the limit._
+
+2. Prove that $\int_{-\infty}^\infty f(x) dx = 1$.
+
+Further notice that $f(x)\ge0$ for all $x$ because otherwise that would imply that there are events with negative probabilities.
+
+3. **Continuous Uniform**.  Suppose that the random variable $X$ will be a randomly chosen real value from the interval $[a,b]$. Suppose that for any sub interval $d=[d_1,d_2]$ where $a \le d_1 \le d_2 \le b$, that $Pr( X \in d)$ is proportional to the length of the interval $d$.  What is the pdf of the distribution of $X$?
+
+It is unfortunate that your book doesn't introduce indicator functions at this point in time. We can define the following:
+$$I( \textrm{logical test} ) = 
+    \begin{cases} 1 \;\;\; \textrm{ if logical test is true } \\
+                  0 \;\;\; \textrm{ if logical test is false } \end{cases}$$
+
+3. Suppose that the pdf of a random variable $X$ is $$f(x) = \frac{4}{3}\left(1-x^3\right) \;I(0<x<1)$$
+    a) Create a graph of the pdf.
+    b) Find $Pr\left( X\le \frac{1}{2} \right)$?
+    c) Find $Pr\left( \frac{1}{4} < X < \frac{3}{4} \right)$
+    d) Find $Pr\left( X > \frac{3}{4} \right)$
+
+4. Suppose the random variable $X$ has pdf 
+$$f(x) = c\cdot e^{-5x}I(x\ge 0) = \begin{cases} c\cdot e^{-5 x} \;\;\; \textrm{ if } x \ge 0 \\
+                                          0   \;\;\;\;\;\;\;\;\;\;\;\;\; \textrm{otherwise}
+                            \end{cases}$$
+    a) What is the value of $c$ that makes this a valid pdf?  That is, what value of $c$ makes this function integrate to 1?
+    b) Graph this function. What is $f(0)$? Many students dislike that $f(0)>1$ is greater than one. Why isn't this a problem?
+    c) What is the probability $Pr(X \le 0.5)$?
+    
+5. Suppose that the pdf of the random variable $X$ is
+$$f(x)= c \cdot x \;\;I(0\le x \le 3)$$
+    a) What value of $c$ makes this a valid pdf?
+    b) Find a value of $t$ such that $Pr( X \le t ) = 0.25)$
+    c) Find a value of $t$ such that $Pr( X > t) = 0.5)$
+
+6. Given the same random variable $X$ described in problem 3.2.5, consider the random variable $Y$ which is the simply the nearest integer to $X$. What is the pf of $Y$?
+
+
+
+We now have defined both the probability function (pf) for discrete random variables and probability density function (pdf) for continuous random variables.  We now try to make a physics analogy to describe the difference between the two. In both cases we want to think about probability as physical mass.  
+
+**Discrete Case** In this case, all the probability mass is concentrated at precise points.  So we have little nuggets of probability mass, at discrete points.  If I want to know, say $Pr(X \le 3)$ then we have to sum the probability across all the discrete locations such that $X \le 3$.
+
+**Continuous Case** In this case, the probability mass is spread out across $\mathbb{R}$ and the concentration of mass is not uniform, some spots have more concentrated mass.  In this case, we don't have a definiate amount of mass at a particular point, but we do have a description of how dense the mass is at any point.  In this case if we want to know $Pr(X \le 3)$ then we have to break up $\mathbb{R}$ into a bunch of intervals and then combine the length of the interval along with information about the average density of each interval.
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE, fig.height=3}
+library(ggplot2); library(dplyr);
+curve.data <- data.frame( x = seq(-3, 7, by=0.01) ) %>%
+  mutate( density = dnorm(x, mean=2, sd=1))
+hist.data <- data.frame( x = seq(-3.25, 2.75, by=0.5) ) %>%
+  mutate(density = dnorm(x, mean=2, sd=1))
+
+ggplot(curve.data, aes(x=x, y=density)) + 
+  geom_line() +
+  geom_bar(data=hist.data, stat='identity', width=.5, alpha=.3, color='red') +
+  scale_x_continuous(breaks=-3:7, minor=NULL)  
+```
+    
+Each bar has some probability mass (mass is the length of the interval times the average density along the interval) and then we just sum up the bars.  If we take the limit as we make the bars narrower, then we end up with 
+$$Pr(X \le 3) = \int_{-\infty}^3 f(x) \, dx$$
+
+You might be a little freaked out because typically you would think about mass being the _area_ or _volume_ times the density, but we need to start in the 1-dimension case before we address the 2-dimension and 3-dimension cases.
+
+
+## Cumulative Distribution Function
+
 

@@ -26,7 +26,7 @@
 <meta name="author" content="Derek L. Sonderegger">
 
 
-<meta name="date" content="2017-02-10">
+<meta name="date" content="2017-02-13">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -86,6 +86,7 @@
 <li class="chapter" data-level="3" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html"><i class="fa fa-check"></i><b>3</b> Random Variables and Distributions</a><ul>
 <li class="chapter" data-level="3.1" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#defining-random-variables-and-discrete-distributions"><i class="fa fa-check"></i><b>3.1</b> Defining Random Variables and Discrete Distributions</a></li>
 <li class="chapter" data-level="3.2" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#continuous-distributions"><i class="fa fa-check"></i><b>3.2</b> Continuous Distributions</a></li>
+<li class="chapter" data-level="3.3" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#cumulative-distribution-function"><i class="fa fa-check"></i><b>3.3</b> Cumulative Distribution Function</a></li>
 </ul></li>
 </ul>
 
@@ -135,7 +136,7 @@
 <p>We now define the <em>probability function</em> of a discrete RV <span class="math inline">\(X\)</span> as <span class="math display">\[f(x) = Pr(X = x)\]</span> and the closure of the set <span class="math inline">\(\{x: \textrm{ such that } f(x) &gt; 0\}\)</span> is referred to as the <em>support of <span class="math inline">\(X\)</span></em>. Notice that this function is defined for all <span class="math inline">\(x\in \mathbb{R}\)</span>, but for only a countable number of cases is <span class="math inline">\(f(x)&gt;0\)</span>.</p>
 <ol start="2" style="list-style-type: decimal">
 <li><p>Suppose that RV <span class="math inline">\(X\)</span> can take on the values <span class="math inline">\(\{x_1,x_2,\dots,x_K\}\)</span>. Prove that <span class="math display">\[\sum_{k=1}^K f(x_k) = 1\]</span></p></li>
-<li><p><strong>Bernoulli Distribution</strong>. Suppose that the random variable <span class="math inline">\(W\)</span> takes on the values <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span> with the probabilities <span class="math inline">\(Pr(W=1) = p\)</span> and <span class="math inline">\(Pr(W=0) = 1-p\)</span>. Then we say that <span class="math inline">\(W\)</span> has a Bernoulli distribution with probability of success <span class="math inline">\(p\)</span>, which I might write as <span class="math inline">\(W \sim Bernoulli(p)\)</span>. Show that for any interval <span class="math inline">\(C =\{a,b\}\)</span> in <span class="math inline">\(\mathbb{R}\)</span>, you can find <span class="math inline">\(Pr(X \in C)\)</span>.</p></li>
+<li><p><strong>Bernoulli Distribution</strong>. Suppose that the random variable <span class="math inline">\(W\)</span> takes on the values <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span> with the probabilities <span class="math inline">\(Pr(W=1) = p\)</span> and <span class="math inline">\(Pr(W=0) = 1-p\)</span>. Then we say that <span class="math inline">\(W\)</span> has a Bernoulli distribution with probability of success <span class="math inline">\(p\)</span>, which I might write as <span class="math inline">\(W \sim Bernoulli(p)\)</span>. Show that for any interval <span class="math inline">\(C =\{c: a\le c \le b\}\)</span> in <span class="math inline">\(\mathbb{R}\)</span>, you can find <span class="math inline">\(Pr(X \in C)\)</span>.</p></li>
 <li><p><strong>Uniform Distribution on Integers</strong>. Suppose that we have integers <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> such that <span class="math inline">\(a &lt; b\)</span>. Suppose that the RV <span class="math inline">\(X\)</span> is equally likely to any integer <span class="math inline">\(a,\dots,b\)</span>. What is <span class="math inline">\(f(x)\)</span>? <em>(Make sure your definition applies to any <span class="math inline">\(x\in\mathbb{R}\)</span>)</em></p></li>
 <li><strong>Binomial Distribution</strong> Suppose that we have an experiment that consists of <span class="math inline">\(n\)</span> independent Bernoulli(<span class="math inline">\(p\)</span>) trials. We are interested in the distribution of <span class="math inline">\(X=\)</span> # of successful trials. That is <span class="math inline">\(X\sim Binomial(n,p)\)</span>.
 <ol style="list-style-type: lower-alpha">
@@ -194,6 +195,51 @@
 <div id="continuous-distributions" class="section level2">
 <h2><span class="header-section-number">3.2</span> Continuous Distributions</h2>
 <p>We wish to define something similar to the probability function for continuous RVs. However, because there are an uncountable number of values that the RV could take on, we have to be careful and define probability on intervals of the form <span class="math inline">\([a,b]\)</span>. We define the <em>probability density function</em> (usually denoted pdf) as the function <span class="math inline">\(f(x)\)</span> such that <span class="math display">\[Pr( a \le X \le b) = \int_a^b f(x) dx\]</span></p>
+<p>We further define the support of the distribution as the closure of the set <span class="math inline">\({x: f(x)&gt;0}\)</span>. This is the second time we’ve defined the support as the <em>closure</em> of the set. In the discrete case, it didn’t really matter, but here it does. If we define the pdf on the set <span class="math inline">\([0,1]\)</span> versus <span class="math inline">\((0,1)\)</span>, we want the support to contain the end points of the interval, that is the support is the closure of <span class="math inline">\((0,1)\)</span> which is <span class="math inline">\([0,1]\)</span>.</p>
+<ol style="list-style-type: decimal">
+<li><p>Show that <span class="math inline">\(Pr( X = a ) = 0\)</span> for any <span class="math inline">\(a\)</span>. <em>Hint: What happens as <span class="math inline">\(b-a\)</span> gets small? Take the limit.</em></p></li>
+<li><p>Prove that <span class="math inline">\(\int_{-\infty}^\infty f(x) dx = 1\)</span>.</p></li>
+</ol>
+<p>Further notice that <span class="math inline">\(f(x)\ge0\)</span> for all <span class="math inline">\(x\)</span> because otherwise that would imply that there are events with negative probabilities.</p>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>Continuous Uniform</strong>. Suppose that the random variable <span class="math inline">\(X\)</span> will be a randomly chosen real value from the interval <span class="math inline">\([a,b]\)</span>. Suppose that for any sub interval <span class="math inline">\(d=[d_1,d_2]\)</span> where <span class="math inline">\(a \le d_1 \le d_2 \le b\)</span>, that <span class="math inline">\(Pr( X \in d)\)</span> is proportional to the length of the interval <span class="math inline">\(d\)</span>. What is the pdf of the distribution of <span class="math inline">\(X\)</span>?</li>
+</ol>
+<p>It is unfortunate that your book doesn’t introduce indicator functions at this point in time. We can define the following: <span class="math display">\[I( \textrm{logical test} ) = 
+    \begin{cases} 1 \;\;\; \textrm{ if logical test is true } \\
+                  0 \;\;\; \textrm{ if logical test is false } \end{cases}\]</span></p>
+<ol start="3" style="list-style-type: decimal">
+<li>Suppose that the pdf of a random variable <span class="math inline">\(X\)</span> is <span class="math display">\[f(x) = \frac{4}{3}\left(1-x^3\right) \;I(0&lt;x&lt;1)\]</span>
+<ol style="list-style-type: lower-alpha">
+<li>Create a graph of the pdf.</li>
+<li>Find <span class="math inline">\(Pr\left( X\le \frac{1}{2} \right)\)</span>?</li>
+<li>Find <span class="math inline">\(Pr\left( \frac{1}{4} &lt; X &lt; \frac{3}{4} \right)\)</span></li>
+<li>Find <span class="math inline">\(Pr\left( X &gt; \frac{3}{4} \right)\)</span></li>
+</ol></li>
+<li>Suppose the random variable <span class="math inline">\(X\)</span> has pdf <span class="math display">\[f(x) = c\cdot e^{-5x}I(x\ge 0) = \begin{cases} c\cdot e^{-5 x} \;\;\; \textrm{ if } x \ge 0 \\
+                                      0   \;\;\;\;\;\;\;\;\;\;\;\;\; \textrm{otherwise}
+                        \end{cases}\]</span>
+<ol style="list-style-type: lower-alpha">
+<li>What is the value of <span class="math inline">\(c\)</span> that makes this a valid pdf? That is, what value of <span class="math inline">\(c\)</span> makes this function integrate to 1?</li>
+<li>Graph this function. What is <span class="math inline">\(f(0)\)</span>? Many students dislike that <span class="math inline">\(f(0)&gt;1\)</span> is greater than one. Why isn’t this a problem?</li>
+<li>What is the probability <span class="math inline">\(Pr(X \le 0.5)\)</span>?</li>
+</ol></li>
+<li>Suppose that the pdf of the random variable <span class="math inline">\(X\)</span> is <span class="math display">\[f(x)= c \cdot x \;\;I(0\le x \le 3)\]</span>
+<ol style="list-style-type: lower-alpha">
+<li>What value of <span class="math inline">\(c\)</span> makes this a valid pdf?</li>
+<li>Find a value of <span class="math inline">\(t\)</span> such that <span class="math inline">\(Pr( X \le t ) = 0.25)\)</span></li>
+<li>Find a value of <span class="math inline">\(t\)</span> such that <span class="math inline">\(Pr( X &gt; t) = 0.5)\)</span></li>
+</ol></li>
+<li>Given the same random variable <span class="math inline">\(X\)</span> described in problem 3.2.5, consider the random variable <span class="math inline">\(Y\)</span> which is the simply the nearest integer to <span class="math inline">\(X\)</span>. What is the pf of <span class="math inline">\(Y\)</span>?</li>
+</ol>
+<p>We now have defined both the probability function (pf) for discrete random variables and probability density function (pdf) for continuous random variables. We now try to make a physics analogy to describe the difference between the two. In both cases we want to think about probability as physical mass.</p>
+<p><strong>Discrete Case</strong> In this case, all the probability mass is concentrated at precise points. So we have little nuggets of probability mass, at discrete points. If I want to know, say <span class="math inline">\(Pr(X \le 3)\)</span> then we have to sum the probability across all the discrete locations such that <span class="math inline">\(X \le 3\)</span>.</p>
+<p><strong>Continuous Case</strong> In this case, the probability mass is spread out across <span class="math inline">\(\mathbb{R}\)</span> and the concentration of mass is not uniform, some spots have more concentrated mass. In this case, we don’t have a definiate amount of mass at a particular point, but we do have a description of how dense the mass is at any point. In this case if we want to know <span class="math inline">\(Pr(X \le 3)\)</span> then we have to break up <span class="math inline">\(\mathbb{R}\)</span> into a bunch of intervals and then combine the length of the interval along with information about the average density of each interval.</p>
+<p><img src="Probability_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>Each bar has some probability mass (mass is the length of the interval times the average density along the interval) and then we just sum up the bars. If we take the limit as we make the bars narrower, then we end up with <span class="math display">\[Pr(X \le 3) = \int_{-\infty}^3 f(x) \, dx\]</span></p>
+<p>You might be a little freaked out because typically you would think about mass being the <em>area</em> or <em>volume</em> times the density, but we need to start in the 1-dimension case before we address the 2-dimension and 3-dimension cases.</p>
+</div>
+<div id="cumulative-distribution-function" class="section level2">
+<h2><span class="header-section-number">3.3</span> Cumulative Distribution Function</h2>
 
 </div>
 </div>
