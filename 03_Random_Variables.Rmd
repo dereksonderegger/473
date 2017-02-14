@@ -40,7 +40,7 @@ and the closure of the set $\{x: \textrm{ such that } f(x) > 0\}$ is referred to
 
 2. Suppose that RV $X$ can take on the values $\{x_1,x_2,\dots,x_K\}$. Prove that $$\sum_{k=1}^K f(x_k) = 1$$
 
-3. **Bernoulli Distribution**.  Suppose that the random variable $W$ takes on the values $0$ and $1$ with the probabilities $Pr(W=1) = p$ and $Pr(W=0) = 1-p$.  Then we say that $W$ has a Bernoulli distribution with probability of success $p$, which I might write as $W \sim Bernoulli(p)$. Show that for any interval $C =\{c: a\le c \le b\}$ in $\mathbb{R}$, you can find $Pr(X \in C)$.
+3. **Bernoulli Distribution**.  Suppose that the random variable $W$ takes on the values $0$ and $1$ with the probabilities $Pr(W=1) = p$ and $Pr(W=0) = 1-p$.  Then we say that $W$ has a Bernoulli distribution with probability of success $p$, which I might write as $W \sim Bernoulli(p)$. Show that for any interval $C =\{c: a\le c \le b\}$ in $\mathbb{R}$, you can find $Pr(W \in C)$.
 
 4. **Uniform Distribution on Integers**. Suppose that we have integers $a$ and $b$ such that $a < b$.  Suppose that the RV $X$ is equally likely to any integer $a,\dots,b$. What is $f(x)$? _(Make sure your definition applies to any $x\in\mathbb{R}$)_
 
