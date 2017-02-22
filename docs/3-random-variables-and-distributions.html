@@ -26,7 +26,7 @@
 <meta name="author" content="Derek L. Sonderegger">
 
 
-<meta name="date" content="2017-02-14">
+<meta name="date" content="2017-02-22">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -197,7 +197,7 @@
 <p>We wish to define something similar to the probability function for continuous RVs. However, because there are an uncountable number of values that the RV could take on, we have to be careful and define probability on intervals of the form <span class="math inline">\([a,b]\)</span>. We define the <em>probability density function</em> (usually denoted pdf) as the function <span class="math inline">\(f(x)\)</span> such that <span class="math display">\[Pr( a \le X \le b) = \int_a^b f(x) dx\]</span></p>
 <p>We further define the support of the distribution as the closure of the set <span class="math inline">\({x: f(x)&gt;0}\)</span>. This is the second time we’ve defined the support as the <em>closure</em> of the set. In the discrete case, it didn’t really matter, but here it does. If we define the pdf on the set <span class="math inline">\([0,1]\)</span> versus <span class="math inline">\((0,1)\)</span>, we want the support to contain the end points of the interval, that is the support is the closure of <span class="math inline">\((0,1)\)</span> which is <span class="math inline">\([0,1]\)</span>.</p>
 <ol style="list-style-type: decimal">
-<li><p>Show that <span class="math inline">\(Pr( X = a ) = 0\)</span> for any <span class="math inline">\(a\)</span>. <em>Hint: What happens as <span class="math inline">\(b-a\)</span> gets small? Take the limit.</em></p></li>
+<li><p>Show that, for any <span class="math inline">\(a\in\mathbb{R}\)</span>, <span class="math inline">\(Pr( X = a ) = 0\)</span> is consistent with this definition of <span class="math inline">\(f(x)\)</span>. <em>Hint: What happens as <span class="math inline">\(b-a\)</span> gets small? Take the limit.</em></p></li>
 <li><p>Prove that <span class="math inline">\(\int_{-\infty}^\infty f(x) dx = 1\)</span>.</p></li>
 </ol>
 <p>Further notice that <span class="math inline">\(f(x)\ge0\)</span> for all <span class="math inline">\(x\)</span> because otherwise that would imply that there are events with negative probabilities.</p>
@@ -240,6 +240,24 @@
 </div>
 <div id="cumulative-distribution-function" class="section level2">
 <h2><span class="header-section-number">3.3</span> Cumulative Distribution Function</h2>
+<p>It is somewhat annoying to mathematically describe distributions in two different ways, depending on if the random variable is discrete or continuous.</p>
+<p><span class="math display">\[\begin{aligned}
+  Pr \left( X=x \right) = f(x) \;\;\; &amp; \textrm{ if X is discrete RV } \\
+  Pr \left(a \le X \le b\right) = \int_a^b f(x)\,dx \;\;\; &amp; \textrm{ if X is continuous RV } 
+  \end{aligned}\]</span></p>
+<p>While the probability function and probability density function are both useful functions, it is mathematically convenient to have a mathematical description of the distribution that has the same interpretation regardless of if the distribution is discrete or continuous.</p>
+<p><em>Definition</em>: For a random variable <span class="math inline">\(X\)</span> (notice we don’t specify if it is continous or discrete) the <strong>Cumulative Distribution Function</strong> (CDF) is defined as <span class="math display">\[F(x) = Pr( X \le x )\]</span> Notice that this is defined for all <span class="math inline">\(x\)</span> in <span class="math inline">\(\mathbb{R}\)</span>.</p>
+<ol style="list-style-type: decimal">
+<li>Suppose that random variable <span class="math inline">\(X\)</span> has a Uniform distribution on the integers <span class="math inline">\(1,2,3,4,5\)</span>. These are the only values that <span class="math inline">\(X\)</span> can take on, and <span class="math display">\[f(x) = \frac{1}{5} \, \cdot I\Big(x \in \{1,2,\dots,5\}\Big)\]</span> Draw a graph of <span class="math inline">\(F(x)\)</span> and make sure the graph demonstrates:
+<ol style="list-style-type: lower-alpha">
+<li>That <span class="math inline">\(F(x)\)</span> is defined for all <span class="math inline">\(x \in \mathbb{R}\)</span></li>
+<li>That <span class="math inline">\(F(x)\)</span> is a step function</li>
+<li>That <span class="math inline">\(F(x)\)</span> is continuous from the right</li>
+<li>That <span class="math inline">\(\lim_{x\to -\infty} F(x) = 0\)</span></li>
+<li>That <span class="math inline">\(\lim_{x\to \infty} F(x) = 1\)</span></li>
+</ol></li>
+</ol>
+<p>Define <span class="math inline">\(B_x = \left\{s \textrm{ such that } X(s) \le x\right\}\)</span>. Then we have for <span class="math inline">\(x_1 &lt; x_2\)</span> that <span class="math inline">\(B_{x_1} \subset B_{x_2}\)</span> and therefore: <span class="math display">\[\lim_{x\to -\infty} F(x) = \lim_{x\to -\infty} Pr\left( B_{x} \right) = Pr( \emptyset ) = 0\]</span> <span class="math display">\[\lim_{x\to  \infty} F(x) = \lim_{x\to  \infty} Pr\left( B_{x} \right) = Pr( \mathcal{S} ) = 1\]</span></p>
 
 </div>
 </div>

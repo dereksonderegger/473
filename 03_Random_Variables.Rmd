@@ -84,7 +84,7 @@ $$Pr( a \le X \le b) = \int_a^b f(x) dx$$
 
 We further define the support of the distribution as the closure of the set ${x: f(x)>0}$. This is the second time we've defined the support as the _closure_ of the set.  In the discrete case, it didn't really matter, but here it does. If we define the pdf on the set $[0,1]$ versus $(0,1)$, we want the support to contain the end points of the interval, that is the support is the closure of $(0,1)$ which is $[0,1]$.
 
-1. Show that $Pr( X = a ) = 0$ for any $a$.  _Hint: What happens as $b-a$ gets small?  Take the limit._
+1. Show that, for any $a\in\mathbb{R}$, $Pr( X = a ) = 0$ is consistent with this definition of $f(x)$.  _Hint: What happens as $b-a$ gets small?  Take the limit._
 
 2. Prove that $\int_{-\infty}^\infty f(x) dx = 1$.
 
@@ -148,4 +148,27 @@ You might be a little freaked out because typically you would think about mass b
 
 ## Cumulative Distribution Function
 
+It is somewhat annoying to mathematically describe distributions in two different ways, depending on if the random variable is discrete or continuous.
+
+$$\begin{aligned}
+  Pr \left( X=x \right) = f(x) \;\;\; & \textrm{ if X is discrete RV } \\
+  Pr \left(a \le X \le b\right) = \int_a^b f(x)\,dx \;\;\; & \textrm{ if X is continuous RV } 
+  \end{aligned}$$
+  
+While the probability function and probability density function are both useful functions, it is mathematically convenient to have a mathematical description of the distribution that has the same interpretation regardless of if the distribution is discrete or continuous.  
+
+_Definition_: For a random variable $X$ (notice we don't specify if it is continous or discrete) the **Cumulative Distribution Function** (CDF) is defined as 
+$$F(x) = Pr( X \le x )$$
+Notice that this is defined for all $x$ in $\mathbb{R}$.
+
+1. Suppose that random variable $X$ has a Uniform distribution on the integers $1,2,3,4,5$. These are the only values that $X$ can take on, and $$f(x) = \frac{1}{5} \, \cdot I\Big(x \in \{1,2,\dots,5\}\Big)$$ Draw a graph of $F(x)$ and make sure the graph demonstrates:
+    a) That $F(x)$ is defined for all $x \in \mathbb{R}$
+    b) That $F(x)$ is a step function
+    c) That $F(x)$ is continuous from the right
+    d) That $\lim_{x\to -\infty} F(x) = 0$
+    e) That $\lim_{x\to \infty} F(x) = 1$
+    
+Define $B_x = \left\{s \textrm{ such that } X(s) \le x\right\}$. Then we have for $x_1 < x_2$ that $B_{x_1} \subset B_{x_2}$ and therefore:
+$$\lim_{x\to -\infty} F(x) = \lim_{x\to -\infty} Pr\left( B_{x} \right) = Pr( \emptyset ) = 0$$ 
+$$\lim_{x\to  \infty} F(x) = \lim_{x\to  \infty} Pr\left( B_{x} \right) = Pr( \mathcal{S} ) = 1$$ 
 
