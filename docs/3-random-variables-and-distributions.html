@@ -26,7 +26,7 @@
 <meta name="author" content="Derek L. Sonderegger">
 
 
-<meta name="date" content="2017-02-22">
+<meta name="date" content="2017-02-24">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -207,7 +207,7 @@
 <p>It is unfortunate that your book doesn’t introduce indicator functions at this point in time. We can define the following: <span class="math display">\[I( \textrm{logical test} ) = 
     \begin{cases} 1 \;\;\; \textrm{ if logical test is true } \\
                   0 \;\;\; \textrm{ if logical test is false } \end{cases}\]</span></p>
-<ol start="3" style="list-style-type: decimal">
+<ol start="4" style="list-style-type: decimal">
 <li>Suppose that the pdf of a random variable <span class="math inline">\(X\)</span> is <span class="math display">\[f(x) = \frac{4}{3}\left(1-x^3\right) \;I(0&lt;x&lt;1)\]</span>
 <ol style="list-style-type: lower-alpha">
 <li>Create a graph of the pdf.</li>
@@ -233,7 +233,7 @@
 </ol>
 <p>We now have defined both the probability function (pf) for discrete random variables and probability density function (pdf) for continuous random variables. We now try to make a physics analogy to describe the difference between the two. In both cases we want to think about probability as physical mass.</p>
 <p><strong>Discrete Case</strong> In this case, all the probability mass is concentrated at precise points. So we have little nuggets of probability mass, at discrete points. If I want to know, say <span class="math inline">\(Pr(X \le 3)\)</span> then we have to sum the probability across all the discrete locations such that <span class="math inline">\(X \le 3\)</span>.</p>
-<p><strong>Continuous Case</strong> In this case, the probability mass is spread out across <span class="math inline">\(\mathbb{R}\)</span> and the concentration of mass is not uniform, some spots have more concentrated mass. In this case, we don’t have a definiate amount of mass at a particular point, but we do have a description of how dense the mass is at any point. In this case if we want to know <span class="math inline">\(Pr(X \le 3)\)</span> then we have to break up <span class="math inline">\(\mathbb{R}\)</span> into a bunch of intervals and then combine the length of the interval along with information about the average density of each interval.</p>
+<p><strong>Continuous Case</strong> In this case, the probability mass is spread out across <span class="math inline">\(\mathbb{R}\)</span> and the concentration of mass is not uniform, some spots have more concentrated mass. In this case, we don’t have a definite amount of mass at a particular point, but we do have a description of how dense the mass is at any point. In this case if we want to know <span class="math inline">\(Pr(X \le 3)\)</span> then we have to break up <span class="math inline">\(\mathbb{R}\)</span> into a bunch of intervals and then combine the length of the interval along with information about the average density of each interval.</p>
 <p><img src="Probability_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <p>Each bar has some probability mass (mass is the length of the interval times the average density along the interval) and then we just sum up the bars. If we take the limit as we make the bars narrower, then we end up with <span class="math display">\[Pr(X \le 3) = \int_{-\infty}^3 f(x) \, dx\]</span></p>
 <p>You might be a little freaked out because typically you would think about mass being the <em>area</em> or <em>volume</em> times the density, but we need to start in the 1-dimension case before we address the 2-dimension and 3-dimension cases.</p>
@@ -246,18 +246,70 @@
   Pr \left(a \le X \le b\right) = \int_a^b f(x)\,dx \;\;\; &amp; \textrm{ if X is continuous RV } 
   \end{aligned}\]</span></p>
 <p>While the probability function and probability density function are both useful functions, it is mathematically convenient to have a mathematical description of the distribution that has the same interpretation regardless of if the distribution is discrete or continuous.</p>
-<p><em>Definition</em>: For a random variable <span class="math inline">\(X\)</span> (notice we don’t specify if it is continous or discrete) the <strong>Cumulative Distribution Function</strong> (CDF) is defined as <span class="math display">\[F(x) = Pr( X \le x )\]</span> Notice that this is defined for all <span class="math inline">\(x\)</span> in <span class="math inline">\(\mathbb{R}\)</span>.</p>
+<p><em>Definition</em>: For a random variable <span class="math inline">\(X\)</span> (notice we don’t specify if it is continuous or discrete) the <strong>Cumulative Distribution Function</strong> (CDF) is defined as <span class="math display">\[F(x) = Pr( X \le x )\]</span> Notice that this is defined for all <span class="math inline">\(x\)</span> in <span class="math inline">\(\mathbb{R}\)</span>.</p>
 <ol style="list-style-type: decimal">
 <li>Suppose that random variable <span class="math inline">\(X\)</span> has a Uniform distribution on the integers <span class="math inline">\(1,2,3,4,5\)</span>. These are the only values that <span class="math inline">\(X\)</span> can take on, and <span class="math display">\[f(x) = \frac{1}{5} \, \cdot I\Big(x \in \{1,2,\dots,5\}\Big)\]</span> Draw a graph of <span class="math inline">\(F(x)\)</span> and make sure the graph demonstrates:
 <ol style="list-style-type: lower-alpha">
-<li>That <span class="math inline">\(F(x)\)</span> is defined for all <span class="math inline">\(x \in \mathbb{R}\)</span></li>
-<li>That <span class="math inline">\(F(x)\)</span> is a step function</li>
-<li>That <span class="math inline">\(F(x)\)</span> is continuous from the right</li>
-<li>That <span class="math inline">\(\lim_{x\to -\infty} F(x) = 0\)</span></li>
-<li>That <span class="math inline">\(\lim_{x\to \infty} F(x) = 1\)</span></li>
+<li>That <span class="math inline">\(F(x)\)</span> is defined for all <span class="math inline">\(x \in \mathbb{R}\)</span>.</li>
+<li>That <span class="math inline">\(F(x)\)</span> is a step function.</li>
+<li>That <span class="math inline">\(F(x)\)</span> is continuous from the right. <em>That is, for <span class="math inline">\(\epsilon &gt; 0\)</span>, <span class="math inline">\(\lim_{\epsilon \to 0} F(x+\epsilon) = F(x)\)</span>.</em></li>
+<li>That <span class="math inline">\(\lim_{x\to -\infty} F(x) = 0\)</span>.</li>
+<li>That <span class="math inline">\(\lim_{x\to \infty} F(x) = 1\)</span>.</li>
 </ol></li>
 </ol>
 <p>Define <span class="math inline">\(B_x = \left\{s \textrm{ such that } X(s) \le x\right\}\)</span>. Then we have for <span class="math inline">\(x_1 &lt; x_2\)</span> that <span class="math inline">\(B_{x_1} \subset B_{x_2}\)</span> and therefore: <span class="math display">\[\lim_{x\to -\infty} F(x) = \lim_{x\to -\infty} Pr\left( B_{x} \right) = Pr( \emptyset ) = 0\]</span> <span class="math display">\[\lim_{x\to  \infty} F(x) = \lim_{x\to  \infty} Pr\left( B_{x} \right) = Pr( \mathcal{S} ) = 1\]</span></p>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Show that <span class="math inline">\(F(x)\)</span> must be non-decreasing. <em>Notice this allows for <span class="math inline">\(F(x)\)</span> to be a flat function, but cannot decrease.</em></p></li>
+<li><p>Suppose that the r.v. <span class="math inline">\(X\)</span> has a Binomial(<span class="math inline">\(n=5\)</span>, <span class="math inline">\(p=0.8\)</span>) distribution. Sketch the CDF.</p></li>
+<li><strong>Geometric Distribution</strong> Suppose that we flip a biased coin that has probability of heads as <span class="math inline">\(p \in [0,1]\)</span>. Let the r.v. <span class="math inline">\(X\)</span> be the number of coint flips until the first head is observed.
+<ol style="list-style-type: lower-alpha">
+<li>What values could <span class="math inline">\(X\)</span> take? Mathematically, we say, what is the support of <span class="math inline">\(X\)</span>?</li>
+<li>Is <span class="math inline">\(X\)</span> a continuous or discrete random variable?</li>
+<li>Find the probability function, <span class="math inline">\(f(x)\)</span>.</li>
+<li>Show that cummulative distribution function is <span class="math inline">\(F(x) = 1 - (1-p)^x\)</span>. <em>Hint: Geometric Series!</em></li>
+</ol></li>
+</ol>
+<p>For continuous random variables it is relatively easy to go back and forth from the cdf to the pdf (assuming the integration and differentiation isn’t too hard). <span class="math display">\[ F(x) = \int_\infty ^x f(u) \, du\]</span> <span class="math display">\[ f(x) = \frac{d}{dx}\, F(x)\]</span></p>
+<ol start="5" style="list-style-type: decimal">
+<li><strong>Exponential Distribution</strong> (Warning! There are two ways to parameterize the Exponential Distribution. Before you look anything up, make sure it is using the same parameterization you are.) Suppose that we have a continuous random variable <span class="math inline">\(X\)</span> with pdf <span class="math display">\[f(x) = \beta e ^{-\beta x} \;\cdot I(x &gt; 0)\]</span>
+<ol style="list-style-type: lower-alpha">
+<li>Find the cdf function <span class="math inline">\(F(x)\)</span>.</li>
+<li>For <span class="math inline">\(\beta=2\)</span> sketch the pdf and cdf.</li>
+<li>On the pdf and cdf graphs, represent <span class="math inline">\(Pr(X &lt; 1)\)</span>. <em>In the pdf it will be some shaded area, in the cdf it is something else.</em></li>
+</ol></li>
+<li>Suppose that the cdf of a random variable <span class="math inline">\(X\)</span> is as follows: <span class="math display">\[ F(x) = \begin{cases} 
+  0 \;\;\;          &amp; \textrm{ for } x \le 0 \\
+  \frac{1}{9} x^2   &amp; \textrm{ for } 0 \le x \le 3 \\
+  1                 &amp; \textrm{ for } x &gt; 3 
+  \end{cases}\]</span>
+<ol style="list-style-type: lower-alpha">
+<li>Find and the pdf function <span class="math inline">\(f(x)\)</span>.</li>
+<li>Sketch the pdf and cdf.</li>
+<li>On the pdf and cdf graphs, represent <span class="math inline">\(Pr( X \le 2 )\)</span>.</li>
+</ol></li>
+<li>Suppose that a point in the <span class="math inline">\(xy\)</span>-plane is chosen at random from the interior of the unit circle, which is the circle centered at <span class="math inline">\(\{0,0\}\)</span> with radius 1. Notice the probability that the chosen point belongs to a given region is proportional to the area of the region. Let the random variable <span class="math inline">\(Z\)</span> represent the distance of the point to the origin.
+<ol style="list-style-type: lower-alpha">
+<li>Find and sketch the cdf of <span class="math inline">\(Z\)</span>.</li>
+<li>Find and sketch the pdf of <span class="math inline">\(Z\)</span>.</li>
+<li>On the pdf and cdf graphs, represent <span class="math inline">\(Pr( Z \le 0.5 )\)</span>.</li>
+</ol></li>
+</ol>
+<p>We think of the cdf as a function that takes some value <span class="math inline">\(x\)</span> and produces a probability. In the case where <span class="math inline">\(F(x)\)</span> is monotonically increasing, we could define <span class="math inline">\(F^{-1}(p)\)</span> which takes a probability and tells us what value of <span class="math inline">\(x\)</span> produces <span class="math inline">\(F(x)=p\)</span>.</p>
+<p>The <em>quantile function</em> of a distribution generalizes the inverse function to work similarly for non-decreasing functions by defining <span class="math display">\[F^{-1}(p) = \min(x) \textrm{ such that } F(x) \le p\]</span></p>
+<ol start="8" style="list-style-type: decimal">
+<li>Suppose that a point in the <span class="math inline">\(xy\)</span>-plane is chosen at random from the interior of the unit circle, which is the circle centered at <span class="math inline">\(\{0,0\}\)</span> with radius 1. Notice the probability that the chosen point belongs to a given region is proportional to the area of the region. Let the random variable <span class="math inline">\(Z\)</span> represent the distance of the point to the origin.
+<ol style="list-style-type: lower-alpha">
+<li>What is the median of the distribution? That is, find the value <span class="math inline">\(z\)</span> such that <span class="math inline">\(Pr(Z \le z)=0.5\)</span>.</li>
+<li>Again sketch the pdf and cdf of this distribution and reperesent the median on both graphs along with pertinent information showing that indeed the value you found is the median.</li>
+<li>What is the <span class="math inline">\(75\)</span>th percentile? Follow your previous steps in part (a) and (b).</li>
+</ol></li>
+<li><strong>Binomial Distribution</strong> Again we consider the binomial distribution but now with parameters <span class="math inline">\(n=6\)</span> and probability of success <span class="math inline">\(p=0.4\)</span>.
+<ol style="list-style-type: lower-alpha">
+<li>Find and graph the pdf and cdf of this distribution.</li>
+<li>What is the median of this distribution?</li>
+<li>What is the <span class="math inline">\(75\)</span>th percentile? What is the <span class="math inline">\(80\)</span>th percentile?</li>
+</ol></li>
+</ol>
 
 </div>
 </div>

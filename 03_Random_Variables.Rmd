@@ -97,13 +97,13 @@ $$I( \textrm{logical test} ) =
     \begin{cases} 1 \;\;\; \textrm{ if logical test is true } \\
                   0 \;\;\; \textrm{ if logical test is false } \end{cases}$$
 
-3. Suppose that the pdf of a random variable $X$ is $$f(x) = \frac{4}{3}\left(1-x^3\right) \;I(0<x<1)$$
+4. Suppose that the pdf of a random variable $X$ is $$f(x) = \frac{4}{3}\left(1-x^3\right) \;I(0<x<1)$$
     a) Create a graph of the pdf.
     b) Find $Pr\left( X\le \frac{1}{2} \right)$?
     c) Find $Pr\left( \frac{1}{4} < X < \frac{3}{4} \right)$
     d) Find $Pr\left( X > \frac{3}{4} \right)$
 
-4. Suppose the random variable $X$ has pdf 
+5. Suppose the random variable $X$ has pdf 
 $$f(x) = c\cdot e^{-5x}I(x\ge 0) = \begin{cases} c\cdot e^{-5 x} \;\;\; \textrm{ if } x \ge 0 \\
                                           0   \;\;\;\;\;\;\;\;\;\;\;\;\; \textrm{otherwise}
                             \end{cases}$$
@@ -111,13 +111,13 @@ $$f(x) = c\cdot e^{-5x}I(x\ge 0) = \begin{cases} c\cdot e^{-5 x} \;\;\; \textrm{
     b) Graph this function. What is $f(0)$? Many students dislike that $f(0)>1$ is greater than one. Why isn't this a problem?
     c) What is the probability $Pr(X \le 0.5)$?
     
-5. Suppose that the pdf of the random variable $X$ is
+6. Suppose that the pdf of the random variable $X$ is
 $$f(x)= c \cdot x \;\;I(0\le x \le 3)$$
     a) What value of $c$ makes this a valid pdf?
     b) Find a value of $t$ such that $Pr( X \le t ) = 0.25)$
     c) Find a value of $t$ such that $Pr( X > t) = 0.5)$
 
-6. Given the same random variable $X$ described in problem 3.2.5, consider the random variable $Y$ which is the simply the nearest integer to $X$. What is the pf of $Y$?
+7. Given the same random variable $X$ described in problem 3.2.5, consider the random variable $Y$ which is the simply the nearest integer to $X$. What is the pf of $Y$?
 
 
 
@@ -125,7 +125,7 @@ We now have defined both the probability function (pf) for discrete random varia
 
 **Discrete Case** In this case, all the probability mass is concentrated at precise points.  So we have little nuggets of probability mass, at discrete points.  If I want to know, say $Pr(X \le 3)$ then we have to sum the probability across all the discrete locations such that $X \le 3$.
 
-**Continuous Case** In this case, the probability mass is spread out across $\mathbb{R}$ and the concentration of mass is not uniform, some spots have more concentrated mass.  In this case, we don't have a definiate amount of mass at a particular point, but we do have a description of how dense the mass is at any point.  In this case if we want to know $Pr(X \le 3)$ then we have to break up $\mathbb{R}$ into a bunch of intervals and then combine the length of the interval along with information about the average density of each interval.
+**Continuous Case** In this case, the probability mass is spread out across $\mathbb{R}$ and the concentration of mass is not uniform, some spots have more concentrated mass.  In this case, we don't have a definite amount of mass at a particular point, but we do have a description of how dense the mass is at any point.  In this case if we want to know $Pr(X \le 3)$ then we have to break up $\mathbb{R}$ into a bunch of intervals and then combine the length of the interval along with information about the average density of each interval.
 
 ```{r, message=FALSE, warning=FALSE, echo=FALSE, fig.height=3}
 library(ggplot2); library(dplyr);
@@ -157,18 +157,72 @@ $$\begin{aligned}
   
 While the probability function and probability density function are both useful functions, it is mathematically convenient to have a mathematical description of the distribution that has the same interpretation regardless of if the distribution is discrete or continuous.  
 
-_Definition_: For a random variable $X$ (notice we don't specify if it is continous or discrete) the **Cumulative Distribution Function** (CDF) is defined as 
+_Definition_: For a random variable $X$ (notice we don't specify if it is continuous or discrete) the **Cumulative Distribution Function** (CDF) is defined as 
 $$F(x) = Pr( X \le x )$$
 Notice that this is defined for all $x$ in $\mathbb{R}$.
 
 1. Suppose that random variable $X$ has a Uniform distribution on the integers $1,2,3,4,5$. These are the only values that $X$ can take on, and $$f(x) = \frac{1}{5} \, \cdot I\Big(x \in \{1,2,\dots,5\}\Big)$$ Draw a graph of $F(x)$ and make sure the graph demonstrates:
-    a) That $F(x)$ is defined for all $x \in \mathbb{R}$
-    b) That $F(x)$ is a step function
-    c) That $F(x)$ is continuous from the right
-    d) That $\lim_{x\to -\infty} F(x) = 0$
-    e) That $\lim_{x\to \infty} F(x) = 1$
+    a) That $F(x)$ is defined for all $x \in \mathbb{R}$.
+    b) That $F(x)$ is a step function.
+    c) That $F(x)$ is continuous from the right. *That is, for $\epsilon > 0$,  $\lim_{\epsilon \to 0} F(x+\epsilon) = F(x)$.*
+    d) That $\lim_{x\to -\infty} F(x) = 0$.
+    e) That $\lim_{x\to \infty} F(x) = 1$.
     
 Define $B_x = \left\{s \textrm{ such that } X(s) \le x\right\}$. Then we have for $x_1 < x_2$ that $B_{x_1} \subset B_{x_2}$ and therefore:
 $$\lim_{x\to -\infty} F(x) = \lim_{x\to -\infty} Pr\left( B_{x} \right) = Pr( \emptyset ) = 0$$ 
 $$\lim_{x\to  \infty} F(x) = \lim_{x\to  \infty} Pr\left( B_{x} \right) = Pr( \mathcal{S} ) = 1$$ 
 
+2. Show that $F(x)$ must be non-decreasing.  *Notice this allows for $F(x)$ to be a flat function, but cannot decrease.*
+
+3. Suppose that the r.v. $X$ has a Binomial($n=5$, $p=0.8$) distribution. Sketch the CDF.
+
+4. **Geometric Distribution** Suppose that we flip a biased coin that has probability of heads as $p \in [0,1]$. Let the r.v. $X$ be the number of coint flips until the first head is observed.
+    a) What values could $X$ take? Mathematically, we say, what is the support of $X$?
+    b) Is $X$ a continuous or discrete random variable?
+    c) Find the probability function, $f(x)$.
+    d) Show that cummulative distribution function is $F(x) = 1 - (1-p)^x$. *Hint: Geometric Series!*
+    
+
+For continuous random variables it is relatively easy to go back and forth from the cdf to the pdf (assuming the integration and differentiation isn't too hard).
+$$ F(x) = \int_\infty ^x f(u) \, du$$
+$$ f(x) = \frac{d}{dx}\, F(x)$$
+
+
+5. **Exponential Distribution** (Warning! There are two ways to parameterize the Exponential Distribution. Before you look anything up, make sure it is using the same parameterization you are.) Suppose that we have a continuous random variable $X$ with pdf
+$$f(x) = \beta e ^{-\beta x} \;\cdot I(x > 0)$$
+    a) Find the cdf function $F(x)$.
+    b) For $\beta=2$ sketch the pdf and cdf.
+    c) On the pdf and cdf graphs, represent $Pr(X < 1)$.  *In the pdf it will be some shaded area, in the cdf it is something else.*
+    
+
+6. Suppose that the cdf of a random variable $X$ is as follows:
+$$ F(x) = \begin{cases} 
+  0 \;\;\;          & \textrm{ for } x \le 0 \\
+  \frac{1}{9} x^2   & \textrm{ for } 0 \le x \le 3 \\
+  1                 & \textrm{ for } x > 3 
+  \end{cases}$$
+    a) Find and the pdf function $f(x)$.
+    b) Sketch the pdf and cdf.
+    c) On the pdf and cdf graphs, represent $Pr( X \le 2 )$.
+    
+7. Suppose that a point in the $xy$-plane is chosen at random from the interior of the unit circle, which is the circle centered at $\{0,0\}$ with radius 1. Notice the probability that the chosen point belongs to a given region is proportional to the area of the region. Let the random variable $Z$ represent the distance of the point to the origin.
+    a) Find and sketch the cdf of $Z$.
+    b) Find and sketch the pdf of $Z$.
+    c) On the pdf and cdf graphs, represent $Pr( Z \le 0.5 )$.
+    
+
+We think of the cdf as a function that takes some value $x$ and produces a probability. In the case where $F(x)$ is monotonically increasing, we could define $F^{-1}(p)$ which takes a probability and tells us what value of $x$ produces $F(x)=p$.
+
+The _quantile function_ of a distribution generalizes the inverse function to work similarly for non-decreasing functions by defining
+$$F^{-1}(p) = \min(x) \textrm{ such that } F(x) \le p$$
+
+
+8. Suppose that a point in the $xy$-plane is chosen at random from the interior of the unit circle, which is the circle centered at $\{0,0\}$ with radius 1. Notice the probability that the chosen point belongs to a given region is proportional to the area of the region. Let the random variable $Z$ represent the distance of the point to the origin.
+    a) What is the median of the distribution? That is, find the value $z$ such that $Pr(Z \le z)=0.5$.
+    b) Again sketch the pdf and cdf of this distribution and reperesent the median on both graphs along with pertinent information showing that indeed the value you found is the median.
+    c) What is the $75$th percentile? Follow your previous steps in part (a) and (b).
+    
+9. **Binomial Distribution** Again we consider the binomial distribution but now with parameters $n=6$ and probability of success $p=0.4$. 
+    a) Find and graph the pdf and cdf of this distribution.
+    b) What is the median of this distribution?
+    c) What is the $75$th percentile? What is the $80$th percentile?
