@@ -26,7 +26,7 @@
 <meta name="author" content="Derek L. Sonderegger">
 
 
-<meta name="date" content="2017-02-24">
+<meta name="date" content="2017-02-27">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -87,6 +87,10 @@
 <li class="chapter" data-level="3.1" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#defining-random-variables-and-discrete-distributions"><i class="fa fa-check"></i><b>3.1</b> Defining Random Variables and Discrete Distributions</a></li>
 <li class="chapter" data-level="3.2" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#continuous-distributions"><i class="fa fa-check"></i><b>3.2</b> Continuous Distributions</a></li>
 <li class="chapter" data-level="3.3" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#cumulative-distribution-function"><i class="fa fa-check"></i><b>3.3</b> Cumulative Distribution Function</a></li>
+<li class="chapter" data-level="3.4" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#bivariate-distributions"><i class="fa fa-check"></i><b>3.4</b> Bivariate Distributions</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#bivariate-discrete"><i class="fa fa-check"></i><b>3.4.1</b> Bivariate Discrete</a></li>
+<li class="chapter" data-level="3.4.2" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#bivariate-continuous"><i class="fa fa-check"></i><b>3.4.2</b> Bivariate Continuous</a></li>
+</ul></li>
 </ul></li>
 </ul>
 
@@ -261,7 +265,7 @@
 <ol start="2" style="list-style-type: decimal">
 <li><p>Show that <span class="math inline">\(F(x)\)</span> must be non-decreasing. <em>Notice this allows for <span class="math inline">\(F(x)\)</span> to be a flat function, but cannot decrease.</em></p></li>
 <li><p>Suppose that the r.v. <span class="math inline">\(X\)</span> has a Binomial(<span class="math inline">\(n=5\)</span>, <span class="math inline">\(p=0.8\)</span>) distribution. Sketch the CDF.</p></li>
-<li><strong>Geometric Distribution</strong> Suppose that we flip a biased coin that has probability of heads as <span class="math inline">\(p \in [0,1]\)</span>. Let the r.v. <span class="math inline">\(X\)</span> be the number of coint flips until the first head is observed.
+<li><strong>Geometric Distribution</strong> Suppose that we flip a biased coin that has probability of heads as <span class="math inline">\(p \in [0,1]\)</span>. Let the r.v. <span class="math inline">\(X\)</span> be the number of coin flips until the first head is observed.
 <ol style="list-style-type: lower-alpha">
 <li>What values could <span class="math inline">\(X\)</span> take? Mathematically, we say, what is the support of <span class="math inline">\(X\)</span>?</li>
 <li>Is <span class="math inline">\(X\)</span> a continuous or discrete random variable?</li>
@@ -283,11 +287,11 @@
   1                 &amp; \textrm{ for } x &gt; 3 
   \end{cases}\]</span>
 <ol style="list-style-type: lower-alpha">
-<li>Find and the pdf function <span class="math inline">\(f(x)\)</span>.</li>
+<li>Find the pdf function <span class="math inline">\(f(x)\)</span>.</li>
 <li>Sketch the pdf and cdf.</li>
 <li>On the pdf and cdf graphs, represent <span class="math inline">\(Pr( X \le 2 )\)</span>.</li>
 </ol></li>
-<li>Suppose that a point in the <span class="math inline">\(xy\)</span>-plane is chosen at random from the interior of the unit circle, which is the circle centered at <span class="math inline">\(\{0,0\}\)</span> with radius 1. Notice the probability that the chosen point belongs to a given region is proportional to the area of the region. Let the random variable <span class="math inline">\(Z\)</span> represent the distance of the point to the origin.
+<li>Suppose that a point in the <span class="math inline">\(xy\)</span>-plane is chosen at random from the interior of the unit circle, which is the circle centered at <span class="math inline">\((0,0)\)</span> with radius 1. Notice the probability that the chosen point belongs to a given region is proportional to the area of the region. Let the random variable <span class="math inline">\(Z\)</span> represent the distance of the point to the origin.
 <ol style="list-style-type: lower-alpha">
 <li>Find and sketch the cdf of <span class="math inline">\(Z\)</span>.</li>
 <li>Find and sketch the pdf of <span class="math inline">\(Z\)</span>.</li>
@@ -295,7 +299,7 @@
 </ol></li>
 </ol>
 <p>We think of the cdf as a function that takes some value <span class="math inline">\(x\)</span> and produces a probability. In the case where <span class="math inline">\(F(x)\)</span> is monotonically increasing, we could define <span class="math inline">\(F^{-1}(p)\)</span> which takes a probability and tells us what value of <span class="math inline">\(x\)</span> produces <span class="math inline">\(F(x)=p\)</span>.</p>
-<p>The <em>quantile function</em> of a distribution generalizes the inverse function to work similarly for non-decreasing functions by defining <span class="math display">\[F^{-1}(p) = \min(x) \textrm{ such that } F(x) \le p\]</span></p>
+<p>The <em>quantile function</em> of a distribution generalizes the inverse function to work similarly for non-decreasing functions by defining <span class="math display">\[F^{-1}(p) = \min(x) \textrm{ such that } F(x) \ge p\]</span></p>
 <ol start="8" style="list-style-type: decimal">
 <li>Suppose that a point in the <span class="math inline">\(xy\)</span>-plane is chosen at random from the interior of the unit circle, which is the circle centered at <span class="math inline">\(\{0,0\}\)</span> with radius 1. Notice the probability that the chosen point belongs to a given region is proportional to the area of the region. Let the random variable <span class="math inline">\(Z\)</span> represent the distance of the point to the origin.
 <ol style="list-style-type: lower-alpha">
@@ -310,7 +314,64 @@
 <li>What is the <span class="math inline">\(75\)</span>th percentile? What is the <span class="math inline">\(80\)</span>th percentile?</li>
 </ol></li>
 </ol>
+</div>
+<div id="bivariate-distributions" class="section level2">
+<h2><span class="header-section-number">3.4</span> Bivariate Distributions</h2>
+<p>We now consider the case of having two random variables. We can think of selecting an individual from a population and measuring two (or more!) variables. For example, we might select a NAU student and measure both their height and weight and we want to understand how those two measurements vary. It should be clear that there is a positive correlation (taller people also tend to weigh more) and we want to estabilish the mathematical framework to address questions such as this.</p>
+<p>In general we will consider the distribution of 2 or more random variables and we will call this the <em>joint distribution</em>. In the bivariate case, we will consider the joint distribution of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</p>
+<div id="bivariate-discrete" class="section level3">
+<h3><span class="header-section-number">3.4.1</span> Bivariate Discrete</h3>
+<p>We first consider the case where both variables are discrete. In this case, the bivariate distribution can be defined by simply defining the probabilities <span class="math inline">\(f(x,y)=Pr(X=x, Y=y)\)</span>. Your book likes to emphasize the notation of an <span class="math inline">\((X,Y)\)</span> pair and writes these as <span class="math inline">\(Pr\Big( (X,Y) = (x,y)\Big)\)</span>, but I dislike so many parentheses.</p>
+<ol style="list-style-type: decimal">
+<li>Consider the experiment of rolling two six-sided fair dice. Define the discrete random variable <span class="math inline">\(X\)</span> as the number of ones we roll and <span class="math inline">\(Y\)</span> as the number of sixes.
+<ol style="list-style-type: lower-alpha">
+<li><p>Fill in the table of <span class="math inline">\(f(x,y)\)</span> values.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(f(x,y)\)</span></th>
+<th align="center"><span class="math inline">\(Y=0\)</span></th>
+<th align="center"><span class="math inline">\(Y=1\)</span></th>
+<th align="center"><span class="math inline">\(Y=2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(X=0\)</span></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(X=1\)</span></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(X=2\)</span></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table></li>
+<li><p>Find <span class="math inline">\(Pr( X\ge 1 \textrm{ and } Y \ge 1 )\)</span></p></li>
+</ol></li>
+<li>Suppose we have a discrete joint distribution with probability function <span class="math display">\[f(x,y)=\]</span></li>
+</ol>
+<p>Suppose that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> have a discrete joint distribution for which the joint p.f. is defined as follows: <span class="math display">\[f(x,y) = \begin{cases}
+  c|x+y| &amp; \textrm{ for } x \in \{−2,−1,0,1,2\} \\
+         &amp; \textrm{ and } y \in \{−2,−1,0,1,2\} \\
+  0      &amp; \textrm{ otherwise. }
+  \end{cases}\]</span> a) Find the value of the constant <span class="math inline">\(c\)</span>. b) Find <span class="math inline">\(Pr(X = 0 \textrm{ and } Y =−2)\)</span>. c) Find <span class="math inline">\(Pr(X=1)\)</span> d) Find <span class="math inline">\(Pr(|X−Y|≤1)\)</span></p>
+</div>
+<div id="bivariate-continuous" class="section level3">
+<h3><span class="header-section-number">3.4.2</span> Bivariate Continuous</h3>
+<p>Two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> have a bivariate continuous distribution if there exists a non-negative function <span class="math inline">\(f(x,y)\)</span> such that for every subset <span class="math inline">\(C\)</span> of the <span class="math inline">\(xy\)</span>-plane <span class="math display">\[Pr\Big[ (X,Y)\in C\Big] = \iint_C f(x,y)\]</span></p>
+<p>Unsurprisingly, the requirements for a functio <span class="math inline">\(f(x,y\)</span> to be a joint pdf are: * <span class="math inline">\(f(x,y) \ge 0\)</span> for all <span class="math inline">\((x,y)\)</span> in <span class="math inline">\(\mathbb{R}^2\)</span> * <span class="math display">\[\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f(x,y) \, dx\,dy = 1\]</span></p>
 
+</div>
 </div>
 </div>
             </section>

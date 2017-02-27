@@ -176,7 +176,7 @@ $$\lim_{x\to  \infty} F(x) = \lim_{x\to  \infty} Pr\left( B_{x} \right) = Pr( \m
 
 3. Suppose that the r.v. $X$ has a Binomial($n=5$, $p=0.8$) distribution. Sketch the CDF.
 
-4. **Geometric Distribution** Suppose that we flip a biased coin that has probability of heads as $p \in [0,1]$. Let the r.v. $X$ be the number of coint flips until the first head is observed.
+4. **Geometric Distribution** Suppose that we flip a biased coin that has probability of heads as $p \in [0,1]$. Let the r.v. $X$ be the number of coin flips until the first head is observed.
     a) What values could $X$ take? Mathematically, we say, what is the support of $X$?
     b) Is $X$ a continuous or discrete random variable?
     c) Find the probability function, $f(x)$.
@@ -201,11 +201,11 @@ $$ F(x) = \begin{cases}
   \frac{1}{9} x^2   & \textrm{ for } 0 \le x \le 3 \\
   1                 & \textrm{ for } x > 3 
   \end{cases}$$
-    a) Find and the pdf function $f(x)$.
+    a) Find the pdf function $f(x)$.
     b) Sketch the pdf and cdf.
     c) On the pdf and cdf graphs, represent $Pr( X \le 2 )$.
     
-7. Suppose that a point in the $xy$-plane is chosen at random from the interior of the unit circle, which is the circle centered at $\{0,0\}$ with radius 1. Notice the probability that the chosen point belongs to a given region is proportional to the area of the region. Let the random variable $Z$ represent the distance of the point to the origin.
+7. Suppose that a point in the $xy$-plane is chosen at random from the interior of the unit circle, which is the circle centered at $(0,0)$ with radius 1. Notice the probability that the chosen point belongs to a given region is proportional to the area of the region. Let the random variable $Z$ represent the distance of the point to the origin.
     a) Find and sketch the cdf of $Z$.
     b) Find and sketch the pdf of $Z$.
     c) On the pdf and cdf graphs, represent $Pr( Z \le 0.5 )$.
@@ -214,7 +214,7 @@ $$ F(x) = \begin{cases}
 We think of the cdf as a function that takes some value $x$ and produces a probability. In the case where $F(x)$ is monotonically increasing, we could define $F^{-1}(p)$ which takes a probability and tells us what value of $x$ produces $F(x)=p$.
 
 The _quantile function_ of a distribution generalizes the inverse function to work similarly for non-decreasing functions by defining
-$$F^{-1}(p) = \min(x) \textrm{ such that } F(x) \le p$$
+$$F^{-1}(p) = \min(x) \textrm{ such that } F(x) \ge p$$
 
 
 8. Suppose that a point in the $xy$-plane is chosen at random from the interior of the unit circle, which is the circle centered at $\{0,0\}$ with radius 1. Notice the probability that the chosen point belongs to a given region is proportional to the area of the region. Let the random variable $Z$ represent the distance of the point to the origin.
@@ -226,3 +226,46 @@ $$F^{-1}(p) = \min(x) \textrm{ such that } F(x) \le p$$
     a) Find and graph the pdf and cdf of this distribution.
     b) What is the median of this distribution?
     c) What is the $75$th percentile? What is the $80$th percentile?
+    
+## Bivariate Distributions
+We now consider the case of having two random variables.  We can think of selecting an individual from a population and measuring two (or more!) variables.  For example, we might select a NAU student and measure both their height and weight and we want to understand how those two measurements vary. It should be clear that there is a positive correlation (taller people also tend to weigh more) and we want to estabilish the mathematical framework to address questions such as this.
+
+In general we will consider the distribution of 2 or more random variables and we will call this the _joint distribution_. In the bivariate case, we will consider the joint distribution of $X$ and $Y$.
+
+### Bivariate Discrete
+We first consider the case where both variables are discrete. In this case, the bivariate distribution can be defined by simply defining the probabilities $f(x,y)=Pr(X=x, Y=y)$.  Your book likes to emphasize the notation of an $(X,Y)$ pair and writes these as $Pr\Big( (X,Y) = (x,y)\Big)$, but I dislike so many parentheses.
+
+1. Consider the experiment of rolling two six-sided fair dice. Define the discrete random variable $X$ as the number of ones we roll and $Y$ as the number of sixes.  
+    a) Fill in the table of $f(x,y)$ values.
+        
+        |  $f(x,y)$   |   $Y=0$     | $Y=1$         |  $Y=2$      |
+        |:-----------:|:-----------:|:-------------:|:-----------:|
+        | $X=0$       |             |               |             |
+        | $X=1$       |             |               |             |
+        | $X=2$       |             |               |             |
+    
+    b) Find $Pr( X\ge 1 \textrm{ and } Y \ge 1 )$
+
+
+2. Suppose we have a discrete joint distribution with probability function
+$$f(x,y)=$$
+
+Suppose that $X$ and $Y$ have a discrete joint distribution for which the joint p.f. is defined as follows:
+$$f(x,y) = \begin{cases}
+  c|x+y| & \textrm{ for } x \in \{−2,−1,0,1,2\} \\
+         & \textrm{ and } y \in \{−2,−1,0,1,2\} \\
+  0      & \textrm{ otherwise. }
+  \end{cases}$$
+    a) Find the value of the constant $c$.
+    b) Find $Pr(X = 0 \textrm{ and } Y =−2)$.
+    c) Find $Pr(X=1)$
+    d) Find $Pr(|X−Y|≤1)$
+    
+
+### Bivariate Continuous
+Two random variables $X$ and $Y$ have a bivariate continuous distribution  if there exists a non-negative function $f(x,y)$ such that for every subset $C$ of the $xy$-plane 
+$$Pr\Big[ (X,Y)\in C\Big] = \iint_C f(x,y)$$
+
+Unsurprisingly, the requirements for a functio $f(x,y$ to be a joint pdf are:
+* $f(x,y) \ge 0$ for all $(x,y)$ in $\mathbb{R}^2$ 
+* $$\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f(x,y) \, dx\,dy = 1$$
