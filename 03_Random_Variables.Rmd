@@ -247,10 +247,7 @@ We first consider the case where both variables are discrete. In this case, the 
     b) Find $Pr( X\ge 1 \textrm{ and } Y \ge 1 )$
 
 
-2. Suppose we have a discrete joint distribution with probability function
-$$f(x,y)=$$
-
-Suppose that $X$ and $Y$ have a discrete joint distribution for which the joint p.f. is defined as follows:
+2. Suppose that $X$ and $Y$ have a discrete joint distribution for which the joint p.f. is defined as follows:
 $$f(x,y) = \begin{cases}
   c|x+y| & \textrm{ for } x \in \{−2,−1,0,1,2\} \\
          & \textrm{ and } y \in \{−2,−1,0,1,2\} \\
@@ -266,6 +263,13 @@ $$f(x,y) = \begin{cases}
 Two random variables $X$ and $Y$ have a bivariate continuous distribution  if there exists a non-negative function $f(x,y)$ such that for every subset $C$ of the $xy$-plane 
 $$Pr\Big[ (X,Y)\in C\Big] = \iint_C f(x,y)$$
 
-Unsurprisingly, the requirements for a functio $f(x,y$ to be a joint pdf are:
-* $f(x,y) \ge 0$ for all $(x,y)$ in $\mathbb{R}^2$ 
-* $$\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f(x,y) \, dx\,dy = 1$$
+Unsurprisingly, the requirements for a function $f(x,y)$ to be a joint pdf are:
+ $$f(x,y) \ge 0 \textrm{ for all } (x,y) \textrm{ in } \mathbb{R}^2$$
+ $$\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f(x,y) \, dx\,dy = 1$$
+ 
+3. Suppose the random variables $X$ and $Y$ have joint pdf 
+$$f(x,y) = c x^2 y \,\cdot I(x^2 \le y \le 1)$$
+    a) Draw the support of this distribution by drawing the parabola $y=x^2$ on the $xy$-plane and shade in the area for which $f(x,y)>0$. Denote this region as $D$
+    b) Integrate $f(x,y)$ over its support.  That is, find $\iint_D f(x,y) \, dx\,dy$.
+    c) What is the value of $c$ so that $\iint f(x,y) \, dx\,dy = 1$?
+    d) Find $Pr( X>0 \textrm{ and } Y>X )$ by shading in the area of the $xy$-plane corresponding to this event and then integrating $f(x,y)$ over this region. 

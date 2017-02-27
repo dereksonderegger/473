@@ -358,18 +358,32 @@
 </table></li>
 <li><p>Find <span class="math inline">\(Pr( X\ge 1 \textrm{ and } Y \ge 1 )\)</span></p></li>
 </ol></li>
-<li>Suppose we have a discrete joint distribution with probability function <span class="math display">\[f(x,y)=\]</span></li>
-</ol>
-<p>Suppose that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> have a discrete joint distribution for which the joint p.f. is defined as follows: <span class="math display">\[f(x,y) = \begin{cases}
+<li>Suppose that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> have a discrete joint distribution for which the joint p.f. is defined as follows: <span class="math display">\[f(x,y) = \begin{cases}
   c|x+y| &amp; \textrm{ for } x \in \{−2,−1,0,1,2\} \\
-         &amp; \textrm{ and } y \in \{−2,−1,0,1,2\} \\
+     &amp; \textrm{ and } y \in \{−2,−1,0,1,2\} \\
   0      &amp; \textrm{ otherwise. }
-  \end{cases}\]</span> a) Find the value of the constant <span class="math inline">\(c\)</span>. b) Find <span class="math inline">\(Pr(X = 0 \textrm{ and } Y =−2)\)</span>. c) Find <span class="math inline">\(Pr(X=1)\)</span> d) Find <span class="math inline">\(Pr(|X−Y|≤1)\)</span></p>
+  \end{cases}\]</span>
+<ol style="list-style-type: lower-alpha">
+<li>Find the value of the constant <span class="math inline">\(c\)</span>.</li>
+<li>Find <span class="math inline">\(Pr(X = 0 \textrm{ and } Y =−2)\)</span>.</li>
+<li>Find <span class="math inline">\(Pr(X=1)\)</span></li>
+<li>Find <span class="math inline">\(Pr(|X−Y|≤1)\)</span></li>
+</ol></li>
+</ol>
 </div>
 <div id="bivariate-continuous" class="section level3">
 <h3><span class="header-section-number">3.4.2</span> Bivariate Continuous</h3>
 <p>Two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> have a bivariate continuous distribution if there exists a non-negative function <span class="math inline">\(f(x,y)\)</span> such that for every subset <span class="math inline">\(C\)</span> of the <span class="math inline">\(xy\)</span>-plane <span class="math display">\[Pr\Big[ (X,Y)\in C\Big] = \iint_C f(x,y)\]</span></p>
-<p>Unsurprisingly, the requirements for a functio <span class="math inline">\(f(x,y\)</span> to be a joint pdf are: * <span class="math inline">\(f(x,y) \ge 0\)</span> for all <span class="math inline">\((x,y)\)</span> in <span class="math inline">\(\mathbb{R}^2\)</span> * <span class="math display">\[\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f(x,y) \, dx\,dy = 1\]</span></p>
+<p>Unsurprisingly, the requirements for a function <span class="math inline">\(f(x,y)\)</span> to be a joint pdf are: <span class="math display">\[f(x,y) \ge 0 \textrm{ for all } (x,y) \textrm{ in } \mathbb{R}^2\]</span> <span class="math display">\[\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f(x,y) \, dx\,dy = 1\]</span></p>
+<ol start="3" style="list-style-type: decimal">
+<li>Suppose the random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> have joint pdf <span class="math display">\[f(x,y) = c x^2 y \,\cdot I(x^2 \le y \le 1)\]</span>
+<ol style="list-style-type: lower-alpha">
+<li>Draw the support of this distribution by drawing the parabola <span class="math inline">\(y=x^2\)</span> on the <span class="math inline">\(xy\)</span>-plane and shade in the area for which <span class="math inline">\(f(x,y)&gt;0\)</span>. Denote this region as <span class="math inline">\(D\)</span></li>
+<li>Integrate <span class="math inline">\(f(x,y)\)</span> over its support. That is, find <span class="math inline">\(\iint_D f(x,y) \, dx\,dy\)</span>.</li>
+<li>What is the value of <span class="math inline">\(c\)</span> so that <span class="math inline">\(\iint f(x,y) \, dx\,dy = 1\)</span>?</li>
+<li>Find <span class="math inline">\(Pr( X&gt;0 \textrm{ and } Y&gt;X )\)</span> by shading in the area of the <span class="math inline">\(xy\)</span>-plane corresponding to this event and then integrating <span class="math inline">\(f(x,y)\)</span> over this region.</li>
+</ol></li>
+</ol>
 
 </div>
 </div>
