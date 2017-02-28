@@ -271,7 +271,7 @@ Consider the case where we have the joint pdf
 $$f(x,y) = 3x \, \cdot I(0\le y \le x \le 1)$$
 We could visualize this in 3-D but I find it easier to visualize the $xy$-plane and then let the height of the density function be represented by color.
 
-```{r, cache=TRUE, message=FALSE, warning=FALSE, echo=FALSE, fig.height=3}
+```{r, cache=TRUE, message=FALSE, warning=FALSE, echo=FALSE, fig.height=3, dev='jpeg'}
 library(ggplot2); library(dplyr);
 data <- expand.grid(x=seq(0,1,by=.001), y=seq(0,1,by=0.001))
 data <- data %>% mutate( 
@@ -322,7 +322,7 @@ Integrate[ Integrate[ 3*x, {y,x^2,x}], {x,0,0.5} ]
 $$f(x,y) = c x^2 y \,\cdot I(x^2 \le y \le 1)$$
     a) Draw the support of this distribution by drawing the parabola $y=x^2$ on the $xy$-plane and shade in the area for which $f(x,y)>0$. Denote this region as $D$
     b) Integrate $f(x,y)$ over its support.  That is, find $\iint_D f(x,y) \, dx\,dy$.
-    c) What is the value of $c$ so that $\iint f(x,y) \, dx\,dy = 1$?
+    c) What is the value of $c$ such that $\iint f(x,y) \, dx\,dy = 1$?
     d) Find $Pr( X>0 \textrm{ and } Y>X )$ by shading in the area of the $xy$-plane corresponding to this event and then integrating $f(x,y)$ over this region. 
     
     
