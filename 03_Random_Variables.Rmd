@@ -267,9 +267,70 @@ Unsurprisingly, the requirements for a function $f(x,y)$ to be a joint pdf are:
  $$f(x,y) \ge 0 \textrm{ for all } (x,y) \textrm{ in } \mathbb{R}^2$$
  $$\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f(x,y) \, dx\,dy = 1$$
  
+Consider the case where we have the joint pdf 
+$$f(x,y) = 3x \, \cdot I(0\le y \le x \le 1)$$
+We could visualize this in 3-D but I find it easier to visualize the $xy$-plane and then let the height of the density function be represented by color.
+
+```{r, cache=TRUE, message=FALSE, warning=FALSE, echo=FALSE, fig.height=3}
+library(ggplot2); library(dplyr);
+data <- expand.grid(x=seq(0,1,by=.001), y=seq(0,1,by=0.001))
+data <- data %>% mutate( 
+    support = 0 + (y <= x) * (x <= 1),
+    z = 3*x * support,
+    alpha = ifelse(support==1, 1, 0)) %>%
+  filter( x >= y )
+ggplot(data, aes(x=x, y=y, fill=z)) +
+  geom_tile() +
+  scale_fill_continuous(name='f(x,y)', low = 'blue', high='red')
+```
+ 
+We might now ask question such as "What is the probability that $X<.5$?" or "What is the probability that $Y>X^2$?  In both cases, we just need to integrate the density across the full area of interest.
+
+$$\begin{aligned} Pr( X \le 0.5 ) 
+  &= \int_0^{0.5} \int_0^x f(x,y) \,dy\,dx \\
+  &= \int_0^{0.5} \int_0^x 3x \,dy\,dx \\
+  &= \int_0^{0.5}  3xy \rvert_{y=0}^x \,dx \\
+  &= \int_0^{0.5}  3x^2 \,dx \\
+  &= x^3 \rvert_{x=0}^{0.5} \\
+  &= 0.5^3 \\
+  &= \frac{1}{8}
+  \end{aligned}$$
+  
+Notice that you could ask Wolfram Alpha for this by using the following:
+```{r, eval=FALSE}
+Integrate[ Integrate[ 3*x, {y,0,x}], {x,0,0.5} ]
+```
+
+Similarly we could ask
+$$\begin{aligned} Pr( Y > X^2 ) 
+  &= \int_0^{0.5} \int_{x^2}^x f(x,y) \,dy\,dx \\
+  &= \int_0^{0.5} \int_{x^2}^x 3x \,dy\,dx \\
+  &= \int_0^{0.5}  3xy \rvert_{y=x^2}^x \,dx \\
+  &= \int_0^{0.5}  3x^2 - 3x^3 \,dx \\
+  &= x^3 - \frac{3}{4}x^4 \rvert_{x=0}^{0.5} \\
+  &= \frac{1}{2^3} - \frac{3}{4}\frac{1}{2^4} \\
+  &= \frac{1}{8} - \frac{3}{64} \\
+  &= \frac{5}{64} = 0.078125
+  \end{aligned}$$
+  
+and verify this via Wolfram...
+```{r, eval=FALSE}
+Integrate[ Integrate[ 3*x, {y,x^2,x}], {x,0,0.5} ]
+```
+
 3. Suppose the random variables $X$ and $Y$ have joint pdf 
 $$f(x,y) = c x^2 y \,\cdot I(x^2 \le y \le 1)$$
     a) Draw the support of this distribution by drawing the parabola $y=x^2$ on the $xy$-plane and shade in the area for which $f(x,y)>0$. Denote this region as $D$
     b) Integrate $f(x,y)$ over its support.  That is, find $\iint_D f(x,y) \, dx\,dy$.
     c) What is the value of $c$ so that $\iint f(x,y) \, dx\,dy = 1$?
     d) Find $Pr( X>0 \textrm{ and } Y>X )$ by shading in the area of the $xy$-plane corresponding to this event and then integrating $f(x,y)$ over this region. 
+    
+    
+4. Suppose that we have random variables $X$ and $Y$ that measure the lifespan of two components in a electronic system. Their joint pdf is
+$$f(x,y) = \frac{1}{8} x e^{-(x+y)/2} \,\cdot I(x>0,\,y>0)$$
+    a) Graph the support of this function along with contour lines or shading that indicates where the density is high and where is is near zero.
+    b) Find $Pr(X>1 \textrm{ and } Y>1)$
+    
+
+The joint CDF of the bivariate distribution is defined as we would expect it:
+$$F(x,y) = Pr( X\le x, \textrm{ and } Y\le y)$$

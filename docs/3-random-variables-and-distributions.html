@@ -51,6 +51,43 @@
 
 
 
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -375,6 +412,32 @@
 <h3><span class="header-section-number">3.4.2</span> Bivariate Continuous</h3>
 <p>Two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> have a bivariate continuous distribution if there exists a non-negative function <span class="math inline">\(f(x,y)\)</span> such that for every subset <span class="math inline">\(C\)</span> of the <span class="math inline">\(xy\)</span>-plane <span class="math display">\[Pr\Big[ (X,Y)\in C\Big] = \iint_C f(x,y)\]</span></p>
 <p>Unsurprisingly, the requirements for a function <span class="math inline">\(f(x,y)\)</span> to be a joint pdf are: <span class="math display">\[f(x,y) \ge 0 \textrm{ for all } (x,y) \textrm{ in } \mathbb{R}^2\]</span> <span class="math display">\[\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f(x,y) \, dx\,dy = 1\]</span></p>
+<p>Consider the case where we have the joint pdf <span class="math display">\[f(x,y) = 3x \, \cdot I(0\le y \le x \le 1)\]</span> We could visualize this in 3-D but I find it easier to visualize the <span class="math inline">\(xy\)</span>-plane and then let the height of the density function be represented by color.</p>
+<p><img src="Probability_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>We might now ask question such as “What is the probability that <span class="math inline">\(X&lt;.5\)</span>?” or “What is the probability that <span class="math inline">\(Y&gt;X^2\)</span>? In both cases, we just need to integrate the density across the full area of interest.</p>
+<p><span class="math display">\[\begin{aligned} Pr( X \le 0.5 ) 
+  &amp;= \int_0^{0.5} \int_0^x f(x,y) \,dy\,dx \\
+  &amp;= \int_0^{0.5} \int_0^x 3x \,dy\,dx \\
+  &amp;= \int_0^{0.5}  3xy \rvert_{y=0}^x \,dx \\
+  &amp;= \int_0^{0.5}  3x^2 \,dx \\
+  &amp;= x^3 \rvert_{x=0}^{0.5} \\
+  &amp;= 0.5^3 \\
+  &amp;= \frac{1}{8}
+  \end{aligned}\]</span></p>
+<p>Notice that you could ask Wolfram Alpha for this by using the following:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Integrate[ Integrate[ <span class="dv">3</span>*x, {y,<span class="dv">0</span>,x}], {x,<span class="dv">0</span>,<span class="fl">0.5</span>} ]</code></pre></div>
+<p>Similarly we could ask <span class="math display">\[\begin{aligned} Pr( Y &gt; X^2 ) 
+  &amp;= \int_0^{0.5} \int_{x^2}^x f(x,y) \,dy\,dx \\
+  &amp;= \int_0^{0.5} \int_{x^2}^x 3x \,dy\,dx \\
+  &amp;= \int_0^{0.5}  3xy \rvert_{y=x^2}^x \,dx \\
+  &amp;= \int_0^{0.5}  3x^2 - 3x^3 \,dx \\
+  &amp;= x^3 - \frac{3}{4}x^4 \rvert_{x=0}^{0.5} \\
+  &amp;= \frac{1}{2^3} - \frac{3}{4}\frac{1}{2^4} \\
+  &amp;= \frac{1}{8} - \frac{3}{64} \\
+  &amp;= \frac{5}{64} = 0.078125
+  \end{aligned}\]</span></p>
+<p>and verify this via Wolfram…</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Integrate[ Integrate[ <span class="dv">3</span>*x, {y,x^<span class="dv">2</span>,x}], {x,<span class="dv">0</span>,<span class="fl">0.5</span>} ]</code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li>Suppose the random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> have joint pdf <span class="math display">\[f(x,y) = c x^2 y \,\cdot I(x^2 \le y \le 1)\]</span>
 <ol style="list-style-type: lower-alpha">
@@ -383,7 +446,13 @@
 <li>What is the value of <span class="math inline">\(c\)</span> so that <span class="math inline">\(\iint f(x,y) \, dx\,dy = 1\)</span>?</li>
 <li>Find <span class="math inline">\(Pr( X&gt;0 \textrm{ and } Y&gt;X )\)</span> by shading in the area of the <span class="math inline">\(xy\)</span>-plane corresponding to this event and then integrating <span class="math inline">\(f(x,y)\)</span> over this region.</li>
 </ol></li>
+<li>Suppose that we have random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> that measure the lifespan of two components in a electronic system. Their joint pdf is <span class="math display">\[f(x,y) = \frac{1}{8} x e^{-(x+y)/2} \,\cdot I(x&gt;0,\,y&gt;0)\]</span>
+<ol style="list-style-type: lower-alpha">
+<li>Graph the support of this function along with contour lines or shading that indicates where the density is high and where is is near zero.</li>
+<li>Find <span class="math inline">\(Pr(X&gt;1 \textrm{ and } Y&gt;1)\)</span></li>
+</ol></li>
 </ol>
+<p>The joint CDF of the bivariate distribution is defined as we would expect it: <span class="math display">\[F(x,y) = Pr( X\le x, \textrm{ and } Y\le y)\]</span></p>
 
 </div>
 </div>
