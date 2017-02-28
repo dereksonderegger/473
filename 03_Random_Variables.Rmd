@@ -249,14 +249,14 @@ We first consider the case where both variables are discrete. In this case, the 
 
 2. Suppose that $X$ and $Y$ have a discrete joint distribution for which the joint p.f. is defined as follows:
 $$f(x,y) = \begin{cases}
-  c|x+y| & \textrm{ for } x \in \{−2,−1,0,1,2\} \\
-         & \textrm{ and } y \in \{−2,−1,0,1,2\} \\
+  c|x+y| & \textrm{ for } x \in \{-2, -1, 0, 1, 2 \} \\
+         & \textrm{ and } y \in \{-2, -1, 0, 1, 2 \} \\
   0      & \textrm{ otherwise. }
   \end{cases}$$
     a) Find the value of the constant $c$.
-    b) Find $Pr(X = 0 \textrm{ and } Y =−2)$.
+    b) Find $Pr(X = 0 \textrm{ and } Y = -2)$.
     c) Find $Pr(X=1)$
-    d) Find $Pr(|X−Y|≤1)$
+    d) Find $Pr(|X−Y| \le 1)$
     
 
 ### Bivariate Continuous
@@ -284,7 +284,7 @@ ggplot(data, aes(x=x, y=y, fill=z)) +
   scale_fill_continuous(name='f(x,y)', low = 'blue', high='red')
 ```
  
-We might now ask question such as "What is the probability that $X<.5$?" or "What is the probability that $Y>X^2$?  In both cases, we just need to integrate the density across the full area of interest.
+We might now ask question such as "What is the probability that $X \le 0.5$?" or "What is the probability that $Y>X^2$?  In both cases, we just need to integrate the density across the full area of interest.
 
 $$\begin{aligned} Pr( X \le 0.5 ) 
   &= \int_0^{0.5} \int_0^x f(x,y) \,dy\,dx \\
