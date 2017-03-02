@@ -26,7 +26,7 @@
 <meta name="author" content="Derek L. Sonderegger">
 
 
-<meta name="date" content="2017-02-28">
+<meta name="date" content="2017-03-02">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -127,6 +127,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.4" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#bivariate-distributions"><i class="fa fa-check"></i><b>3.4</b> Bivariate Distributions</a><ul>
 <li class="chapter" data-level="3.4.1" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#bivariate-discrete"><i class="fa fa-check"></i><b>3.4.1</b> Bivariate Discrete</a></li>
 <li class="chapter" data-level="3.4.2" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#bivariate-continuous"><i class="fa fa-check"></i><b>3.4.2</b> Bivariate Continuous</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#marginal-distributions"><i class="fa fa-check"></i><b>3.5</b> Marginal Distributions</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#discrete-case"><i class="fa fa-check"></i><b>3.5.1</b> Discrete Case</a></li>
+<li class="chapter" data-level="3.5.2" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#continuous-case"><i class="fa fa-check"></i><b>3.5.2</b> Continuous Case</a></li>
+<li class="chapter" data-level="3.5.3" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#independence-1"><i class="fa fa-check"></i><b>3.5.3</b> Independence</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -425,7 +430,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   &amp;= \frac{1}{8}
   \end{aligned}\]</span></p>
 <p>Notice that you could ask Wolfram Alpha for this by using the following:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Integrate[ Integrate[ <span class="dv">3</span>*x, {y,<span class="dv">0</span>,x}], {x,<span class="dv">0</span>,<span class="fl">0.5</span>} ]</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Integrate[ Integrate[ <span class="dv">3</span>*x, {y,<span class="dv">0</span>,x}], {x,<span class="dv">0</span>,<span class="fl">0.5</span>} ] ]</code></pre></div>
 <p>Similarly we could ask <span class="math display">\[\begin{aligned} Pr( Y &gt; X^2 ) 
   &amp;= \int_0^{0.5} \int_{x^2}^x f(x,y) \,dy\,dx \\
   &amp;= \int_0^{0.5} \int_{x^2}^x 3x \,dy\,dx \\
@@ -437,7 +442,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   &amp;= \frac{5}{64} = 0.078125
   \end{aligned}\]</span></p>
 <p>and verify this via Wolfram…</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Integrate[ Integrate[ <span class="dv">3</span>*x, {y,x^<span class="dv">2</span>,x}], {x,<span class="dv">0</span>,<span class="fl">0.5</span>} ]</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Integrate[ Integrate[ <span class="dv">3</span>*x, {y,x^<span class="dv">2</span>,x}], {x,<span class="dv">0</span>,<span class="fl">0.5</span>} ] ]</code></pre></div>
+<p>The joint CDF of the bivariate distribution is defined as we would expect it: <span class="math display">\[F(x,y) = Pr( X\le x, \textrm{ and } Y\le y)\]</span></p>
+<p>Just as in the univariate case, <span class="math inline">\(F(x,y)\)</span> is non-decreasing <span class="math inline">\(x\)</span> for every fixed value of <span class="math inline">\(y\)</span> and as well as non-decreasing in <span class="math inline">\(y\)</span> for every fixed value of <span class="math inline">\(x\)</span>.</p>
+<p><strong>Claims</strong>: Suppose that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> have joint cdf <span class="math inline">\(F(x,y)\)</span>. Define the cdf of <span class="math inline">\(X\)</span> as <span class="math inline">\(F_1(x)\)</span> and the cdf of <span class="math inline">\(Y\)</span> as <span class="math inline">\(F_2(y)\)</span>. Then <span class="math display">\[F_1(x) = \lim_{y\to\infty} F(x,y)\]</span> <span class="math display">\[F_2(y) = \lim_{x\to\infty} F(x,y)\]</span> <span class="math display">\[F(x,y) = \int_{-\infty}^x \int_{-\infty}^y f(u,v) \, dv\,du\]</span> <span class="math display">\[f(x,y) = \frac{\partial^2 F(x,y)}{\partial x \partial y} = \frac{\partial^2 F(x,y)}{\partial y \partial x}\]</span> assuming the integrals and derivatives exist.</p>
 <ol start="3" style="list-style-type: decimal">
 <li>Suppose the random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> have joint pdf <span class="math display">\[f(x,y) = c x^2 y \,\cdot I(x^2 \le y \le 1)\]</span>
 <ol style="list-style-type: lower-alpha">
@@ -451,8 +459,162 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>Graph the support of this function along with contour lines or shading that indicates where the density is high and where is is near zero.</li>
 <li>Find <span class="math inline">\(Pr(X&gt;1 \textrm{ and } Y&gt;1)\)</span></li>
 </ol></li>
+<li>Suppose that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> have a continuous joint distribution for which the joint pdf is defined as follows: <span class="math display">\[f(x,y)=c y^2 \,\cdot I( 0\le x \le 2, \;\; 0 \le y \le 1)\]</span>
+<ol style="list-style-type: lower-alpha">
+<li>Graph the support of this pdf along with contour lines or shading that indicates the relative value of the density.</li>
+<li>Determine the value of the constant <span class="math inline">\(c\)</span>.</li>
+<li>Find <span class="math inline">\(Pr( X+Y \ge 2 )\)</span></li>
+<li>Find <span class="math inline">\(Pr( X \le 1 )\)</span></li>
+</ol></li>
+<li>Suppose that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> have a continuous joint distribution for which the joint pdf is defined as follows: <span class="math display">\[f(x,y)=c (x^2 + y \,\cdot I( 0 \le y \le 1-x^2)\]</span>
+<ol style="list-style-type: lower-alpha">
+<li>Graph the support of this pdf along with contour lines or shading that indicates the relative value of the density.</li>
+<li>Determine the value of the constant <span class="math inline">\(c\)</span>.</li>
+<li>Find <span class="math inline">\(Pr( X \le 1/2 )\)</span></li>
+<li>Find <span class="math inline">\(Pr( Y \le X+1 )\)</span></li>
+</ol></li>
 </ol>
-<p>The joint CDF of the bivariate distribution is defined as we would expect it: <span class="math display">\[F(x,y) = Pr( X\le x, \textrm{ and } Y\le y)\]</span></p>
+</div>
+</div>
+<div id="marginal-distributions" class="section level2">
+<h2><span class="header-section-number">3.5</span> Marginal Distributions</h2>
+<p>We might be given a joint distribution via its cdf <span class="math inline">\(F(x,y)\)</span> or pf/pdf <span class="math inline">\(f(x,y)\)</span>. Often we want to be able to ignore one or the other random variables and just consider <span class="math inline">\(X\)</span> or <span class="math inline">\(Y\)</span>. So we want to understand how to take the joint distribution and obtain the <em>marginal</em> distributions of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>. We call them marginal because we are taking the <span class="math inline">\(xy\)</span>-plane (or table) and pushing all the probability density (or actual probability) to the <span class="math inline">\(X\)</span> or <span class="math inline">\(Y\)</span> margins.</p>
+<div id="discrete-case" class="section level3">
+<h3><span class="header-section-number">3.5.1</span> Discrete Case</h3>
+<p><strong>Example</strong> Suppose we have the discrete pf <span class="math display">\[f(x,y) = \frac{3-x-y}{8} \;\cdot I(x\in \{0,1\}, \;y\in \{0,1\}\]</span>. Then the table of values for <span class="math inline">\(f(x,y)\)</span> is</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(f(x,y)\)</span></th>
+<th align="center"><span class="math inline">\(x=0\)</span></th>
+<th align="center"><span class="math inline">\(x=1\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(y=0\)</span></td>
+<td align="center"><span class="math inline">\(\frac{3}{8}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{2}{8}\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(y=1\)</span></td>
+<td align="center"><span class="math inline">\(\frac{2}{8}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{1}{8}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>We can easily calculate that <span class="math inline">\(Pr( X = 0 )\)</span> by simply summing the column of <span class="math inline">\(x=0\)</span> probabilities. In general we could write <span class="math display">\[f_1(x) = \sum_{\textrm{all }y} f(x,y)\]</span> We can do the same for <span class="math inline">\(Y\)</span> and calculate <span class="math display">\[f_2(y) = \sum_{\textrm{all }x} f(x,y)\]</span></p>
+<p>In the table, the just means summing across the rows and columns:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(f(x,y)\)</span></th>
+<th align="center"><span class="math inline">\(x=0\)</span></th>
+<th align="center"><span class="math inline">\(x=1\)</span></th>
+<th align="center"><strong>Total</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(y=0\)</span></td>
+<td align="center"><span class="math inline">\(\frac{3}{8}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{2}{8}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{5}{8}\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(y=1\)</span></td>
+<td align="center"><span class="math inline">\(\frac{2}{8}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{1}{8}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{3}{8}\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>Total</strong></td>
+<td align="center"><span class="math inline">\(\frac{5}{8}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{3}{8}\)</span></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p>Similarly we could see that <span class="math display">\[\begin{aligned} F_1(x) 
+  &amp;= Pr(X\le x) \\
+  &amp;= Pr(X\le x, Y=\textrm{ anything }) \\
+  &amp;=  \sum_{u \le x} \sum_{\textrm{all }y} f(u,y)
+  \end{aligned}\]</span></p>
+</div>
+<div id="continuous-case" class="section level3">
+<h3><span class="header-section-number">3.5.2</span> Continuous Case</h3>
+<p>In the continuous case, we have a similar relationship, but we want to be careful and define things first using the cdf.</p>
+<p>Again we define the marginal cdf of <span class="math inline">\(X\)</span> as</p>
+<p><span class="math display">\[\begin{aligned} F_1(x) 
+  &amp;= Pr( X \le x ) \\
+  &amp;= Pr( X \le x, Y=\textrm{anything}) \\
+  &amp;= \int_{-\infty}^x \int_{-\infty}^{\infty} f(u,y) \;dy\,du
+  \end{aligned}\]</span></p>
+<p>But recall how we initially defined the pdf of the distribution. It was whatever function you had to integrate such that you happily got the cdf. So therefore by that definition</p>
+<p><span class="math display">\[\begin{aligned} F_1(x) 
+  &amp;= \int_{-\infty}^x \underbrace{ \int_{-\infty}^{\infty} f(u,y) \;dy }_{f_1(u)}\;\;du
+  \end{aligned}\]</span></p>
+<p>And we can now see that <span class="math display">\[f_1(x) = \int_{-\infty}^{\infty} f(x,y) \, dy\]</span> and similarly <span class="math display">\[f_2(y) = \int_{-\infty}^{\infty} f(x,y) \, dx\]</span></p>
+<ol style="list-style-type: decimal">
+<li>Recall the joint pdf <span class="math display">\[f(x,y) = \frac{21}{4} x^2 y \,\cdot I(x^2 \le y \le 1)\]</span>
+<ol style="list-style-type: lower-alpha">
+<li>Graph the joint pdf <span class="math inline">\(f(x,y)\)</span> by graphing the support of the distribution on the <span class="math inline">\(xy\)</span>-plane and</li>
+<li>Find and graph the marginal pdf of <span class="math inline">\(X\)</span>, <span class="math inline">\(f_1(x)\)</span>.</li>
+<li>Find and graph the marginal pdf of <span class="math inline">\(Y\)</span>, <span class="math inline">\(f_2(y)\)</span>.</li>
+</ol></li>
+<li>Suppose we have the continuous joint distribution <span class="math display">\[f(x,y) = \frac{3}{2} y^2 \,\cdot I(0\le x \le 2, 0 \le y \le 1)\]</span>
+<ol style="list-style-type: lower-alpha">
+<li>Graph the joint pdf <span class="math inline">\(f(x,y)\)</span> by graphing the support of the distribution on the <span class="math inline">\(xy\)</span>-plane and</li>
+<li>Find and graph the marginal pdf of <span class="math inline">\(X\)</span>, <span class="math inline">\(f_1(x)\)</span>.</li>
+<li>Find and graph the marginal pdf of <span class="math inline">\(Y\)</span>, <span class="math inline">\(f_2(y)\)</span>.</li>
+</ol></li>
+<li><strong>Indentical marginal distrubutions don’t imply identical joint distributions.</strong> Create two discrete joint distributions that are different but yet have the same marginal distributions. Feel free to define the joint distributions by two tables of values instead of working out some functional form for <span class="math inline">\(f(x,y)\)</span>.</li>
+</ol>
+</div>
+<div id="independence-1" class="section level3">
+<h3><span class="header-section-number">3.5.3</span> Independence</h3>
+<p>Recall that we had defined that events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are indepenedent if <span class="math inline">\(Pr(A\cap B) = Pr(A)Pr(B)\)</span>. Equivalently we can define that random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent if <span class="math inline">\(Pr( X \le x, Y \le y) = Pr(X\le x)Pr(Y\le y)\)</span> for all <span class="math inline">\(x,y\)</span>. This is equivalent to <span class="math display">\[F(x,y) = F_1(x) F_2(y)\]</span></p>
+<p>In the discrete case, it is clear that<br />
+<span class="math display">\[Pr( X \le x, Y \le y) = Pr(X\le x)Pr(Y\le y) \textrm{ for all } x,y\]</span> is equivalent to <span class="math display">\[Pr( X = x, Y=y) = Pr(X=x)Pr(Y=y) \textrm{ for all } x,y\]</span> and therefore we could use an equivalent criteria for independence that <span class="math display">\[f(x,y) = f_1(x)f_2(y)\]</span></p>
+<p>In the continuous case, we see that if <span class="math inline">\(F(x,y) = F_1(x) F_2(y)\)</span> then <span class="math display">\[\begin{aligned}f(x,y) 
+  &amp;= \frac{\partial}{\partial x \partial y} F(x,y) \\
+  &amp;= \frac{\partial}{\partial x \partial y} F_1(x) F_2(y) \\
+  &amp;= \frac{\partial}{\partial x } F_1(x) \frac{\partial}{\partial y} F_2(y) \\
+  &amp;= f_1(x) f_2(y)
+  \end{aligned}\]</span> There is nothing in this sequence of equalities that can’t be done in reverse so we see this is another equivalent criteria for indepence.</p>
+<p>The critical aspect of this definition of independence is that the joint cdf or pf/pdf factors into two functions <span class="math inline">\(h_1(x)\)</span> and <span class="math inline">\(h_2(y)\)</span>. Typically we think of these as the marginal distributions, but they might be off by some constant value and that is acceptable. That is to say, <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent if and only if <span class="math display">\[f(x,y) = h_1(x) h_2(y)\]</span> where <span class="math inline">\(f_1(x) = c_1 h_1(x)\)</span> and <span class="math inline">\(f_2(y) = c_2 h_2(y)\)</span> for some <span class="math inline">\(c_1\)</span> amd <span class="math inline">\(c_2\)</span>. We note this just so that we can show two variables are independent without bothering to figure out how the integrating constant gets divided up between the two marginal distributions.</p>
+<p><strong>Example</strong> Suppose that <span class="math display">\[f(x,y) = \frac{3}{16} xy^2 \, \cdot I(0\le x \le 2, \; 0 \le y \le 2)\]</span> Then it is clear that we could factor <span class="math inline">\(f(x,y)\)</span> into <span class="math display">\[f(x,y) = \underbrace{\frac{3}{16} x \cdot I(0\le x \le 2)}_{h_1(x)} \;\;\;\underbrace{y^2 \cdot I(0 \le y \le 2)}_{h_2(y)}\]</span> but I know that <span class="math inline">\(h_2(y)\)</span> isn’t exactly the marginal distribution of <span class="math inline">\(Y\)</span> because it doens’t integrate to 1. I’m too lazy to figure out that I need to break the <span class="math inline">\(3/16\)</span> multiplier into two pieces and distribute it to make <span class="math inline">\(h_1(x)\)</span> and <span class="math inline">\(h_2(y)\)</span> into the marginals, but I know that I could do it if I had to.</p>
+<p>Notice that the indicator function has to be split up and appropriately grouped into the <span class="math inline">\(h_1(x)\)</span> and <span class="math inline">\(h_2(y)\)</span> terms. If that cannot happen, then the variables cannot be independent.</p>
+<p>Notice that if <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent, then for any functions <span class="math inline">\(g_1(\cdot)\)</span> and <span class="math inline">\(g_2(\cdot)\)</span> we have that there is <span class="math inline">\(C_1 = \{x : g_1(x) \le u \}\)</span> and <span class="math inline">\(C_2 = \{ y : g_2(y) \le v\}\)</span> and therefore <span class="math display">\[\begin{aligned} Pr( g_1(X) \le u, g_2(Y) \le v ) 
+  &amp;= Pr( X \in C_1, Y \in C_2 ) \\
+  &amp;= Pr(X \in C_1) Pr(Y \in C_2) \\
+  &amp;= Pr( g_1(X) \le v ) Pr( g_2(Y) \le u )
+  \end{aligned}\]</span> and therefore separate functions of independent random variables are also independent.</p>
+<ol start="4" style="list-style-type: decimal">
+<li>Suppose we have the continuous joint distribution <span class="math display">\[f(x,y) = \frac{3}{2} y^2 \,\cdot I(0\le x \le 2, 0 \le y \le 1)\]</span>
+<ol style="list-style-type: lower-alpha">
+<li>Are <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> independent?</li>
+<li>Are the events <span class="math inline">\(\{X&lt;1\}\)</span> and <span class="math inline">\(\{Y \ge 1\}\)</span> independent?</li>
+</ol></li>
+<li>Suppose that the joint pdf of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is <span class="math display">\[f(x,y) = \frac{15}{4} x^2 \; \cdot I(0\le y \le 1-x^2)\]</span>
+<ol style="list-style-type: lower-alpha">
+<li>Sketch the region of support of the joint distribution.</li>
+<li>Determine the marginal pdfs of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</li>
+<li>Are <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> independent? Justify your answer.</li>
+</ol></li>
+<li>Suppose that the amount of sugar (in grams) I add to my tea each day has a pdf <span class="math display">\[f(x) = \frac{3}{8} x^2 \; \cdot I(0 \le x \le 2)\]</span> Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be the amount added on two successive days and suppose that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent.
+<ol style="list-style-type: lower-alpha">
+<li>Find the joint pdf of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</li>
+<li>Find <span class="math inline">\(Pr( X &lt; Y )\)</span>.</li>
+<li>Find <span class="math inline">\(Pr( X + Y \le 2)\)</span>.</li>
+</ol></li>
+<li>Suppose that a point <span class="math inline">\((X,Y)\)</span> is chosen randomly from the unit disc <span class="math display">\[S=\{(x,y) : x^2 + y^2 \le 1\}\]</span>. <em>(In general, when we say something like “a point is chosen randomly”, we mean that <span class="math inline">\(f(x,y) = c\)</span> for some constant <span class="math inline">\(c\)</span> for all values of <span class="math inline">\((x,y)\)</span> in the support. In other words, “at random” means “follows a uniform distribution on the support.”)</em>
+<ol style="list-style-type: lower-alpha">
+<li>Determine the joint and marginal pdfs of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</li>
+<li>Are <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> independent?</li>
+</ol></li>
+<li>Suppose that Alice and Barbara plan to meet at Macy’s Coffee shop. Each person will arrive randomly between 5 pm and 6 pm. Each person will arrive and wait for the other for at most 15 minutes. What is the probability that they will meet up? <em>Hint: Draw the region of support and sub-region where they meet up. Because the density is constant, you could skip the integration and just do some geometry, but be careful!</em></li>
+</ol>
 
 </div>
 </div>
