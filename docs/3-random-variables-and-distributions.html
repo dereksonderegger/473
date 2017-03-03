@@ -26,7 +26,7 @@
 <meta name="author" content="Derek L. Sonderegger">
 
 
-<meta name="date" content="2017-03-02">
+<meta name="date" content="2017-03-03">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -133,6 +133,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.5.2" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#continuous-case"><i class="fa fa-check"></i><b>3.5.2</b> Continuous Case</a></li>
 <li class="chapter" data-level="3.5.3" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#independence-1"><i class="fa fa-check"></i><b>3.5.3</b> Independence</a></li>
 </ul></li>
+<li class="chapter" data-level="3.6" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#conditional-distributions"><i class="fa fa-check"></i><b>3.6</b> Conditional Distributions</a></li>
 </ul></li>
 </ul>
 
@@ -312,7 +313,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>What values could <span class="math inline">\(X\)</span> take? Mathematically, we say, what is the support of <span class="math inline">\(X\)</span>?</li>
 <li>Is <span class="math inline">\(X\)</span> a continuous or discrete random variable?</li>
 <li>Find the probability function, <span class="math inline">\(f(x)\)</span>.</li>
-<li>Show that cummulative distribution function is <span class="math inline">\(F(x) = 1 - (1-p)^x\)</span>. <em>Hint: Geometric Series!</em></li>
+<li>Show that cumulative distribution function is <span class="math inline">\(F(x) = 1 - (1-p)^x\)</span>. <em>Hint: Geometric Series!</em></li>
 </ol></li>
 </ol>
 <p>For continuous random variables it is relatively easy to go back and forth from the cdf to the pdf (assuming the integration and differentiation isn’t too hard). <span class="math display">\[ F(x) = \int_\infty ^x f(u) \, du\]</span> <span class="math display">\[ f(x) = \frac{d}{dx}\, F(x)\]</span></p>
@@ -346,7 +347,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>Suppose that a point in the <span class="math inline">\(xy\)</span>-plane is chosen at random from the interior of the unit circle, which is the circle centered at <span class="math inline">\(\{0,0\}\)</span> with radius 1. Notice the probability that the chosen point belongs to a given region is proportional to the area of the region. Let the random variable <span class="math inline">\(Z\)</span> represent the distance of the point to the origin.
 <ol style="list-style-type: lower-alpha">
 <li>What is the median of the distribution? That is, find the value <span class="math inline">\(z\)</span> such that <span class="math inline">\(Pr(Z \le z)=0.5\)</span>.</li>
-<li>Again sketch the pdf and cdf of this distribution and reperesent the median on both graphs along with pertinent information showing that indeed the value you found is the median.</li>
+<li>Again sketch the pdf and cdf of this distribution and represent the median on both graphs along with pertinent information showing that indeed the value you found is the median.</li>
 <li>What is the <span class="math inline">\(75\)</span>th percentile? Follow your previous steps in part (a) and (b).</li>
 </ol></li>
 <li><strong>Binomial Distribution</strong> Again we consider the binomial distribution but now with parameters <span class="math inline">\(n=6\)</span> and probability of success <span class="math inline">\(p=0.4\)</span>.
@@ -359,7 +360,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="bivariate-distributions" class="section level2">
 <h2><span class="header-section-number">3.4</span> Bivariate Distributions</h2>
-<p>We now consider the case of having two random variables. We can think of selecting an individual from a population and measuring two (or more!) variables. For example, we might select a NAU student and measure both their height and weight and we want to understand how those two measurements vary. It should be clear that there is a positive correlation (taller people also tend to weigh more) and we want to estabilish the mathematical framework to address questions such as this.</p>
+<p>We now consider the case of having two random variables. We can think of selecting an individual from a population and measuring two (or more!) variables. For example, we might select a NAU student and measure both their height and weight and we want to understand how those two measurements vary. It should be clear that there is a positive correlation (taller people also tend to weigh more) and we want to establish the mathematical framework to address questions such as this.</p>
 <p>In general we will consider the distribution of 2 or more random variables and we will call this the <em>joint distribution</em>. In the bivariate case, we will consider the joint distribution of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</p>
 <div id="bivariate-discrete" class="section level3">
 <h3><span class="header-section-number">3.4.1</span> Bivariate Discrete</h3>
@@ -519,18 +520,18 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <td align="center"><span class="math inline">\(y=0\)</span></td>
 <td align="center"><span class="math inline">\(\frac{3}{8}\)</span></td>
 <td align="center"><span class="math inline">\(\frac{2}{8}\)</span></td>
-<td align="center"><span class="math inline">\(\frac{5}{8}\)</span></td>
+<td align="center"><span class="math inline">\(\mathbf{\frac{5}{8}}\)</span></td>
 </tr>
 <tr class="even">
 <td align="center"><span class="math inline">\(y=1\)</span></td>
 <td align="center"><span class="math inline">\(\frac{2}{8}\)</span></td>
 <td align="center"><span class="math inline">\(\frac{1}{8}\)</span></td>
-<td align="center"><span class="math inline">\(\frac{3}{8}\)</span></td>
+<td align="center"><span class="math inline">\(\mathbf{\frac{3}{8}}\)</span></td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>Total</strong></td>
-<td align="center"><span class="math inline">\(\frac{5}{8}\)</span></td>
-<td align="center"><span class="math inline">\(\frac{3}{8}\)</span></td>
+<td align="center"><span class="math inline">\(\mathbf{\frac{5}{8}}\)</span></td>
+<td align="center"><span class="math inline">\(\mathbf{\frac{3}{8}}\)</span></td>
 <td align="center"></td>
 </tr>
 </tbody>
@@ -573,7 +574,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="independence-1" class="section level3">
 <h3><span class="header-section-number">3.5.3</span> Independence</h3>
-<p>Recall that we had defined that events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are indepenedent if <span class="math inline">\(Pr(A\cap B) = Pr(A)Pr(B)\)</span>. Equivalently we can define that random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent if <span class="math inline">\(Pr( X \le x, Y \le y) = Pr(X\le x)Pr(Y\le y)\)</span> for all <span class="math inline">\(x,y\)</span>. This is equivalent to <span class="math display">\[F(x,y) = F_1(x) F_2(y)\]</span></p>
+<p>Recall that we had defined that events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent if <span class="math inline">\(Pr(A\cap B) = Pr(A)Pr(B)\)</span>. Equivalently we can define that random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent if <span class="math inline">\(Pr( X \le x, Y \le y) = Pr(X\le x)Pr(Y\le y)\)</span> for all <span class="math inline">\(x,y\)</span>. This is equivalent to <span class="math display">\[F(x,y) = F_1(x) F_2(y)\]</span></p>
 <p>In the discrete case, it is clear that<br />
 <span class="math display">\[Pr( X \le x, Y \le y) = Pr(X\le x)Pr(Y\le y) \textrm{ for all } x,y\]</span> is equivalent to <span class="math display">\[Pr( X = x, Y=y) = Pr(X=x)Pr(Y=y) \textrm{ for all } x,y\]</span> and therefore we could use an equivalent criteria for independence that <span class="math display">\[f(x,y) = f_1(x)f_2(y)\]</span></p>
 <p>In the continuous case, we see that if <span class="math inline">\(F(x,y) = F_1(x) F_2(y)\)</span> then <span class="math display">\[\begin{aligned}f(x,y) 
@@ -581,14 +582,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   &amp;= \frac{\partial}{\partial x \partial y} F_1(x) F_2(y) \\
   &amp;= \frac{\partial}{\partial x } F_1(x) \frac{\partial}{\partial y} F_2(y) \\
   &amp;= f_1(x) f_2(y)
-  \end{aligned}\]</span> There is nothing in this sequence of equalities that can’t be done in reverse so we see this is another equivalent criteria for indepence.</p>
-<p>The critical aspect of this definition of independence is that the joint cdf or pf/pdf factors into two functions <span class="math inline">\(h_1(x)\)</span> and <span class="math inline">\(h_2(y)\)</span>. Typically we think of these as the marginal distributions, but they might be off by some constant value and that is acceptable. That is to say, <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent if and only if <span class="math display">\[f(x,y) = h_1(x) h_2(y)\]</span> where <span class="math inline">\(f_1(x) = c_1 h_1(x)\)</span> and <span class="math inline">\(f_2(y) = c_2 h_2(y)\)</span> for some <span class="math inline">\(c_1\)</span> amd <span class="math inline">\(c_2\)</span>. We note this just so that we can show two variables are independent without bothering to figure out how the integrating constant gets divided up between the two marginal distributions.</p>
-<p><strong>Example</strong> Suppose that <span class="math display">\[f(x,y) = \frac{3}{16} xy^2 \, \cdot I(0\le x \le 2, \; 0 \le y \le 2)\]</span> Then it is clear that we could factor <span class="math inline">\(f(x,y)\)</span> into <span class="math display">\[f(x,y) = \underbrace{\frac{3}{16} x \cdot I(0\le x \le 2)}_{h_1(x)} \;\;\;\underbrace{y^2 \cdot I(0 \le y \le 2)}_{h_2(y)}\]</span> but I know that <span class="math inline">\(h_2(y)\)</span> isn’t exactly the marginal distribution of <span class="math inline">\(Y\)</span> because it doens’t integrate to 1. I’m too lazy to figure out that I need to break the <span class="math inline">\(3/16\)</span> multiplier into two pieces and distribute it to make <span class="math inline">\(h_1(x)\)</span> and <span class="math inline">\(h_2(y)\)</span> into the marginals, but I know that I could do it if I had to.</p>
+  \end{aligned}\]</span> There is nothing in this sequence of equalities that can’t be done in reverse so we see this is another equivalent criteria for independence.</p>
+<p>The critical aspect of this definition of independence is that the joint cdf or pf/pdf factors into two functions <span class="math inline">\(h_1(x)\)</span> and <span class="math inline">\(h_2(y)\)</span>. Typically we think of these as the marginal distributions, but they might be off by some constant value and that is acceptable. That is to say, <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent if and only if <span class="math display">\[f(x,y) = h_1(x) h_2(y)\]</span> where <span class="math inline">\(f_1(x) = c_1 h_1(x)\)</span> and <span class="math inline">\(f_2(y) = c_2 h_2(y)\)</span> for some <span class="math inline">\(c_1\)</span> and <span class="math inline">\(c_2\)</span>. We note this just so that we can show two variables are independent without bothering to figure out how the integrating constant gets divided up between the two marginal distributions.</p>
+<p><strong>Example</strong> Suppose that <span class="math display">\[f(x,y) = \frac{3}{16} xy^2 \, \cdot I(0\le x \le 2, \; 0 \le y \le 2)\]</span> Then it is clear that we could factor <span class="math inline">\(f(x,y)\)</span> into <span class="math display">\[f(x,y) = \underbrace{\frac{3}{16} x \cdot I(0\le x \le 2)}_{h_1(x)} \;\;\;\underbrace{y^2 \cdot I(0 \le y \le 2)}_{h_2(y)}\]</span> but I know that <span class="math inline">\(h_2(y)\)</span> isn’t exactly the marginal distribution of <span class="math inline">\(Y\)</span> because it doesn’t integrate to 1. I’m too lazy to figure out how I need to break the <span class="math inline">\(3/16\)</span> multiplier into two pieces and distribute it to make <span class="math inline">\(h_1(x)\)</span> and <span class="math inline">\(h_2(y)\)</span> into the marginals, but I know that I could do it if I had to.</p>
 <p>Notice that the indicator function has to be split up and appropriately grouped into the <span class="math inline">\(h_1(x)\)</span> and <span class="math inline">\(h_2(y)\)</span> terms. If that cannot happen, then the variables cannot be independent.</p>
-<p>Notice that if <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent, then for any functions <span class="math inline">\(g_1(\cdot)\)</span> and <span class="math inline">\(g_2(\cdot)\)</span> we have that there is <span class="math inline">\(C_1 = \{x : g_1(x) \le u \}\)</span> and <span class="math inline">\(C_2 = \{ y : g_2(y) \le v\}\)</span> and therefore <span class="math display">\[\begin{aligned} Pr( g_1(X) \le u, g_2(Y) \le v ) 
+<p>Finally notice that if <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent, then for any functions <span class="math inline">\(g_1(\cdot)\)</span> and <span class="math inline">\(g_2(\cdot)\)</span> we have that there is <span class="math inline">\(C_1 = \{x : g_1(x) \le u \}\)</span> and <span class="math inline">\(C_2 = \{ y : g_2(y) \le v\}\)</span> and therefore <span class="math display">\[\begin{aligned} Pr\Big( g_1(X) \le u, g_2(Y) \le v \Big) 
   &amp;= Pr( X \in C_1, Y \in C_2 ) \\
-  &amp;= Pr(X \in C_1) Pr(Y \in C_2) \\
-  &amp;= Pr( g_1(X) \le v ) Pr( g_2(Y) \le u )
+  &amp;= Pr(X \in C_1) \; Pr(Y \in C_2) \\
+  &amp;= Pr( g_1(X) \le v ) \; Pr( g_2(Y) \le u )
   \end{aligned}\]</span> and therefore separate functions of independent random variables are also independent.</p>
 <ol start="4" style="list-style-type: decimal">
 <li>Suppose we have the continuous joint distribution <span class="math display">\[f(x,y) = \frac{3}{2} y^2 \,\cdot I(0\le x \le 2, 0 \le y \le 1)\]</span>
@@ -615,8 +616,127 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ol></li>
 <li>Suppose that Alice and Barbara plan to meet at Macy’s Coffee shop. Each person will arrive randomly between 5 pm and 6 pm. Each person will arrive and wait for the other for at most 15 minutes. What is the probability that they will meet up? <em>Hint: Draw the region of support and sub-region where they meet up. Because the density is constant, you could skip the integration and just do some geometry, but be careful!</em></li>
 </ol>
-
 </div>
+</div>
+<div id="conditional-distributions" class="section level2">
+<h2><span class="header-section-number">3.6</span> Conditional Distributions</h2>
+<p>The last distribution we wish to derive from the joint distribution is that <em>conditional distribution</em>. Recall for events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> we had <span class="math display">\[Pr( A | B ) = \frac{ Pr( A \cap B ) }{ Pr( B ) } \;\;\textrm{ if }Pr(B) &gt; 0\]</span></p>
+<p>This definition immediately leads to the definition of the condition pf in the discrete case:</p>
+<p><span class="math display">\[g_1(x | y) = Pr( X=x | Y=y ) = \frac{ f(x,y) }{f_2(y)} \;\;\textrm{ if }f_2(y) &gt; 0\]</span> and <span class="math display">\[g_2(y | x) = Pr( Y=y | X=x ) = \frac{ f(x,y) }{f_1(x)} \;\;\textrm{ if }f_1(x) &gt; 0\]</span></p>
+<p><strong>Example</strong> Suppose we have the discrete pf <span class="math display">\[f(x,y) = \frac{3-x-y}{8} \;\cdot I(x\in \{0,1\}, \;y\in \{0,1\}\]</span> The table of values for <span class="math inline">\(f(x,y)\)</span> is</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(f(x,y)\)</span></th>
+<th align="center"><span class="math inline">\(x=0\)</span></th>
+<th align="center"><span class="math inline">\(x=1\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(y=0\)</span></td>
+<td align="center"><span class="math inline">\(\frac{3}{8}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{2}{8}\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(y=1\)</span></td>
+<td align="center"><span class="math inline">\(\frac{2}{8}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{1}{8}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>We might be interested in <span class="math display">\[Pr(Y=1 | X=0) = g_2(1|0) = \frac{f(0,1)}{f_1(0)} = \frac{2/8}{3/8} = \frac{2}{3}\]</span></p>
+<p>For the continuous case… we’ll just <em>cheat and define</em> it as what we want: <span class="math display">\[g_1(x | y) =  \frac{ f(x,y) }{f_2(y)} \;\;\textrm{ if }f_2(y) &gt; 0\]</span> and <span class="math display">\[g_2(y | x) =  \frac{ f(x,y) }{f_1(x)} \;\;\textrm{ if }f_1(x) &gt; 0\]</span></p>
+<p>In graduate level probability courses, this gets a bit more treatment and using measure theory we could appropriately derive this, but that is too much for now.</p>
+<p>In the continuous case, we should at least check that <span class="math inline">\(g_1(x|y)\)</span> is a valid pdf, though.</p>
+<ol style="list-style-type: decimal">
+<li>For continuous random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> and <span class="math inline">\(y\)</span> such that <span class="math inline">\(f_2(y) &gt; 0\)</span>, show that <span class="math inline">\(g_1(x|y)\)</span> is a valid pdf by showing that:
+<ol style="list-style-type: lower-alpha">
+<li><span class="math inline">\(g_1(x|y) \ge 0\)</span> for all <span class="math inline">\(x\)</span>.</li>
+<li><span class="math inline">\(\int_{-\infty}^{\infty} g_1(x|y)\, dx = 1\)</span></li>
+</ol></li>
+<li><p>The population distribution of blood donors in the United States based on race/ethnicity and blood type as reported by the American Red Cross is given here:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(f(x,y)\)</span></th>
+<th align="center">O</th>
+<th align="center">A</th>
+<th align="center">B</th>
+<th align="center">AB</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>White</strong></td>
+<td align="center">36%</td>
+<td align="center">32.2%</td>
+<td align="center">8.8%</td>
+<td align="center">3.2%</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>Black</strong></td>
+<td align="center">7%</td>
+<td align="center">2.9%</td>
+<td align="center">2.5%</td>
+<td align="center">0.5%</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>Asian</strong></td>
+<td align="center">1.7%</td>
+<td align="center">1.2%</td>
+<td align="center">1%</td>
+<td align="center">0.3%</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>Other</strong></td>
+<td align="center">1.5%</td>
+<td align="center">0.8%</td>
+<td align="center">0.3%</td>
+<td align="center">0.1%</td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: lower-alpha">
+<li>What is the probability that a randomly selected donor will be Asian and have Type O blood?</li>
+<li>What is the probability that a randomly selected donor is white?</li>
+<li>What is the probability that a randomly selected donor has Type A blood?</li>
+<li>What is the probability that a donor will have Type A blood given that the donor is white?</li>
+</ol></li>
+<li>Suppose that continuous random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> have joint pdf <span class="math display">\[f(x,y) = e^{-x} \; \cdot I( 0 \le y \le x )\]</span> This might be an appropriate model for the number of minutes it takes my daughter to put on her socks and shoes. Here <span class="math inline">\(Y\)</span> is the amount of time it takes to put on her socks, and <span class="math inline">\(X-Y\)</span> is the takes to put the shoes over the socks, so the whole process takes <span class="math inline">\(X\)</span> minutes.
+<ol style="list-style-type: lower-alpha">
+<li>Derive the marginal distribution for the total time to put on her shoes and socks.</li>
+<li>Derive the conditional distribution for how long it took to put on her socks given the total amount of time taken. <em>Notice this should be a function of the total amount of time taken!</em></li>
+<li>Derive the conditional distribution of how long the total process took given the amount of time it took to put on her socks.</li>
+<li>What is the probability the process takes more that 5 minutes given that she took 2 minutes to put on her socks?</li>
+</ol></li>
+<li>Suppose we have a joint pdf of <span class="math display">\[f(x,y) = c(x+y^2) \; \cdot I( 0\le x \le 1, \; 0 \le y \le 1 )\]</span>
+<ol style="list-style-type: lower-alpha">
+<li>Determine the value of <span class="math inline">\(c\)</span> such that this is a valid joint pdf.</li>
+<li>Find the conditional pdf <span class="math inline">\(g_1(x|y)\)</span></li>
+<li>Find <span class="math inline">\(Pr( X \le 1/2 \;|\; Y=1/2 )\)</span></li>
+</ol></li>
+<li><strong>Law of Total Probability</strong> Prove that
+<ol style="list-style-type: lower-alpha">
+<li>If <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are discrete RVs then <span class="math display">\[f_1(x) = \sum_y g_1(x|y) f_2(y)\]</span></li>
+<li>If <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are continuous RVs then <span class="math display">\[f_1(x) = \int_{-\infty}^{\infty} g_1(x|y) f_2(y)\]</span></li>
+</ol></li>
+<li><strong>Bayes Theorem</strong> Prove that
+<ol style="list-style-type: lower-alpha">
+<li>If <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are discrete RVs then <span class="math display">\[g_1(y|x) = \frac{ g_1(x|y) f_2(y)}{ f_1(x) } = \frac{ g_1(x|y) f_2(y)}{ \sum_y g_1(x|y)f_2(y) }\]</span></li>
+<li>If <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are continuous RVs then <span class="math display">\[g_1(y|x) = \frac{ g_1(x|y) f_2(y)}{ f_1(x) } = \frac{ g_1(x|y) f_2(y)}{ \int_{-\infty}^{\infty} g_1(x|y)f_2(y) }\]</span></li>
+</ol></li>
+</ol>
+<p>Notice that it was arbitrary which variable we conditioned on and we could similarly define <span class="math inline">\(f_2(x)\)</span> and <span class="math inline">\(g_2(y|x)\)</span>. Furthermore, all the formulas in this section work if one variable is continuous and the other is discrete with just the appropriate switch between summation and integration.</p>
+<ol start="7" style="list-style-type: decimal">
+<li>We are interested in modeling the rate of hits on a web page server. Let <span class="math inline">\(X\)</span> be the number of page requests in a minute and <span class="math inline">\(R\)</span> is the <em>rate</em> of page requests. Suppose that we model <span class="math display">\[f_2(r) = e^r \; \cdot I(r &gt; 0)\]</span> and <span class="math display">\[g_1(x | r) = \frac{(2r)^x}{x!} e^{-2r}\;\cdot I\Big(x\in\{0,1,2,\dots\}\Big)\]</span>
+<ol style="list-style-type: lower-alpha">
+<li>Find the marginal pf of <span class="math inline">\(X\)</span>.</li>
+<li>Find the conditional pdf of <span class="math inline">\(R\)</span> given <span class="math inline">\(X\)</span>, <span class="math inline">\(g_2(r|x)\)</span>.</li>
+<li>Consider the cases where <span class="math inline">\(X=1\)</span> and <span class="math inline">\(X=2\)</span>. For what values of <span class="math inline">\(r\)</span> is <span class="math inline">\(g_2(r|1)\)</span> larger than <span class="math inline">\(g_2(r|2)\)</span>?</li>
+</ol></li>
+</ol>
+
 </div>
 </div>
             </section>
