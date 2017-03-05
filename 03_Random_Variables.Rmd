@@ -522,7 +522,7 @@ $$g_2(y | x) = Pr( Y=y | X=x ) = \frac{ f(x,y) }{f_1(x)} \;\;\textrm{ if }f_1(x)
 | $y=1$     |  $\frac{2}{8}$   | $\frac{1}{8}$  |
 
 We might be interested in 
-$$Pr(Y=1 | X=0) = g_2(1|0) = \frac{f(0,1)}{f_1(0)} = \frac{2/8}{3/8} = \frac{2}{3}$$
+$$Pr(Y=1 | X=0) = g_2(1|0) = \frac{f(0,1)}{f_1(0)} = \frac{2/8}{5/8} = \frac{2}{5}$$
 
 For the continuous case... we'll just _cheat and define_ it as what we want: 
 $$g_1(x | y) =  \frac{ f(x,y) }{f_2(y)} \;\;\textrm{ if }f_2(y) > 0$$ 
