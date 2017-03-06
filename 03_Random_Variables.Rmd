@@ -303,19 +303,17 @@ Integrate[ Integrate[ 3*x, {y,0,x}], {x,0,0.5} ] ]
 
 Similarly we could ask
 $$\begin{aligned} Pr( Y > X^2 ) 
-  &= \int_0^{0.5} \int_{x^2}^x f(x,y) \,dy\,dx \\
-  &= \int_0^{0.5} \int_{x^2}^x 3x \,dy\,dx \\
-  &= \int_0^{0.5}  3xy \rvert_{y=x^2}^x \,dx \\
-  &= \int_0^{0.5}  3x^2 - 3x^3 \,dx \\
-  &= x^3 - \frac{3}{4}x^4 \rvert_{x=0}^{0.5} \\
-  &= \frac{1}{2^3} - \frac{3}{4}\frac{1}{2^4} \\
-  &= \frac{1}{8} - \frac{3}{64} \\
-  &= \frac{5}{64} = 0.078125
+  &= \int_0^{1} \int_{x^2}^x f(x,y) \,dy\,dx \\
+  &= \int_0^{1} \int_{x^2}^x 3x \,dy\,dx \\
+  &= \int_0^{1}  3xy \rvert_{y=x^2}^x \,dx \\
+  &= \int_0^{1}  3x^2 - 3x^3 \,dx \\
+  &= x^3 - \frac{3}{4}x^4 \rvert_{x=0}^{1} \\
+  &= \frac{1}{4}
   \end{aligned}$$
   
 and verify this via Wolfram...
 ```{r, eval=FALSE}
-Integrate[ Integrate[ 3*x, {y,x^2,x}], {x,0,0.5} ] ]
+Integrate[ Integrate[ 3*x, {y,x^2,x}], {x,0,1} ] ]
 ```
 
 

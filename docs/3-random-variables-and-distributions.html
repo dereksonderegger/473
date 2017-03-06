@@ -433,17 +433,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Notice that you could ask Wolfram Alpha for this by using the following:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Integrate[ Integrate[ <span class="dv">3</span>*x, {y,<span class="dv">0</span>,x}], {x,<span class="dv">0</span>,<span class="fl">0.5</span>} ] ]</code></pre></div>
 <p>Similarly we could ask <span class="math display">\[\begin{aligned} Pr( Y &gt; X^2 ) 
-  &amp;= \int_0^{0.5} \int_{x^2}^x f(x,y) \,dy\,dx \\
-  &amp;= \int_0^{0.5} \int_{x^2}^x 3x \,dy\,dx \\
-  &amp;= \int_0^{0.5}  3xy \rvert_{y=x^2}^x \,dx \\
-  &amp;= \int_0^{0.5}  3x^2 - 3x^3 \,dx \\
-  &amp;= x^3 - \frac{3}{4}x^4 \rvert_{x=0}^{0.5} \\
-  &amp;= \frac{1}{2^3} - \frac{3}{4}\frac{1}{2^4} \\
-  &amp;= \frac{1}{8} - \frac{3}{64} \\
-  &amp;= \frac{5}{64} = 0.078125
+  &amp;= \int_0^{1} \int_{x^2}^x f(x,y) \,dy\,dx \\
+  &amp;= \int_0^{1} \int_{x^2}^x 3x \,dy\,dx \\
+  &amp;= \int_0^{1}  3xy \rvert_{y=x^2}^x \,dx \\
+  &amp;= \int_0^{1}  3x^2 - 3x^3 \,dx \\
+  &amp;= x^3 - \frac{3}{4}x^4 \rvert_{x=0}^{1} \\
+  &amp;= \frac{1}{4}
   \end{aligned}\]</span></p>
 <p>and verify this via Wolfram…</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Integrate[ Integrate[ <span class="dv">3</span>*x, {y,x^<span class="dv">2</span>,x}], {x,<span class="dv">0</span>,<span class="fl">0.5</span>} ] ]</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Integrate[ Integrate[ <span class="dv">3</span>*x, {y,x^<span class="dv">2</span>,x}], {x,<span class="dv">0</span>,<span class="dv">1</span>} ] ]</code></pre></div>
 <p>The joint CDF of the bivariate distribution is defined as we would expect it: <span class="math display">\[F(x,y) = Pr( X\le x, \textrm{ and } Y\le y)\]</span></p>
 <p>Just as in the univariate case, <span class="math inline">\(F(x,y)\)</span> is non-decreasing <span class="math inline">\(x\)</span> for every fixed value of <span class="math inline">\(y\)</span> and as well as non-decreasing in <span class="math inline">\(y\)</span> for every fixed value of <span class="math inline">\(x\)</span>.</p>
 <p><strong>Claims</strong>: Suppose that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> have joint cdf <span class="math inline">\(F(x,y)\)</span>. Define the cdf of <span class="math inline">\(X\)</span> as <span class="math inline">\(F_1(x)\)</span> and the cdf of <span class="math inline">\(Y\)</span> as <span class="math inline">\(F_2(y)\)</span>. Then <span class="math display">\[F_1(x) = \lim_{y\to\infty} F(x,y)\]</span> <span class="math display">\[F_2(y) = \lim_{x\to\infty} F(x,y)\]</span> <span class="math display">\[F(x,y) = \int_{-\infty}^x \int_{-\infty}^y f(u,v) \, dv\,du\]</span> <span class="math display">\[f(x,y) = \frac{\partial^2 F(x,y)}{\partial x \partial y} = \frac{\partial^2 F(x,y)}{\partial y \partial x}\]</span> assuming the integrals and derivatives exist.</p>
