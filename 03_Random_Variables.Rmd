@@ -587,4 +587,121 @@ $$g_1(x | r) = \frac{(2r)^x}{x!} e^{-2r}\;\cdot I\Big(x\in\{0,1,2,\dots\}\Big)$$
     c) Consider the cases where $X=1$ and $X=2$. For what values of $r$ is $g_2(r|1)$ larger than $g_2(r|2)$?
 
 
+## Multivariate Distributions
 
+Just replace the double sums and double integrals with more of them.
+
+## Functions of Random Variables
+
+Often we have a distribution for the random variable $X$ but actually want to know aobut the random variable $Y=r(X)$. 
+
+**Example** Suppose that we know the distribution of $X$, the number of customers per hour at a resturant. However, what we really want to know about is $Y=r(X) = 60 / X$ which is the typical number of minutes between customers.
+
+**Example** Suppose that I know the distribution of $X$ which is the number of docter appointments necessary for treatment of some issue. But what I really care about is $Y=200+100*X$ which is the amount of money total that these appointments will cost. 
+### CDF Method
+
+Of the two methods we'll investigate in this section, the CDF method is by far the most general, but can be somewhat annoying to implement.
+
+The idea is that 
+$$G(y) = Pr(Y \le y) = Pr( r(X) \le y ) = 
+  \begin{cases} \sum_{x:r(x) \le y} f(x) \\ \\
+                \int_{x:r(x) \le y} f(x)
+  \end{cases}$$
+and the only annoying part is figuring out what set of $x$ values forces the $r(x)\le y$ inequality to hold.
+
+**Example** Suppose that $X$, the number of customers per hour, follows a distribution with CDF 
+$$F(x) = 1-e^{6x}\;\cdot I(x>0)$$
+We are actually interested in $Y=r(X) = 60 / X$. Then 
+$$\begin{aligned} G(y)  
+  &= Pr( Y \le y ) \\
+  &= Pr( r(X) \le y )  \\ \\
+  &= Pr\left( \frac{60}{X} \le y \right)  \\\\
+  &= Pr\left( X \ge \frac{y}{60} \right) \\
+  &= F\left( \frac{y}{60} \right) \\
+  &= 1 - e^{6(\frac{y}{60})} \\
+  &= 1-e^{y/10} \end{aligned}$$ 
+  
+**Example** Suppose that the random variable $X$ is the amount of time waiting on a child to eat her breakfast before leaving the house and has pdf
+$$f(x) = \left( \frac{x}{50} \right) \;\cdot I(0 \le x \le 10)$$
+but what I really want to know about is the proportion of breatkfast time remaining $Y=r(X) = 1-\frac{X}{10}$.
+Furthermore, Suppose that I want the pdf of $Y$ and not the CDF.
+
+$$Plan:\;\;\; f(x) \stackrel{Integrate}{\Longrightarrow} F(x) = Pr(X\le x)\stackrel{CDF\; Method}{\Longrightarrow}
+  Pr(Y\le y)=G(y) \stackrel{Differentiate}{\Longrightarrow} g(y)$$
+  
+Step 1: Find $F(x)$.  We will do this by integrating $f(x)$.
+$$F(x) = \int_{-\infty}^x f(u) \,du = \int_{0}^x \frac{u}{50} \,du = \frac{u^2}{100}$$
+
+Step 2: CDF method to find $G(y)$.
+$$\begin{aligned} G(y) 
+  &= Pr( Y \le y ) \\
+  &= Pr\left( 1-\frac{X}{10} \le y \right) \\
+  &= Pr\left(X \ge 10(1-y)\right) \\
+  &= 1-F\Big( 10(1-y) \Big) \\
+  &= 1 - \frac{ \Big( 10(1-y) \Big)^2 }{100} \\
+  &= 1-(1-y)^2  \cdot I(y>0)
+  \end{aligned}$$
+  
+Step 3: Differentiate $G(y)$ to obtain $g(y)$
+$$g(y) = \frac{d}{dy}G(y) = \frac{d}{dy} \left[ 1-(1-y)^2 \right]  = 2(1-y) \; \cdot I(0 \le y \le 1)$$
+
+### pdf Method
+
+In some cases it is possible to go straight from $f(x)$ to $g(y)$.  In particular if $r(x)$ is a one-to-one and differentiable. If $r(x)$ is one-to-one, then the inverse function $r^{-1}(y)$ exists.
+
+**Theorem** _Suppose $X$ is a continuous random variable with pdf $f(x)$ such that $Pr(a\le X\le b)=1$ for some (possibly infinite) boundaries $a$,$b$. If the transformation $r(x)$ is a one-to-one and differentiable and has range $(\alpha,\beta)$ for $x\in(a,b)$, then_
+$$g(y) = f\Big( r^{-1}(y) \Big) \cdot \Bigg\vert \frac{d}{dy}r^{-1}(y) \Bigg\vert$$ 
+_where $r^{-1}(y)$ is the inverse function of $r(x)$._
+
+**Proof** Suppose that $r(x)$ is an increasing function. Then its inverse function is also an increasing function and
+$$G(y) = Pr[Y \le y] = Pr[ r(X) \le y ] = Pr[ X \le r^{-1}(y) ] = F[ r^{-1}(y) ]$$
+
+Next we can take the derivative and see
+
+$$g(y) = \frac{d}{dy} G(y) = \frac{d}{dy} F[ r^{-1}(y) ] = f[ r^{-1}(y) ] \frac{d}{dy} r^{-1}(y)$$
+Because $r^{-1}$ is an increasing function, its derivative is positive, $\frac{d}{dy} r^{-1}(y) = \vert \frac{d}{dy} r^{-1}(y) \vert$.
+
+$$g(y) = f[ r^{-1}(y) ] \Big\vert \frac{d}{dy}  r^{-1}(y) \Big\vert$$
+
+Now suppose that $r(x)$ is a decreasing function. The its inverse is also decreasing and we have
+$$G(y) = Pr[Y \le y] = Pr[ r(X) \le y ] = Pr[ X \ge r^{-1}(y) ] = 1 - F[ r^{-1}(y) ]$$
+Again we take the derivative and see
+$$g(y) = \frac{d}{dy} G(y) = - f[ r^{-1}(y) ] \frac{d}{dy} r^{-1}(y)$$
+But because $r^{-1}(y)$ is decreasing, its derivative is negative and the negative terms would cancel. So we could write
+$$g(y) = f[ r^{-1}(y) ] \Big\vert \frac{d}{dy}  r^{-1}(y) \Big\vert$$
+and cover both the increasing and deceasing $r(x)$ cases.
+
+**Example**
+Suppose the rate of growth of some bacteria is a random variable $X$ with pdf
+$$f(x) = 3(1-x)^2\;\cdot I(0 \le x \le 1)$$
+but what we are interested in is the amount of bacteria at time $t$ which is a function of the initial amount of bacteria $\nu>0$ and time $t>0$. Suppose that $\nu$ and $t$ are known values, we are interested in the pdf of 
+$$Y = \nu e^{Xt}$$
+
+Step 1: Is this function a one-to-one increasing or decreasing function on the support of $X$? Yes it is so we can use the pdf method.
+
+Step 2: Find the inverse function.
+$$Y = \nu e^{Xt}$$
+$$ \log{ \left( \frac{Y}{\nu} \right) } = Xt$$
+$$X = \frac{1}{t} \log{ \left( \frac{Y}{\nu} \right) }$$
+
+Step 3: Find the deriviative with respect to the new variable.
+$$\frac{d}{dy} \Bigg[ \frac{1}{t} \log{ \left( \frac{Y}{\nu} \right) } \Bigg]= \frac{1}{tY}$$
+
+Step 4: Stick these into the formula
+$$g(y) = f\left( \frac{1}{t} \log \left( \frac{Y}{\nu} \right) \right) \; \Bigg\vert \frac{1}{tY}\Bigg\vert  
+       =3 \left( 1-\frac{1}{t} \log \left( \frac{Y}{\nu} \right) \right) \; \frac{1}{tY} \cdot I(\nu \le y \le \nu e^t)$$
+       
+
+1. Suppose that random variable $X$ has pdf 
+$$f(x) = 3x^2 \; \cdot I(0 < x < 1)$$
+Further suppose that $Y=1-X^2$. Find the pdf of $Y$.
+
+2. Suppose that random variable $X$ has pdf 
+$$f(x) = \frac{x}{x} \cdot I(0 \le x \le 2)$$
+Further suppose that $Y=X(1-X)$. Find the pdf of $Y$. _Hint, graph $f(x)$._
+
+3. Suppose that random variable $X$ has pdf 
+$$f(x) = e^{-x} \; \cdot I(0 < x)$$
+Further suppose that $Y=\sqrt{X}$. Find the pdf of $Y$.
+
+4. Suppose that $X$ has a uniform distribution on $(a, b)$. Let $c>0$. Show that $Y= cX+d$ has a uniform distribution on ($ca+d, cb+d$).
