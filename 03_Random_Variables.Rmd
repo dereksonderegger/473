@@ -619,7 +619,7 @@ $$\begin{aligned} G(y)
   &= Pr\left( \frac{60}{X} \le y \right)  \\\\
   &= Pr\left( X \ge \frac{60}{y} \right) \\
   &= 1 - F\left( \frac{60}{y} \right) \\
-  &= 1 - \left( 1 - e^{-6(\frac{60}{y})} \right)\\
+  &= \left[ 1 - \left( 1 - e^{-6(\frac{60}{y})} \right)\right] \;\cdot I(0 < y)\\
   &= e^{\frac{-360}{y}} \;\cdot I(0 < y)
   \end{aligned} $$ 
   
@@ -695,6 +695,7 @@ $$g(y) = f\left( \frac{1}{t} \log \left( \frac{Y}{\nu} \right) \right) \; \Bigg\
        
 
 **Problems**
+
 1. Suppose that random variable $X$ has pdf 
 $$f(x) = 3x^2 \; \cdot I(0 < x < 1)$$
 Further suppose that $Y=1-X^2$. Find the pdf of $Y$.

@@ -762,7 +762,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   &amp;= Pr\left( \frac{60}{X} \le y \right)  \\\\
   &amp;= Pr\left( X \ge \frac{60}{y} \right) \\
   &amp;= 1 - F\left( \frac{60}{y} \right) \\
-  &amp;= 1 - \left( 1 - e^{-6(\frac{60}{y})} \right)\\
+  &amp;= \left[ 1 - \left( 1 - e^{-6(\frac{60}{y})} \right)\right] \;\cdot I(0 &lt; y)\\
   &amp;= e^{\frac{-360}{y}} \;\cdot I(0 &lt; y)
   \end{aligned} \]</span></p>
 <p><strong>Example</strong> Suppose that the random variable <span class="math inline">\(X\)</span> is the amount of time waiting on a child to eat her breakfast before leaving the house and has pdf <span class="math display">\[f(x) = \left( \frac{x}{50} \right) \;\cdot I(0 \le x \le 10)\]</span> but what I really want to know about is the proportion of breatkfast time remaining <span class="math inline">\(Y=r(X) = 1-\frac{X}{10}\)</span>. Furthermore, suppose that I want the pdf of <span class="math inline">\(Y\)</span> and not the CDF. So my plan is:</p>
@@ -794,8 +794,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Step 3: Find the deriviative with respect to the new variable. <span class="math display">\[\frac{d}{dy} \Bigg[ \frac{1}{t} \log{ \left( \frac{Y}{\nu} \right) } \Bigg]= \frac{1}{tY}\]</span></p>
 <p>Step 4: Stick these into the formula <span class="math display">\[g(y) = f\left( \frac{1}{t} \log \left( \frac{Y}{\nu} \right) \right) \; \Bigg\vert \frac{1}{tY}\Bigg\vert  
        =3 \left( 1-\frac{1}{t} \log \left( \frac{Y}{\nu} \right) \right) \; \frac{1}{tY} \cdot I(\nu \le y \le \nu e^t)\]</span></p>
-<p><strong>Problems</strong> 1. Suppose that random variable <span class="math inline">\(X\)</span> has pdf <span class="math display">\[f(x) = 3x^2 \; \cdot I(0 &lt; x &lt; 1)\]</span> Further suppose that <span class="math inline">\(Y=1-X^2\)</span>. Find the pdf of <span class="math inline">\(Y\)</span>.</p>
-<ol start="2" style="list-style-type: decimal">
+<p><strong>Problems</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>Suppose that random variable <span class="math inline">\(X\)</span> has pdf <span class="math display">\[f(x) = 3x^2 \; \cdot I(0 &lt; x &lt; 1)\]</span> Further suppose that <span class="math inline">\(Y=1-X^2\)</span>. Find the pdf of <span class="math inline">\(Y\)</span>.</p></li>
 <li><p>Suppose that random variable <span class="math inline">\(X\)</span> has pdf <span class="math display">\[f(x) = \frac{x}{x} \cdot I(0 \le x \le 2)\]</span> Further suppose that <span class="math inline">\(Y=X(1-X)\)</span>. Find the pdf of <span class="math inline">\(Y\)</span>. <em>Hint, graph <span class="math inline">\(f(x)\)</span>.</em></p></li>
 <li><p>Suppose that random variable <span class="math inline">\(X\)</span> has pdf <span class="math display">\[f(x) = e^{-x} \; \cdot I(0 &lt; x)\]</span> Further suppose that <span class="math inline">\(Y=\sqrt{X}\)</span>. Find the pdf of <span class="math inline">\(Y\)</span>.</p></li>
 <li><p>Suppose that <span class="math inline">\(X\)</span> has a uniform distribution on <span class="math inline">\((a, b)\)</span>. Let <span class="math inline">\(c&gt;0\)</span>. Show that <span class="math inline">\(Y= cX+d\)</span> has a uniform distribution on <span class="math inline">\((ca+d, cb+d)\)</span>.</p></li>
