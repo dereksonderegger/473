@@ -598,6 +598,7 @@ Often we have a distribution for the random variable $X$ but actually want to kn
 **Example** Suppose that we know the distribution of $X$, the number of customers per hour at a resturant. However, what we really want to know about is $Y=r(X) = 60 / X$ which is the typical number of minutes between customers.
 
 **Example** Suppose that I know the distribution of $X$ which is the number of docter appointments necessary for treatment of some issue. But what I really care about is $Y=200+100*X$ which is the amount of money total that these appointments will cost. 
+
 ### CDF Method
 
 Of the two methods we'll investigate in this section, the CDF method is by far the most general, but can be somewhat annoying to implement.
@@ -610,23 +611,24 @@ $$G(y) = Pr(Y \le y) = Pr( r(X) \le y ) =
 and the only annoying part is figuring out what set of $x$ values forces the $r(x)\le y$ inequality to hold.
 
 **Example** Suppose that $X$, the number of customers per hour, follows a distribution with CDF 
-$$F(x) = 1-e^{6x}\;\cdot I(x>0)$$
+$$F(x) = 1-e^{-6x}\;\cdot I(x>0)$$
 We are actually interested in $Y=r(X) = 60 / X$. Then 
 $$\begin{aligned} G(y)  
   &= Pr( Y \le y ) \\
   &= Pr( r(X) \le y )  \\ \\
   &= Pr\left( \frac{60}{X} \le y \right)  \\\\
-  &= Pr\left( X \ge \frac{y}{60} \right) \\
-  &= F\left( \frac{y}{60} \right) \\
-  &= 1 - e^{6(\frac{y}{60})} \\
-  &= 1-e^{y/10} \end{aligned}$$ 
+  &= Pr\left( X \ge \frac{60}{y} \right) \\
+  &= 1 - F\left( \frac{60}{y} \right) \\
+  &= 1 - \left( 1 - e^{-6(\frac{60}{y})} \right)\\
+  &= e^{\frac{-360}{y}} \;\cdot I(0 < y)
+  \end{aligned} $$ 
   
 **Example** Suppose that the random variable $X$ is the amount of time waiting on a child to eat her breakfast before leaving the house and has pdf
 $$f(x) = \left( \frac{x}{50} \right) \;\cdot I(0 \le x \le 10)$$
 but what I really want to know about is the proportion of breatkfast time remaining $Y=r(X) = 1-\frac{X}{10}$.
-Furthermore, Suppose that I want the pdf of $Y$ and not the CDF.
+Furthermore, suppose that I want the pdf of $Y$ and not the CDF.  So my plan is:
 
-$$Plan:\;\;\; f(x) \stackrel{Integrate}{\Longrightarrow} F(x) = Pr(X\le x)\stackrel{CDF\; Method}{\Longrightarrow}
+$$f(x) \stackrel{Integrate}{\Longrightarrow} F(x) = Pr(X\le x)\stackrel{CDF\; Method}{\Longrightarrow}
   Pr(Y\le y)=G(y) \stackrel{Differentiate}{\Longrightarrow} g(y)$$
   
 Step 1: Find $F(x)$.  We will do this by integrating $f(x)$.
@@ -692,6 +694,7 @@ $$g(y) = f\left( \frac{1}{t} \log \left( \frac{Y}{\nu} \right) \right) \; \Bigg\
        =3 \left( 1-\frac{1}{t} \log \left( \frac{Y}{\nu} \right) \right) \; \frac{1}{tY} \cdot I(\nu \le y \le \nu e^t)$$
        
 
+**Problems**
 1. Suppose that random variable $X$ has pdf 
 $$f(x) = 3x^2 \; \cdot I(0 < x < 1)$$
 Further suppose that $Y=1-X^2$. Find the pdf of $Y$.
@@ -704,4 +707,6 @@ Further suppose that $Y=X(1-X)$. Find the pdf of $Y$. _Hint, graph $f(x)$._
 $$f(x) = e^{-x} \; \cdot I(0 < x)$$
 Further suppose that $Y=\sqrt{X}$. Find the pdf of $Y$.
 
-4. Suppose that $X$ has a uniform distribution on $(a, b)$. Let $c>0$. Show that $Y= cX+d$ has a uniform distribution on ($ca+d, cb+d$).
+4. Suppose that $X$ has a uniform distribution on $(a, b)$. Let $c>0$. Show that $Y= cX+d$ has a uniform distribution on $(ca+d, cb+d)$.
+
+

@@ -26,7 +26,7 @@
 <meta name="author" content="Derek L. Sonderegger">
 
 
-<meta name="date" content="2017-03-07">
+<meta name="date" content="2017-03-08">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -136,7 +136,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.6" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#conditional-distributions"><i class="fa fa-check"></i><b>3.6</b> Conditional Distributions</a></li>
 <li class="chapter" data-level="3.7" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#multivariate-distributions"><i class="fa fa-check"></i><b>3.7</b> Multivariate Distributions</a></li>
 <li class="chapter" data-level="3.8" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#functions-of-random-variables"><i class="fa fa-check"></i><b>3.8</b> Functions of Random Variables</a><ul>
-<li class="chapter" data-level="3.8.1" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#pdf-method"><i class="fa fa-check"></i><b>3.8.1</b> pdf Method</a></li>
+<li class="chapter" data-level="3.8.1" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#cdf-method"><i class="fa fa-check"></i><b>3.8.1</b> CDF Method</a></li>
+<li class="chapter" data-level="3.8.2" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#pdf-method"><i class="fa fa-check"></i><b>3.8.2</b> pdf Method</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -747,22 +748,25 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2><span class="header-section-number">3.8</span> Functions of Random Variables</h2>
 <p>Often we have a distribution for the random variable <span class="math inline">\(X\)</span> but actually want to know aobut the random variable <span class="math inline">\(Y=r(X)\)</span>.</p>
 <p><strong>Example</strong> Suppose that we know the distribution of <span class="math inline">\(X\)</span>, the number of customers per hour at a resturant. However, what we really want to know about is <span class="math inline">\(Y=r(X) = 60 / X\)</span> which is the typical number of minutes between customers.</p>
-<p><strong>Example</strong> Suppose that I know the distribution of <span class="math inline">\(X\)</span> which is the number of docter appointments necessary for treatment of some issue. But what I really care about is <span class="math inline">\(Y=200+100*X\)</span> which is the amount of money total that these appointments will cost. ### CDF Method</p>
+<p><strong>Example</strong> Suppose that I know the distribution of <span class="math inline">\(X\)</span> which is the number of docter appointments necessary for treatment of some issue. But what I really care about is <span class="math inline">\(Y=200+100*X\)</span> which is the amount of money total that these appointments will cost.</p>
+<div id="cdf-method" class="section level3">
+<h3><span class="header-section-number">3.8.1</span> CDF Method</h3>
 <p>Of the two methods we’ll investigate in this section, the CDF method is by far the most general, but can be somewhat annoying to implement.</p>
 <p>The idea is that <span class="math display">\[G(y) = Pr(Y \le y) = Pr( r(X) \le y ) = 
   \begin{cases} \sum_{x:r(x) \le y} f(x) \\ \\
                 \int_{x:r(x) \le y} f(x)
   \end{cases}\]</span> and the only annoying part is figuring out what set of <span class="math inline">\(x\)</span> values forces the <span class="math inline">\(r(x)\le y\)</span> inequality to hold.</p>
-<p><strong>Example</strong> Suppose that <span class="math inline">\(X\)</span>, the number of customers per hour, follows a distribution with CDF <span class="math display">\[F(x) = 1-e^{6x}\;\cdot I(x&gt;0)\]</span> We are actually interested in <span class="math inline">\(Y=r(X) = 60 / X\)</span>. Then <span class="math display">\[\begin{aligned} G(y)  
+<p><strong>Example</strong> Suppose that <span class="math inline">\(X\)</span>, the number of customers per hour, follows a distribution with CDF <span class="math display">\[F(x) = 1-e^{-6x}\;\cdot I(x&gt;0)\]</span> We are actually interested in <span class="math inline">\(Y=r(X) = 60 / X\)</span>. Then <span class="math display">\[\begin{aligned} G(y)  
   &amp;= Pr( Y \le y ) \\
   &amp;= Pr( r(X) \le y )  \\ \\
   &amp;= Pr\left( \frac{60}{X} \le y \right)  \\\\
-  &amp;= Pr\left( X \ge \frac{y}{60} \right) \\
-  &amp;= F\left( \frac{y}{60} \right) \\
-  &amp;= 1 - e^{6(\frac{y}{60})} \\
-  &amp;= 1-e^{y/10} \end{aligned}\]</span></p>
-<p><strong>Example</strong> Suppose that the random variable <span class="math inline">\(X\)</span> is the amount of time waiting on a child to eat her breakfast before leaving the house and has pdf <span class="math display">\[f(x) = \left( \frac{x}{50} \right) \;\cdot I(0 \le x \le 10)\]</span> but what I really want to know about is the proportion of breatkfast time remaining <span class="math inline">\(Y=r(X) = 1-\frac{X}{10}\)</span>. Furthermore, Suppose that I want the pdf of <span class="math inline">\(Y\)</span> and not the CDF.</p>
-<p><span class="math display">\[Plan:\;\;\; f(x) \stackrel{Integrate}{\Longrightarrow} F(x) = Pr(X\le x)\stackrel{CDF\; Method}{\Longrightarrow}
+  &amp;= Pr\left( X \ge \frac{60}{y} \right) \\
+  &amp;= 1 - F\left( \frac{60}{y} \right) \\
+  &amp;= 1 - \left( 1 - e^{-6(\frac{60}{y})} \right)\\
+  &amp;= e^{\frac{-360}{y}} \;\cdot I(0 &lt; y)
+  \end{aligned} \]</span></p>
+<p><strong>Example</strong> Suppose that the random variable <span class="math inline">\(X\)</span> is the amount of time waiting on a child to eat her breakfast before leaving the house and has pdf <span class="math display">\[f(x) = \left( \frac{x}{50} \right) \;\cdot I(0 \le x \le 10)\]</span> but what I really want to know about is the proportion of breatkfast time remaining <span class="math inline">\(Y=r(X) = 1-\frac{X}{10}\)</span>. Furthermore, suppose that I want the pdf of <span class="math inline">\(Y\)</span> and not the CDF. So my plan is:</p>
+<p><span class="math display">\[f(x) \stackrel{Integrate}{\Longrightarrow} F(x) = Pr(X\le x)\stackrel{CDF\; Method}{\Longrightarrow}
   Pr(Y\le y)=G(y) \stackrel{Differentiate}{\Longrightarrow} g(y)\]</span></p>
 <p>Step 1: Find <span class="math inline">\(F(x)\)</span>. We will do this by integrating <span class="math inline">\(f(x)\)</span>. <span class="math display">\[F(x) = \int_{-\infty}^x f(u) \,du = \int_{0}^x \frac{u}{50} \,du = \frac{u^2}{100}\]</span></p>
 <p>Step 2: CDF method to find <span class="math inline">\(G(y)\)</span>. <span class="math display">\[\begin{aligned} G(y) 
@@ -774,8 +778,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   &amp;= 1-(1-y)^2  \cdot I(y&gt;0)
   \end{aligned}\]</span></p>
 <p>Step 3: Differentiate <span class="math inline">\(G(y)\)</span> to obtain <span class="math inline">\(g(y)\)</span> <span class="math display">\[g(y) = \frac{d}{dy}G(y) = \frac{d}{dy} \left[ 1-(1-y)^2 \right]  = 2(1-y) \; \cdot I(0 \le y \le 1)\]</span></p>
+</div>
 <div id="pdf-method" class="section level3">
-<h3><span class="header-section-number">3.8.1</span> pdf Method</h3>
+<h3><span class="header-section-number">3.8.2</span> pdf Method</h3>
 <p>In some cases it is possible to go straight from <span class="math inline">\(f(x)\)</span> to <span class="math inline">\(g(y)\)</span>. In particular if <span class="math inline">\(r(x)\)</span> is a one-to-one and differentiable. If <span class="math inline">\(r(x)\)</span> is one-to-one, then the inverse function <span class="math inline">\(r^{-1}(y)\)</span> exists.</p>
 <p><strong>Theorem</strong> <em>Suppose <span class="math inline">\(X\)</span> is a continuous random variable with pdf <span class="math inline">\(f(x)\)</span> such that <span class="math inline">\(Pr(a\le X\le b)=1\)</span> for some (possibly infinite) boundaries <span class="math inline">\(a\)</span>,<span class="math inline">\(b\)</span>. If the transformation <span class="math inline">\(r(x)\)</span> is a one-to-one and differentiable and has range <span class="math inline">\((\alpha,\beta)\)</span> for <span class="math inline">\(x\in(a,b)\)</span>, then</em> <span class="math display">\[g(y) = f\Big( r^{-1}(y) \Big) \cdot \Bigg\vert \frac{d}{dy}r^{-1}(y) \Bigg\vert\]</span> <em>where <span class="math inline">\(r^{-1}(y)\)</span> is the inverse function of <span class="math inline">\(r(x)\)</span>.</em></p>
 <p><strong>Proof</strong> Suppose that <span class="math inline">\(r(x)\)</span> is an increasing function. Then its inverse function is also an increasing function and <span class="math display">\[G(y) = Pr[Y \le y] = Pr[ r(X) \le y ] = Pr[ X \le r^{-1}(y) ] = F[ r^{-1}(y) ]\]</span></p>
@@ -789,11 +794,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Step 3: Find the deriviative with respect to the new variable. <span class="math display">\[\frac{d}{dy} \Bigg[ \frac{1}{t} \log{ \left( \frac{Y}{\nu} \right) } \Bigg]= \frac{1}{tY}\]</span></p>
 <p>Step 4: Stick these into the formula <span class="math display">\[g(y) = f\left( \frac{1}{t} \log \left( \frac{Y}{\nu} \right) \right) \; \Bigg\vert \frac{1}{tY}\Bigg\vert  
        =3 \left( 1-\frac{1}{t} \log \left( \frac{Y}{\nu} \right) \right) \; \frac{1}{tY} \cdot I(\nu \le y \le \nu e^t)\]</span></p>
-<ol style="list-style-type: decimal">
-<li><p>Suppose that random variable <span class="math inline">\(X\)</span> has pdf <span class="math display">\[f(x) = 3x^2 \; \cdot I(0 &lt; x &lt; 1)\]</span> Further suppose that <span class="math inline">\(Y=1-X^2\)</span>. Find the pdf of <span class="math inline">\(Y\)</span>.</p></li>
+<p><strong>Problems</strong> 1. Suppose that random variable <span class="math inline">\(X\)</span> has pdf <span class="math display">\[f(x) = 3x^2 \; \cdot I(0 &lt; x &lt; 1)\]</span> Further suppose that <span class="math inline">\(Y=1-X^2\)</span>. Find the pdf of <span class="math inline">\(Y\)</span>.</p>
+<ol start="2" style="list-style-type: decimal">
 <li><p>Suppose that random variable <span class="math inline">\(X\)</span> has pdf <span class="math display">\[f(x) = \frac{x}{x} \cdot I(0 \le x \le 2)\]</span> Further suppose that <span class="math inline">\(Y=X(1-X)\)</span>. Find the pdf of <span class="math inline">\(Y\)</span>. <em>Hint, graph <span class="math inline">\(f(x)\)</span>.</em></p></li>
 <li><p>Suppose that random variable <span class="math inline">\(X\)</span> has pdf <span class="math display">\[f(x) = e^{-x} \; \cdot I(0 &lt; x)\]</span> Further suppose that <span class="math inline">\(Y=\sqrt{X}\)</span>. Find the pdf of <span class="math inline">\(Y\)</span>.</p></li>
-<li><p>Suppose that <span class="math inline">\(X\)</span> has a uniform distribution on <span class="math inline">\((a, b)\)</span>. Let <span class="math inline">\(c&gt;0\)</span>. Show that <span class="math inline">\(Y= cX+d\)</span> has a uniform distribution on (<span class="math inline">\(ca+d, cb+d\)</span>).</p></li>
+<li><p>Suppose that <span class="math inline">\(X\)</span> has a uniform distribution on <span class="math inline">\((a, b)\)</span>. Let <span class="math inline">\(c&gt;0\)</span>. Show that <span class="math inline">\(Y= cX+d\)</span> has a uniform distribution on <span class="math inline">\((ca+d, cb+d)\)</span>.</p></li>
 </ol>
 
 </div>
