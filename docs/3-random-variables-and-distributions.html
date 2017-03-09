@@ -26,7 +26,7 @@
 <meta name="author" content="Derek L. Sonderegger">
 
 
-<meta name="date" content="2017-03-08">
+<meta name="date" content="2017-03-09">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -139,6 +139,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.8.1" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#cdf-method"><i class="fa fa-check"></i><b>3.8.1</b> CDF Method</a></li>
 <li class="chapter" data-level="3.8.2" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#pdf-method"><i class="fa fa-check"></i><b>3.8.2</b> pdf Method</a></li>
 </ul></li>
+<li class="chapter" data-level="3.9" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#multivariate-transformations"><i class="fa fa-check"></i><b>3.9</b> Multivariate Transformations</a></li>
 </ul></li>
 </ul>
 
@@ -732,7 +733,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ol>
 <p>Notice that it was arbitrary which variable we conditioned on and we could similarly define <span class="math inline">\(f_2(x)\)</span> and <span class="math inline">\(g_2(y|x)\)</span>. Furthermore, all the formulas in this section work if one variable is continuous and the other is discrete with just the appropriate switch between summation and integration.</p>
 <ol start="7" style="list-style-type: decimal">
-<li>We are interested in modeling the rate of hits on a web page server. Let <span class="math inline">\(X\)</span> be the number of page requests in a minute and <span class="math inline">\(R\)</span> is the <em>rate</em> of page requests. Suppose that we model <span class="math display">\[f_2(r) = e^r \; \cdot I(r &gt; 0)\]</span> and <span class="math display">\[g_1(x | r) = \frac{(2r)^x}{x!} e^{-2r}\;\cdot I\Big(x\in\{0,1,2,\dots\}\Big)\]</span>
+<li>We are interested in modeling the rate of hits on a web page server. Let <span class="math inline">\(X\)</span> be the number of page requests in a minute and <span class="math inline">\(R\)</span> is the <em>rate</em> of page requests. Suppose that we model <span class="math display">\[f_2(r) = e^{-r} \; \cdot I(r &gt; 0)\]</span> and <span class="math display">\[g_1(x | r) = \frac{(2r)^x}{x!} e^{-2r}\;\cdot I\Big(x\in\{0,1,2,\dots\}\Big)\]</span>
 <ol style="list-style-type: lower-alpha">
 <li>Find the marginal pf of <span class="math inline">\(X\)</span>.</li>
 <li>Find the conditional pdf of <span class="math inline">\(R\)</span> given <span class="math inline">\(X\)</span>, <span class="math inline">\(g_2(r|x)\)</span>.</li>
@@ -801,8 +802,30 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><p>Suppose that random variable <span class="math inline">\(X\)</span> has pdf <span class="math display">\[f(x) = e^{-x} \; \cdot I(0 &lt; x)\]</span> Further suppose that <span class="math inline">\(Y=\sqrt{X}\)</span>. Find the pdf of <span class="math inline">\(Y\)</span>.</p></li>
 <li><p>Suppose that <span class="math inline">\(X\)</span> has a uniform distribution on <span class="math inline">\((a, b)\)</span>. Let <span class="math inline">\(c&gt;0\)</span>. Show that <span class="math inline">\(Y= cX+d\)</span> has a uniform distribution on <span class="math inline">\((ca+d, cb+d)\)</span>.</p></li>
 </ol>
-
 </div>
+</div>
+<div id="multivariate-transformations" class="section level2">
+<h2><span class="header-section-number">3.9</span> Multivariate Transformations</h2>
+<p>Often we have a bivariate or multivariate distribution and we wish to consider some transformation.</p>
+<p><strong>CDF Method</strong> Our most widely applicable method for dealing with transformations is to consider how the tranformation can affect the CDF.</p>
+<p><strong>Example</strong> Suppose that we have <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> that are independent with joint pdf <span class="math display">\[\beta^2 e^{-\beta (x_1+x_2)} \; \cdot I(x_1&gt;0, x_2&gt;0)\]</span> where <span class="math inline">\(\beta&gt;0\)</span>. What we really care about is the sum of the two variables <span class="math inline">\(Y = X_1 + X_2\)</span>. Then we could figure out the cdf of <span class="math inline">\(Y\)</span> by <span class="math display">\[\begin{aligned} G(Y) 
+  = Pr( Y \le y ) 
+  = Pr( X_1 + X_2 \le y ) 
+  \end{aligned}\]</span> <img src="Probability_files/figure-html/unnamed-chunk-6-1.jpeg" width="672" /></p>
+<p><span class="math display">\[\begin{aligned} G(Y) 
+  &amp;= Pr( X_1 + X_2 \le y ) \\
+  &amp;= \int_0^y \int_0^{y-x_1} f(x_1,x_2) \,dx_2 \,dx_1 \\
+  &amp;= \int_0^y \int_0^{y-x_1} \beta^2 e^{-\beta (x_1+x_2)} \,dx_2 \,dx_1 \\
+  &amp;= \vdots \\
+  &amp;= 1 - e^{-\beta y} - \beta y e^{-\beta y}
+  \end{aligned}\]</span></p>
+<p>We can now use this CDF to obtain the pdf by differentiating <span class="math display">\[\begin{aligned} g(y) = \frac{d}{dy} G(y) 
+  &amp;= \frac{d}{dy} \left[ 1 - e^{-\beta y} - \beta y e^{-\beta y} \right] \\
+  &amp;= 0 + \beta e^{-\beta y} - \beta  e^{-\beta y} + \beta^2 y e^{-\beta y} \\
+  &amp;= \beta^2 y e^{-\beta y} \; \cdot I(0 &lt; y)
+  \end{aligned}\]</span></p>
+<p><strong>pdf method</strong> Just as in the univariate case, we might ask if there is a way to just go straight from the joint pdf to the pdf of the variable of interest. The answer is yes provided,</p>
+
 </div>
 </div>
             </section>

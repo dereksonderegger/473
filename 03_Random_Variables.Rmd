@@ -579,7 +579,7 @@ $$g_1(y|x) = \frac{ g_1(x|y) f_2(y)}{ f_1(x) } = \frac{ g_1(x|y) f_2(y)}{ \int_{
 Notice that it was arbitrary which variable we conditioned on and we could similarly define $f_2(x)$ and $g_2(y|x)$. Furthermore, all the formulas in this section work if one variable is continuous and the other is discrete with just the appropriate switch between summation and integration.
 
 7. We are interested in modeling the rate of hits on a web page server. Let $X$ be the number of page requests in a minute and $R$ is the _rate_ of page requests. Suppose that we model 
-$$f_2(r) = e^r \; \cdot I(r > 0)$$
+$$f_2(r) = e^{-r} \; \cdot I(r > 0)$$
 and
 $$g_1(x | r) = \frac{(2r)^x}{x!} e^{-2r}\;\cdot I\Big(x\in\{0,1,2,\dots\}\Big)$$
     a) Find the marginal pf of $X$.
@@ -711,3 +711,56 @@ Further suppose that $Y=\sqrt{X}$. Find the pdf of $Y$.
 4. Suppose that $X$ has a uniform distribution on $(a, b)$. Let $c>0$. Show that $Y= cX+d$ has a uniform distribution on $(ca+d, cb+d)$.
 
 
+## Multivariate Transformations
+Often we have a bivariate or multivariate distribution and we wish to consider some transformation.
+
+**CDF Method**
+Our most widely applicable method for dealing with transformations is to consider how the tranformation can affect the CDF.
+
+**Example** Suppose that we have $X_1$ and $X_2$ that are independent with joint pdf
+$$\beta^2 e^{-\beta (x_1+x_2)} \; \cdot I(x_1>0, x_2>0)$$
+where $\beta>0$. What we really care about is the sum of the two variables $Y = X_1 + X_2$. Then we could figure out the cdf of $Y$ by 
+$$\begin{aligned} G(Y) 
+  = Pr( Y \le y ) 
+  = Pr( X_1 + X_2 \le y ) 
+  \end{aligned}$$
+```{r, cache=TRUE, echo=FALSE, warning=FALSE, message=FALSE, dev='jpeg'}
+library(dplyr); library(ggplot2)
+data <- expand.grid(x1 = seq(0, 1.5, by = 0.001), 
+                    x2 = seq(0, 1.5, by = 0.001)) %>%
+  mutate( density = dexp(x1) * dexp(x2) ) %>%
+  filter( x1 + x2 < 1 )
+ggplot( data, aes(x=x1, y=x2, fill=density)) + 
+  geom_tile() + 
+  scale_x_continuous(breaks = c(0, 1), labels = c(0, 'y'), name=expression(x[1])) +
+  scale_y_continuous(breaks = c(0, 1), labels = c(0, 'y'), name=expression(x[2])) +
+  scale_fill_continuous(low='blue', high='red', name=expression(f( x[1], x[2]) ) )
+```
+  
+$$\begin{aligned} G(Y) 
+  &= Pr( X_1 + X_2 \le y ) \\
+  &= \int_0^y \int_0^{y-x_1} f(x_1,x_2) \,dx_2 \,dx_1 \\
+  &= \int_0^y \int_0^{y-x_1} \beta^2 e^{-\beta (x_1+x_2)} \,dx_2 \,dx_1 \\
+  &= \vdots \\
+  &= 1 - e^{-\beta y} - \beta y e^{-\beta y}
+  \end{aligned}$$
+
+We can now use this CDF to obtain the pdf by differentiating
+$$\begin{aligned} g(y) = \frac{d}{dy} G(y) 
+  &= \frac{d}{dy} \left[ 1 - e^{-\beta y} - \beta y e^{-\beta y} \right] \\
+  &= 0 + \beta e^{-\beta y} - \beta  e^{-\beta y} + \beta^2 y e^{-\beta y} \\
+  &= \beta^2 y e^{-\beta y} \; \cdot I(0 < y)
+  \end{aligned}$$
+  
+
+**pdf method**
+Just as in the univariate case, we might ask if there is a way to just go straight from the joint pdf to the pdf of the variable of interest.  The answer is yes provided, 
+  
+  
+  
+  
+  
+  
+  
+  
+  
