@@ -1,0 +1,68 @@
+
+# (APPENDIX) Appendix {-}
+```{r, echo=FALSE}
+system("source ~/.bash_profile")
+```
+
+# Useful functions
+## Gamma Function
+
+We want to generalize the factorial function which was 
+$$n! = n(n-1)(n-2)\dots(2)(1)$$
+for $n \in \{0, 1, 2, \dots\}$ and we define $0!=1$ for notational convenience because that is what we need in many formulas.  Notice that $1! = 1$, $2!=2$ and $3! = 3 * 2!$.
+
+The problem is that this is only defined for the whole numbers (natural numbers and zero).  We want to define a function that allows us to expand this function to the positive real numbers.
+
+Consider the funtion:
+$$\Gamma(x) = \int_0^\infty z^{x-1} e^{-z} \,dz$$
+
+First we show that $\Gamma(x) = (x-1)\Gamma(x-1)$ utilizing integration by parts.
+
+$$\begin{aligned}  
+u  = z^{x-1}      &\;\;\;  & dv = e^{-z}\,dz \\
+du = (x-1)z^{x-2}\,dx &\;\;\;  & v  = -e^{-z} 
+\end{aligned}$$
+
+and therefore
+
+$$\begin{aligned}
+\Gamma(x) &= \int_0^\infty z^{x-1} e^{-z} \,dz \\
+          &= \int_0^\infty u \;dv \\
+          &= uv\vert_0^\infty - \int_0^\infty v\, du \\
+          &= -z^{x-1}e^{-z}\vert_{z=0}^\infty + \int_0^\infty (x-1)z^{x-2}e^{-z} \, dz\\
+          &= (x-1) \int_0^\infty z^{x-2}e^{-z}\,dz\\
+          &= (x-1) \Gamma(x-1)
+  \end{aligned}$$
+
+Next we notice that $\Gamma(1) = 1 = 0!$ via the following integration
+$$\Gamma(1) = \int_0^\infty z^{1-1}e^{-z}\,dz = \int_0^\infty e^{-z} \,dz = -e^{-z} \vert_0^\infty = 1$$
+
+Using these bits, we can see that 
+$$\Gamma(2) = 1\cdot \Gamma(1) = 1 = 1!$$
+$$\Gamma(3) = 2 \Gamma(2) = 2 = 2!$$
+$$\Gamma(4) = 3 \Gamma(3) = 3 \cdot 2! = 3!$$
+and for positive integers $n$,
+$$\Gamma(n) = (n-1)!$$
+which can be re-arranged to see that
+$$n! = n \Gamma(n)$$
+
+We conclude by noting that 
+$$\Gamma\left( \frac{1}{2} \right) = \sqrt \pi$$ 
+_(This result can be obtained by looking at the square of the integral and then doing a trig substitution.)_
+
+A graph of this on the postive real numbers is given below: 
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, dev='jpeg'}
+library(dplyr)
+library(ggplot2)
+data <- data.frame(x=seq(0,6, by=.005)) %>%
+  filter(x > 0) %>%
+  mutate( y = gamma(x) )
+ggplot(data, aes(x=x, y=y)) +
+  geom_line() +
+  coord_cartesian(xlim=c(0,5), ylim=c(0,12)) +
+  scale_y_continuous(name=expression(Gamma(x)))
+```
+
+Finally we note that there is a reasonable approximation (known as Stirling's approximation) to the function for large values of $x$ as
+$$\Gamma(x+1) \approx \sqrt{ 2 \pi x } \left( \frac{x}{e} \right)^x$$

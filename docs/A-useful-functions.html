@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
+<link rel="prev" href="3-random-variables-and-distributions.html">
 
-<link rel="next" href="1-introduction-to-probability.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -161,17 +161,33 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">STA 473 - Probability</h1>
-<h4 class="author"><em>Derek L. Sonderegger</em></h4>
-<h4 class="date"><em>2017-03-20</em></h4>
-</div>
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
-<p>This is a set of questions to be used in an <em>Inquiry Based Learning</em> class for an undergraduate level course in probability.</p>
-<div id="acknowledgements" class="section level2 unnumbered">
-<h2>Acknowledgements</h2>
-<p>Many people have helped. I should thank them.</p>
+<div id="useful-functions" class="section level1">
+<h1><span class="header-section-number">A</span> Useful functions</h1>
+<div id="gamma-function" class="section level2">
+<h2><span class="header-section-number">A.1</span> Gamma Function</h2>
+<p>We want to generalize the factorial function which was <span class="math display">\[n! = n(n-1)(n-2)\dots(2)(1)\]</span> for <span class="math inline">\(n \in \{0, 1, 2, \dots\}\)</span> and we define <span class="math inline">\(0!=1\)</span> for notational convenience because that is what we need in many formulas. Notice that <span class="math inline">\(1! = 1\)</span>, <span class="math inline">\(2!=2\)</span> and <span class="math inline">\(3! = 3 * 2!\)</span>.</p>
+<p>The problem is that this is only defined for the whole numbers (natural numbers and zero). We want to define a function that allows us to expand this function to the positive real numbers.</p>
+<p>Consider the funtion: <span class="math display">\[\Gamma(x) = \int_0^\infty z^{x-1} e^{-z} \,dz\]</span></p>
+<p>First we show that <span class="math inline">\(\Gamma(x) = (x-1)\Gamma(x-1)\)</span> utilizing integration by parts.</p>
+<p><span class="math display">\[\begin{aligned}  
+u  = z^{x-1}      &amp;\;\;\;  &amp; dv = e^{-z}\,dz \\
+du = (x-1)z^{x-2}\,dx &amp;\;\;\;  &amp; v  = -e^{-z} 
+\end{aligned}\]</span></p>
+<p>and therefore</p>
+<p><span class="math display">\[\begin{aligned}
+\Gamma(x) &amp;= \int_0^\infty z^{x-1} e^{-z} \,dz \\
+          &amp;= \int_0^\infty u \;dv \\
+          &amp;= uv\vert_0^\infty - \int_0^\infty v\, du \\
+          &amp;= -z^{x-1}e^{-z}\vert_{z=0}^\infty + \int_0^\infty (x-1)z^{x-2}e^{-z} \, dz\\
+          &amp;= (x-1) \int_0^\infty z^{x-2}e^{-z}\,dz\\
+          &amp;= (x-1) \Gamma(x-1)
+  \end{aligned}\]</span></p>
+<p>Next we notice that <span class="math inline">\(\Gamma(1) = 1 = 0!\)</span> via the following integration <span class="math display">\[\Gamma(1) = \int_0^\infty z^{1-1}e^{-z}\,dz = \int_0^\infty e^{-z} \,dz = -e^{-z} \vert_0^\infty = 1\]</span></p>
+<p>Using these bits, we can see that <span class="math display">\[\Gamma(2) = 1\cdot \Gamma(1) = 1 = 1!\]</span> <span class="math display">\[\Gamma(3) = 2 \Gamma(2) = 2 = 2!\]</span> <span class="math display">\[\Gamma(4) = 3 \Gamma(3) = 3 \cdot 2! = 3!\]</span> and for positive integers <span class="math inline">\(n\)</span>, <span class="math display">\[\Gamma(n) = (n-1)!\]</span> which can be re-arranged to see that <span class="math display">\[n! = n \Gamma(n)\]</span></p>
+<p>We conclude by noting that <span class="math display">\[\Gamma\left( \frac{1}{2} \right) = \sqrt \pi\]</span> <em>(This result can be obtained by looking at the square of the integral and then doing a trig substitution.)</em></p>
+<p>A graph of this on the postive real numbers is given below:</p>
+<p><img src="Probability_files/figure-html/unnamed-chunk-8-1.jpeg" width="672" /></p>
+<p>Finally we note that there is a reasonable approximation (known as Stirling’s approximation) to the function for large values of <span class="math inline">\(x\)</span> as <span class="math display">\[\Gamma(x+1) \approx \sqrt{ 2 \pi x } \left( \frac{x}{e} \right)^x\]</span></p>
 
 </div>
 </div>
@@ -180,8 +196,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
+<a href="3-random-variables-and-distributions.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
-<a href="1-introduction-to-probability.html" class="navigation navigation-next navigation-unique" aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
@@ -209,7 +225,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/dereksonderegger/edit/master/473/index.Rmd",
+"link": "https://github.com/dereksonderegger/edit/master/473/99_Appendix.Rmd",
 "text": "Edit"
 },
 "download": [["Probability.pdf", "PDF"], ["Probability.epub", "EPUB"]],

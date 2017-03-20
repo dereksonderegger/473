@@ -586,7 +586,18 @@ $$g_1(x | r) = \frac{(2r)^x}{x!} e^{-2r}\;\cdot I\Big(x\in\{0,1,2,\dots\}\Big)$$
     b) Find the conditional pdf of $R$ given $X$, $g_2(r|x)$.
     c) Consider the cases where $X=1$ and $X=2$. For what values of $r$ is $g_2(r|1)$ larger than $g_2(r|2)$?
 
-
+8. **Beta-Binomial** Suppose we are considering a model for seedling success of a tree.  We will randomly select an adult tree to harvest seeds from and then plant $n=40$ seeds and observe how many of them germinate.  We will model the number of germinating seeds as $X \sim Binomial(n=40, \pi)$ where $\pi$ is the probability a randomly selected seed will germinate.  However because seed fitness depends on the parent tree, we allow $\pi \sim Beta(\alpha=2, \beta=2)$. The beta distribution has the pdf: 
+$$\begin{aligned} f_2(\pi) 
+  &= \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)} \pi^{\alpha-1}(1-\pi)^{\beta-1} \,\cdot I(0<\pi<1) \\
+  \end{aligned}$$
+where $\alpha>0, \beta>0$ and $\Gamma(\cdot)$ is the gamma function (see the appendix).  Recall that the $Binomial(n,\pi)$ distribution has pf
+$$ g_1(x|\pi) = {n \choose x} \pi^x (1-\pi)^{10-x} \;\cdot I(x\in \{0,1,\dots,n\})$$
+For this problem, we have $n=40$ and $\alpha=\beta=2$ and we are interested in random variables $X$ and $\Pi$.
+    a) Graph the marginal distribution of $\Pi$. 
+    b) Find the marginal distribution of $X$. _Hint: Distributions must integrate/sum to one, and therefore distributions lists are a convenient set of integration/sumation identities. In particular from our definition of the Beta Distribution we have:_
+        $$\int_0^1 \pi^{a-1}(1-\pi)^{b-1} \, d\pi = \frac{\Gamma(a)\Gamma(b)}{\Gamma(a+b)}$$
+    c) Find the conditional pdf of $\pi$ given $X$, $g_2(\pi |x)$.
+    d) Consider the cases where $X=20$ and $X=30$. For what values of $\pi$ is $g_2(\pi|x=20)$ larger than $g_2(\pi|x=30)$?
 ## Multivariate Distributions
 
 Just replace the double sums and double integrals with more of them.
@@ -698,11 +709,19 @@ $$g(y) = f\left( \frac{1}{t} \log \left( \frac{Y}{\nu} \right) \right) \; \Bigg\
 
 1. Suppose that random variable $X$ has pdf 
 $$f(x) = 3x^2 \; \cdot I(0 < x < 1)$$
-Further suppose that $Y=1-X^2$. Find the pdf of $Y$.
+Further suppose that $Y=1-X^2$. 
+  a) Find the pdf of $Y$ using the CDF method.
+  b) Find the pdf of $Y$ using the pdf method.
 
 2. Suppose that random variable $X$ has pdf 
-$$f(x) = \frac{x}{x} \cdot I(0 \le x \le 2)$$
-Further suppose that $Y=X(1-X)$. Find the pdf of $Y$. _Hint, graph $f(x)$._
+$$f(x) = 1\cdot I(0 \le x \le 1)$$
+Further suppose that $Y=X(1-X)$. Find the pdf of $Y$. 
+    a) Graph the function $y = x(1-x)$ on the support of $x$. Is this a one-to-one function?
+    b) What is the support of the random variable $Y$?
+    c) On your graph of $y=x(1-x)$, pick a value for $y$ and find the region(s) of $x$ such that $x(1-x)\le y$. _Hint: quadratic equation!_
+    d) Find the CDF of $Y$ by integrating over the appropriate region(s).
+    e) Find the pdf of $Y$ by differentiating. 
+    
 
 3. Suppose that random variable $X$ has pdf 
 $$f(x) = e^{-x} \; \cdot I(0 < x)$$
@@ -752,15 +771,100 @@ $$\begin{aligned} g(y) = \frac{d}{dy} G(y)
   &= \beta^2 y e^{-\beta y} \; \cdot I(0 < y)
   \end{aligned}$$
   
+**Convolutions** 
+We are often interested in the sum of two independent random variables. Suppose that $X_1$ has density function $f_1(x_1)$ and $X_2$ has density function $f_2(x_2)$ and $X_1$ is independent of $X_2$. Define $Y=X_1 + X_2$. We say that the distribution of $Y$ is the _convolution_ of the distributions of $X_1$ and $X_2$. 
+
+1. Suppose that $X_1$ and $X_2$ have support along the entire real line. Show that the density function of $Y$ is
+$$g(y) = \int_{-\infty} ^{\infty} f_1(y-u)f_x(u) \, du = \int_{-\infty} ^{\infty} f_1(z)f_x(y-z) \, dz$$
+    a) Define the set $A_y$ which is the set of $(x_1,x_2)$ values such that $x_1+x_2\le y$.
+    b) Define $G(y)$ by setting up the integration across the set $A_y$.
+    c) Recognize that in the set up of $G(y)$ we have indirectly figured out what $g(y)$.
+
+2. Suppose that we have independent random variables $X_1$ and $X_2$ with uniform distributions on $a,b$ where $a<b$. 
+$$f_1(x_1) = \frac{1}{b-a} \;\cdot I(a \le x_1 \le b)$$
+$$f_2(x_2) = \frac{1}{b-a} \;\cdot I(a \le x_2 \le b)$$
+Find the pdf of $Y=X_1+X_2$.
+
+3. Suppose that we have independent random variables $X_1$ and $X_2$ with pdfs
+$$f_1(x_1) = \beta e^{-\beta x_1} \;\cdot I(x_1>0)$$
+$$f_1(x_2) = \beta e^{-\beta x_2} \;\cdot I(x_2>0)$$ 
+where $\beta > 0$. Show that the pdf of $Y=X_1 + X_2$ is
+$$g(y) = \beta^2 y e^{-\beta y} \; \cdot I(y>0)$$
+_Hint: Don't ignore the indicator functions._
+
+
+4. **Distribution of the Maximum of a sample.** Suppose that $X_1, X_2, \dots, X_n$ are independent random variables, and all have a common distribution with CDF $F(x)$ and pdf $f(x)$. Let $Y_n$ be the maximum value of these $X_i$ values.
+    a) If for some $y$ we have that $Y_n \le y$, what inequality must hold for each $X_i$?
+    b) Write $Pr( Y \le y )$ as some probability statement involving all $X_1, X_2, \dots, X_n$ independent variables.
+    c) Write down the formula for $G_n(y)$.
+    d) Write down the formula for $g_n(y)$.
+    
+5. **Distribution of the Minimum of a sample.** Suppose that $X_1, X_2, \dots, X_n$ are independent continuous random variables, and all have a common distribution with CDF $F(x)$ and pdf $f(x)$. Let $Y_1$ be the minimum value of these $X_i$ values.
+    a) If for some $y$ we have that $Y_1 > y$, what inequality must hold for each $X_i$?
+    b) Write $1 - Pr( Y_1 > y )$ as some probability statement involving all $X_1, X_2, \dots, X_n$ independent variables.
+    c) Write down the formula for $G_1(y)$.
+    d) Write down the formula for $g_1(y)$.
+
+6. Suppose that we have independent random variables $X_1$ and $X_2$ with uniform distributions on $a,b$ where $a<b$. 
+$$f_1(x_1) = \frac{1}{b-a} \;\cdot I(a \le x_1 \le b)$$
+$$f_2(x_2) = \frac{1}{b-a} \;\cdot I(a \le x_2 \le b)$$
+Find the pdf of the maximum of $X_1$ and $X_2$.
+
+7. Suppose that we have independent random variables $X_1$ and $X_2$ with pdfs
+$$f_1(x_1) = \beta e^{-\beta x_1} \;\cdot I(x_1>0)$$
+$$f_1(x_2) = \beta e^{-\beta x_2} \;\cdot I(x_2>0)$$ 
+where $\beta > 0$. Show that the pdf of $Y=X_1 + X_2$ is
+$$g(y) = \beta^2 y e^{-\beta y} \; \cdot I(y>0)$$
+Find the pdf of the minimum of $X_1$ and $X_2$.
+
 
 **pdf method**
-Just as in the univariate case, we might ask if there is a way to just go straight from the joint pdf to the pdf of the variable of interest.  The answer is yes provided, 
+Just as in the univariate case, we might ask if there is a way to just go straight from the joint pdf to the pdf of the variable of interest.  The answer is yes provided, we convert the distribution of $X_1,X_2,\dots,X_n$ into $Y_1,Y_2,\dots,Y_n$ via transformations $r_1(),r_2(), \dots,r_n()$ where
+$$y_1 = r_1(x_1,x_2,\dots,x_n)$$
+$$y_2 = r_2(x_1,x_2,\dots,x_n)$$
+$$\vdots$$
+$$y_n = r_n(x_1,x_2,\dots,x_n)$$
+and these functions are invertable so that there exists
+$$x_1 = s_1(y_1, y_2, \dots, y_n)$$
+$$x_2 = s_2(y_1, y_2, \dots, y_n)$$
+$$\vdots$$
+$$x_n = s_n(y_1, y_2, \dots, y_n)$$
+
+For notational compactness, denote $s_1 = s_1(y_1, y_2, \dots, y_n)$. Then
+$$g(y_1, y_2, \dots, y_n) = f(s_1, s_2, \dots, s_n) \cdot \big\vert J \big\vert$$
+where $|J|$ is the absolute value of the determinant 
+$$J = \det \left[ \begin{array}{ccc} 
+\frac{\partial s_1}{\partial y_1}   & \dots  & \frac{\partial s_1}{\partial y_n}\\
+\vdots                              & \ddots & \vdots \\
+\frac{\partial s_n}{\partial y_1}   & \dots  & \frac{\partial s_n}{\partial y_n}\\
+\end{array}\right]$$
   
   
-  
-  
-  
-  
-  
-  
-  
+**Example**  
+Suppose that we have independent random variables $X_1$ and $X_2$ with pdfs
+$$f_1(x_1) = \beta e^{-\beta x_1} \;\cdot I(x_1>0)$$
+$$f_2(x_2) = \beta e^{-\beta x_2} \;\cdot I(x_2>0)$$ 
+where $\beta > 0$. We will find the joint pdf of $Y_1 = \frac{X_1}{X_1+X_2}$ and $Y_2= X_1+X_2$.
+
+In this case $X_1$ and $X_2$ are positive values, so $Y_1 \in (0,1)$ and $Y_2 > 0$.
+Doing the backsolving for $X_1$ and $X_2$ we have
+$$x_1 = y_1 y_2$$
+$$x_2 = y_2 ( 1-y_1 )$$
+and therefore
+$$J = \det \left[ \begin{array}{cc} 
+y_2 & y_1 \\
+-y_2 & 1-y_1
+\end{array}\right] = y_2(1-y_1) +y_1 y_2 = y_2$$
+
+Therefore
+$$\begin{aligned} g(y_1, y_2) 
+  &= f\Big( y_1 y_2,\; y_2(1-y_1) \Big)\,\cdot \big\vert J \big\vert \\
+  &= f_1( y_1 y_2) \, f_2( y_2(1-y_1) ) \vert y_2 \vert \\
+  &= \beta e^{-\beta y_1 y_2} \beta e^{-\beta y_2(1-y_2)} \\
+  &= \beta^2 e^{-\beta y_2} \; I(y_2 > 0) \; I(0 < y_1 < 1) 
+  \end{aligned}$$
+Notice that this pdf is easily broken into the marginals of $Y_1$ and $Y_2$ and we see that we have confirmed our calculation for the pdf of $Y_2$ and conveniently discovered that $Y_1$ has a $Uniform(0,1)$ distribution.
+
+8. Suppose we have random variables $X_1$ and $X_2$ with joint distribution
+$$f(x_1, x_2) = 2(1-x_1)\; I(0\le x_1 \le 1) I(0\le x_2 \le 1)$$
+Find the pdf of $Y_2=X_1X_2$. _Because the pdf method of transformation requires having a $Y_1$ variable, we will consider a second random variable that is convenient, $Y_1 = X_1$._

@@ -26,7 +26,7 @@
 <meta name="author" content="Derek L. Sonderegger">
 
 
-<meta name="date" content="2017-03-09">
+<meta name="date" content="2017-03-20">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -34,7 +34,7 @@
   
   
 <link rel="prev" href="2-conditional-probability.html">
-
+<link rel="next" href="A-useful-functions.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -134,12 +134,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.5.3" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#independence-1"><i class="fa fa-check"></i><b>3.5.3</b> Independence</a></li>
 </ul></li>
 <li class="chapter" data-level="3.6" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#conditional-distributions"><i class="fa fa-check"></i><b>3.6</b> Conditional Distributions</a></li>
-<li class="chapter" data-level="3.7" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#multivariate-distributions"><i class="fa fa-check"></i><b>3.7</b> Multivariate Distributions</a></li>
-<li class="chapter" data-level="3.8" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#functions-of-random-variables"><i class="fa fa-check"></i><b>3.8</b> Functions of Random Variables</a><ul>
-<li class="chapter" data-level="3.8.1" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#cdf-method"><i class="fa fa-check"></i><b>3.8.1</b> CDF Method</a></li>
-<li class="chapter" data-level="3.8.2" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#pdf-method"><i class="fa fa-check"></i><b>3.8.2</b> pdf Method</a></li>
+<li class="chapter" data-level="3.7" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#functions-of-random-variables"><i class="fa fa-check"></i><b>3.7</b> Functions of Random Variables</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#cdf-method"><i class="fa fa-check"></i><b>3.7.1</b> CDF Method</a></li>
+<li class="chapter" data-level="3.7.2" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#pdf-method"><i class="fa fa-check"></i><b>3.7.2</b> pdf Method</a></li>
 </ul></li>
-<li class="chapter" data-level="3.9" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#multivariate-transformations"><i class="fa fa-check"></i><b>3.9</b> Multivariate Transformations</a></li>
+<li class="chapter" data-level="3.8" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#multivariate-transformations"><i class="fa fa-check"></i><b>3.8</b> Multivariate Transformations</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="A-useful-functions.html"><a href="A-useful-functions.html"><i class="fa fa-check"></i><b>A</b> Useful functions</a><ul>
+<li class="chapter" data-level="A.1" data-path="A-useful-functions.html"><a href="A-useful-functions.html#gamma-function"><i class="fa fa-check"></i><b>A.1</b> Gamma Function</a></li>
 </ul></li>
 </ul>
 
@@ -739,19 +742,25 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>Find the conditional pdf of <span class="math inline">\(R\)</span> given <span class="math inline">\(X\)</span>, <span class="math inline">\(g_2(r|x)\)</span>.</li>
 <li>Consider the cases where <span class="math inline">\(X=1\)</span> and <span class="math inline">\(X=2\)</span>. For what values of <span class="math inline">\(r\)</span> is <span class="math inline">\(g_2(r|1)\)</span> larger than <span class="math inline">\(g_2(r|2)\)</span>?</li>
 </ol></li>
+<li><strong>Beta-Binomial</strong> Suppose we are considering a model for seedling success of a tree. We will randomly select an adult tree to harvest seeds from and then plant <span class="math inline">\(n=40\)</span> seeds and observe how many of them germinate. We will model the number of germinating seeds as <span class="math inline">\(X \sim Binomial(n=40, \pi)\)</span> where <span class="math inline">\(\pi\)</span> is the probability a randomly selected seed will germinate. However because seed fitness depends on the parent tree, we allow <span class="math inline">\(\pi \sim Beta(\alpha=2, \beta=2)\)</span>. The beta distribution has the pdf: <span class="math display">\[\begin{aligned} f_2(\pi) 
+  &amp;= \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)} \pi^{\alpha-1}(1-\pi)^{\beta-1} \,\cdot I(0&lt;\pi&lt;1) \\
+  \end{aligned}\]</span> where <span class="math inline">\(\alpha&gt;0, \beta&gt;0\)</span> and <span class="math inline">\(\Gamma(\cdot)\)</span> is the gamma function (see the appendix). Recall that the <span class="math inline">\(Binomial(n,\pi)\)</span> distribution has pf <span class="math display">\[ g_1(x|\pi) = {n \choose x} \pi^x (1-\pi)^{10-x} \;\cdot I(x\in \{0,1,\dots,n\})\]</span> For this problem, we have <span class="math inline">\(n=40\)</span> and <span class="math inline">\(\alpha=\beta=2\)</span> and we are interested in random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(\Pi\)</span>.
+<ol style="list-style-type: lower-alpha">
+<li>Graph the marginal distribution of <span class="math inline">\(\Pi\)</span>.</li>
+<li>Find the marginal distribution of <span class="math inline">\(X\)</span>. <em>Hint: Distributions must integrate/sum to one, and therefore distributions lists are a convenient set of integration/sumation identities. In particular from our definition of the Beta Distribution we have:</em> <span class="math display">\[\int_0^1 \pi^{a-1}(1-\pi)^{b-1} \, d\pi = \frac{\Gamma(a)\Gamma(b)}{\Gamma(a+b)}\]</span></li>
+<li>Find the conditional pdf of <span class="math inline">\(\pi\)</span> given <span class="math inline">\(X\)</span>, <span class="math inline">\(g_2(\pi |x)\)</span>.</li>
+<li>Consider the cases where <span class="math inline">\(X=20\)</span> and <span class="math inline">\(X=30\)</span>. For what values of <span class="math inline">\(\pi\)</span> is <span class="math inline">\(g_2(\pi|x=20)\)</span> larger than <span class="math inline">\(g_2(\pi|x=30)\)</span>? ## Multivariate Distributions</li>
+</ol></li>
 </ol>
-</div>
-<div id="multivariate-distributions" class="section level2">
-<h2><span class="header-section-number">3.7</span> Multivariate Distributions</h2>
 <p>Just replace the double sums and double integrals with more of them.</p>
 </div>
 <div id="functions-of-random-variables" class="section level2">
-<h2><span class="header-section-number">3.8</span> Functions of Random Variables</h2>
+<h2><span class="header-section-number">3.7</span> Functions of Random Variables</h2>
 <p>Often we have a distribution for the random variable <span class="math inline">\(X\)</span> but actually want to know aobut the random variable <span class="math inline">\(Y=r(X)\)</span>.</p>
 <p><strong>Example</strong> Suppose that we know the distribution of <span class="math inline">\(X\)</span>, the number of customers per hour at a resturant. However, what we really want to know about is <span class="math inline">\(Y=r(X) = 60 / X\)</span> which is the typical number of minutes between customers.</p>
 <p><strong>Example</strong> Suppose that I know the distribution of <span class="math inline">\(X\)</span> which is the number of docter appointments necessary for treatment of some issue. But what I really care about is <span class="math inline">\(Y=200+100*X\)</span> which is the amount of money total that these appointments will cost.</p>
 <div id="cdf-method" class="section level3">
-<h3><span class="header-section-number">3.8.1</span> CDF Method</h3>
+<h3><span class="header-section-number">3.7.1</span> CDF Method</h3>
 <p>Of the two methods we’ll investigate in this section, the CDF method is by far the most general, but can be somewhat annoying to implement.</p>
 <p>The idea is that <span class="math display">\[G(y) = Pr(Y \le y) = Pr( r(X) \le y ) = 
   \begin{cases} \sum_{x:r(x) \le y} f(x) \\ \\
@@ -781,7 +790,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Step 3: Differentiate <span class="math inline">\(G(y)\)</span> to obtain <span class="math inline">\(g(y)\)</span> <span class="math display">\[g(y) = \frac{d}{dy}G(y) = \frac{d}{dy} \left[ 1-(1-y)^2 \right]  = 2(1-y) \; \cdot I(0 \le y \le 1)\]</span></p>
 </div>
 <div id="pdf-method" class="section level3">
-<h3><span class="header-section-number">3.8.2</span> pdf Method</h3>
+<h3><span class="header-section-number">3.7.2</span> pdf Method</h3>
 <p>In some cases it is possible to go straight from <span class="math inline">\(f(x)\)</span> to <span class="math inline">\(g(y)\)</span>. In particular if <span class="math inline">\(r(x)\)</span> is a one-to-one and differentiable. If <span class="math inline">\(r(x)\)</span> is one-to-one, then the inverse function <span class="math inline">\(r^{-1}(y)\)</span> exists.</p>
 <p><strong>Theorem</strong> <em>Suppose <span class="math inline">\(X\)</span> is a continuous random variable with pdf <span class="math inline">\(f(x)\)</span> such that <span class="math inline">\(Pr(a\le X\le b)=1\)</span> for some (possibly infinite) boundaries <span class="math inline">\(a\)</span>,<span class="math inline">\(b\)</span>. If the transformation <span class="math inline">\(r(x)\)</span> is a one-to-one and differentiable and has range <span class="math inline">\((\alpha,\beta)\)</span> for <span class="math inline">\(x\in(a,b)\)</span>, then</em> <span class="math display">\[g(y) = f\Big( r^{-1}(y) \Big) \cdot \Bigg\vert \frac{d}{dy}r^{-1}(y) \Bigg\vert\]</span> <em>where <span class="math inline">\(r^{-1}(y)\)</span> is the inverse function of <span class="math inline">\(r(x)\)</span>.</em></p>
 <p><strong>Proof</strong> Suppose that <span class="math inline">\(r(x)\)</span> is an increasing function. Then its inverse function is also an increasing function and <span class="math display">\[G(y) = Pr[Y \le y] = Pr[ r(X) \le y ] = Pr[ X \le r^{-1}(y) ] = F[ r^{-1}(y) ]\]</span></p>
@@ -797,15 +806,28 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
        =3 \left( 1-\frac{1}{t} \log \left( \frac{Y}{\nu} \right) \right) \; \frac{1}{tY} \cdot I(\nu \le y \le \nu e^t)\]</span></p>
 <p><strong>Problems</strong></p>
 <ol style="list-style-type: decimal">
-<li><p>Suppose that random variable <span class="math inline">\(X\)</span> has pdf <span class="math display">\[f(x) = 3x^2 \; \cdot I(0 &lt; x &lt; 1)\]</span> Further suppose that <span class="math inline">\(Y=1-X^2\)</span>. Find the pdf of <span class="math inline">\(Y\)</span>.</p></li>
-<li><p>Suppose that random variable <span class="math inline">\(X\)</span> has pdf <span class="math display">\[f(x) = \frac{x}{x} \cdot I(0 \le x \le 2)\]</span> Further suppose that <span class="math inline">\(Y=X(1-X)\)</span>. Find the pdf of <span class="math inline">\(Y\)</span>. <em>Hint, graph <span class="math inline">\(f(x)\)</span>.</em></p></li>
+<li>Suppose that random variable <span class="math inline">\(X\)</span> has pdf <span class="math display">\[f(x) = 3x^2 \; \cdot I(0 &lt; x &lt; 1)\]</span> Further suppose that <span class="math inline">\(Y=1-X^2\)</span>.</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li>Find the pdf of <span class="math inline">\(Y\)</span> using the CDF method.</li>
+<li>Find the pdf of <span class="math inline">\(Y\)</span> using the pdf method.</li>
+</ol>
+<ol start="2" style="list-style-type: decimal">
+<li>Suppose that random variable <span class="math inline">\(X\)</span> has pdf <span class="math display">\[f(x) = 1\cdot I(0 \le x \le 1)\]</span> Further suppose that <span class="math inline">\(Y=X(1-X)\)</span>. Find the pdf of <span class="math inline">\(Y\)</span>.
+<ol style="list-style-type: lower-alpha">
+<li>Graph the function <span class="math inline">\(y = x(1-x)\)</span> on the support of <span class="math inline">\(x\)</span>. Is this a one-to-one function?</li>
+<li>What is the support of the random variable <span class="math inline">\(Y\)</span>?</li>
+<li>On your graph of <span class="math inline">\(y=x(1-x)\)</span>, pick a value for <span class="math inline">\(y\)</span> and find the region(s) of <span class="math inline">\(x\)</span> such that <span class="math inline">\(x(1-x)\le y\)</span>. <em>Hint: quadratic equation!</em></li>
+<li>Find the CDF of <span class="math inline">\(Y\)</span> by integrating over the appropriate region(s).</li>
+<li>Find the pdf of <span class="math inline">\(Y\)</span> by differentiating.</li>
+</ol></li>
 <li><p>Suppose that random variable <span class="math inline">\(X\)</span> has pdf <span class="math display">\[f(x) = e^{-x} \; \cdot I(0 &lt; x)\]</span> Further suppose that <span class="math inline">\(Y=\sqrt{X}\)</span>. Find the pdf of <span class="math inline">\(Y\)</span>.</p></li>
 <li><p>Suppose that <span class="math inline">\(X\)</span> has a uniform distribution on <span class="math inline">\((a, b)\)</span>. Let <span class="math inline">\(c&gt;0\)</span>. Show that <span class="math inline">\(Y= cX+d\)</span> has a uniform distribution on <span class="math inline">\((ca+d, cb+d)\)</span>.</p></li>
 </ol>
 </div>
 </div>
 <div id="multivariate-transformations" class="section level2">
-<h2><span class="header-section-number">3.9</span> Multivariate Transformations</h2>
+<h2><span class="header-section-number">3.8</span> Multivariate Transformations</h2>
 <p>Often we have a bivariate or multivariate distribution and we wish to consider some transformation.</p>
 <p><strong>CDF Method</strong> Our most widely applicable method for dealing with transformations is to consider how the tranformation can affect the CDF.</p>
 <p><strong>Example</strong> Suppose that we have <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> that are independent with joint pdf <span class="math display">\[\beta^2 e^{-\beta (x_1+x_2)} \; \cdot I(x_1&gt;0, x_2&gt;0)\]</span> where <span class="math inline">\(\beta&gt;0\)</span>. What we really care about is the sum of the two variables <span class="math inline">\(Y = X_1 + X_2\)</span>. Then we could figure out the cdf of <span class="math inline">\(Y\)</span> by <span class="math display">\[\begin{aligned} G(Y) 
@@ -824,17 +846,67 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   &amp;= 0 + \beta e^{-\beta y} - \beta  e^{-\beta y} + \beta^2 y e^{-\beta y} \\
   &amp;= \beta^2 y e^{-\beta y} \; \cdot I(0 &lt; y)
   \end{aligned}\]</span></p>
-<p><strong>pdf method</strong> Just as in the univariate case, we might ask if there is a way to just go straight from the joint pdf to the pdf of the variable of interest. The answer is yes provided,</p>
+<p><strong>Convolutions</strong> We are often interested in the sum of two independent random variables. Suppose that <span class="math inline">\(X_1\)</span> has density function <span class="math inline">\(f_1(x_1)\)</span> and <span class="math inline">\(X_2\)</span> has density function <span class="math inline">\(f_2(x_2)\)</span> and <span class="math inline">\(X_1\)</span> is independent of <span class="math inline">\(X_2\)</span>. Define <span class="math inline">\(Y=X_1 + X_2\)</span>. We say that the distribution of <span class="math inline">\(Y\)</span> is the <em>convolution</em> of the distributions of <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span>.</p>
+<ol style="list-style-type: decimal">
+<li>Suppose that <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> have support along the entire real line. Show that the density function of <span class="math inline">\(Y\)</span> is <span class="math display">\[g(y) = \int_{-\infty} ^{\infty} f_1(y-u)f_x(u) \, du = \int_{-\infty} ^{\infty} f_1(z)f_x(y-z) \, dz\]</span>
+<ol style="list-style-type: lower-alpha">
+<li>Define the set <span class="math inline">\(A_y\)</span> which is the set of <span class="math inline">\((x_1,x_2)\)</span> values such that <span class="math inline">\(x_1+x_2\le y\)</span>.</li>
+<li>Define <span class="math inline">\(G(y)\)</span> by setting up the integration across the set <span class="math inline">\(A_y\)</span>.</li>
+<li>Recognize that in the set up of <span class="math inline">\(G(y)\)</span> we have indirectly figured out what <span class="math inline">\(g(y)\)</span>.</li>
+</ol></li>
+<li><p>Suppose that we have independent random variables <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> with uniform distributions on <span class="math inline">\(a,b\)</span> where <span class="math inline">\(a&lt;b\)</span>. <span class="math display">\[f_1(x_1) = \frac{1}{b-a} \;\cdot I(a \le x_1 \le b)\]</span> <span class="math display">\[f_2(x_2) = \frac{1}{b-a} \;\cdot I(a \le x_2 \le b)\]</span> Find the pdf of <span class="math inline">\(Y=X_1+X_2\)</span>.</p></li>
+<li><p>Suppose that we have independent random variables <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> with pdfs <span class="math display">\[f_1(x_1) = \beta e^{-\beta x_1} \;\cdot I(x_1&gt;0)\]</span> <span class="math display">\[f_1(x_2) = \beta e^{-\beta x_2} \;\cdot I(x_2&gt;0)\]</span> where <span class="math inline">\(\beta &gt; 0\)</span>. Show that the pdf of <span class="math inline">\(Y=X_1 + X_2\)</span> is <span class="math display">\[g(y) = \beta^2 y e^{-\beta y} \; \cdot I(y&gt;0)\]</span> <em>Hint: Don’t ignore the indicator functions.</em></p></li>
+<li><strong>Distribution of the Maximum of a sample.</strong> Suppose that <span class="math inline">\(X_1, X_2, \dots, X_n\)</span> are independent random variables, and all have a common distribution with CDF <span class="math inline">\(F(x)\)</span> and pdf <span class="math inline">\(f(x)\)</span>. Let <span class="math inline">\(Y_n\)</span> be the maximum value of these <span class="math inline">\(X_i\)</span> values.
+<ol style="list-style-type: lower-alpha">
+<li>If for some <span class="math inline">\(y\)</span> we have that <span class="math inline">\(Y_n \le y\)</span>, what inequality must hold for each <span class="math inline">\(X_i\)</span>?</li>
+<li>Write <span class="math inline">\(Pr( Y \le y )\)</span> as some probability statement involving all <span class="math inline">\(X_1, X_2, \dots, X_n\)</span> independent variables.</li>
+<li>Write down the formula for <span class="math inline">\(G_n(y)\)</span>.</li>
+<li>Write down the formula for <span class="math inline">\(g_n(y)\)</span>.</li>
+</ol></li>
+<li><strong>Distribution of the Minimum of a sample.</strong> Suppose that <span class="math inline">\(X_1, X_2, \dots, X_n\)</span> are independent continuous random variables, and all have a common distribution with CDF <span class="math inline">\(F(x)\)</span> and pdf <span class="math inline">\(f(x)\)</span>. Let <span class="math inline">\(Y_1\)</span> be the minimum value of these <span class="math inline">\(X_i\)</span> values.
+<ol style="list-style-type: lower-alpha">
+<li>If for some <span class="math inline">\(y\)</span> we have that <span class="math inline">\(Y_1 &gt; y\)</span>, what inequality must hold for each <span class="math inline">\(X_i\)</span>?</li>
+<li>Write <span class="math inline">\(1 - Pr( Y_1 &gt; y )\)</span> as some probability statement involving all <span class="math inline">\(X_1, X_2, \dots, X_n\)</span> independent variables.</li>
+<li>Write down the formula for <span class="math inline">\(G_1(y)\)</span>.</li>
+<li>Write down the formula for <span class="math inline">\(g_1(y)\)</span>.</li>
+</ol></li>
+<li><p>Suppose that we have independent random variables <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> with uniform distributions on <span class="math inline">\(a,b\)</span> where <span class="math inline">\(a&lt;b\)</span>. <span class="math display">\[f_1(x_1) = \frac{1}{b-a} \;\cdot I(a \le x_1 \le b)\]</span> <span class="math display">\[f_2(x_2) = \frac{1}{b-a} \;\cdot I(a \le x_2 \le b)\]</span> Find the pdf of the maximum of <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span>.</p></li>
+<li><p>Suppose that we have independent random variables <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> with pdfs <span class="math display">\[f_1(x_1) = \beta e^{-\beta x_1} \;\cdot I(x_1&gt;0)\]</span> <span class="math display">\[f_1(x_2) = \beta e^{-\beta x_2} \;\cdot I(x_2&gt;0)\]</span> where <span class="math inline">\(\beta &gt; 0\)</span>. Show that the pdf of <span class="math inline">\(Y=X_1 + X_2\)</span> is <span class="math display">\[g(y) = \beta^2 y e^{-\beta y} \; \cdot I(y&gt;0)\]</span> Find the pdf of the minimum of <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span>.</p></li>
+</ol>
+<p><strong>pdf method</strong> Just as in the univariate case, we might ask if there is a way to just go straight from the joint pdf to the pdf of the variable of interest. The answer is yes provided, we convert the distribution of <span class="math inline">\(X_1,X_2,\dots,X_n\)</span> into <span class="math inline">\(Y_1,Y_2,\dots,Y_n\)</span> via transformations <span class="math inline">\(r_1(),r_2(), \dots,r_n()\)</span> where <span class="math display">\[y_1 = r_1(x_1,x_2,\dots,x_n)\]</span> <span class="math display">\[y_2 = r_2(x_1,x_2,\dots,x_n)\]</span> <span class="math display">\[\vdots\]</span> <span class="math display">\[y_n = r_n(x_1,x_2,\dots,x_n)\]</span> and these functions are invertable so that there exists <span class="math display">\[x_1 = s_1(y_1, y_2, \dots, y_n)\]</span> <span class="math display">\[x_2 = s_2(y_1, y_2, \dots, y_n)\]</span> <span class="math display">\[\vdots\]</span> <span class="math display">\[x_n = s_n(y_1, y_2, \dots, y_n)\]</span></p>
+<p>For notational compactness, denote <span class="math inline">\(s_1 = s_1(y_1, y_2, \dots, y_n)\)</span>. Then <span class="math display">\[g(y_1, y_2, \dots, y_n) = f(s_1, s_2, \dots, s_n) \cdot \big\vert J \big\vert\]</span> where <span class="math inline">\(|J|\)</span> is the absolute value of the determinant <span class="math display">\[J = \det \left[ \begin{array}{ccc} 
+\frac{\partial s_1}{\partial y_1}   &amp; \dots  &amp; \frac{\partial s_1}{\partial y_n}\\
+\vdots                              &amp; \ddots &amp; \vdots \\
+\frac{\partial s_n}{\partial y_1}   &amp; \dots  &amp; \frac{\partial s_n}{\partial y_n}\\
+\end{array}\right]\]</span></p>
+<p><strong>Example</strong><br />
+Suppose that we have independent random variables <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> with pdfs <span class="math display">\[f_1(x_1) = \beta e^{-\beta x_1} \;\cdot I(x_1&gt;0)\]</span> <span class="math display">\[f_2(x_2) = \beta e^{-\beta x_2} \;\cdot I(x_2&gt;0)\]</span> where <span class="math inline">\(\beta &gt; 0\)</span>. We will find the joint pdf of <span class="math inline">\(Y_1 = \frac{X_1}{X_1+X_2}\)</span> and <span class="math inline">\(Y_2= X_1+X_2\)</span>.</p>
+<p>In this case <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are positive values, so <span class="math inline">\(Y_1 \in (0,1)\)</span> and <span class="math inline">\(Y_2 &gt; 0\)</span>. Doing the backsolving for <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> we have <span class="math display">\[x_1 = y_1 y_2\]</span> <span class="math display">\[x_2 = y_2 ( 1-y_1 )\]</span> and therefore <span class="math display">\[J = \det \left[ \begin{array}{cc} 
+y_2 &amp; y_1 \\
+-y_2 &amp; 1-y_1
+\end{array}\right] = y_2(1-y_1) +y_1 y_2 = y_2\]</span></p>
+<p>Therefore <span class="math display">\[\begin{aligned} g(y_1, y_2) 
+  &amp;= f\Big( y_1 y_2,\; y_2(1-y_1) \Big)\,\cdot \big\vert J \big\vert \\
+  &amp;= f_1( y_1 y_2) \, f_2( y_2(1-y_1) ) \vert y_2 \vert \\
+  &amp;= \beta e^{-\beta y_1 y_2} \beta e^{-\beta y_2(1-y_2)} \\
+  &amp;= \beta^2 e^{-\beta y_2} \; I(y_2 &gt; 0) \; I(0 &lt; y_1 &lt; 1) 
+  \end{aligned}\]</span> Notice that this pdf is easily broken into the marginals of <span class="math inline">\(Y_1\)</span> and <span class="math inline">\(Y_2\)</span> and we see that we have confirmed our calculation for the pdf of <span class="math inline">\(Y_2\)</span> and conveniently discovered that <span class="math inline">\(Y_1\)</span> has a <span class="math inline">\(Uniform(0,1)\)</span> distribution.</p>
+<ol start="8" style="list-style-type: decimal">
+<li>Suppose we have random variables <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> with joint distribution <span class="math display">\[f(x_1, x_2) = 2(1-x_1)\; I(0\le x_1 \le 1) I(0\le x_2 \le 1)\]</span> Find the pdf of <span class="math inline">\(Y_2=X_1X_2\)</span>. <em>Because the pdf method of transformation requires having a <span class="math inline">\(Y_1\)</span> variable, we will consider a second random variable that is convenient, <span class="math inline">\(Y_1 = X_1\)</span>.</em></li>
+</ol>
 
 </div>
 </div>
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="2-conditional-probability.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="2-conditional-probability.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="A-useful-functions.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
