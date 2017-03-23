@@ -774,15 +774,43 @@ $$\begin{aligned} g(y) = \frac{d}{dy} G(y)
 **Convolutions** 
 We are often interested in the sum of two independent random variables. Suppose that $X_1$ has density function $f_1(x_1)$ and $X_2$ has density function $f_2(x_2)$ and $X_1$ is independent of $X_2$. Define $Y=X_1 + X_2$. We say that the distribution of $Y$ is the _convolution_ of the distributions of $X_1$ and $X_2$. 
 
-1. Suppose that $X_1$ and $X_2$ have support along the entire real line. Show that the density function of $Y$ is
-$$g(y) = \int_{-\infty} ^{\infty} f_1(y-u)f_x(u) \, du = \int_{-\infty} ^{\infty} f_1(z)f_x(y-z) \, dz$$
+1. Suppose that $X_1$ and $X_2$ have support along the entire real line. Show that the density function of $Y=X_1+X_2$ is
+$$g(y) = \int_{-\infty} ^{\infty} f_1(y-u)f_2(u) \, du = \int_{-\infty} ^{\infty} f_1(z)f_2(y-z) \, dz$$
     a) Define the set $A_y$ which is the set of $(x_1,x_2)$ values such that $x_1+x_2\le y$.
     b) Define $G(y)$ by setting up the integration across the set $A_y$.
-    c) Recognize that in the set up of $G(y)$ we have indirectly figured out what $g(y)$.
+    c) Recognize that in the set up of $G(y)$ we have indirectly figured out what $g(y)$ is.
+    
+**Example** Suppose we have independent random variables $X_1$ and $X_2$ with uniform distributions on $(0,1)$ and we are interested in $Y=X_1+X_2$.  Because $X_1$ and $X_2$ are constrained to $(0,1)$ then $Y\in(0,2)$. Because $f_1(x_1)=I(0 < x_1 < 1)$ and $f_2(x_2)=I(0 < x_2 < 1)$ then
+$$\begin{aligned} g(y)
+  &=\int_{-\infty}^\infty f_1(y-u) f_2(u) \, du \\
+  &=\int_{-\infty}^\infty I( 0 < y-u < 1) I(0 < u < 1) \, du
+  \end{aligned}$$
+We'll look at this in cases, $y \in (0,1)$ and $y\in (1,2)$.  In the first case where $y \in (0,1)$, then $u \in (0,y)$.  In the second case where $y \in (1,2)$ then $u\in (y-1, 1)$.
+
+In the first case we have
+$$g(y) = \int_0^y 1 \, du = y \;\;\;\;\; \textrm{ if } y \in (0,1)$$
+and in the second case
+$$g(y) = \int_{y-1}^1 1 \, du = 2-y \;\;\;\;\; \textrm{ if } y \in (1,2)$$
+so all together
+$$g(y) = \begin{cases}
+  0   & \textrm{ if } 0 < y       \\
+  y   & \textrm{ if } 0 < y < 1   \\
+  2-y & \textrm{ if } 1 < y < 2   \\
+  0   & \textrm{ if } 2 < y       
+  \end{cases}$$
+```{r, echo=FALSE, fig.height=2, warning=FALSE, message=FALSE}
+library(dplyr)
+library(ggplot2)
+data <- data.frame( x=seq(0,2, by=.1) ) %>%
+  mutate(density = x * (x<1) + (2-x) * (x>=1) )
+ggplot(data, aes(x=x, y=density)) + geom_line() + labs(y='g(y)', x='y')
+```
+
+  
 
 2. Suppose that we have independent random variables $X_1$ and $X_2$ with uniform distributions on $a,b$ where $a<b$. 
-$$f_1(x_1) = \frac{1}{b-a} \;\cdot I(a \le x_1 \le b)$$
-$$f_2(x_2) = \frac{1}{b-a} \;\cdot I(a \le x_2 \le b)$$
+$$f_1(x_1) = \frac{1}{b-a} \;\cdot I(a < x_1 < b)$$
+$$f_2(x_2) = \frac{1}{b-a} \;\cdot I(a < x_2 < b)$$
 Find the pdf of $Y=X_1+X_2$.
 
 3. Suppose that we have independent random variables $X_1$ and $X_2$ with pdfs
@@ -868,3 +896,9 @@ Notice that this pdf is easily broken into the marginals of $Y_1$ and $Y_2$ and 
 8. Suppose we have random variables $X_1$ and $X_2$ with joint distribution
 $$f(x_1, x_2) = 2(1-x_1)\; I(0\le x_1 \le 1) I(0\le x_2 \le 1)$$
 Find the pdf of $Y_2=X_1X_2$. _Because the pdf method of transformation requires having a $Y_1$ variable, we will consider a second random variable that is convenient, $Y_1 = X_1$._
+
+9. Suppose that $X_1$ and $X_2$ have a continuous joint distribution with pdf
+$$f(x_1, x_2) = 8 x_1 x_2 \,\cdot I(0 < x_1< x_2 < 1)$$
+Define the random variables $Y_1=X_1/X_2$ and $Y_2=X_2$ 
+    a) Find the joint pdf of $Y_1$ and $Y_2$.
+    b) Show that $Y_1$ and $Y_2$ are independent.

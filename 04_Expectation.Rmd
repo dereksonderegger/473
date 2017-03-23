@@ -1,0 +1,131 @@
+# Expectations
+
+## Expectation of a RV
+
+The sample mean is a useful measure of centrality of a set of data and we would like a similar quantity for a distribution.
+
+
+Suppose we have a sample from a distribution that can take on integer values in the range of $1$ to $5$.  For example suppose we have the data $\{ 1,1,2,3,3,3,4,5 \}$. Then the sample mean is 
+$$\begin{aligned} \bar{x} 
+  &= \frac{1}{n} \sum_{j=1}^n x_j = \frac{1}{8} (1+1+2+3+3+3+4+5)\\
+  &= \sum_{i=1}^5 \hat{p}_i \;i = \left(\frac{2}{8} \cdot 1 \right) + 
+                            \left(\frac{1}{8} \cdot 2 \right) +
+                            \left(\frac{3}{8} \cdot 3 \right) +
+                            \left(\frac{1}{8} \cdot 4 \right) +
+                            \left(\frac{1}{8} \cdot 5 \right) 
+  \end{aligned}$$
+where $\hat{p}_i$ values are the observed proportions for each possible value.  If we have a really large sample then $\hat{p}_i \approx Pr(X=i)$ and it is natural to define the Expected Value as
+$$E(X) = \begin{cases}
+    \sum x \, f(x) \;\;\;\;\;\;\;\;\;\;\;\; \textrm{ if } X \textrm{ is discrete} \\
+    \int_{-\infty}^\infty x \, f(x) \,dx \;\;\;\;\; \textrm{ if } X \textrm{ is continuous} 
+    \end{cases}$$
+
+We need to be careful to avoid the $\infty - \infty$ case and note that if 
+$$\sum_{\textrm{Negative }x} x\,f(x) = -\infty \;\;\;\;\; \textrm{ and } \;\;\;\;\;\sum_{\textrm{Positive }x} x\,f(x) = \infty$$
+or
+$$\int_{-\infty}^0 x\,f(x)\, dx = -\infty \;\;\;\;\;\; \textrm{ and } \;\;\;\;\;\int_{0}^\infty x\,f(x)\,dx = \infty$$
+then the resulting expectation could be written as $-\infty + \infty$ and that quantity _does not exist_.
+
+**Example** Suppose that the lifetime, $X$, of an applience has a pdf 
+$$f(x) = 2 e^{-2x}\;\cdot I(x>0)$$
+Then the expectation of $X$ is
+$$E(X) = \int_{-\infty}^{\infty} x \,f(x) \, dx = \int_0^\infty x \, 2e^{-2x} \, dx = 2\int_0^\infty x \, e^{-2x} \, dx$$ 
+To finish solving this integral, we need to do integration by parts letting 
+$$\begin{aligned} 
+  u =2x    & \;\;\;\;& dv =   e^{-2x}\,dx \\
+  du= 2\,dx  &         & v = -\frac{1}{2} e^{-2x} 
+  \end{aligned}$$
+and therefore 
+$$\begin{aligned} E(X) 
+  &= -xe^{-2x} \Big\vert_0^\infty+ \int_0^\infty e^{-2x}\,dx \\
+  &= 0 + -\frac{1}{2} e^{-2x} \Big\vert_0^\infty \\
+  &= \frac{1}{2}
+  \end{aligned}$$
+
+**Expectations of functions of a RV**
+Suppose we have a random variable $X$ and some function $Y=r(X)$, then I might want to know the expectation of the random variable $Y$.  We could just derive the pdf of $Y$ and calculate its expectation, but that is just a bunch of integration and differientation that cancels out because (_in the continuous case and assuming $r(x)$ is invertable_)
+$$\begin{aligned} E(Y) 
+  &= \int y \, g(y) \, dy \\
+  &= \int r(x)\, f\big( r(x) \big) \Bigg\vert \frac{dx}{dy} \Bigg\vert \,dy \\
+  &= \int r(x)\, f(x)  \,dx 
+  \end{aligned}$$
+
+We could prove that if the expectation of $Y=r(X)$ exists, then for any function $r(x)$ is equal to 
+$$E(Y) = E[r(X)] = \begin{cases}
+  \sum r(x) \,f(x) \\
+  \int r(x) \,f(x) \, dx
+  \end{cases}$$
+
+**Example** Suppose that we have a random variable with pdf
+$$f(x) = 3x^2 \, I(0<x<1)$$ 
+then
+$$E(X) = \int_0^1 x\, f(x) \,dx = \int_0^1 x \, 3x^2 \,dx = \int_0^1 3 x^3 \, dx = \frac{3}{4}x^4 \Bigg\vert_0^1 = \frac{3}{4}$$
+and if we consider $Y=X^2$ then
+$$E(Y) = E(X^2) = \int_0^1 x^2\, f(x)\, dx = \int_0^1 3x^4 = \frac{3}{5}x^5\Bigg\vert_0^1 = \frac{3}{5}$$
+
+Notice that $E(X^2) \ne \Bigg( E(X) \Bigg)^2$. For general $r(X)$, we typically see that  $E(r(X)) \ne r\Bigg( E(X) \Bigg)$. However for linear functions, it is true.
+
+
+1. Suppose that $X$ has a Uniform($a$, $b$) distribution. Find the expected value of $X$.
+
+2. Suppose that $X$ has a Uniform($a$, $b$) distribution. Find the expected value of $Y=\sqrt X$.
+
+3. Suppose that $X$ has a Uniform($a$, $b$) distribution. Find the expected value of $Y=1/X$.
+
+4. A 1-meter stick is broken at a random spot along the stick. Find the expected value of the length of the longer piece.
+
+**Expectations of functions of several variables**
+Suppose that a multivariate distribution with joint pdf $f(x_1, x_2, \dots, x_n)$ and we define $Y=r(X_1,X_2,\dots,X_n)$ then
+$$E(Y) = \iint\dots\int r(x_1, x_2, \dots, x_n)\, f(x_1, x_2, \dots, x_n)\, dx_1 dx_2 \dots dx_n$$
+**Example** Suppose that we have a bivariate distribution 
+$$f(x_1, x_2) = 8x_1 x_2 \, \cdot I(0 < x_1 < x_2 < 1)$$
+and we wish to know the expectation of $Y=X_1+X_2$. Then
+$$\begin{aligned} E( X_1+X_2 ) 
+  &= \int_0^1 \int_0^{x_2} (x_1+x_2) \, 8x_1x_x \; dx_1 dx_2 \\
+  &= \vdots \\
+  &= \frac{4}{3}
+  \end{aligned}$$
+  
+## Properties of Expectations
+
+1. Prove that for finite constants $a$ and $b$ and continuous random variable $X$, we have
+$$E(aX + b) = aE(X) + b$$
+
+2. Show that if continuous random variable $X$ has support on the interval $(a,b)$ where $a<b$, then $a < E(X) < b$. This is true in the discrete case as well.
+
+3. Show that if $X_1$ and $X_2$ are (possibly not independent!) continuous random variables with joint pdf $f(x_1, x_2)$ that $E( X_1 + X_2 ) = E(X_1) + E(X_2)$.  By induction this result will hold for the sum of a finite number number random variables.  Notice the proof for the discrete case is similar with simply replacing integrals with summations.
+
+4. Suppose that three random variables $X_1, X_2, X_3$ are sampled from a distribution that has mean $E(X_i)=5$. Find the expectation of 
+$2X_1 - 3X_2 -X_3 - 5$.
+
+5. Suppose that three random variables $X_1, X_2, X_3$ are sampled from a uniform distribution on $(0,1)$. What is the expectation of $(X_1 - 2X_2 + X_3)^2$.
+
+6. *Bernoulli Expectation* Suppose that the random variable $X_i$ can take on values $0$ or $1$ and the probability it takes on $1$ is $f(1)=p$.  What is the expected value of $X_i$?
+
+7. *Binomial Expectation* Suppose that we have $n$ indentically distributed Bernoulli random variabes, each of with having probability of success $f_i(1)=p$. Letting $Y=\sum_1^n X_i$, what is the expected value of $Y$?
+ 
+8. *Hypergeometric Expectation* Suppose that we have a bag with $N$ balls, of which $M$ are red and $N-M$ are blue.  We will draw $n$ balls out (without replacement) and we are interested in the total number of red balls drawn. Let $X_i$ be $1$ if the $i$th draw was a red ball.
+    a) First consider the case where we draw $n=1$ ball.  What is the probability that we draw a red ball on the first draw and therefore what is $E(X_1)$?
+    b) Next consider the case where we draw $n=2$ balls.  What is the probability that we draw a red ball on the second draw and therefore what is $E(X_2)$?
+    c) The same pattern holds for the rest of $X_3, X_4, \dots X_n$. Given that, what is the expected value of $Y=\sum_1^n X_i$?
+    
+9. Suppose that continuous random variables $X_1, X_2, \dots, X_n$ are independent, each having a marginal pdf $f_i(x_i)$. Show that 
+$$E\left( \prod_{i=1}^n X_i \right) = \prod_{i=1}^n E(X_i)$$
+Notice that this result requires that the variables are independent, whereas the result in 4.2.3 did not require independence.
+
+10. A gambler will play a game where he is equally likey to win or lose on a given play. When the gambler wins, her fortune is doubled, but when she loses, it is cut in half. Given that the gambler started the game with a fortune of $c$, what is the expected fortune after $n$ plays?
+
+
+It can be shown that for non-negative continuous random variables 
+$$E(X) = \int_0^\infty (1-F(x))\,dx$$
+and for non-negative discrete random variables
+$$E(X) = \sum_{n=1}^\infty Pr( X \ge n )$$
+
+The proof in the discrete case is a reordering of 
+
+FILL THIS IN
+
+11. *Geometric Expectation* Suppose that each time a person plays a game, they have a probability $p$ of winning. Let the random variable $X$ be the number of games played until the person wins.  We have previously shown that 
+$$f(x) = (1-p)^{x-1}p \;\; I(x\in \{1,2,\dots\})$$ 
+$$Pr(X \le x) = 1 - (1-p)^x$$
+for $x \in \{1,2,\dots\}$ What is expected number of times a player must play until they win?

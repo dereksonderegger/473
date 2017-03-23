@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="1-introduction-to-probability.html">
+<link rel="prev" href="3-random-variables-and-distributions.html">
+<link rel="next" href="A-useful-functions.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -165,27 +165,92 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">STA 473 - Probability</h1>
-<h4 class="author"><em>Derek L. Sonderegger</em></h4>
-<h4 class="date"><em>2017-03-22</em></h4>
+<div id="expectations" class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> Expectations</h1>
+<div id="expectation-of-a-rv" class="section level2">
+<h2><span class="header-section-number">4.1</span> Expectation of a RV</h2>
+<p>The sample mean is a useful measure of centrality of a set of data and we would like a similar quantity for a distribution.</p>
+<p>Suppose we have a sample from a distribution that can take on integer values in the range of <span class="math inline">\(1\)</span> to <span class="math inline">\(5\)</span>. For example suppose we have the data <span class="math inline">\(\{ 1,1,2,3,3,3,4,5 \}\)</span>. Then the sample mean is <span class="math display">\[\begin{aligned} \bar{x} 
+  &amp;= \frac{1}{n} \sum_{j=1}^n x_j = \frac{1}{8} (1+1+2+3+3+3+4+5)\\
+  &amp;= \sum_{i=1}^5 \hat{p}_i \;i = \left(\frac{2}{8} \cdot 1 \right) + 
+                            \left(\frac{1}{8} \cdot 2 \right) +
+                            \left(\frac{3}{8} \cdot 3 \right) +
+                            \left(\frac{1}{8} \cdot 4 \right) +
+                            \left(\frac{1}{8} \cdot 5 \right) 
+  \end{aligned}\]</span> where <span class="math inline">\(\hat{p}_i\)</span> values are the observed proportions for each possible value. If we have a really large sample then <span class="math inline">\(\hat{p}_i \approx Pr(X=i)\)</span> and it is natural to define the Expected Value as <span class="math display">\[E(X) = \begin{cases}
+    \sum x \, f(x) \;\;\;\;\;\;\;\;\;\;\;\; \textrm{ if } X \textrm{ is discrete} \\
+    \int_{-\infty}^\infty x \, f(x) \,dx \;\;\;\;\; \textrm{ if } X \textrm{ is continuous} 
+    \end{cases}\]</span></p>
+<p>We need to be careful to avoid the <span class="math inline">\(\infty - \infty\)</span> case and note that if <span class="math display">\[\sum_{\textrm{Negative }x} x\,f(x) = -\infty \;\;\;\;\; \textrm{ and } \;\;\;\;\;\sum_{\textrm{Positive }x} x\,f(x) = \infty\]</span> or <span class="math display">\[\int_{-\infty}^0 x\,f(x)\, dx = -\infty \;\;\;\;\;\; \textrm{ and } \;\;\;\;\;\int_{0}^\infty x\,f(x)\,dx = \infty\]</span> then the resulting expectation could be written as <span class="math inline">\(-\infty + \infty\)</span> and that quantity <em>does not exist</em>.</p>
+<p><strong>Example</strong> Suppose that the lifetime, <span class="math inline">\(X\)</span>, of an applience has a pdf <span class="math display">\[f(x) = 2 e^{-2x}\;\cdot I(x&gt;0)\]</span> Then the expectation of <span class="math inline">\(X\)</span> is <span class="math display">\[E(X) = \int_{-\infty}^{\infty} x \,f(x) \, dx = \int_0^\infty x \, 2e^{-2x} \, dx = 2\int_0^\infty x \, e^{-2x} \, dx\]</span> To finish solving this integral, we need to do integration by parts letting <span class="math display">\[\begin{aligned} 
+  u =2x    &amp; \;\;\;\;&amp; dv =   e^{-2x}\,dx \\
+  du= 2\,dx  &amp;         &amp; v = -\frac{1}{2} e^{-2x} 
+  \end{aligned}\]</span> and therefore <span class="math display">\[\begin{aligned} E(X) 
+  &amp;= -xe^{-2x} \Big\vert_0^\infty+ \int_0^\infty e^{-2x}\,dx \\
+  &amp;= 0 + -\frac{1}{2} e^{-2x} \Big\vert_0^\infty \\
+  &amp;= \frac{1}{2}
+  \end{aligned}\]</span></p>
+<p><strong>Expectations of functions of a RV</strong> Suppose we have a random variable <span class="math inline">\(X\)</span> and some function <span class="math inline">\(Y=r(X)\)</span>, then I might want to know the expectation of the random variable <span class="math inline">\(Y\)</span>. We could just derive the pdf of <span class="math inline">\(Y\)</span> and calculate its expectation, but that is just a bunch of integration and differientation that cancels out because (<em>in the continuous case and assuming <span class="math inline">\(r(x)\)</span> is invertable</em>) <span class="math display">\[\begin{aligned} E(Y) 
+  &amp;= \int y \, g(y) \, dy \\
+  &amp;= \int r(x)\, f\big( r(x) \big) \Bigg\vert \frac{dx}{dy} \Bigg\vert \,dy \\
+  &amp;= \int r(x)\, f(x)  \,dx 
+  \end{aligned}\]</span></p>
+<p>We could prove that if the expectation of <span class="math inline">\(Y=r(X)\)</span> exists, then for any function <span class="math inline">\(r(x)\)</span> is equal to <span class="math display">\[E(Y) = E[r(X)] = \begin{cases}
+  \sum r(x) \,f(x) \\
+  \int r(x) \,f(x) \, dx
+  \end{cases}\]</span></p>
+<p><strong>Example</strong> Suppose that we have a random variable with pdf <span class="math display">\[f(x) = 3x^2 \, I(0&lt;x&lt;1)\]</span> then <span class="math display">\[E(X) = \int_0^1 x\, f(x) \,dx = \int_0^1 x \, 3x^2 \,dx = \int_0^1 3 x^3 \, dx = \frac{3}{4}x^4 \Bigg\vert_0^1 = \frac{3}{4}\]</span> and if we consider <span class="math inline">\(Y=X^2\)</span> then <span class="math display">\[E(Y) = E(X^2) = \int_0^1 x^2\, f(x)\, dx = \int_0^1 3x^4 = \frac{3}{5}x^5\Bigg\vert_0^1 = \frac{3}{5}\]</span></p>
+<p>Notice that <span class="math inline">\(E(X^2) \ne \Bigg( E(X) \Bigg)^2\)</span>. For general <span class="math inline">\(r(X)\)</span>, we typically see that <span class="math inline">\(E(r(X)) \ne r\Bigg( E(X) \Bigg)\)</span>. However for linear functions, it is true.</p>
+<ol style="list-style-type: decimal">
+<li><p>Suppose that <span class="math inline">\(X\)</span> has a Uniform(<span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>) distribution. Find the expected value of <span class="math inline">\(X\)</span>.</p></li>
+<li><p>Suppose that <span class="math inline">\(X\)</span> has a Uniform(<span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>) distribution. Find the expected value of <span class="math inline">\(Y=\sqrt X\)</span>.</p></li>
+<li><p>Suppose that <span class="math inline">\(X\)</span> has a Uniform(<span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>) distribution. Find the expected value of <span class="math inline">\(Y=1/X\)</span>.</p></li>
+<li><p>A 1-meter stick is broken at a random spot along the stick. Find the expected value of the length of the longer piece.</p></li>
+</ol>
+<p><strong>Expectations of functions of several variables</strong> Suppose that a multivariate distribution with joint pdf <span class="math inline">\(f(x_1, x_2, \dots, x_n)\)</span> and we define <span class="math inline">\(Y=r(X_1,X_2,\dots,X_n)\)</span> then <span class="math display">\[E(Y) = \iint\dots\int r(x_1, x_2, \dots, x_n)\, f(x_1, x_2, \dots, x_n)\, dx_1 dx_2 \dots dx_n\]</span> <strong>Example</strong> Suppose that we have a bivariate distribution <span class="math display">\[f(x_1, x_2) = 8x_1 x_2 \, \cdot I(0 &lt; x_1 &lt; x_2 &lt; 1)\]</span> and we wish to know the expectation of <span class="math inline">\(Y=X_1+X_2\)</span>. Then <span class="math display">\[\begin{aligned} E( X_1+X_2 ) 
+  &amp;= \int_0^1 \int_0^{x_2} (x_1+x_2) \, 8x_1x_x \; dx_1 dx_2 \\
+  &amp;= \vdots \\
+  &amp;= \frac{4}{3}
+  \end{aligned}\]</span></p>
 </div>
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
-<p>This is a set of questions to be used in an <em>Inquiry Based Learning</em> class for an undergraduate level course in probability.</p>
-<div id="acknowledgements" class="section level2 unnumbered">
-<h2>Acknowledgements</h2>
-<p>Many people have helped. I should thank them.</p>
+<div id="properties-of-expectations" class="section level2">
+<h2><span class="header-section-number">4.2</span> Properties of Expectations</h2>
+<ol style="list-style-type: decimal">
+<li><p>Prove that for finite constants <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> and continuous random variable <span class="math inline">\(X\)</span>, we have <span class="math display">\[E(aX + b) = aE(X) + b\]</span></p></li>
+<li><p>Show that if continuous random variable <span class="math inline">\(X\)</span> has support on the interval <span class="math inline">\((a,b)\)</span> where <span class="math inline">\(a&lt;b\)</span>, then <span class="math inline">\(a &lt; E(X) &lt; b\)</span>. This is true in the discrete case as well.</p></li>
+<li><p>Show that if <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are (possibly not independent!) continuous random variables with joint pdf <span class="math inline">\(f(x_1, x_2)\)</span> that <span class="math inline">\(E( X_1 + X_2 ) = E(X_1) + E(X_2)\)</span>. By induction this result will hold for the sum of a finite number number random variables. Notice the proof for the discrete case is similar with simply replacing integrals with summations.</p></li>
+<li><p>Suppose that three random variables <span class="math inline">\(X_1, X_2, X_3\)</span> are sampled from a distribution that has mean <span class="math inline">\(E(X_i)=5\)</span>. Find the expectation of <span class="math inline">\(2X_1 - 3X_2 -X_3 - 5\)</span>.</p></li>
+<li><p>Suppose that three random variables <span class="math inline">\(X_1, X_2, X_3\)</span> are sampled from a uniform distribution on <span class="math inline">\((0,1)\)</span>. What is the expectation of <span class="math inline">\((X_1 - 2X_2 + X_3)^2\)</span>.</p></li>
+<li><p><em>Bernoulli Expectation</em> Suppose that the random variable <span class="math inline">\(X_i\)</span> can take on values <span class="math inline">\(0\)</span> or <span class="math inline">\(1\)</span> and the probability it takes on <span class="math inline">\(1\)</span> is <span class="math inline">\(f(1)=p\)</span>. What is the expected value of <span class="math inline">\(X_i\)</span>?</p></li>
+<li><p><em>Binomial Expectation</em> Suppose that we have <span class="math inline">\(n\)</span> indentically distributed Bernoulli random variabes, each of with having probability of success <span class="math inline">\(f_i(1)=p\)</span>. Letting <span class="math inline">\(Y=\sum_1^n X_i\)</span>, what is the expected value of <span class="math inline">\(Y\)</span>?</p></li>
+<li><em>Hypergeometric Expectation</em> Suppose that we have a bag with <span class="math inline">\(N\)</span> balls, of which <span class="math inline">\(M\)</span> are red and <span class="math inline">\(N-M\)</span> are blue. We will draw <span class="math inline">\(n\)</span> balls out (without replacement) and we are interested in the total number of red balls drawn. Let <span class="math inline">\(X_i\)</span> be <span class="math inline">\(1\)</span> if the <span class="math inline">\(i\)</span>th draw was a red ball.
+<ol style="list-style-type: lower-alpha">
+<li>First consider the case where we draw <span class="math inline">\(n=1\)</span> ball. What is the probability that we draw a red ball on the first draw and therefore what is <span class="math inline">\(E(X_1)\)</span>?</li>
+<li>Next consider the case where we draw <span class="math inline">\(n=2\)</span> balls. What is the probability that we draw a red ball on the second draw and therefore what is <span class="math inline">\(E(X_2)\)</span>?</li>
+<li>The same pattern holds for the rest of <span class="math inline">\(X_3, X_4, \dots X_n\)</span>. Given that, what is the expected value of <span class="math inline">\(Y=\sum_1^n X_i\)</span>?</li>
+</ol></li>
+<li><p>Suppose that continuous random variables <span class="math inline">\(X_1, X_2, \dots, X_n\)</span> are independent, each having a marginal pdf <span class="math inline">\(f_i(x_i)\)</span>. Show that <span class="math display">\[E\left( \prod_{i=1}^n X_i \right) = \prod_{i=1}^n E(X_i)\]</span> Notice that this result requires that the variables are independent, whereas the result in 4.2.3 did not require independence.</p></li>
+<li><p>A gambler will play a game where he is equally likey to win or lose on a given play. When the gambler wins, her fortune is doubled, but when she loses, it is cut in half. Given that the gambler started the game with a fortune of <span class="math inline">\(c\)</span>, what is the expected fortune after <span class="math inline">\(n\)</span> plays?</p></li>
+</ol>
+<p>It can be shown that for non-negative continuous random variables <span class="math display">\[E(X) = \int_0^\infty (1-F(x))\,dx\]</span> and for non-negative discrete random variables <span class="math display">\[E(X) = \sum_{n=1}^\infty Pr( X \ge n )\]</span></p>
+<p>The proof in the discrete case is a reordering of</p>
+<p>FILL THIS IN</p>
+<ol start="11" style="list-style-type: decimal">
+<li><em>Geometric Expectation</em> Suppose that each time a person plays a game, they have a probability <span class="math inline">\(p\)</span> of winning. Let the random variable <span class="math inline">\(X\)</span> be the number of games played until the person wins. We have previously shown that <span class="math display">\[f(x) = (1-p)^{x-1}p \;\; I(x\in \{1,2,\dots\})\]</span> <span class="math display">\[Pr(X \le x) = 1 - (1-p)^x\]</span> for <span class="math inline">\(x \in \{1,2,\dots\}\)</span> What is expected number of times a player must play until they win?</li>
+</ol>
 
 </div>
 </div>
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="1-introduction-to-probability.html" class="navigation navigation-next navigation-unique" aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="3-random-variables-and-distributions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="A-useful-functions.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
@@ -213,7 +278,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/dereksonderegger/edit/master/473/index.Rmd",
+"link": "https://github.com/dereksonderegger/edit/master/473/04_Expectation.Rmd",
 "text": "Edit"
 },
 "download": [["Probability.pdf", "PDF"], ["Probability.epub", "EPUB"]],
