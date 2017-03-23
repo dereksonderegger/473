@@ -793,16 +793,16 @@ and in the second case
 $$g(y) = \int_{y-1}^1 1 \, du = 2-y \;\;\;\;\; \textrm{ if } y \in (1,2)$$
 so all together
 $$g(y) = \begin{cases}
-  0   & \textrm{ if } 0 < y       \\
-  y   & \textrm{ if } 0 < y < 1   \\
-  2-y & \textrm{ if } 1 < y < 2   \\
-  0   & \textrm{ if } 2 < y       
+  0   & \textrm{ if }\; y \le 0       \\
+  y   & \textrm{ if }\; 0 < y \le 1   \\
+  2-y & \textrm{ if }\; 1 < y < 2   \\
+  0   & \textrm{ if }\; 2 \le y       
   \end{cases}$$
 ```{r, echo=FALSE, fig.height=2, warning=FALSE, message=FALSE}
 library(dplyr)
 library(ggplot2)
-data <- data.frame( x=seq(0,2, by=.1) ) %>%
-  mutate(density = x * (x<1) + (2-x) * (x>=1) )
+data <- data.frame( x=seq(-1,3, by=.1) ) %>%
+  mutate(density = 0 * (x<0) + x * (0<=x & x<1) + (2-x) * (1 <= x & x < 2) + 0*(2<=x) )
 ggplot(data, aes(x=x, y=density)) + geom_line() + labs(y='g(y)', x='y')
 ```
 
@@ -841,9 +841,7 @@ Find the pdf of the maximum of $X_1$ and $X_2$.
 7. Suppose that we have independent random variables $X_1$ and $X_2$ with pdfs
 $$f_1(x_1) = \beta e^{-\beta x_1} \;\cdot I(x_1>0)$$
 $$f_1(x_2) = \beta e^{-\beta x_2} \;\cdot I(x_2>0)$$ 
-where $\beta > 0$. Show that the pdf of $Y=X_1 + X_2$ is
-$$g(y) = \beta^2 y e^{-\beta y} \; \cdot I(y>0)$$
-Find the pdf of the minimum of $X_1$ and $X_2$.
+where $\beta > 0$. Find the pdf of the minimum of $X_1$ and $X_2$.
 
 
 **pdf method**

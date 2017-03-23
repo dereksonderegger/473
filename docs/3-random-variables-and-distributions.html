@@ -26,7 +26,7 @@
 <meta name="author" content="Derek L. Sonderegger">
 
 
-<meta name="date" content="2017-03-22">
+<meta name="date" content="2017-03-23">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -864,10 +864,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   &amp;=\int_{-\infty}^\infty I( 0 &lt; y-u &lt; 1) I(0 &lt; u &lt; 1) \, du
   \end{aligned}\]</span> We’ll look at this in cases, <span class="math inline">\(y \in (0,1)\)</span> and <span class="math inline">\(y\in (1,2)\)</span>. In the first case where <span class="math inline">\(y \in (0,1)\)</span>, then <span class="math inline">\(u \in (0,y)\)</span>. In the second case where <span class="math inline">\(y \in (1,2)\)</span> then <span class="math inline">\(u\in (y-1, 1)\)</span>.</p>
 <p>In the first case we have <span class="math display">\[g(y) = \int_0^y 1 \, du = y \;\;\;\;\; \textrm{ if } y \in (0,1)\]</span> and in the second case <span class="math display">\[g(y) = \int_{y-1}^1 1 \, du = 2-y \;\;\;\;\; \textrm{ if } y \in (1,2)\]</span> so all together <span class="math display">\[g(y) = \begin{cases}
-  0   &amp; \textrm{ if } 0 &lt; y       \\
-  y   &amp; \textrm{ if } 0 &lt; y &lt; 1   \\
-  2-y &amp; \textrm{ if } 1 &lt; y &lt; 2   \\
-  0   &amp; \textrm{ if } 2 &lt; y       
+  0   &amp; \textrm{ if }\; y \le 0       \\
+  y   &amp; \textrm{ if }\; 0 &lt; y \le 1   \\
+  2-y &amp; \textrm{ if }\; 1 &lt; y &lt; 2   \\
+  0   &amp; \textrm{ if }\; 2 \le y       
   \end{cases}\]</span> <img src="Probability_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <ol start="2" style="list-style-type: decimal">
 <li><p>Suppose that we have independent random variables <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> with uniform distributions on <span class="math inline">\(a,b\)</span> where <span class="math inline">\(a&lt;b\)</span>. <span class="math display">\[f_1(x_1) = \frac{1}{b-a} \;\cdot I(a &lt; x_1 &lt; b)\]</span> <span class="math display">\[f_2(x_2) = \frac{1}{b-a} \;\cdot I(a &lt; x_2 &lt; b)\]</span> Find the pdf of <span class="math inline">\(Y=X_1+X_2\)</span>.</p></li>
@@ -887,7 +887,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>Write down the formula for <span class="math inline">\(g_1(y)\)</span>.</li>
 </ol></li>
 <li><p>Suppose that we have independent random variables <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> with uniform distributions on <span class="math inline">\(a,b\)</span> where <span class="math inline">\(a&lt;b\)</span>. <span class="math display">\[f_1(x_1) = \frac{1}{b-a} \;\cdot I(a \le x_1 \le b)\]</span> <span class="math display">\[f_2(x_2) = \frac{1}{b-a} \;\cdot I(a \le x_2 \le b)\]</span> Find the pdf of the maximum of <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span>.</p></li>
-<li><p>Suppose that we have independent random variables <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> with pdfs <span class="math display">\[f_1(x_1) = \beta e^{-\beta x_1} \;\cdot I(x_1&gt;0)\]</span> <span class="math display">\[f_1(x_2) = \beta e^{-\beta x_2} \;\cdot I(x_2&gt;0)\]</span> where <span class="math inline">\(\beta &gt; 0\)</span>. Show that the pdf of <span class="math inline">\(Y=X_1 + X_2\)</span> is <span class="math display">\[g(y) = \beta^2 y e^{-\beta y} \; \cdot I(y&gt;0)\]</span> Find the pdf of the minimum of <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span>.</p></li>
+<li><p>Suppose that we have independent random variables <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> with pdfs <span class="math display">\[f_1(x_1) = \beta e^{-\beta x_1} \;\cdot I(x_1&gt;0)\]</span> <span class="math display">\[f_1(x_2) = \beta e^{-\beta x_2} \;\cdot I(x_2&gt;0)\]</span> where <span class="math inline">\(\beta &gt; 0\)</span>. Find the pdf of the minimum of <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span>.</p></li>
 </ol>
 <p><strong>pdf method</strong> Just as in the univariate case, we might ask if there is a way to just go straight from the joint pdf to the pdf of the variable of interest. The answer is yes provided, we convert the distribution of <span class="math inline">\(X_1,X_2,\dots,X_n\)</span> into <span class="math inline">\(Y_1,Y_2,\dots,Y_n\)</span> via transformations <span class="math inline">\(r_1(),r_2(), \dots,r_n()\)</span> where <span class="math display">\[y_1 = r_1(x_1,x_2,\dots,x_n)\]</span> <span class="math display">\[y_2 = r_2(x_1,x_2,\dots,x_n)\]</span> <span class="math display">\[\vdots\]</span> <span class="math display">\[y_n = r_n(x_1,x_2,\dots,x_n)\]</span> and these functions are invertable so that there exists <span class="math display">\[x_1 = s_1(y_1, y_2, \dots, y_n)\]</span> <span class="math display">\[x_2 = s_2(y_1, y_2, \dots, y_n)\]</span> <span class="math display">\[\vdots\]</span> <span class="math display">\[x_n = s_n(y_1, y_2, \dots, y_n)\]</span></p>
 <p>For notational compactness, denote <span class="math inline">\(s_1 = s_1(y_1, y_2, \dots, y_n)\)</span>. Then <span class="math display">\[g(y_1, y_2, \dots, y_n) = f(s_1, s_2, \dots, s_n) \cdot \big\vert J \big\vert\]</span> where <span class="math inline">\(|J|\)</span> is the absolute value of the determinant <span class="math display">\[J = \det \left[ \begin{array}{ccc} 
