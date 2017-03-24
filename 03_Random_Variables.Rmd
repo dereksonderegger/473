@@ -821,9 +821,9 @@ $$g(y) = \beta^2 y e^{-\beta y} \; \cdot I(y>0)$$
 _Hint: Don't ignore the indicator functions._
 
 
-4. **Distribution of the Maximum of a sample.** Suppose that $X_1, X_2, \dots, X_n$ are independent random variables, and all have a common distribution with CDF $F(x)$ and pdf $f(x)$. Let $Y_n$ be the maximum value of these $X_i$ values.
+4. **Distribution of the Maximum of a sample.** Suppose that $X_1, X_2, \dots, X_n$ are independent random variables, and all have a common distribution with CDF $F(x)$ and pdf $f(x)$. Let $Y_n$ be the maximum value of these $X_1, X_2, \dots, X_n$ values.  _For convenience, let $X_i$ be the $i$th of these._
     a) If for some $y$ we have that $Y_n \le y$, what inequality must hold for each $X_i$?
-    b) Write $Pr( Y \le y )$ as some probability statement involving all $X_1, X_2, \dots, X_n$ independent variables.
+    b) Write $Pr( Y_n \le y )$ as some probability statement involving all $X_1, X_2, \dots, X_n$ independent variables.
     c) Write down the formula for $G_n(y)$.
     d) Write down the formula for $g_n(y)$.
     
