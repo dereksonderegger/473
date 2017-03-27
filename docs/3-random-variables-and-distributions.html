@@ -26,7 +26,7 @@
 <meta name="author" content="Derek L. Sonderegger">
 
 
-<meta name="date" content="2017-03-23">
+<meta name="date" content="2017-03-27">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -748,15 +748,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ol></li>
 <li><strong>Beta-Binomial</strong> Suppose we are considering a model for seedling success of a tree. We will randomly select an adult tree to harvest seeds from and then plant <span class="math inline">\(n=40\)</span> seeds and observe how many of them germinate. We will model the number of germinating seeds as <span class="math inline">\(X \sim Binomial(n=40, \pi)\)</span> where <span class="math inline">\(\pi\)</span> is the probability a randomly selected seed will germinate. However because seed fitness depends on the parent tree, we allow <span class="math inline">\(\pi \sim Beta(\alpha=2, \beta=2)\)</span>. The beta distribution has the pdf: <span class="math display">\[\begin{aligned} f_2(\pi) 
   &amp;= \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)} \pi^{\alpha-1}(1-\pi)^{\beta-1} \,\cdot I(0&lt;\pi&lt;1) \\
-  \end{aligned}\]</span> where <span class="math inline">\(\alpha&gt;0, \beta&gt;0\)</span> and <span class="math inline">\(\Gamma(\cdot)\)</span> is the gamma function (see the appendix). Recall that the <span class="math inline">\(Binomial(n,\pi)\)</span> distribution has pf <span class="math display">\[ g_1(x|\pi) = {n \choose x} \pi^x (1-\pi)^{10-x} \;\cdot I(x\in \{0,1,\dots,n\})\]</span> For this problem, we have <span class="math inline">\(n=40\)</span> and <span class="math inline">\(\alpha=\beta=2\)</span> and we are interested in random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(\Pi\)</span>.
+  \end{aligned}\]</span> where <span class="math inline">\(\alpha&gt;0, \beta&gt;0\)</span> and <span class="math inline">\(\Gamma(\cdot)\)</span> is the gamma function (see the appendix). Recall that the <span class="math inline">\(Binomial(n,\pi)\)</span> distribution has pf <span class="math display">\[ g_1(x|\pi) = {n \choose x} \pi^x (1-\pi)^{n-x} \;\cdot I(x\in \{0,1,\dots,n\})\]</span> For this problem, we have <span class="math inline">\(n=40\)</span> and <span class="math inline">\(\alpha=\beta=2\)</span> and we are interested in random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(\Pi\)</span>.
 <ol style="list-style-type: lower-alpha">
 <li>Graph the marginal distribution of <span class="math inline">\(\Pi\)</span>.</li>
 <li>Find the marginal distribution of <span class="math inline">\(X\)</span>. <em>Hint: Distributions must integrate/sum to one, and therefore distributions lists are a convenient set of integration/sumation identities. In particular from our definition of the Beta Distribution we have:</em> <span class="math display">\[\int_0^1 \pi^{a-1}(1-\pi)^{b-1} \, d\pi = \frac{\Gamma(a)\Gamma(b)}{\Gamma(a+b)}\]</span></li>
 <li>Find the conditional pdf of <span class="math inline">\(\pi\)</span> given <span class="math inline">\(X\)</span>, <span class="math inline">\(g_2(\pi |x)\)</span>.</li>
-<li>Consider the cases where <span class="math inline">\(X=20\)</span> and <span class="math inline">\(X=30\)</span>. For what values of <span class="math inline">\(\pi\)</span> is <span class="math inline">\(g_2(\pi|x=20)\)</span> larger than <span class="math inline">\(g_2(\pi|x=30)\)</span>? ## Multivariate Distributions</li>
+<li>Consider the cases where <span class="math inline">\(X=20\)</span> and <span class="math inline">\(X=30\)</span>. For what values of <span class="math inline">\(\pi\)</span> is <span class="math inline">\(g_2(\pi|x=20)\)</span> larger than <span class="math inline">\(g_2(\pi|x=30)\)</span>?</li>
 </ol></li>
 </ol>
-<p>Just replace the double sums and double integrals with more of them.</p>
 </div>
 <div id="functions-of-random-variables" class="section level2">
 <h2><span class="header-section-number">3.7</span> Functions of Random Variables</h2>
@@ -810,13 +809,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
        =3 \left( 1-\frac{1}{t} \log \left( \frac{Y}{\nu} \right) \right) \; \frac{1}{tY} \cdot I(\nu \le y \le \nu e^t)\]</span></p>
 <p><strong>Problems</strong></p>
 <ol style="list-style-type: decimal">
-<li>Suppose that random variable <span class="math inline">\(X\)</span> has pdf <span class="math display">\[f(x) = 3x^2 \; \cdot I(0 &lt; x &lt; 1)\]</span> Further suppose that <span class="math inline">\(Y=1-X^2\)</span>.</li>
-</ol>
+<li>Suppose that random variable <span class="math inline">\(X\)</span> has pdf <span class="math display">\[f(x) = 3x^2 \; \cdot I(0 &lt; x &lt; 1)\]</span> Further suppose that <span class="math inline">\(Y=1-X^2\)</span>.
 <ol style="list-style-type: lower-alpha">
 <li>Find the pdf of <span class="math inline">\(Y\)</span> using the CDF method.</li>
 <li>Find the pdf of <span class="math inline">\(Y\)</span> using the pdf method.</li>
-</ol>
-<ol start="2" style="list-style-type: decimal">
+</ol></li>
 <li>Suppose that random variable <span class="math inline">\(X\)</span> has pdf <span class="math display">\[f(x) = 1\cdot I(0 \le x \le 1)\]</span> Further suppose that <span class="math inline">\(Y=X(1-X)\)</span>. Find the pdf of <span class="math inline">\(Y\)</span>.
 <ol style="list-style-type: lower-alpha">
 <li>Graph the function <span class="math inline">\(y = x(1-x)\)</span> on the support of <span class="math inline">\(x\)</span>. Is this a one-to-one function?</li>

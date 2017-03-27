@@ -591,16 +591,13 @@ $$\begin{aligned} f_2(\pi)
   &= \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)} \pi^{\alpha-1}(1-\pi)^{\beta-1} \,\cdot I(0<\pi<1) \\
   \end{aligned}$$
 where $\alpha>0, \beta>0$ and $\Gamma(\cdot)$ is the gamma function (see the appendix).  Recall that the $Binomial(n,\pi)$ distribution has pf
-$$ g_1(x|\pi) = {n \choose x} \pi^x (1-\pi)^{10-x} \;\cdot I(x\in \{0,1,\dots,n\})$$
+$$ g_1(x|\pi) = {n \choose x} \pi^x (1-\pi)^{n-x} \;\cdot I(x\in \{0,1,\dots,n\})$$
 For this problem, we have $n=40$ and $\alpha=\beta=2$ and we are interested in random variables $X$ and $\Pi$.
     a) Graph the marginal distribution of $\Pi$. 
     b) Find the marginal distribution of $X$. _Hint: Distributions must integrate/sum to one, and therefore distributions lists are a convenient set of integration/sumation identities. In particular from our definition of the Beta Distribution we have:_
         $$\int_0^1 \pi^{a-1}(1-\pi)^{b-1} \, d\pi = \frac{\Gamma(a)\Gamma(b)}{\Gamma(a+b)}$$
     c) Find the conditional pdf of $\pi$ given $X$, $g_2(\pi |x)$.
     d) Consider the cases where $X=20$ and $X=30$. For what values of $\pi$ is $g_2(\pi|x=20)$ larger than $g_2(\pi|x=30)$?
-## Multivariate Distributions
-
-Just replace the double sums and double integrals with more of them.
 
 ## Functions of Random Variables
 
@@ -710,8 +707,8 @@ $$g(y) = f\left( \frac{1}{t} \log \left( \frac{Y}{\nu} \right) \right) \; \Bigg\
 1. Suppose that random variable $X$ has pdf 
 $$f(x) = 3x^2 \; \cdot I(0 < x < 1)$$
 Further suppose that $Y=1-X^2$. 
-  a) Find the pdf of $Y$ using the CDF method.
-  b) Find the pdf of $Y$ using the pdf method.
+    a) Find the pdf of $Y$ using the CDF method.
+    b) Find the pdf of $Y$ using the pdf method.
 
 2. Suppose that random variable $X$ has pdf 
 $$f(x) = 1\cdot I(0 \le x \le 1)$$
