@@ -26,7 +26,7 @@
 <meta name="author" content="Derek L. Sonderegger">
 
 
-<meta name="date" content="2017-03-27">
+<meta name="date" content="2017-04-06">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -143,6 +143,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4" data-path="4-expectations.html"><a href="4-expectations.html"><i class="fa fa-check"></i><b>4</b> Expectations</a><ul>
 <li class="chapter" data-level="4.1" data-path="4-expectations.html"><a href="4-expectations.html#expectation-of-a-rv"><i class="fa fa-check"></i><b>4.1</b> Expectation of a RV</a></li>
 <li class="chapter" data-level="4.2" data-path="4-expectations.html"><a href="4-expectations.html#properties-of-expectations"><i class="fa fa-check"></i><b>4.2</b> Properties of Expectations</a></li>
+<li class="chapter" data-level="4.3" data-path="4-expectations.html"><a href="4-expectations.html#variance"><i class="fa fa-check"></i><b>4.3</b> Variance</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="A-useful-functions.html"><a href="A-useful-functions.html"><i class="fa fa-check"></i><b>A</b> Useful functions</a><ul>
@@ -730,12 +731,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><strong>Law of Total Probability</strong> Prove that
 <ol style="list-style-type: lower-alpha">
 <li>If <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are discrete RVs then <span class="math display">\[f_1(x) = \sum_y g_1(x|y) f_2(y)\]</span></li>
-<li>If <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are continuous RVs then <span class="math display">\[f_1(x) = \int_{-\infty}^{\infty} g_1(x|y) f_2(y)\]</span></li>
+<li>If <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are continuous RVs then <span class="math display">\[f_1(x) = \int_{-\infty}^{\infty} g_1(x|y) f_2(y)\;dy\]</span></li>
 </ol></li>
 <li><strong>Bayes Theorem</strong> Prove that
 <ol style="list-style-type: lower-alpha">
 <li>If <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are discrete RVs then <span class="math display">\[g_1(y|x) = \frac{ g_1(x|y) f_2(y)}{ f_1(x) } = \frac{ g_1(x|y) f_2(y)}{ \sum_y g_1(x|y)f_2(y) }\]</span></li>
-<li>If <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are continuous RVs then <span class="math display">\[g_1(y|x) = \frac{ g_1(x|y) f_2(y)}{ f_1(x) } = \frac{ g_1(x|y) f_2(y)}{ \int_{-\infty}^{\infty} g_1(x|y)f_2(y) }\]</span></li>
+<li>If <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are continuous RVs then <span class="math display">\[g_1(y|x) = \frac{ g_1(x|y) f_2(y)}{ f_1(x) } = \frac{ g_1(x|y) f_2(y)}{ \int_{-\infty}^{\infty} g_1(x|y)f_2(y) \;dy}\]</span></li>
 </ol></li>
 </ol>
 <p>Notice that it was arbitrary which variable we conditioned on and we could similarly define <span class="math inline">\(f_2(x)\)</span> and <span class="math inline">\(g_2(y|x)\)</span>. Furthermore, all the formulas in this section work if one variable is continuous and the other is discrete with just the appropriate switch between summation and integration.</p>
@@ -822,7 +823,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>Find the CDF of <span class="math inline">\(Y\)</span> by integrating over the appropriate region(s).</li>
 <li>Find the pdf of <span class="math inline">\(Y\)</span> by differentiating.</li>
 </ol></li>
-<li><p>Suppose that random variable <span class="math inline">\(X\)</span> has pdf <span class="math display">\[f(x) = e^{-x} \; \cdot I(0 &lt; x)\]</span> Further suppose that <span class="math inline">\(Y=\sqrt{X}\)</span>. Find the pdf of <span class="math inline">\(Y\)</span>.</p></li>
+<li><p>Suppose that random variable <span class="math inline">\(X\)</span> has pdf <span class="math display">\[f(x) = e^{-x} \; \cdot I(0 &lt; x)\]</span> Further suppose that <span class="math inline">\(Y=\Big\vert\sqrt{X}\Big\vert\)</span>. Find the pdf of <span class="math inline">\(Y\)</span>.</p></li>
 <li><p>Suppose that <span class="math inline">\(X\)</span> has a uniform distribution on <span class="math inline">\((a, b)\)</span>. Let <span class="math inline">\(c&gt;0\)</span>. Show that <span class="math inline">\(Y= cX+d\)</span> has a uniform distribution on <span class="math inline">\((ca+d, cb+d)\)</span>.</p></li>
 </ol>
 </div>
@@ -868,7 +869,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   \end{cases}\]</span> <img src="Probability_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <ol start="2" style="list-style-type: decimal">
 <li><p>Suppose that we have independent random variables <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> with uniform distributions on <span class="math inline">\(a,b\)</span> where <span class="math inline">\(a&lt;b\)</span>. <span class="math display">\[f_1(x_1) = \frac{1}{b-a} \;\cdot I(a &lt; x_1 &lt; b)\]</span> <span class="math display">\[f_2(x_2) = \frac{1}{b-a} \;\cdot I(a &lt; x_2 &lt; b)\]</span> Find the pdf of <span class="math inline">\(Y=X_1+X_2\)</span>.</p></li>
-<li><p>Suppose that we have independent random variables <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> with pdfs <span class="math display">\[f_1(x_1) = \beta e^{-\beta x_1} \;\cdot I(x_1&gt;0)\]</span> <span class="math display">\[f_1(x_2) = \beta e^{-\beta x_2} \;\cdot I(x_2&gt;0)\]</span> where <span class="math inline">\(\beta &gt; 0\)</span>. Show that the pdf of <span class="math inline">\(Y=X_1 + X_2\)</span> is <span class="math display">\[g(y) = \beta^2 y e^{-\beta y} \; \cdot I(y&gt;0)\]</span> <em>Hint: Don’t ignore the indicator functions.</em></p></li>
+<li><p>Suppose that we have independent random variables <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> with pdfs <span class="math display">\[f_1(x_1) = \beta e^{-\beta x_1} \;\cdot I(x_1&gt;0)\]</span> <span class="math display">\[f_2(x_2) = \beta e^{-\beta x_2} \;\cdot I(x_2&gt;0)\]</span> where <span class="math inline">\(\beta &gt; 0\)</span>. Show that the pdf of <span class="math inline">\(Y=X_1 + X_2\)</span> is <span class="math display">\[g(y) = \beta^2 y e^{-\beta y} \; \cdot I(y&gt;0)\]</span> <em>Hint: Don’t ignore the indicator functions.</em></p></li>
 <li><strong>Distribution of the Maximum of a sample.</strong> Suppose that <span class="math inline">\(X_1, X_2, \dots, X_n\)</span> are independent random variables, and all have a common distribution with CDF <span class="math inline">\(F(x)\)</span> and pdf <span class="math inline">\(f(x)\)</span>. Let <span class="math inline">\(Y_n\)</span> be the maximum value of these <span class="math inline">\(X_1, X_2, \dots, X_n\)</span> values. <em>For convenience, let <span class="math inline">\(X_i\)</span> be the <span class="math inline">\(i\)</span>th of these.</em>
 <ol style="list-style-type: lower-alpha">
 <li>If for some <span class="math inline">\(y\)</span> we have that <span class="math inline">\(Y_n \le y\)</span>, what inequality must hold for each <span class="math inline">\(X_i\)</span>?</li>

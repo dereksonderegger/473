@@ -26,7 +26,7 @@
 <meta name="author" content="Derek L. Sonderegger">
 
 
-<meta name="date" content="2017-03-27">
+<meta name="date" content="2017-04-06">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -143,6 +143,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4" data-path="4-expectations.html"><a href="4-expectations.html"><i class="fa fa-check"></i><b>4</b> Expectations</a><ul>
 <li class="chapter" data-level="4.1" data-path="4-expectations.html"><a href="4-expectations.html#expectation-of-a-rv"><i class="fa fa-check"></i><b>4.1</b> Expectation of a RV</a></li>
 <li class="chapter" data-level="4.2" data-path="4-expectations.html"><a href="4-expectations.html#properties-of-expectations"><i class="fa fa-check"></i><b>4.2</b> Properties of Expectations</a></li>
+<li class="chapter" data-level="4.3" data-path="4-expectations.html"><a href="4-expectations.html#variance"><i class="fa fa-check"></i><b>4.3</b> Variance</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="A-useful-functions.html"><a href="A-useful-functions.html"><i class="fa fa-check"></i><b>A</b> Useful functions</a><ul>
@@ -232,11 +233,80 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><p>Suppose that continuous random variables <span class="math inline">\(X_1, X_2, \dots, X_n\)</span> are independent, each having a marginal pdf <span class="math inline">\(f_i(x_i)\)</span>. Show that <span class="math display">\[E\left( \prod_{i=1}^n X_i \right) = \prod_{i=1}^n E(X_i)\]</span> Notice that this result requires that the variables are independent, whereas the result in 4.2.3 did not require independence.</p></li>
 <li><p>A gambler will play a game where he is equally likey to win or lose on a given play. When the gambler wins, her fortune is doubled, but when she loses, it is cut in half. Given that the gambler started the game with a fortune of <span class="math inline">\(c\)</span>, what is the expected fortune after <span class="math inline">\(n\)</span> plays?</p></li>
 </ol>
-<p>It can be shown that for non-negative continuous random variables <span class="math display">\[E(X) = \int_0^\infty (1-F(x))\,dx\]</span> and for non-negative discrete random variables <span class="math display">\[E(X) = \sum_{n=1}^\infty Pr( X \ge n )\]</span></p>
-<p>The proof in the discrete case is a reordering of</p>
-<p>FILL THIS IN</p>
+<p>It can be shown that for non-negative, continuous random variables <span class="math display">\[E(X) = \int_0^\infty (1-F(x))\,dx\]</span> and for non-negative discrete random variables <span class="math display">\[E(X) = \sum_{x=1}^\infty Pr( X \ge x )\]</span></p>
+<p>The proof in the discrete case is a reordering of <span class="math display">\[E(X) = \sum_{x=0}^\infty x\,f(x) = \sum_x^\infty x\, Pr(X=x)\]</span> to summing one copy of <span class="math inline">\(Pr(X=1)\)</span> and two copies of <span class="math inline">\(Pr(X=2)\)</span> and three copies of <span class="math inline">\(Pr(X=3)\)</span> and so on.</p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(E(X)\)</span></td>
+<td align="center">=</td>
+<td align="center">0</td>
+<td align="center"><span class="math inline">\(+ Pr(X=1)\)</span></td>
+<td align="center"><span class="math inline">\(+Pr(X=2)\)</span></td>
+<td align="center"><span class="math inline">\(+Pr(X=3)\)</span></td>
+<td align="center"><span class="math inline">\(\dots\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><span class="math inline">\(+Pr(X=2)\)</span></td>
+<td align="center"><span class="math inline">\(+Pr(X=3)\)</span></td>
+<td align="center"><span class="math inline">\(\dots\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><span class="math inline">\(+Pr(X=3)\)</span></td>
+<td align="center"><span class="math inline">\(\dots\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><span class="math inline">\(\ddots\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Notice that the first row of this sum is <span class="math inline">\(Pr(X\ge1)\)</span> and the second is <span class="math inline">\(Pr(X\ge 2)\)</span> and that establishes the result.</p>
 <ol start="11" style="list-style-type: decimal">
-<li><em>Geometric Expectation</em> Suppose that each time a person plays a game, they have a probability <span class="math inline">\(p\)</span> of winning. Let the random variable <span class="math inline">\(X\)</span> be the number of games played until the person wins. We have previously shown that <span class="math display">\[f(x) = (1-p)^{x-1}p \;\; I(x\in \{1,2,\dots\})\]</span> <span class="math display">\[Pr(X \le x) = 1 - (1-p)^x\]</span> for <span class="math inline">\(x \in \{1,2,\dots\}\)</span> What is expected number of times a player must play until they win?</li>
+<li><p><em>Geometric Expectation</em> Suppose that each time a person plays a game, they have a probability <span class="math inline">\(p\)</span> of winning. Let the random variable <span class="math inline">\(X\)</span> be the number of games played until the person wins. We have previously shown that <span class="math display">\[f(x) = (1-p)^{x-1}p \;\; I(x\in \{1,2,\dots\})\]</span> <span class="math display">\[Pr(X \le x) = 1 - (1-p)^x\]</span> for <span class="math inline">\(x \in \{1,2,\dots\}\)</span> What is expected number of times a player must play until they win?</p></li>
+<li><p><em>Gamma Expectation</em> Suppose that we have a random variable <span class="math inline">\(X\)</span> with a <span class="math inline">\(Gamma(\alpha, \beta)\)</span> distribution and therefore <span class="math display">\[f(x) = \frac{\beta^\alpha}{\Gamma(\alpha)} x^{\alpha-1} e^{-x\beta} \;\cdot I(x&gt;0)\]</span> Show that <span class="math display">\[E(X) = \frac{\alpha}{\beta}\]</span></p></li>
+</ol>
+</div>
+<div id="variance" class="section level2">
+<h2><span class="header-section-number">4.3</span> Variance</h2>
+<p>Although the mean of a distribution is quite useful, it is not the only measure of interest. A secondary measure of interest is a measure of <em>spread</em> of the distribution. Just as the sample variance is interpreted as the “typical squared distance to the mean” we will define the distribution variance as the “expected squared distance to the mean”.</p>
+<p>For notational convenience, let <span class="math inline">\(\mu=E(X)\)</span> and define <span class="math display">\[Var(X) = E\big[ (X-\mu)^2 \big]\]</span></p>
+<p>Because expectations don’t necessarily exist, we’ll say that <span class="math inline">\(Var(X)\)</span> does not exist if <span class="math inline">\(E(X)\)</span> does not exist or if <span class="math inline">\(E[(X-\mu)^2]\)</span> does not exist. Notice that the Variance is non-negative because of the square.</p>
+<p>Finally, we will define the standard deviation of <span class="math inline">\(X\)</span> as the positive square-root of the variance. That is <span class="math inline">\(StdDev(X) = \bigg\vert \sqrt{Var(X)} \bigg\vert\)</span>.</p>
+<p>Notationally all of this is a bit cumbersome and we’ll use <span class="math display">\[E(X) = \mu_X\;\;\;\;\;\;\;\;\;\; Var(X) = \sigma^2_X \;\;\;\;\;\;\;\;\;\; StdDev(X) = \sigma_X\]</span> If we have only a single random variable in a situation, we will suppress the subscript.</p>
+<ol style="list-style-type: decimal">
+<li>Suppose that RV <span class="math inline">\(X\)</span> has <span class="math inline">\(Var(X)\)</span> that exists, then for constants <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>, show that the RV <span class="math display">\[Y=aX+b\]</span> has variance <span class="math display">\[Var(Y) = a^2 Var(X)\]</span> Notice that shifting the entire distribution of <span class="math inline">\(X\)</span> by some constant <span class="math inline">\(b\)</span> does not affect the <em>spread</em> of the shifted distribution.</li>
+</ol>
+<p>Next we condider the sum of independent random variables <span class="math inline">\(X_1+X_2\)</span>. <span class="math display">\[\begin{aligned} Var( X_1 + X_2 ) 
+  &amp;= E\Bigg[ \bigg[ (X_1 + X_2) - E(X_1+X_2) \bigg]^2 \Bigg] \\
+  &amp;= E\Bigg[ \bigg[ X_1 + X_2 - \mu_1 - \mu_2 \bigg]^2 \Bigg] \\
+  &amp;= E\Bigg[ \bigg[ (X_1 -\mu_1) + (X_2 - \mu_2)\bigg]^2 \Bigg] \\
+  &amp;= E\Bigg[  (X_1 -\mu_1)^2 + 2(X_1-\mu_1)(X_2-\mu_2) + (X_2 - \mu_2)^2  \Bigg] \\
+  &amp;= E\big[  (X_1 -\mu_1)^2 \big] + E\big[ 2(X_1-\mu_1)(X_2-\mu_2)\big]  + E\big[(X_2 - \mu_2)^2  \big] \\
+  &amp;= Var(X_1) \;\;\;\;\;\;\;\;\;+ 2E\big[ (X_1-\mu_1)(X_2-\mu_2)\big]  + Var(X_2) 
+  \end{aligned}\]</span> Because <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are independent then <span class="math display">\[E\big[ (X_1-\mu_1)(X_2-\mu_2)\big] = E[(X_1-\mu_1)] E[(X_2-\mu_2)] = (\mu_1 -\mu_1) (\mu_2-\mu_2) = 0\]</span> Repeating this argument for <span class="math inline">\(n\)</span> independent random variables, we therefore have <span class="math display">\[Var( X_1+X_2+\dots+X_n ) = Var(X_1) + Var(X_2) + \dots + Var(X_n)\]</span> <span class="math display">\[Var\Bigg( \sum_{i=1}^n X_i \Bigg) = \sum_{i=1}^n Var(X_i)\]</span> Notice that this result <em>requires</em> independence so that the cross-product terms are zero!</p>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Show that <span class="math inline">\(Var(X) = E(X^2) + \mu^2\)</span>. This formula is far more convenient to use, generally.</p></li>
+<li><p>Suppose that <span class="math inline">\(X\)</span> has a uniform distribution on the interval <span class="math inline">\([0,1]\)</span>. Compute the variance of <span class="math inline">\(X\)</span>.</p></li>
+<li><p>Suppose that <span class="math inline">\(Y\)</span> has a uniform distribution on the interval <span class="math inline">\([a,b]\)</span> where <span class="math inline">\(a&lt;b\)</span>. Compute the variance of <span class="math inline">\(Y\)</span>.</p></li>
+<li><p>Suppose that <span class="math inline">\(X\)</span> has expectation <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>. Show that <span class="math display">\[E\bigg[ X(X-1) \bigg]=\mu(\mu-1) + \sigma^2\]</span></p></li>
+<li><p>Suppose that <span class="math inline">\(X\)</span> has a <span class="math inline">\(Gamma(\alpha,\beta)\)</span> distribution. Find that the variance of <span class="math inline">\(X\)</span> is <span class="math inline">\(\frac{\alpha}{\beta^2}\)</span>.</p></li>
+<li><p>Suppose that <span class="math inline">\(X\)</span> has a <span class="math inline">\(Bernoulli(p)\)</span> distribution, that is <span class="math inline">\(X\)</span> takes on values <span class="math inline">\(1\)</span> or <span class="math inline">\(0\)</span> with probabilities <span class="math inline">\(Pr(X=1)=p\)</span> and <span class="math inline">\(Pr(X=0) = 1-p\)</span>. Find the variance of <span class="math inline">\(X\)</span>.</p></li>
+<li><p>Suppose that <span class="math inline">\(Y\)</span> has a <span class="math inline">\(Binomial(n,p)\)</span> distribution. That is that <span class="math display">\[Y=\sum_{i=1}^n X_i\]</span> where <span class="math inline">\(X_i\)</span> are independent <span class="math inline">\(Bernoulli(p)\)</span> random variables. Show that <span class="math display">\[Var(Y) = np(1-p)\]</span></p></li>
 </ol>
 
 </div>

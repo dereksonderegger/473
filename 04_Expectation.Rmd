@@ -116,16 +116,82 @@ Notice that this result requires that the variables are independent, whereas the
 10. A gambler will play a game where he is equally likey to win or lose on a given play. When the gambler wins, her fortune is doubled, but when she loses, it is cut in half. Given that the gambler started the game with a fortune of $c$, what is the expected fortune after $n$ plays?
 
 
-It can be shown that for non-negative continuous random variables 
+It can be shown that for non-negative, continuous random variables 
 $$E(X) = \int_0^\infty (1-F(x))\,dx$$
 and for non-negative discrete random variables
-$$E(X) = \sum_{n=1}^\infty Pr( X \ge n )$$
+$$E(X) = \sum_{x=1}^\infty Pr( X \ge x )$$
 
 The proof in the discrete case is a reordering of 
+$$E(X) = \sum_{x=0}^\infty x\,f(x) = \sum_x^\infty x\, Pr(X=x)$$
+to summing one copy of $Pr(X=1)$ and two copies of $Pr(X=2)$ and three copies of $Pr(X=3)$ and so on. 
 
-FILL THIS IN
+|           |     |      |              |            |            |          |  
+|:---------:|:---:|:----:|:------------:|:----------:|:----------:|:--------:|
+|  $E(X)$   |  =  |  0   | $+ Pr(X=1)$  | $+Pr(X=2)$ | $+Pr(X=3)$ | $\dots$  |
+|           |     |      |              | $+Pr(X=2)$ | $+Pr(X=3)$ | $\dots$  |
+|           |     |      |              |            | $+Pr(X=3)$ | $\dots$  |
+|           |     |      |              |            |            | $\ddots$ |
+
+Notice that the first row of this sum is $Pr(X\ge1)$ and the second is $Pr(X\ge 2)$ and that establishes the result.
 
 11. *Geometric Expectation* Suppose that each time a person plays a game, they have a probability $p$ of winning. Let the random variable $X$ be the number of games played until the person wins.  We have previously shown that 
 $$f(x) = (1-p)^{x-1}p \;\; I(x\in \{1,2,\dots\})$$ 
 $$Pr(X \le x) = 1 - (1-p)^x$$
 for $x \in \{1,2,\dots\}$ What is expected number of times a player must play until they win?
+
+12. *Gamma Expectation* Suppose that we have a random variable $X$ with a $Gamma(\alpha, \beta)$ distribution and therefore
+$$f(x) = \frac{\beta^\alpha}{\Gamma(\alpha)} x^{\alpha-1} e^{-x\beta} \;\cdot I(x>0)$$
+Show that $$E(X) = \frac{\alpha}{\beta}$$
+
+## Variance
+
+Although the mean of a distribution is quite useful, it is not the only measure of interest. A secondary measure of interest is a measure of _spread_ of the distribution. Just as the sample variance is interpreted as the "typical squared distance to the mean" we will define the distribution variance as the "expected squared distance to the mean".
+
+For notational convenience, let $\mu=E(X)$ and define
+$$Var(X) = E\big[ (X-\mu)^2 \big]$$
+
+Because expectations don't necessarily exist, we'll say that $Var(X)$ does not exist if $E(X)$ does not exist or if $E[(X-\mu)^2]$ does not exist. Notice that the Variance is non-negative because of the square. 
+
+Finally, we will define the standard deviation of $X$ as the positive square-root of the variance.  That is $StdDev(X) = \bigg\vert \sqrt{Var(X)} \bigg\vert$.
+
+Notationally all of this is a bit cumbersome and we'll use 
+$$E(X) = \mu_X\;\;\;\;\;\;\;\;\;\; Var(X) = \sigma^2_X \;\;\;\;\;\;\;\;\;\; StdDev(X) = \sigma_X$$
+If we have only a single random variable in a situation, we will suppress the subscript.
+
+1) Suppose that RV $X$ has $Var(X)$ that exists, then for constants $a$ and $b$, show that the RV 
+$$Y=aX+b$$ 
+has variance
+$$Var(Y) = a^2 Var(X)$$
+Notice that shifting the entire distribution of $X$ by some constant $b$ does not affect the _spread_ of the shifted distribution.
+
+
+Next we condider the sum of independent random variables $X_1+X_2$.
+$$\begin{aligned} Var( X_1 + X_2 ) 
+  &= E\Bigg[ \bigg[ (X_1 + X_2) - E(X_1+X_2) \bigg]^2 \Bigg] \\
+  &= E\Bigg[ \bigg[ X_1 + X_2 - \mu_1 - \mu_2 \bigg]^2 \Bigg] \\
+  &= E\Bigg[ \bigg[ (X_1 -\mu_1) + (X_2 - \mu_2)\bigg]^2 \Bigg] \\
+  &= E\Bigg[  (X_1 -\mu_1)^2 + 2(X_1-\mu_1)(X_2-\mu_2) + (X_2 - \mu_2)^2  \Bigg] \\
+  &= E\big[  (X_1 -\mu_1)^2 \big] + E\big[ 2(X_1-\mu_1)(X_2-\mu_2)\big]  + E\big[(X_2 - \mu_2)^2  \big] \\
+  &= Var(X_1) \;\;\;\;\;\;\;\;\;+ 2E\big[ (X_1-\mu_1)(X_2-\mu_2)\big]  + Var(X_2) 
+  \end{aligned}$$
+Because $X_1$ and $X_2$ are independent then 
+$$E\big[ (X_1-\mu_1)(X_2-\mu_2)\big] = E[(X_1-\mu_1)] E[(X_2-\mu_2)] = (\mu_1 -\mu_1) (\mu_2-\mu_2) = 0$$ 
+Repeating this argument for $n$ independent random variables, we therefore have
+$$Var( X_1+X_2+\dots+X_n ) = Var(X_1) + Var(X_2) + \dots + Var(X_n)$$
+$$Var\Bigg( \sum_{i=1}^n X_i \Bigg) = \sum_{i=1}^n Var(X_i)$$
+Notice that this result _requires_ independence so that the cross-product terms are zero!
+
+
+2) Show that $Var(X) = E(X^2) + \mu^2$. This formula is far more convenient to use, generally.
+
+3) Suppose that $X$ has a uniform distribution on the interval $[0,1]$. Compute the variance of $X$.
+
+4) Suppose that $Y$ has a uniform distribution on the interval $[a,b]$ where $a<b$. Compute the variance of $Y$.
+
+5) Suppose that $X$ has expectation $\mu$ and variance $\sigma^2$. Show that $$E\bigg[ X(X-1) \bigg]=\mu(\mu-1) + \sigma^2$$
+
+6) Suppose that $X$ has a $Gamma(\alpha,\beta)$ distribution. Find that the variance of $X$ is $\frac{\alpha}{\beta^2}$.
+
+7) Suppose that $X$ has a $Bernoulli(p)$ distribution, that is $X$ takes on values $1$ or $0$ with probabilities $Pr(X=1)=p$ and $Pr(X=0) = 1-p$. Find the variance of $X$.
+
+8) Suppose that $Y$ has a $Binomial(n,p)$ distribution. That is that $$Y=\sum_{i=1}^n X_i$$ where $X_i$ are independent $Bernoulli(p)$ random variables.  Show that $$Var(Y) = np(1-p)$$

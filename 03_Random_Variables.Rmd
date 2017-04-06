@@ -568,13 +568,13 @@ $$f(x,y) = c(x+y^2) \; \cdot I( 0\le x \le 1, \; 0 \le y \le 1 )$$
     a) If $X$ and $Y$ are discrete RVs then
 $$f_1(x) = \sum_y g_1(x|y) f_2(y)$$
     b) If $X$ and $Y$ are continuous RVs then
-$$f_1(x) = \int_{-\infty}^{\infty} g_1(x|y) f_2(y)$$
+$$f_1(x) = \int_{-\infty}^{\infty} g_1(x|y) f_2(y)\;dy$$
 
 6. **Bayes Theorem** Prove that
     a) If $X$ and $Y$ are discrete RVs then
 $$g_1(y|x) = \frac{ g_1(x|y) f_2(y)}{ f_1(x) } = \frac{ g_1(x|y) f_2(y)}{ \sum_y g_1(x|y)f_2(y) }$$
     b) If $X$ and $Y$ are continuous RVs then
-$$g_1(y|x) = \frac{ g_1(x|y) f_2(y)}{ f_1(x) } = \frac{ g_1(x|y) f_2(y)}{ \int_{-\infty}^{\infty} g_1(x|y)f_2(y) }$$
+$$g_1(y|x) = \frac{ g_1(x|y) f_2(y)}{ f_1(x) } = \frac{ g_1(x|y) f_2(y)}{ \int_{-\infty}^{\infty} g_1(x|y)f_2(y) \;dy}$$
 
 Notice that it was arbitrary which variable we conditioned on and we could similarly define $f_2(x)$ and $g_2(y|x)$. Furthermore, all the formulas in this section work if one variable is continuous and the other is discrete with just the appropriate switch between summation and integration.
 
@@ -722,7 +722,7 @@ Further suppose that $Y=X(1-X)$. Find the pdf of $Y$.
 
 3. Suppose that random variable $X$ has pdf 
 $$f(x) = e^{-x} \; \cdot I(0 < x)$$
-Further suppose that $Y=\sqrt{X}$. Find the pdf of $Y$.
+Further suppose that $Y=\Big\vert\sqrt{X}\Big\vert$. Find the pdf of $Y$.
 
 4. Suppose that $X$ has a uniform distribution on $(a, b)$. Let $c>0$. Show that $Y= cX+d$ has a uniform distribution on $(ca+d, cb+d)$.
 
@@ -812,7 +812,7 @@ Find the pdf of $Y=X_1+X_2$.
 
 3. Suppose that we have independent random variables $X_1$ and $X_2$ with pdfs
 $$f_1(x_1) = \beta e^{-\beta x_1} \;\cdot I(x_1>0)$$
-$$f_1(x_2) = \beta e^{-\beta x_2} \;\cdot I(x_2>0)$$ 
+$$f_2(x_2) = \beta e^{-\beta x_2} \;\cdot I(x_2>0)$$ 
 where $\beta > 0$. Show that the pdf of $Y=X_1 + X_2$ is
 $$g(y) = \beta^2 y e^{-\beta y} \; \cdot I(y>0)$$
 _Hint: Don't ignore the indicator functions._
