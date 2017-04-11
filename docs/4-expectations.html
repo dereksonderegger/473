@@ -26,7 +26,7 @@
 <meta name="author" content="Derek L. Sonderegger">
 
 
-<meta name="date" content="2017-04-06">
+<meta name="date" content="2017-04-11">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -144,6 +144,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.1" data-path="4-expectations.html"><a href="4-expectations.html#expectation-of-a-rv"><i class="fa fa-check"></i><b>4.1</b> Expectation of a RV</a></li>
 <li class="chapter" data-level="4.2" data-path="4-expectations.html"><a href="4-expectations.html#properties-of-expectations"><i class="fa fa-check"></i><b>4.2</b> Properties of Expectations</a></li>
 <li class="chapter" data-level="4.3" data-path="4-expectations.html"><a href="4-expectations.html#variance"><i class="fa fa-check"></i><b>4.3</b> Variance</a></li>
+<li class="chapter" data-level="4.4" data-path="4-expectations.html"><a href="4-expectations.html#moments-and-moment-generating-functions"><i class="fa fa-check"></i><b>4.4</b> Moments and Moment Generating Functions</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="A-useful-functions.html"><a href="A-useful-functions.html"><i class="fa fa-check"></i><b>A</b> Useful functions</a><ul>
@@ -220,10 +221,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><p>Prove that for finite constants <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> and continuous random variable <span class="math inline">\(X\)</span>, we have <span class="math display">\[E(aX + b) = aE(X) + b\]</span></p></li>
 <li><p>Show that if continuous random variable <span class="math inline">\(X\)</span> has support on the interval <span class="math inline">\((a,b)\)</span> where <span class="math inline">\(a&lt;b\)</span>, then <span class="math inline">\(a &lt; E(X) &lt; b\)</span>. This is true in the discrete case as well.</p></li>
 <li><p>Show that if <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are (possibly not independent!) continuous random variables with joint pdf <span class="math inline">\(f(x_1, x_2)\)</span> that <span class="math inline">\(E( X_1 + X_2 ) = E(X_1) + E(X_2)\)</span>. By induction this result will hold for the sum of a finite number number random variables. Notice the proof for the discrete case is similar with simply replacing integrals with summations.</p></li>
-<li><p>Suppose that three random variables <span class="math inline">\(X_1, X_2, X_3\)</span> are sampled from a distribution that has mean <span class="math inline">\(E(X_i)=5\)</span>. Find the expectation of <span class="math inline">\(2X_1 - 3X_2 -X_3 - 5\)</span>.</p></li>
+<li><p>Suppose that three random variables <span class="math inline">\(X_1, X_2, X_3\)</span> are sampled from a distribution that has mean <span class="math inline">\(E(X_i)=5\)</span>. Find the expectation of <span class="math inline">\(2X_1 - 3X_2 -X_3 - 5\)</span>. <em>When we say <span class="math inline">\(X_1, X_2, \dots\)</span> are sampled from a distribution, we actually mean that <span class="math inline">\(X_1,X_2,\dots\)</span> are independent and each have marginal distribution as given. So when you heard “We sampled from population …” in your Introduction to Statistics course, they actually were telling you that the observations are independent.</em></p></li>
 <li><p>Suppose that three random variables <span class="math inline">\(X_1, X_2, X_3\)</span> are sampled from a uniform distribution on <span class="math inline">\((0,1)\)</span>. What is the expectation of <span class="math inline">\((X_1 - 2X_2 + X_3)^2\)</span>.</p></li>
 <li><p><em>Bernoulli Expectation</em> Suppose that the random variable <span class="math inline">\(X_i\)</span> can take on values <span class="math inline">\(0\)</span> or <span class="math inline">\(1\)</span> and the probability it takes on <span class="math inline">\(1\)</span> is <span class="math inline">\(f(1)=p\)</span>. What is the expected value of <span class="math inline">\(X_i\)</span>?</p></li>
-<li><p><em>Binomial Expectation</em> Suppose that we have <span class="math inline">\(n\)</span> indentically distributed Bernoulli random variabes, each of with having probability of success <span class="math inline">\(f_i(1)=p\)</span>. Letting <span class="math inline">\(Y=\sum_1^n X_i\)</span>, what is the expected value of <span class="math inline">\(Y\)</span>?</p></li>
+<li><p><em>Binomial Expectation</em> Suppose that we have <span class="math inline">\(n\)</span> indentically distributed Bernoulli random variables, each of which having probability of success <span class="math inline">\(f_i(1)=p\)</span>. Letting <span class="math inline">\(Y=\sum_1^n X_i\)</span>, what is the expected value of <span class="math inline">\(Y\)</span>?</p></li>
 <li><em>Hypergeometric Expectation</em> Suppose that we have a bag with <span class="math inline">\(N\)</span> balls, of which <span class="math inline">\(M\)</span> are red and <span class="math inline">\(N-M\)</span> are blue. We will draw <span class="math inline">\(n\)</span> balls out (without replacement) and we are interested in the total number of red balls drawn. Let <span class="math inline">\(X_i\)</span> be <span class="math inline">\(1\)</span> if the <span class="math inline">\(i\)</span>th draw was a red ball.
 <ol style="list-style-type: lower-alpha">
 <li>First consider the case where we draw <span class="math inline">\(n=1\)</span> ball. What is the probability that we draw a red ball on the first draw and therefore what is <span class="math inline">\(E(X_1)\)</span>?</li>
@@ -300,13 +301,78 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   &amp;= Var(X_1) \;\;\;\;\;\;\;\;\;+ 2E\big[ (X_1-\mu_1)(X_2-\mu_2)\big]  + Var(X_2) 
   \end{aligned}\]</span> Because <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are independent then <span class="math display">\[E\big[ (X_1-\mu_1)(X_2-\mu_2)\big] = E[(X_1-\mu_1)] E[(X_2-\mu_2)] = (\mu_1 -\mu_1) (\mu_2-\mu_2) = 0\]</span> Repeating this argument for <span class="math inline">\(n\)</span> independent random variables, we therefore have <span class="math display">\[Var( X_1+X_2+\dots+X_n ) = Var(X_1) + Var(X_2) + \dots + Var(X_n)\]</span> <span class="math display">\[Var\Bigg( \sum_{i=1}^n X_i \Bigg) = \sum_{i=1}^n Var(X_i)\]</span> Notice that this result <em>requires</em> independence so that the cross-product terms are zero!</p>
 <ol start="2" style="list-style-type: decimal">
-<li><p>Show that <span class="math inline">\(Var(X) = E(X^2) + \mu^2\)</span>. This formula is far more convenient to use, generally.</p></li>
+<li><p>Show that <span class="math inline">\(Var(X) = E(X^2) - \mu^2\)</span>. This formula is far more convenient to use, generally.</p></li>
 <li><p>Suppose that <span class="math inline">\(X\)</span> has a uniform distribution on the interval <span class="math inline">\([0,1]\)</span>. Compute the variance of <span class="math inline">\(X\)</span>.</p></li>
 <li><p>Suppose that <span class="math inline">\(Y\)</span> has a uniform distribution on the interval <span class="math inline">\([a,b]\)</span> where <span class="math inline">\(a&lt;b\)</span>. Compute the variance of <span class="math inline">\(Y\)</span>.</p></li>
 <li><p>Suppose that <span class="math inline">\(X\)</span> has expectation <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>. Show that <span class="math display">\[E\bigg[ X(X-1) \bigg]=\mu(\mu-1) + \sigma^2\]</span></p></li>
 <li><p>Suppose that <span class="math inline">\(X\)</span> has a <span class="math inline">\(Gamma(\alpha,\beta)\)</span> distribution. Find that the variance of <span class="math inline">\(X\)</span> is <span class="math inline">\(\frac{\alpha}{\beta^2}\)</span>.</p></li>
 <li><p>Suppose that <span class="math inline">\(X\)</span> has a <span class="math inline">\(Bernoulli(p)\)</span> distribution, that is <span class="math inline">\(X\)</span> takes on values <span class="math inline">\(1\)</span> or <span class="math inline">\(0\)</span> with probabilities <span class="math inline">\(Pr(X=1)=p\)</span> and <span class="math inline">\(Pr(X=0) = 1-p\)</span>. Find the variance of <span class="math inline">\(X\)</span>.</p></li>
 <li><p>Suppose that <span class="math inline">\(Y\)</span> has a <span class="math inline">\(Binomial(n,p)\)</span> distribution. That is that <span class="math display">\[Y=\sum_{i=1}^n X_i\]</span> where <span class="math inline">\(X_i\)</span> are independent <span class="math inline">\(Bernoulli(p)\)</span> random variables. Show that <span class="math display">\[Var(Y) = np(1-p)\]</span></p></li>
+</ol>
+</div>
+<div id="moments-and-moment-generating-functions" class="section level2">
+<h2><span class="header-section-number">4.4</span> Moments and Moment Generating Functions</h2>
+
+<div class="definition">
+<p><span id="def:unnamed-chunk-8" class="definition"><strong>Definition 4.1 </strong></span>Just as the <span class="math inline">\(E(X)\)</span> defines the center of a distribution and <span class="math inline">\(E[ (X-\mu)^2 ] = E(X^2)-\mu^2\)</span> defines the variance, the quantities <span class="math display">\[M_k = E\big( X^k )\;\;\;\;\;\;\textrm{ where } k\in \{1,2,3,\dots\}\]</span></p>
+are what we call the <span class="math inline">\(k\)</span>th moment of the distribution. These moments define other attributes of the distribution, but sometimes it is useful to define a similar quantity called the <span class="math inline">\(k\)</span>th <em>central moment</em> <span class="math display">\[m_k = E\big( ( X-\mu ) ^k )\;\;\;\;\;\;\textrm{ where } k\in \{1,2,3,\dots\}\]</span>
+</div>
+<p></p>
+<p>These two quantities can define several aspects of the distribution. For example, <span class="math inline">\(M_1=E(X)\)</span> is the distribution mean, while <span class="math inline">\(M_2=E(X^2)\)</span> is related to the variance. Other attributes are related to higher moments (e.g. the distribution skew is related to <span class="math inline">\(m_3\)</span>).</p>
+<p>Somewhat obnoxiously, the book defines <span class="math inline">\(M_k\)</span> to exist if and only if <span class="math inline">\(E\Big(|X|^k\Big) &lt; \infty\)</span>. <em>(This is obnoxious because we used a different criteria to say if <span class="math inline">\(E(X)\)</span> existed in section 4.1 and the definition for the <span class="math inline">\(k\)</span>th moment is a more strict requirement.)</em></p>
+
+<div class="theorem">
+<span id="thm:unnamed-chunk-9" class="theorem"><strong>Theorem 4.1 </strong></span>For positive integers <span class="math inline">\(j&lt;k\)</span>, if <span class="math inline">\(M_k\)</span> exists, then <span class="math inline">\(M_j\)</span> must also exist.
+</div>
+ 
+<div class="proof">
+<span class="proof"><em>Proof. </em></span> <span class="math display">\[\begin{aligned} E\Big( |X|^j \Big) 
+  &amp;=   \int_{-\infty}^{\infty} |x|^j \,f(x) \,dx \\
+  &amp;=   \int_{|x|\le 1} |x|^j \, f(x) \,dx + \int_{|x|&gt;1} |x|^j \, f(x) \, dx \\
+  &amp;\le \int_{|x|\le 1} 1 \, f(x)\,dx + \int_{|x|&gt;1} |x|^k \, f(x) \, dx \\
+  &amp;\le 1 + M_k\\
+  &amp;&lt; \infty \textrm{ by assumption }
+  \end{aligned}\]</span>
+</div>
+<p></p>
+
+<div class="definition">
+<span id="def:unnamed-chunk-11" class="definition"><strong>Definition 4.2 </strong></span>Let <span class="math inline">\(X\)</span> be a random variable. For each real number <span class="math inline">\(t\)</span>, define <span class="math display">\[\psi(t) = E( e^{tX})\]</span> as the <em>Moment Generating Function of <span class="math inline">\(X\)</span>, which we denote mgf of <span class="math inline">\(X\)</span>.</em>
+</div>
+<p></p>
+
+<div class="theorem">
+<span id="thm:unnamed-chunk-12" class="theorem"><strong>Theorem 4.2 </strong></span>Let <span class="math inline">\(X\)</span> be a random variable whose mgf <span class="math inline">\(\psi(t)\)</span> is finite for some neighborhood about <span class="math inline">\(t=0\)</span>. Then for positive integer <span class="math inline">\(k\)</span>, the <span class="math inline">\(k\)</span>th momement is the <span class="math inline">\(k\)</span>th derivative of <span class="math inline">\(\psi(t)\)</span> evaluated at <span class="math inline">\(t=0\)</span>. That is <span class="math display">\[M_k = E(X^k) = \psi^{(k)}(0)\]</span>
+</div>
+ 
+<div class="proof">
+<span class="proof"><em>Proof. </em></span> A full proof is quite technical, but it revolves around showing that it is permissible to interchange the order of integration/summation and differentiation in this case and that therefore: <span class="math display">\[\begin{aligned} \psi^{(n)}(0) 
+  &amp;= \frac{d^n}{dt^n} E(e^tX) \Bigg\vert_{t=0} \\
+  &amp;= E\Bigg[ \Big( \frac{d^n}{dt^n} e^{tX}  \Big) _{t=0} \Bigg] \\
+  &amp;= E\Big[ X^n e^{tX}\vert_{t=0}\Big] \\
+  &amp;= E\big[X^n\big]
+  \end{aligned}\]</span>
+</div>
+<p></p>
+
+<div class="theorem">
+<span id="thm:unnamed-chunk-14" class="theorem"><strong>Theorem 4.3 </strong></span>If the mgfs of two random variables are finite and identical for all values of <span class="math inline">\(t\)</span> in a neighborhood of <span class="math inline">\(t=0\)</span>, then the probability distributions of the two variables are the same.
+</div>
+ 
+<div class="remark">
+<span class="remark"><em>Remark. </em></span> This theorem allows us to compare the mgf of some variable of interest to the set of known mgfs and claim that because the mgfs match, then the variable of interest must follow the matching distribution. This is often a very easy way to show that a variable has a particular distribution and is the reason that we have introduced moment generating functions.
+</div>
+<p></p>
+<ol style="list-style-type: decimal">
+<li><p>Suppose that the random variable <span class="math inline">\(X\)</span> has an <span class="math inline">\(Exponential(\beta)\)</span> distribution which is a special case of the Gamma distribution. <span class="math inline">\(Exponential(\beta) = Gamma(1,\beta)\)</span> distribution. The table of distributions in your book shows that the <span class="math inline">\(Var(X)=\beta^2\)</span>. Derive the mgf of the Exponential distribution and use it to derive both the expectation and variance.</p></li>
+<li><p><strong>Mgf of a linear transformation</strong> Suppose that we have a random variable <span class="math inline">\(X\)</span> with mgf <span class="math inline">\(\psi_1(t)\)</span>. Show that <span class="math inline">\(Y=aX+b\)</span> for real constants <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> has the mgf <span class="math display">\[\psi_2(t) = e^{bt}\psi_1(at)\]</span></p></li>
+<li><p>Suppose that <span class="math inline">\(X \sim Exponential(\beta)\)</span>. Show that <span class="math inline">\(Y=2X\)</span> has the mgf of an <span class="math inline">\(Exponential(\beta/2)\)</span> distribution and therefore <span class="math inline">\(Y \sim Exponential(\beta/2)\)</span>.</p></li>
+<li><p>Derive the moment generating function of the <span class="math inline">\(Gamma(\alpha, \beta)\)</span> distribution.</p></li>
+<li><p>Derive the moment generating function of <span class="math inline">\(Bernoulli(p)\)</span> distribution.</p></li>
+<li><p>Suppose that independent random variables <span class="math inline">\(X_1, X_2, \dots, X_n\)</span> each have mgfs <span class="math inline">\(\psi_1(t), \psi_2(t), \dots, \psi_n(t)\)</span>. Show that the mgf of <span class="math inline">\(Y=\sum X_i\)</span> is <span class="math display">\[\psi_Y(t) = \prod_{i=1}^n \psi_i(t)\]</span></p></li>
+<li><p>Suppose that <span class="math inline">\(X_1, X_2, \dots, X_n\)</span> are independent <span class="math inline">\(Bernoulli(p)\)</span> random variables. Derive the mgf of <span class="math inline">\(Y=\sum X_i\)</span>. That is, derive the mgf of the Binomial distribution.</p></li>
+<li><p>Suppose that random variable <span class="math inline">\(X\)</span> has support on the non-negative integers <span class="math inline">\(0, 1, 2, \dots\)</span>. The probability function of <span class="math inline">\(X\)</span> is <span class="math display">\[f(x)=\frac{\lambda^x}{x!}e^{-\lambda}\,\cdot I(x\in \{0,1,2,\dots\})\]</span> The random variable <span class="math inline">\(X\)</span> has a <span class="math inline">\(Poisson(\lambda)\)</span> distribution. Derive the mgf of this distribution. <em>Hint: what is the summation constant in the pf?</em></p></li>
+<li><p>Suppose that <span class="math inline">\(X_1, X_2, \dots, X_n\)</span> are indepenent random variables each with distribution <span class="math inline">\(Poisson(\lambda)\)</span>. Derive the moment generating function of the distribution of <span class="math inline">\(Y=\sum X_i\)</span> and state its distribution.</p></li>
 </ol>
 
 </div>

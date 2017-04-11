@@ -97,12 +97,13 @@ $$E(aX + b) = aE(X) + b$$
 
 4. Suppose that three random variables $X_1, X_2, X_3$ are sampled from a distribution that has mean $E(X_i)=5$. Find the expectation of 
 $2X_1 - 3X_2 -X_3 - 5$.
+_When we say $X_1, X_2, \dots$ are sampled from a distribution, we actually mean that $X_1,X_2,\dots$ are independent and each have marginal distribution as given. So when you heard "We sampled from population ..." in your Introduction to Statistics course, they actually were telling you that the observations are independent._ 
 
 5. Suppose that three random variables $X_1, X_2, X_3$ are sampled from a uniform distribution on $(0,1)$. What is the expectation of $(X_1 - 2X_2 + X_3)^2$.
 
 6. *Bernoulli Expectation* Suppose that the random variable $X_i$ can take on values $0$ or $1$ and the probability it takes on $1$ is $f(1)=p$.  What is the expected value of $X_i$?
 
-7. *Binomial Expectation* Suppose that we have $n$ indentically distributed Bernoulli random variabes, each of with having probability of success $f_i(1)=p$. Letting $Y=\sum_1^n X_i$, what is the expected value of $Y$?
+7. *Binomial Expectation* Suppose that we have $n$ indentically distributed Bernoulli random variables, each of which having probability of success $f_i(1)=p$. Letting $Y=\sum_1^n X_i$, what is the expected value of $Y$?
  
 8. *Hypergeometric Expectation* Suppose that we have a bag with $N$ balls, of which $M$ are red and $N-M$ are blue.  We will draw $n$ balls out (without replacement) and we are interested in the total number of red balls drawn. Let $X_i$ be $1$ if the $i$th draw was a red ball.
     a) First consider the case where we draw $n=1$ ball.  What is the probability that we draw a red ball on the first draw and therefore what is $E(X_1)$?
@@ -182,7 +183,7 @@ $$Var\Bigg( \sum_{i=1}^n X_i \Bigg) = \sum_{i=1}^n Var(X_i)$$
 Notice that this result _requires_ independence so that the cross-product terms are zero!
 
 
-2) Show that $Var(X) = E(X^2) + \mu^2$. This formula is far more convenient to use, generally.
+2) Show that $Var(X) = E(X^2) - \mu^2$. This formula is far more convenient to use, generally.
 
 3) Suppose that $X$ has a uniform distribution on the interval $[0,1]$. Compute the variance of $X$.
 
@@ -195,3 +196,84 @@ Notice that this result _requires_ independence so that the cross-product terms 
 7) Suppose that $X$ has a $Bernoulli(p)$ distribution, that is $X$ takes on values $1$ or $0$ with probabilities $Pr(X=1)=p$ and $Pr(X=0) = 1-p$. Find the variance of $X$.
 
 8) Suppose that $Y$ has a $Binomial(n,p)$ distribution. That is that $$Y=\sum_{i=1}^n X_i$$ where $X_i$ are independent $Bernoulli(p)$ random variables.  Show that $$Var(Y) = np(1-p)$$
+
+
+## Moments and Moment Generating Functions
+
+```{definition}
+Just as the $E(X)$ defines the center of a distribution and $E[ (X-\mu)^2 ] = E(X^2)-\mu^2$ defines the variance, the quantities 
+$$M_k = E\big( X^k )\;\;\;\;\;\;\textrm{ where } k\in \{1,2,3,\dots\}$$  
+
+are what we call the $k$th moment of the distribution. These moments define other attributes of the distribution, but sometimes it is useful to define a similar quantity called the $k$th _central moment_
+$$m_k = E\big( ( X-\mu ) ^k )\;\;\;\;\;\;\textrm{ where } k\in \{1,2,3,\dots\}$$ 
+```
+
+These two quantities can define several aspects of the distribution.  For example, $M_1=E(X)$ is the distribution mean, while $M_2=E(X^2)$ is related to the variance.  Other attributes are related to higher moments (e.g. the distribution skew is related to $m_3$).
+
+Somewhat obnoxiously, the book defines $M_k$ to exist if and only if $E\Big(|X|^k\Big) < \infty$. _(This is obnoxious because we used a different criteria to say if $E(X)$ existed in section 4.1 and the definition for the $k$th moment is a more strict requirement.)_
+
+```{theorem}
+For positive integers $j<k$, if $M_k$ exists, then $M_j$ must also exist.
+```
+```{proof} 
+$$\begin{aligned} E\Big( |X|^j \Big) 
+  &=   \int_{-\infty}^{\infty} |x|^j \,f(x) \,dx \\
+  &=   \int_{|x|\le 1} |x|^j \, f(x) \,dx + \int_{|x|>1} |x|^j \, f(x) \, dx \\
+  &\le \int_{|x|\le 1} 1 \, f(x)\,dx + \int_{|x|>1} |x|^k \, f(x) \, dx \\
+  &\le 1 + M_k\\
+  &< \infty \textrm{ by assumption }
+  \end{aligned}$$
+```
+ 
+ 
+```{definition}
+Let $X$ be a random variable. For each real number $t$, define
+$$\psi(t) = E( e^{tX})$$
+as the _Moment Generating Function of $X$, which we denote mgf of $X$._
+```
+
+
+```{theorem}
+Let $X$ be a random variable whose mgf $\psi(t)$ is finite for some neighborhood about $t=0$. Then for 
+positive integer $k$, the $k$th momement is the $k$th derivative of $\psi(t)$ evaluated at $t=0$.  That is
+$$M_k = E(X^k) = \psi^{(k)}(0)$$
+```
+```{proof}
+A full proof is quite technical, but it revolves around showing that it is permissible to interchange 
+the order of integration/summation and differentiation in this case and that therefore:
+$$\begin{aligned} \psi^{(n)}(0) 
+  &= \frac{d^n}{dt^n} E(e^tX) \Bigg\vert_{t=0} \\
+  &= E\Bigg[ \Big( \frac{d^n}{dt^n} e^{tX}  \Big) _{t=0} \Bigg] \\
+  &= E\Big[ X^n e^{tX}\vert_{t=0}\Big] \\
+  &= E\big[X^n\big]
+  \end{aligned}$$
+```
+
+
+```{theorem}
+If the mgfs of two random variables are finite and identical for all values of $t$ in a neighborhood of $t=0$, then the probability distributions of the two variables are the same.
+```
+```{remark}
+This theorem allows us to compare the mgf of some variable of interest to the set of known mgfs and claim that because the mgfs match, then the variable of interest must follow the matching distribution.  This is often a very easy way to show that a variable has a particular distribution and is the reason that we have introduced moment generating functions.  
+```
+
+1. Suppose that the random variable $X$ has an $Exponential(\beta)$ distribution which is a special case of the Gamma distribution. $Exponential(\beta) = Gamma(1,\beta)$ distribution. The table of distributions in your book shows that the $Var(X)=\beta^2$. Derive the mgf of the Exponential distribution and use it to derive both the expectation and variance.
+
+2. **Mgf of a linear transformation** Suppose that we have a random variable $X$ with mgf $\psi_1(t)$.  Show that $Y=aX+b$ for real constants $a$ and $b$ has the mgf $$\psi_2(t) = e^{bt}\psi_1(at)$$
+
+3. Suppose that $X \sim Exponential(\beta)$. Show that $Y=2X$ has the mgf of an $Exponential(\beta/2)$ distribution and therefore $Y \sim Exponential(\beta/2)$. 
+
+4. Derive the moment generating function of the $Gamma(\alpha, \beta)$ distribution.
+
+5. Derive the moment generating function of $Bernoulli(p)$ distribution.
+
+6. Suppose that independent random variables $X_1, X_2, \dots, X_n$ each have mgfs $\psi_1(t), \psi_2(t), \dots, \psi_n(t)$. Show that the mgf of $Y=\sum X_i$ is 
+$$\psi_Y(t) = \prod_{i=1}^n \psi_i(t)$$
+
+7. Suppose that $X_1, X_2, \dots, X_n$ are independent $Bernoulli(p)$ random variables.  Derive the mgf of $Y=\sum X_i$.  That is, derive the mgf of the Binomial distribution.
+
+8. Suppose that random variable $X$ has support on the non-negative integers $0, 1, 2, \dots$. The probability function of $X$ is
+$$f(x)=\frac{\lambda^x}{x!}e^{-\lambda}\,\cdot I(x\in \{0,1,2,\dots\})$$
+The random variable $X$ has a $Poisson(\lambda)$ distribution. Derive the mgf of this distribution. _Hint: what is the summation constant in the pf?_
+
+9. Suppose that $X_1, X_2, \dots, X_n$ are indepenent random variables each with distribution $Poisson(\lambda)$. Derive the moment generating function of the distribution of $Y=\sum X_i$ and state its distribution.
