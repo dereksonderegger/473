@@ -228,7 +228,7 @@ $$\begin{aligned} E\Big( |X|^j \Big)
  
 ```{definition}
 Let $X$ be a random variable. For each real number $t$, define
-$$\psi(t) = E( e^{tX})$$
+$$\psi(t) = E\left( e^{tX} \right)$$
 as the _Moment Generating Function of $X$, which we denote mgf of $X$._
 ```
 
@@ -236,7 +236,7 @@ as the _Moment Generating Function of $X$, which we denote mgf of $X$._
 ```{theorem}
 Let $X$ be a random variable whose mgf $\psi(t)$ is finite for some neighborhood about $t=0$. Then for 
 positive integer $k$, the $k$th momement is the $k$th derivative of $\psi(t)$ evaluated at $t=0$.  That is
-$$M_k = E(X^k) = \psi^{(k)}(0)$$
+$$M_k = E\big(X^k\big) = \psi^{(k)}(0)$$
 ```
 ```{proof}
 A full proof is quite technical, but it revolves around showing that it is permissible to interchange 
