@@ -202,10 +202,10 @@ Notice that this result _requires_ independence so that the cross-product terms 
 
 ```{definition}
 Just as the $E(X)$ defines the center of a distribution and $E[ (X-\mu)^2 ] = E(X^2)-\mu^2$ defines the variance, the quantities 
-$$M_k = E\big( X^k )\;\;\;\;\;\;\textrm{ where } k\in \{1,2,3,\dots\}$$  
+$$M_k = E\big( X^k \big)\;\;\;\;\;\;\textrm{ where } k\in \{1,2,3,\dots\}$$  
 
 are what we call the $k$th moment of the distribution. These moments define other attributes of the distribution, but sometimes it is useful to define a similar quantity called the $k$th _central moment_
-$$m_k = E\big( ( X-\mu ) ^k )\;\;\;\;\;\;\textrm{ where } k\in \{1,2,3,\dots\}$$ 
+$$m_k = E\big( ( X-\mu ) ^k \big)\;\;\;\;\;\;\textrm{ where } k\in \{1,2,3,\dots\}$$ 
 ```
 
 These two quantities can define several aspects of the distribution.  For example, $M_1=E(X)$ is the distribution mean, while $M_2=E(X^2)$ is related to the variance.  Other attributes are related to higher moments (e.g. the distribution skew is related to $m_3$).
@@ -277,3 +277,10 @@ $$f(x)=\frac{\lambda^x}{x!}e^{-\lambda}\,\cdot I(x\in \{0,1,2,\dots\})$$
 The random variable $X$ has a $Poisson(\lambda)$ distribution. Derive the mgf of this distribution. _Hint: what is the summation constant in the pf?_
 
 9. Suppose that $X_1, X_2, \dots, X_n$ are indepenent random variables each with distribution $Poisson(\lambda)$. Derive the moment generating function of the distribution of $Y=\sum X_i$ and state its distribution.
+
+10. Suppose that $X_1, X_2, \dots, X_n$ are indepenent random variables each with distribution $Exponential(\beta)=Gamma(1,\beta)$. Derive the moment generating function of the distribution of $Y=\sum X_i$ and state its distribution.
+
+## Mean vs Median
+We will skip this section.
+
+## Covariance and Correlation
