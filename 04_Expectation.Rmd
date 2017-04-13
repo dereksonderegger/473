@@ -243,7 +243,7 @@ A full proof is quite technical, but it revolves around showing that it is permi
 the order of integration/summation and differentiation in this case and that therefore:
 $$\begin{aligned} \psi^{(n)}(0) 
   &= \frac{d^n}{dt^n} E(e^{tX}) \Bigg\vert_{t=0} \\
-  &= E\Bigg[ \Big( \frac{d^n}{dt^n} e^{tX}  \Big) _{t=0} \Bigg] \\
+  &= E\Bigg[ \Big( \frac{d^n}{dt^n} e^{tX}  \Big) \Bigg\vert_{t=0} \Bigg] \\
   &= E\Big[ X^n e^{tX}\vert_{t=0}\Big] \\
   &= E\big[X^n\big]
   \end{aligned}$$
