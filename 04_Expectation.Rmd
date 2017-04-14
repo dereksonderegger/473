@@ -284,3 +284,75 @@ The random variable $X$ has a $Poisson(\lambda)$ distribution. Derive the mgf of
 We will skip this section.
 
 ## Covariance and Correlation
+In introductory statistics classes, we often define the _correlation coefficient_ which describes if there is a positive or negative linear relationship between two variables.
+
+The sample correlation coefficient is defined as
+$$r=\frac{\sum_{i=1}^{n}\left(\frac{x_{i}-\bar{x}}{s_{x}}\right)\left(\frac{y_{i}-\bar{y}}{s_{y}}\right)}{n-1}$$
+
+The heart of this formula is the sign of each of the  $(x_i-\bar{x})(y_i-\bar{y})$ terms. If the x-value is big (greater than $\bar{x}$) and the y-value is large (greater than $\bar{y}$), then after multiplication, the result is positive. Likewise if the x-value is small and the y-value is small, both standardized values are negative and therefore after multiplication the result is positive. If a large x-value is paired with a small y-value, then the first value is positive, but the second is negative and so the multiplication result is negative.
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.height=2}
+library(dplyr)
+library(ggplot2)
+set.seed(43456)
+n <- 20
+data <- data.frame( x = runif(n, 0, 1) )
+data <- mutate(data, y= 2 + x + rnorm(n, sd=.2))
+
+xbar <- mean(data$x ) 
+ybar <- mean(data$y )
+tile.data <- data.frame(x=c(xbar-1, xbar-1, xbar+1, xbar+1),
+                        y=c(ybar-1, ybar+1, ybar+1, ybar-1),
+                        sign=c('Positive','Negative','Positive','Negative'))
+
+ggplot(data, aes(x=x, y=y)) +
+  geom_tile(data=tile.data, aes(fill=sign), alpha=.5) +
+  geom_point() +
+  coord_cartesian(xlim=range(data$x), ylim=range(data$y)) +
+  scale_x_continuous(breaks=xbar, label=expression(bar(x))) +
+  scale_y_continuous(breaks=ybar, label=expression(bar(y))) +
+  labs(x=NULL, y=NULL)     
+```
+
+
+We will define a similar quantity for two random variables.
+
+$$Cov(X,Y) = E\left[ \big(X-E(X)\big)\big(Y-E(Y)\big) \right]$$
+
+1. Prove that for random variables $X$ and $Y$ such that $Var(X)<\infty$ and $Var(Y) < \infty$, 
+$$Cov(X,Y) = E(XY) - E(X)E(Y)$$
+
+```{remark}
+This computational formula for the covariance is the same as the computational formula for $Var(X)$ is we let $Y=X$.  
+$$Cov(X,X) = E(XX)-E(X)E(X) = E\left(X^2\right) - \left[ E(X) \right]^2$$
+In fact, we can consider $Var(X)$ as a special case of $Cov(X,Y)$.
+```
+
+2. _Cauchy-Schwartz Inequality_. Let $X$ and $Y$ be random variables, each with finite variances. Show that $\left[ E(XY) \right]^2 \le E(X^2)E(Y^2)$. _Hint: Observe that $E\left[ (tX-Y)^2 \right] \ge 0$ for any real value $t$ and therefore_
+        $$t^2E(X^2) -2tE(XY) + E(Y) > 0$$
+_This a polynomial of degree $2$ in $t$ but has no roots. Combine this fact with the quadradic equation to achieve the desired result._
+
+```{definition} 
+We can now define the correlation between random variables $X$ and $Y$ such that they have finite variances as 
+$$\rho(X,Y) = \frac{Cov(X,Y)}{\sigma_X \sigma_Y}$$
+```
+
+3. Use the Cauchy-Schwartz Inequality to show that
+$$-1 \le \rho(X,Y) \le 1$$
+
+4. Prove that if $X$ and $Y$ are independent random variables, each with finite variances, then $Cov(X,Y)=0$. 
+
+5. Show that the preceeding statement is not an "if and only if" statement by considering the following case.  Let be uniformly $X$ distributed on the integers $-1, 0,$ and $1$. Let $Y=X^2$. Show that $X$ and $Y$ are not independent but that $Cov(X,Y)=0$.
+
+6. Prove that for random variables $X$ and $Y$ and constants $a,b,c$ and $d$ that 
+$$Cov( aX+b, cY+d) = ac\,Cov(X,Y)$$
+
+7. Prove that for random variables $X$ and $Y$
+$$Var( X + Y) = Var(X) + Var(Y) + 2\,Cov(X,Y)$$
+
+8. Prove that for random variables $X$ and $Y$ and constants $a,b,$ and $c$ that
+$$Var( aX + bY + c) = a^2 Var(X) + b^2 Var(Y) + 2ab\,Cov(X,Y)$$
+
+9. Suppose that $X$ and $Y$ have a continuous joint distribution with pdf
+$$f(x,y) = \frac{1}{3} (x+y) \; I(0<x<1)I(0<y<2)$$
+Determine the value of $Var( 2X -3Y +8 )$

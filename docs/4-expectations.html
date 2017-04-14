@@ -26,7 +26,7 @@
 <meta name="author" content="Derek L. Sonderegger">
 
 
-<meta name="date" content="2017-04-12">
+<meta name="date" content="2017-04-13">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -384,6 +384,38 @@ are what we call the <span class="math inline">\(k\)</span>th moment of the dist
 </div>
 <div id="covariance-and-correlation" class="section level2">
 <h2><span class="header-section-number">4.6</span> Covariance and Correlation</h2>
+<p>In introductory statistics classes, we often define the <em>correlation coefficient</em> which describes if there is a positive or negative linear relationship between two variables.</p>
+<p>The sample correlation coefficient is defined as <span class="math display">\[r=\frac{\sum_{i=1}^{n}\left(\frac{x_{i}-\bar{x}}{s_{x}}\right)\left(\frac{y_{i}-\bar{y}}{s_{y}}\right)}{n-1}\]</span></p>
+<p>The heart of this formula is the sign of each of the <span class="math inline">\((x_i-\bar{x})(y_i-\bar{y})\)</span> terms. If the x-value is big (greater than <span class="math inline">\(\bar{x}\)</span>) and the y-value is large (greater than <span class="math inline">\(\bar{y}\)</span>), then after multiplication, the result is positive. Likewise if the x-value is small and the y-value is small, both standardized values are negative and therefore after multiplication the result is positive. If a large x-value is paired with a small y-value, then the first value is positive, but the second is negative and so the multiplication result is negative.</p>
+<p><img src="Probability_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p>We will define a similar quantity for two random variables.</p>
+<p><span class="math display">\[Cov(X,Y) = E\left[ \big(X-E(X)\big)\big(Y-E(Y)\big) \right]\]</span></p>
+<ol style="list-style-type: decimal">
+<li>Prove that for random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> such that <span class="math inline">\(Var(X)&lt;\infty\)</span> and <span class="math inline">\(Var(Y) &lt; \infty\)</span>, <span class="math display">\[Cov(X,Y) = E(XY) - E(X)E(Y)\]</span></li>
+</ol>
+
+<div class="remark">
+<span class="remark"><em>Remark. </em></span> This computational formula for the covariance is the same as the computational formula for <span class="math inline">\(Var(X)\)</span> is we let <span class="math inline">\(Y=X\)</span>.<br />
+<span class="math display">\[Cov(X,X) = E(XX)-E(X)E(X) = E\left(X^2\right) - \left[ E(X) \right]^2\]</span> In fact, we can consider <span class="math inline">\(Var(X)\)</span> as a special case of <span class="math inline">\(Cov(X,Y)\)</span>.
+</div>
+<p></p>
+<ol start="2" style="list-style-type: decimal">
+<li><em>Cauchy-Schwartz Inequality</em>. Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be random variables, each with finite variances. Show that <span class="math inline">\(\left[ E(XY) \right]^2 \le E(X^2)E(Y^2)\)</span>. <em>Hint: Observe that <span class="math inline">\(E\left[ (tX-Y)^2 \right] \ge 0\)</span> for any real value <span class="math inline">\(t\)</span> and therefore</em> <span class="math display">\[t^2E(X^2) -2tE(XY) + E(Y) &gt; 0\]</span> <em>This a polynomial of degree <span class="math inline">\(2\)</span> in <span class="math inline">\(t\)</span> but has no roots. Combine this fact with the quadradic equation to achieve the desired result.</em></li>
+</ol>
+
+<div class="definition">
+<span id="def:unnamed-chunk-18" class="definition"><strong>Definition 4.3 </strong></span>We can now define the correlation between random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> such that they have finite variances as <span class="math display">\[\rho(X,Y) = \frac{Cov(X,Y)}{\sigma_X \sigma_Y}\]</span>
+</div>
+<p></p>
+<ol start="3" style="list-style-type: decimal">
+<li><p>Use the Cauchy-Schwartz Inequality to show that <span class="math display">\[-1 \le \rho(X,Y) \le 1\]</span></p></li>
+<li><p>Prove that if <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent random variables, each with finite variances, then <span class="math inline">\(Cov(X,Y)=0\)</span>.</p></li>
+<li><p>Show that the preceeding statement is not an “if and only if” statement by considering the following case. Let be uniformly <span class="math inline">\(X\)</span> distributed on the integers <span class="math inline">\(-1, 0,\)</span> and <span class="math inline">\(1\)</span>. Let <span class="math inline">\(Y=X^2\)</span>. Show that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are not independent but that <span class="math inline">\(Cov(X,Y)=0\)</span>.</p></li>
+<li><p>Prove that for random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> and constants <span class="math inline">\(a,b,c\)</span> and <span class="math inline">\(d\)</span> that <span class="math display">\[Cov( aX+b, cY+d) = ac\,Cov(X,Y)\]</span></p></li>
+<li><p>Prove that for random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> <span class="math display">\[Var( X + Y) = Var(X) + Var(Y) + 2\,Cov(X,Y)\]</span></p></li>
+<li><p>Prove that for random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> and constants <span class="math inline">\(a,b,\)</span> and <span class="math inline">\(c\)</span> that <span class="math display">\[Var( aX + bY + c) = a^2 Var(X) + b^2 Var(Y) + 2ab\,Cov(X,Y)\]</span></p></li>
+<li><p>Suppose that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> have a continuous joint distribution with pdf <span class="math display">\[f(x,y) = \frac{1}{3} (x+y) \; I(0&lt;x&lt;1)I(0&lt;y&lt;2)\]</span> Determine the value of <span class="math inline">\(Var( 2X -3Y +8 )\)</span></p></li>
+</ol>
 
 </div>
 </div>
