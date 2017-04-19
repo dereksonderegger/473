@@ -359,3 +359,72 @@ Determine the value of $Var( 2X -3Y +8 )$
 
 10.  Suppose that $X_1,X_2,\dots,X_n$ are independent and identically distributed random variables, each with $E(X_i)=\mu$ and $Var(X_i)=\sigma^2$.  Show that the sample mean $\bar{X} = \frac{1}{n}\sum X_i$ has expectation $E( \bar{X} ) = \mu$ and variance $Var(\bar{X}) = \frac{\sigma^2}{n}$.
 
+
+## Conditional Expectation
+
+In many real-world scenarios, the phenomena of interest is best modeled in a "multilevel" fashion.  For example, suppose that we are interested in understanding radon levels within homes and we have radon levels from thousands of houses across the US.  Because houses within a county are more similar to each other than houses that are states apart, it makes sense to model the data using a multilevel approach that models each county and then the houses within the county.  In this section, we will develop certain mathematical tools that will be useful for these situations.
+
+_Example_ Recall the Beta-Binomial hierarcical relationship where we have some observation $X$ that is the number of successes out of $n$ independent Bernoulli$(P)$ trials, and the probability of success $P$ was also a random variable but with a Beta($\alpha$,$\beta$) distribution.
+$$X \sim Binomial(n,P) \;\;\;\;\;\;\textrm{where }\;\;\; P \sim Beta(\alpha, \beta)$$
+Recall the probability and probability density functions were
+$$\begin{aligned} 
+  g(x|p) &= {n \choose x} p^x (1-p)^{n-x} \;\cdot I(x\in 0,1,\dots,n)\\
+  f(p) &= \frac{\Gamma(\alpha,\beta)}{\Gamma(\alpha)\Gamma(\beta)} p^{\alpha-1}(1-p)^{\beta-1} \; \cdot I(0 < p < 1) 
+  \end{aligned}$$
+
+If we regard $P=p=0$ as a known quantity, then 
+$$E(X\,|\,P=0.6) = np = n(0.60)$$
+However, if we don't know the value of $P$ and continue to consider it a random variable, then
+$$E(X|P) = nP$$
+is just a function of the random variable $P$ and therefore $E(X|P)$ also a random variable.  We could ask questions like what is the probability density function of $E(X|P)$ and what is the expectation of $E(X|P)$. 
+
+```{definition}
+If $Y$ has a continuous conditional distribution given $X=x$, define the conditional expectation as
+$$E(Y | x) = \int_{-\infty}^\infty y \, g_2(y|x) \,dy.$$
+If $Y$ has a discrete conditional distribution given $X=x$, replace the integral with the summation over all values of $y$.
+```
+
+Similarly we can define the conditional expectation of some function $h(y)$ of $Y$ as 
+$$E( h(Y) | x ) = \int_{-\infty}^\infty h(y) \, g_2(y|x) \,dy.$$
+
+1. Suppose that $X$ and $Y$ are continuous random variables where $Y$ has a finite expectation. Prove that 
+$$E\left[ E(Y|X) \right] = E(Y)$$
+_Hint: Start with the definition of $E(Y)$ using the double integral and joint distribution and then split the joint distribution into the product of the conditional and marginal. Finally recognize the inner integral as $E(Y|X=x)$_.
+
+2. Suppose that $X\sim Binomial(n,P)$ and $P\sim Beta(\alpha=4,\beta=6)$. Find $E(X)$. _Hint: Though we haven't proven it (yet!), the expectation of a Beta random variable is $\alpha/(\alpha + \beta)$_. 
+
+3. Suppose that an unknown number of individuals (denoted as $N$) will be independently randomly choosen for "additional screening" by the TSA. Suppose that we allow $N\sim Poisson(\lambda)$ individuals are selected and that the probability that a selected person is female is $0.4$. Let $X$ denote the number of females (out of $N$ individuals additionally screened) and so $X \sim Binomial(N, p=0.5)$. Find $E(X)$. _Hint: Though we haven't proven it yet, the variance of a Poisson random variable is also $\lambda$._
+
+```{definition}
+The conditional variance of $Y|X=x$ is defined similarly to the unconditional case
+$$Var(Y|x) = E\bigg[ \Big(Y - E(Y|x) \Big)^2 \bigg] = E\Big[ \big(Y|x\big)^2 \Big] - \Big[ E(Y|x) \Big]^2$$
+```
+
+```{theorm}
+If $X$ and $Y$ are random variables which have finite expectation and variances, then
+$$Var(Y) = E\Big[ Var(Y|X) \Big] + Var\Big[ E(Y|X) \Big]$$
+```
+```{proof}
+We start by noticing
+$$Var(Y|X) = E\Big(Y^2 | X\Big) - \Big[ E(Y|X) \Big]^2$$
+and therefore
+$$E \Bigg[ Var(Y|X) \Bigg] = E\Bigg[ E\Big(Y^2 | X\Big) - \Big[ E(Y|X) \Big]^2 \Bigg]$$ Furthermore by the definition of variance
+$$Var\Bigg[ E(Y|X) \Bigg] = E\Bigg[ \Big( E(Y|X) \Big)^2 \Bigg] - \Bigg[ E\Big( E(Y|X) \Big) \Bigg]^2$$ 
+Finally
+$$\begin{aligned} Var(Y)
+  &= E\left( Y^2 \right) - \left[ E(Y) \right]^2 \\
+  &= E\Bigg[ E\Big(Y^2 | X\Big)\Bigg] - \Bigg[ E\Big( E(Y|X) \Big) \Bigg]^2 \\
+  &= E\Bigg[ E\Big(Y^2 | X\Big)\Bigg] - E\Bigg[ \Big( E(Y|X) \Big)^2 \Bigg] + E\Bigg[ \Big( E(Y|X) \Big)^2 \Bigg] - \Bigg[ E\Big( E(Y|X) \Big) \Bigg]^2 \\
+  &= E\Bigg[ E\Big(Y^2 | X\Big) - \Big( E(Y|X) \Big)^2 \Bigg] + E\Bigg[ \Big( E(Y|X) \Big)^2 \Bigg] - \Bigg[ E\Big( E(Y|X) \Big) \Bigg]^2 \\
+  &= E \Bigg[ Var(Y|X) \Bigg] + Var\Bigg[ E(Y|X) \Bigg]
+  \end{aligned}$$
+```  
+  
+
+4. Suppose that an unknown number of individuals (denoted as $N$) will be independently randomly choosen for "additional screening" by the TSA. Suppose that we allow $N\sim Poisson(\lambda)$ individuals are selected and that the probability that a selected person is female is $0.4$. Let $X$ denote the number of females (out of $N$ individuals additionally screened) and so $X \sim Binomial(N, p=0.5)$. Find $Var(X)$. 
+
+5. The number of defects per yard in a certain fabric, $Y$, was known to have a Poisson distribution with parameter $\lambda$. The parameter $\lambda$ was assumed to be a random variable with a Exponential(1) distribution. Find $E(Y)$ and $Var(Y)$. Notice that $E(\lambda)=1$ and $1 = Var(Y|\lambda=1) < Var(Y)$.
+
+6. Suppose we have random variables $X$ and $Y$ with joint pdf 
+$$f(x,y) = (x+y) \, \cdot I(0 \le x \le 1)I(0 \le y \le 1)$$
+Find $E(Y|X)$ and $Var(Y|X)$.

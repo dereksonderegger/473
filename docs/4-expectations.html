@@ -147,6 +147,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.4" data-path="4-expectations.html"><a href="4-expectations.html#moments-and-moment-generating-functions"><i class="fa fa-check"></i><b>4.4</b> Moments and Moment Generating Functions</a></li>
 <li class="chapter" data-level="4.5" data-path="4-expectations.html"><a href="4-expectations.html#mean-vs-median"><i class="fa fa-check"></i><b>4.5</b> Mean vs Median</a></li>
 <li class="chapter" data-level="4.6" data-path="4-expectations.html"><a href="4-expectations.html#covariance-and-correlation"><i class="fa fa-check"></i><b>4.6</b> Covariance and Correlation</a></li>
+<li class="chapter" data-level="4.7" data-path="4-expectations.html"><a href="4-expectations.html#conditional-expectation"><i class="fa fa-check"></i><b>4.7</b> Conditional Expectation</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="A-useful-functions.html"><a href="A-useful-functions.html"><i class="fa fa-check"></i><b>A</b> Useful functions</a><ul>
@@ -416,6 +417,49 @@ are what we call the <span class="math inline">\(k\)</span>th moment of the dist
 <li><p>Prove that for random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> and constants <span class="math inline">\(a,b,\)</span> and <span class="math inline">\(c\)</span> that <span class="math display">\[Var( aX + bY + c) = a^2 Var(X) + b^2 Var(Y) + 2ab\,Cov(X,Y)\]</span></p></li>
 <li><p>Suppose that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> have a continuous joint distribution with pdf <span class="math display">\[f(x,y) = \frac{1}{3} (x+y) \; I(0&lt;x&lt;1)I(0&lt;y&lt;2)\]</span> Determine the value of <span class="math inline">\(Var( 2X -3Y +8 )\)</span></p></li>
 <li><p>Suppose that <span class="math inline">\(X_1,X_2,\dots,X_n\)</span> are independent and identically distributed random variables, each with <span class="math inline">\(E(X_i)=\mu\)</span> and <span class="math inline">\(Var(X_i)=\sigma^2\)</span>. Show that the sample mean <span class="math inline">\(\bar{X} = \frac{1}{n}\sum X_i\)</span> has expectation <span class="math inline">\(E( \bar{X} ) = \mu\)</span> and variance <span class="math inline">\(Var(\bar{X}) = \frac{\sigma^2}{n}\)</span>.</p></li>
+</ol>
+</div>
+<div id="conditional-expectation" class="section level2">
+<h2><span class="header-section-number">4.7</span> Conditional Expectation</h2>
+<p>In many real-world scenarios, the phenomena of interest is best modeled in a “multilevel” fashion. For example, suppose that we are interested in understanding radon levels within homes and we have radon levels from thousands of houses across the US. Because houses within a county are more similar to each other than houses that are states apart, it makes sense to model the data using a multilevel approach that models each county and then the houses within the county. In this section, we will develop certain mathematical tools that will be useful for these situations.</p>
+<p><em>Example</em> Recall the Beta-Binomial hierarcical relationship where we have some observation <span class="math inline">\(X\)</span> that is the number of successes out of <span class="math inline">\(n\)</span> independent Bernoulli<span class="math inline">\((P)\)</span> trials, and the probability of success <span class="math inline">\(P\)</span> was also a random variable but with a Beta(<span class="math inline">\(\alpha\)</span>,<span class="math inline">\(\beta\)</span>) distribution. <span class="math display">\[X \sim Binomial(n,P) \;\;\;\;\;\;\textrm{where }\;\;\; P \sim Beta(\alpha, \beta)\]</span> Recall the probability and probability density functions were <span class="math display">\[\begin{aligned} 
+  g(x|p) &amp;= {n \choose x} p^x (1-p)^{n-x} \;\cdot I(x\in 0,1,\dots,n)\\
+  f(p) &amp;= \frac{\Gamma(\alpha,\beta)}{\Gamma(\alpha)\Gamma(\beta)} p^{\alpha-1}(1-p)^{\beta-1} \; \cdot I(0 &lt; p &lt; 1) 
+  \end{aligned}\]</span></p>
+<p>If we regard <span class="math inline">\(P=p=0\)</span> as a known quantity, then <span class="math display">\[E(X\,|\,P=0.6) = np = n(0.60)\]</span> However, if we don’t know the value of <span class="math inline">\(P\)</span> and continue to consider it a random variable, then <span class="math display">\[E(X|P) = nP\]</span> is just a function of the random variable <span class="math inline">\(P\)</span> and therefore <span class="math inline">\(E(X|P)\)</span> also a random variable. We could ask questions like what is the probability density function of <span class="math inline">\(E(X|P)\)</span> and what is the expectation of <span class="math inline">\(E(X|P)\)</span>.</p>
+
+<div class="definition">
+<span id="def:unnamed-chunk-19" class="definition"><strong>Definition 4.4 </strong></span>If <span class="math inline">\(Y\)</span> has a continuous conditional distribution given <span class="math inline">\(X=x\)</span>, define the conditional expectation as <span class="math display">\[E(Y | x) = \int_{-\infty}^\infty y \, g_2(y|x) \,dy.\]</span> If <span class="math inline">\(Y\)</span> has a discrete conditional distribution given <span class="math inline">\(X=x\)</span>, replace the integral with the summation over all values of <span class="math inline">\(y\)</span>.
+</div>
+<p></p>
+<p>Similarly we can define the conditional expectation of some function <span class="math inline">\(h(y)\)</span> of <span class="math inline">\(Y\)</span> as <span class="math display">\[E( h(Y) | x ) = \int_{-\infty}^\infty h(y) \, g_2(y|x) \,dy.\]</span></p>
+<ol style="list-style-type: decimal">
+<li><p>Suppose that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are continuous random variables where <span class="math inline">\(Y\)</span> has a finite expectation. Prove that <span class="math display">\[E\left[ E(Y|X) \right] = E(Y)\]</span> <em>Hint: Start with the definition of <span class="math inline">\(E(Y)\)</span> using the double integral and joint distribution and then split the joint distribution into the product of the conditional and marginal. Finally recognize the inner integral as <span class="math inline">\(E(Y|X=x)\)</span></em>.</p></li>
+<li><p>Suppose that <span class="math inline">\(X\sim Binomial(n,P)\)</span> and <span class="math inline">\(P\sim Beta(\alpha=4,\beta=6)\)</span>. Find <span class="math inline">\(E(X)\)</span>. <em>Hint: Though we haven’t proven it (yet!), the expectation of a Beta random variable is <span class="math inline">\(\alpha/(\alpha + \beta)\)</span></em>.</p></li>
+<li><p>Suppose that an unknown number of individuals (denoted as <span class="math inline">\(N\)</span>) will be independently randomly choosen for “additional screening” by the TSA. Suppose that we allow <span class="math inline">\(N\sim Poisson(\lambda)\)</span> individuals are selected and that the probability that a selected person is female is <span class="math inline">\(0.4\)</span>. Let <span class="math inline">\(X\)</span> denote the number of females (out of <span class="math inline">\(N\)</span> individuals additionally screened) and so <span class="math inline">\(X \sim Binomial(N, p=0.5)\)</span>. Find <span class="math inline">\(E(X)\)</span>. <em>Hint: Though we haven’t proven it yet, the variance of a Poisson random variable is also <span class="math inline">\(\lambda\)</span>.</em></p></li>
+</ol>
+
+<div class="definition">
+<span id="def:unnamed-chunk-20" class="definition"><strong>Definition 4.5 </strong></span>The conditional variance of <span class="math inline">\(Y|X=x\)</span> is defined similarly to the unconditional case <span class="math display">\[Var(Y|x) = E\bigg[ \Big(Y - E(Y|x) \Big)^2 \bigg] = E\Big[ \big(Y|x\big)^2 \Big] - \Big[ E(Y|x) \Big]^2\]</span>
+</div>
+<p></p>
+<pre class="theorm"><code>If $X$ and $Y$ are random variables which have finite expectation and variances, then
+$$Var(Y) = E\Big[ Var(Y|X) \Big] + Var\Big[ E(Y|X) \Big]$$</code></pre>
+
+<div class="proof">
+<span class="proof"><em>Proof. </em></span> We start by noticing <span class="math display">\[Var(Y|X) = E\Big(Y^2 | X\Big) - \Big[ E(Y|X) \Big]^2\]</span> and therefore <span class="math display">\[E \Bigg[ Var(Y|X) \Bigg] = E\Bigg[ E\Big(Y^2 | X\Big) - \Big[ E(Y|X) \Big]^2 \Bigg]\]</span> Furthermore by the definition of variance <span class="math display">\[Var\Bigg[ E(Y|X) \Bigg] = E\Bigg[ \Big( E(Y|X) \Big)^2 \Bigg] - \Bigg[ E\Big( E(Y|X) \Big) \Bigg]^2\]</span> Finally <span class="math display">\[\begin{aligned} Var(Y)
+  &amp;= E\left( Y^2 \right) - \left[ E(Y) \right]^2 \\
+  &amp;= E\Bigg[ E\Big(Y^2 | X\Big)\Bigg] - \Bigg[ E\Big( E(Y|X) \Big) \Bigg]^2 \\
+  &amp;= E\Bigg[ E\Big(Y^2 | X\Big)\Bigg] - E\Bigg[ \Big( E(Y|X) \Big)^2 \Bigg] + E\Bigg[ \Big( E(Y|X) \Big)^2 \Bigg] - \Bigg[ E\Big( E(Y|X) \Big) \Bigg]^2 \\
+  &amp;= E\Bigg[ E\Big(Y^2 | X\Big) - \Big( E(Y|X) \Big)^2 \Bigg] + E\Bigg[ \Big( E(Y|X) \Big)^2 \Bigg] - \Bigg[ E\Big( E(Y|X) \Big) \Bigg]^2 \\
+  &amp;= E \Bigg[ Var(Y|X) \Bigg] + Var\Bigg[ E(Y|X) \Bigg]
+  \end{aligned}\]</span>
+</div>
+<p></p>
+<ol start="4" style="list-style-type: decimal">
+<li><p>Suppose that an unknown number of individuals (denoted as <span class="math inline">\(N\)</span>) will be independently randomly choosen for “additional screening” by the TSA. Suppose that we allow <span class="math inline">\(N\sim Poisson(\lambda)\)</span> individuals are selected and that the probability that a selected person is female is <span class="math inline">\(0.4\)</span>. Let <span class="math inline">\(X\)</span> denote the number of females (out of <span class="math inline">\(N\)</span> individuals additionally screened) and so <span class="math inline">\(X \sim Binomial(N, p=0.5)\)</span>. Find <span class="math inline">\(Var(X)\)</span>.</p></li>
+<li><p>The number of defects per yard in a certain fabric, <span class="math inline">\(Y\)</span>, was known to have a Poisson distribution with parameter <span class="math inline">\(\lambda\)</span>. The parameter <span class="math inline">\(\lambda\)</span> was assumed to be a random variable with a Exponential(1) distribution. Find <span class="math inline">\(E(Y)\)</span> and <span class="math inline">\(Var(Y)\)</span>. Notice that <span class="math inline">\(E(\lambda)=1\)</span> and <span class="math inline">\(1 = Var(Y|\lambda=1) &lt; Var(Y)\)</span>.</p></li>
+<li><p>Suppose we have random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> with joint pdf <span class="math display">\[f(x,y) = (x+y) \, \cdot I(0 \le x \le 1)I(0 \le y \le 1)\]</span> Find <span class="math inline">\(E(Y|X)\)</span> and <span class="math inline">\(Var(Y|X)\)</span>.</p></li>
 </ol>
 
 </div>
