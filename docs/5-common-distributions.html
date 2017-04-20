@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="5-common-distributions.html">
-
+<link rel="prev" href="4-expectations.html">
+<link rel="next" href="A-useful-functions.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -183,50 +183,67 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="useful-functions" class="section level1">
-<h1><span class="header-section-number">A</span> Useful functions</h1>
-<div id="gamma-function" class="section level2">
-<h2><span class="header-section-number">A.1</span> Gamma Function</h2>
-<p>We want to generalize the factorial function which was <span class="math display">\[n! = n(n-1)(n-2)\dots(2)(1)\]</span> for <span class="math inline">\(n \in \{0, 1, 2, \dots\}\)</span> and we define <span class="math inline">\(0!=1\)</span> for notational convenience because that is what we need in many formulas. Notice that <span class="math inline">\(1! = 1\)</span>, <span class="math inline">\(2!=2\)</span> and <span class="math inline">\(3! = 3 * 2!\)</span>.</p>
-<p>The problem is that this is only defined for the whole numbers (natural numbers and zero). We want to define a function that allows us to expand this function to the positive real numbers.</p>
-<p>Consider the funtion: <span class="math display">\[\Gamma(x) = \int_0^\infty z^{x-1} e^{-z} \,dz\]</span></p>
-<p>First we show that <span class="math inline">\(\Gamma(x) = (x-1)\Gamma(x-1)\)</span> utilizing integration by parts.</p>
-<p><span class="math display">\[\begin{aligned}  
-u  = z^{x-1}      &amp;\;\;\;  &amp; dv = e^{-z}\,dz \\
-du = (x-1)z^{x-2}\,dx &amp;\;\;\;  &amp; v  = -e^{-z} 
-\end{aligned}\]</span></p>
-<p>and therefore</p>
-<p><span class="math display">\[\begin{aligned}
-\Gamma(x) &amp;= \int_0^\infty z^{x-1} e^{-z} \,dz \\
-          &amp;= \int_0^\infty u \;dv \\
-          &amp;= uv\vert_0^\infty - \int_0^\infty v\, du \\
-          &amp;= -z^{x-1}e^{-z}\vert_{z=0}^\infty + \int_0^\infty (x-1)z^{x-2}e^{-z} \, dz\\
-          &amp;= (x-1) \int_0^\infty z^{x-2}e^{-z}\,dz\\
-          &amp;= (x-1) \Gamma(x-1)
-  \end{aligned}\]</span></p>
-<p>Next we notice that <span class="math inline">\(\Gamma(1) = 1 = 0!\)</span> via the following integration <span class="math display">\[\Gamma(1) = \int_0^\infty z^{1-1}e^{-z}\,dz = \int_0^\infty e^{-z} \,dz = -e^{-z} \vert_0^\infty = 1\]</span></p>
-<p>Using these bits, we can see that <span class="math display">\[\Gamma(2) = 1\cdot \Gamma(1) = 1 = 1!\]</span> <span class="math display">\[\Gamma(3) = 2 \Gamma(2) = 2 = 2!\]</span> <span class="math display">\[\Gamma(4) = 3 \Gamma(3) = 3 \cdot 2! = 3!\]</span> and for positive integers <span class="math inline">\(n\)</span>, <span class="math display">\[\Gamma(n) = (n-1)!\]</span> which can be re-arranged to see that <span class="math display">\[n! = n \Gamma(n)\]</span></p>
-<p>We conclude by noting that <span class="math display">\[\Gamma\left( \frac{1}{2} \right) = \sqrt \pi\]</span> <em>(This result can be obtained by looking at the square of the integral and then doing a trig substitution.)</em></p>
-<p>A graph of this on the postive real numbers is given below:</p>
-<p><img src="Probability_files/figure-html/unnamed-chunk-26-1.jpeg" width="672" /></p>
-<p>Finally we note that there is a reasonable approximation (known as Stirling’s approximation) to the function for large values of <span class="math inline">\(x\)</span> as <span class="math display">\[\Gamma(x+1) \approx \sqrt{ 2 \pi x } \left( \frac{x}{e} \right)^x\]</span></p>
+<div id="common-distributions" class="section level1">
+<h1><span class="header-section-number">Chapter 5</span> Common Distributions</h1>
+<div id="bernoulli-and-binomial" class="section level2">
+<h2><span class="header-section-number">5.1</span> Bernoulli and Binomial</h2>
+
+<div class="definition">
+<span id="def:unnamed-chunk-23" class="definition"><strong>Definition 5.1 </strong></span>Define a Bernoulli random variable as a variable that takes on the value 0 with probability <span class="math inline">\(1-p\)</span> and the value 1 with probability <span class="math inline">\(p\)</span> where <span class="math inline">\(0\le p \le 1\)</span>. We will write this as <span class="math inline">\(X\sim Bernoulli( p )\)</span>.
 </div>
-<div id="useful-series-results" class="section level2">
-<h2><span class="header-section-number">A.2</span> Useful Series Results</h2>
-<div id="ex" class="section level3">
-<h3><span class="header-section-number">A.2.1</span> <span class="math inline">\(e^x\)</span></h3>
-<p>In many calculus books, the following is shown: <span class="math display">\[e^x = \sum_{i=0}^\infty \frac{x^i}{i!}\]</span></p>
+<p> The pf of a Bernoulli random variable is written as <span class="math display">\[f(x) = p^x (1-p)^{1-x} \;\; \cdot I(x \in \{0,1\})\]</span></p>
+<ol style="list-style-type: decimal">
+<li>Show that if <span class="math inline">\(X\sim Bernoulli(p)\)</span> then
+<ol style="list-style-type: lower-alpha">
+<li>The expectation of <span class="math inline">\(X\)</span> is <span class="math inline">\(E(X) = p\)</span></li>
+<li>The variance of <span class="math inline">\(X\)</span> is <span class="math inline">\(Var(X) = p(1-p)\)</span></li>
+<li>The moment generating function of <span class="math inline">\(X\)</span> is <span class="math inline">\(\psi(t)=pe^t + (1-p)\)</span></li>
+</ol></li>
+</ol>
+
+<div class="definition">
+<span id="def:unnamed-chunk-24" class="definition"><strong>Definition 5.2 </strong></span>Define a Binomial random variable as the sum of <span class="math inline">\(n\)</span> independent and identically distributed Bernoulli(p) random variables. We will write <span class="math inline">\(X \sim Bin(n,p)\)</span>
+</div>
+<p> The pf of a Binomial random variable is <span class="math display">\[f(x)= {n \choose x}p^x (1-p)^{n-x} \;\;\cdot I(x\in \{0,1,2,\dots,n\})\]</span> 2. Show that if <span class="math inline">\(X \sim Bin(n,p)\)</span> then a) The expectation of <span class="math inline">\(X\)</span> is <span class="math inline">\(E(X) = np\)</span> b) The variance of <span class="math inline">\(X\)</span> is <span class="math inline">\(Var(X) = np(1-p)\)</span> c) The moment generating function of <span class="math inline">\(X\)</span> is <span class="math inline">\(\left( pe^t + (1-p) \right)^n\)</span></p>
+<p>The pf of a Bernoulli random variable is written as <span class="math display">\[f(x) = p^x (1-p)^{1-x} \, \cdot I(x \in {0,1})\]</span> a) Show that if</p>
+</div>
+<div id="poisson" class="section level2">
+<h2><span class="header-section-number">5.2</span> Poisson</h2>
+<p>The Poisson distribution is used to model the number of events that happen in some unit time. The critical idea is that the number of events that occur in any two disjoint time periods are independent, regardless of the length of the period. By splitting the time unit into <em>many</em> subintervals, each of which that could only have 0 or 1 event and considering those subintervals as independent Bernoulli RVs, it is possible to justify the following probability function <span class="math display">\[f(x) = \frac{e^\lambda \lambda^x}{x!} \;\;\cdot I(x \in \{0,1,2,\dots\} )\]</span> where the parameter <span class="math inline">\(\lambda\)</span> represents the mean number of events that should happen per time interval of some specific size. 1. Suppose that <span class="math inline">\(X\sim Poisson(\lambda)\)</span>. Show that a) This is a valid pf by showing that <span class="math inline">\(f(x) \ge 0\)</span> for all <span class="math inline">\(x\)</span> and that <span class="math inline">\(\sum_{x=0}^\infty f(x) = 1\)</span>. <em>Hint, look at the series expansion of <span class="math inline">\(e^\lambda\)</span></em>. b) The expectation of <span class="math inline">\(X\)</span> is <span class="math inline">\(E(X)=\lambda\)</span>. c) The variance of <span class="math inline">\(X\)</span> is <span class="math inline">\(Var(X)=\lambda\)</span>. <em>Hint, derive <span class="math inline">\(E[ X(X-1) ]\)</span> and use that to figure out <span class="math inline">\(E[X^2]\)</span>.</em> d) The moment generating function of <span class="math inline">\(X\)</span> is <span class="math display">\[\psi(t)=e^{\lambda(e^t-1)}\]</span></p>
+<ol start="2" style="list-style-type: decimal">
+<li>Show that if <span class="math inline">\(X_1,\dots,X_n\)</span> are independent and identically distributed <span class="math inline">\(Poisson(\lambda)\)</span> random variables, which we denote as <span class="math display">\[X_i \stackrel{iid}{\sim} Poisson(\lambda)\]</span> then <span class="math display">\[Y=\sum(X_i) \sim Poisson(n\lambda).\]</span></li>
+</ol>
+</div>
+<div id="geometric-and-negative-binomial" class="section level2">
+<h2><span class="header-section-number">5.3</span> Geometric and Negative Binomial</h2>
+</div>
+<div id="uniform" class="section level2">
+<h2><span class="header-section-number">5.4</span> Uniform</h2>
+</div>
+<div id="exponential-and-gamma" class="section level2">
+<h2><span class="header-section-number">5.5</span> Exponential and Gamma</h2>
+</div>
+<div id="beta" class="section level2">
+<h2><span class="header-section-number">5.6</span> Beta</h2>
+</div>
+<div id="normal" class="section level2">
+<h2><span class="header-section-number">5.7</span> Normal</h2>
+</div>
+<div id="bivariate-normal" class="section level2">
+<h2><span class="header-section-number">5.8</span> Bivariate Normal</h2>
 
 </div>
 </div>
-</div>
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="5-common-distributions.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="4-expectations.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="A-useful-functions.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
@@ -254,7 +271,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/dereksonderegger/edit/master/473/99_Appendix.Rmd",
+"link": "https://github.com/dereksonderegger/edit/master/473/05_Common_Distributions.Rmd",
 "text": "Edit"
 },
 "download": [["Probability.pdf", "PDF"], ["Probability.epub", "EPUB"]],

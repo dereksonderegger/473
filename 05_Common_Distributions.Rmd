@@ -1,0 +1,54 @@
+# Common Distributions
+
+## Bernoulli and Binomial
+
+```{definition}
+Define a Bernoulli random variable as a variable that takes on the value 0 with probability $1-p$ and the value 1 with probability $p$ where $0\le p \le 1$. We will write this as $X\sim Bernoulli( p )$.
+```
+The pf of a Bernoulli random variable is written as
+$$f(x) = p^x (1-p)^{1-x} \;\; \cdot I(x \in \{0,1\})$$
+
+1. Show that if $X\sim Bernoulli(p)$ then
+    a) The expectation of $X$ is $E(X) = p$
+    b) The variance of $X$ is $Var(X) = p(1-p)$
+    c) The moment generating function of $X$ is $\psi(t)=pe^t + (1-p)$
+    
+```{definition}
+Define a Binomial random variable as the sum of $n$ independent and identically distributed Bernoulli(p) random variables.  We will write $X \sim Bin(n,p)$
+```
+The pf of a Binomial random variable is
+$$f(x)= {n \choose x}p^x (1-p)^{n-x} \;\;\cdot I(x\in \{0,1,2,\dots,n\})$$
+2. Show that if $X \sim Bin(n,p)$ then
+    a) The expectation of $X$ is $E(X) = np$
+    b) The variance of $X$ is $Var(X) = np(1-p)$
+    c) The moment generating function of $X$ is $\left( pe^t + (1-p) \right)^n$
+
+The pf of a Bernoulli random variable is written as
+$$f(x) = p^x (1-p)^{1-x} \, \cdot I(x \in {0,1})$$
+    a) Show that if 
+
+## Poisson
+The Poisson distribution is used to model the number of events that happen in some unit time.  The critical idea is that the number of events that occur in any two disjoint time periods are independent, regardless of the length of the period. By splitting the time unit into _many_ subintervals, each of which that could only have 0 or 1 event and considering those subintervals as independent Bernoulli RVs, it is possible to justify the following probability function
+$$f(x) = \frac{e^\lambda \lambda^x}{x!} \;\;\cdot I(x \in \{0,1,2,\dots\} )$$
+where the parameter $\lambda$ represents the mean number of events that should happen per time interval of some specific size.
+1. Suppose that $X\sim Poisson(\lambda)$. Show that
+    a) This is a valid pf by showing that $f(x) \ge 0$ for all $x$ and that $\sum_{x=0}^\infty f(x) = 1$. _Hint, look at the series expansion of $e^\lambda$_.
+    b) The expectation of $X$ is $E(X)=\lambda$.
+    c) The variance of $X$ is $Var(X)=\lambda$. _Hint, derive $E[ X(X-1) ]$ and use that to figure out $E[X^2]$._
+    d) The moment generating function of $X$ is $$\psi(t)=e^{\lambda(e^t-1)}$$
+
+2. Show that if $X_1,\dots,X_n$ are independent and identically distributed $Poisson(\lambda)$ random variables, which we denote as
+$$X_i \stackrel{iid}{\sim} Poisson(\lambda)$$ 
+then $$Y=\sum(X_i) \sim Poisson(n\lambda).$$
+
+## Geometric and Negative Binomial
+
+## Uniform
+
+## Exponential and Gamma
+
+## Beta
+
+## Normal
+
+## Bivariate Normal

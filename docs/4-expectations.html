@@ -26,7 +26,7 @@
 <meta name="author" content="Derek L. Sonderegger">
 
 
-<meta name="date" content="2017-04-19">
+<meta name="date" content="2017-04-20">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -34,7 +34,7 @@
   
   
 <link rel="prev" href="3-random-variables-and-distributions.html">
-<link rel="next" href="A-useful-functions.html">
+<link rel="next" href="5-common-distributions.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -149,9 +149,22 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.6" data-path="4-expectations.html"><a href="4-expectations.html#covariance-and-correlation"><i class="fa fa-check"></i><b>4.6</b> Covariance and Correlation</a></li>
 <li class="chapter" data-level="4.7" data-path="4-expectations.html"><a href="4-expectations.html#conditional-expectation"><i class="fa fa-check"></i><b>4.7</b> Conditional Expectation</a></li>
 </ul></li>
+<li class="chapter" data-level="5" data-path="5-common-distributions.html"><a href="5-common-distributions.html"><i class="fa fa-check"></i><b>5</b> Common Distributions</a><ul>
+<li class="chapter" data-level="5.1" data-path="5-common-distributions.html"><a href="5-common-distributions.html#bernoulli-and-binomial"><i class="fa fa-check"></i><b>5.1</b> Bernoulli and Binomial</a></li>
+<li class="chapter" data-level="5.2" data-path="5-common-distributions.html"><a href="5-common-distributions.html#poisson"><i class="fa fa-check"></i><b>5.2</b> Poisson</a></li>
+<li class="chapter" data-level="5.3" data-path="5-common-distributions.html"><a href="5-common-distributions.html#geometric-and-negative-binomial"><i class="fa fa-check"></i><b>5.3</b> Geometric and Negative Binomial</a></li>
+<li class="chapter" data-level="5.4" data-path="5-common-distributions.html"><a href="5-common-distributions.html#uniform"><i class="fa fa-check"></i><b>5.4</b> Uniform</a></li>
+<li class="chapter" data-level="5.5" data-path="5-common-distributions.html"><a href="5-common-distributions.html#exponential-and-gamma"><i class="fa fa-check"></i><b>5.5</b> Exponential and Gamma</a></li>
+<li class="chapter" data-level="5.6" data-path="5-common-distributions.html"><a href="5-common-distributions.html#beta"><i class="fa fa-check"></i><b>5.6</b> Beta</a></li>
+<li class="chapter" data-level="5.7" data-path="5-common-distributions.html"><a href="5-common-distributions.html#normal"><i class="fa fa-check"></i><b>5.7</b> Normal</a></li>
+<li class="chapter" data-level="5.8" data-path="5-common-distributions.html"><a href="5-common-distributions.html#bivariate-normal"><i class="fa fa-check"></i><b>5.8</b> Bivariate Normal</a></li>
+</ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="A-useful-functions.html"><a href="A-useful-functions.html"><i class="fa fa-check"></i><b>A</b> Useful functions</a><ul>
 <li class="chapter" data-level="A.1" data-path="A-useful-functions.html"><a href="A-useful-functions.html#gamma-function"><i class="fa fa-check"></i><b>A.1</b> Gamma Function</a></li>
+<li class="chapter" data-level="A.2" data-path="A-useful-functions.html"><a href="A-useful-functions.html#useful-series-results"><i class="fa fa-check"></i><b>A.2</b> Useful Series Results</a><ul>
+<li class="chapter" data-level="A.2.1" data-path="A-useful-functions.html"><a href="A-useful-functions.html#ex"><i class="fa fa-check"></i><b>A.2.1</b> <span class="math inline">\(e^x\)</span></a></li>
+</ul></li>
 </ul></li>
 </ul>
 
@@ -459,23 +472,20 @@ are what we call the <span class="math inline">\(k\)</span>th moment of the dist
 </div>
 <p></p>
 <ol start="4" style="list-style-type: decimal">
-<li><p>Suppose that an unknown number of individuals (denoted as <span class="math inline">\(N\)</span>) will be independently randomly chosen for “additional screening” by the TSA. Suppose that we allow <span class="math inline">\(N\sim Poisson(\lambda)\)</span> individuals are selected and that the probability that a selected person is female is <span class="math inline">\(0.4\)</span>. Let <span class="math inline">\(X\)</span> denote the number of females (out of <span class="math inline">\(N\)</span> individuals additionally screened) and so <span class="math inline">\(X \sim Binomial(N, p=0.5)\)</span>. Find <span class="math inline">\(Var(X)\)</span>.</p></li>
+<li><p>Suppose that an unknown number of individuals (denoted as <span class="math inline">\(N\)</span>) will be independently randomly chosen for “additional screening” by the TSA. Suppose that we allow <span class="math inline">\(N\sim Poisson(\lambda)\)</span> individuals are selected and that the probability that a selected person is female is <span class="math inline">\(0.4\)</span>. Let <span class="math inline">\(X\)</span> denote the number of females (out of <span class="math inline">\(N\)</span> individuals additionally screened) and so <span class="math inline">\(X \sim Binomial(N, p=0.4)\)</span>. Find <span class="math inline">\(Var(X)\)</span>.</p></li>
 <li><p>The number of defects per yard in a certain fabric, <span class="math inline">\(Y\)</span>, was known to have a Poisson distribution with parameter <span class="math inline">\(\lambda\)</span>. The parameter <span class="math inline">\(\lambda\)</span> was assumed to be a random variable with a Exponential(1) distribution. Find <span class="math inline">\(E(Y)\)</span> and <span class="math inline">\(Var(Y)\)</span>. Notice that <span class="math inline">\(E(\lambda)=1\)</span> and <span class="math inline">\(1 = Var(Y|\lambda=1) &lt; Var(Y)\)</span>.</p></li>
 <li><p>Suppose we have random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> with joint pdf <span class="math display">\[f(x,y) = (x+y) \, \cdot I(0 \le x \le 1)I(0 \le y \le 1)\]</span> Find <span class="math inline">\(E(Y|X)\)</span> and <span class="math inline">\(Var(Y|X)\)</span>.</p></li>
 </ol>
 
 </div>
 </div>
-
-
-
             </section>
 
           </div>
         </div>
       </div>
 <a href="3-random-variables-and-distributions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="A-useful-functions.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="5-common-distributions.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>

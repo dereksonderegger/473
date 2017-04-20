@@ -66,3 +66,9 @@ ggplot(data, aes(x=x, y=y)) +
 
 Finally we note that there is a reasonable approximation (known as Stirling's approximation) to the function for large values of $x$ as
 $$\Gamma(x+1) \approx \sqrt{ 2 \pi x } \left( \frac{x}{e} \right)^x$$
+
+## Useful Series Results
+
+### $e^x$
+In many calculus books, the following is shown:
+$$e^x = \sum_{i=0}^\infty \frac{x^i}{i!}$$

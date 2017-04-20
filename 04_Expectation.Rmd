@@ -421,7 +421,7 @@ $$\begin{aligned} Var(Y)
 ```  
   
 
-4. Suppose that an unknown number of individuals (denoted as $N$) will be independently randomly chosen for "additional screening" by the TSA. Suppose that we allow $N\sim Poisson(\lambda)$ individuals are selected and that the probability that a selected person is female is $0.4$. Let $X$ denote the number of females (out of $N$ individuals additionally screened) and so $X \sim Binomial(N, p=0.5)$. Find $Var(X)$. 
+4. Suppose that an unknown number of individuals (denoted as $N$) will be independently randomly chosen for "additional screening" by the TSA. Suppose that we allow $N\sim Poisson(\lambda)$ individuals are selected and that the probability that a selected person is female is $0.4$. Let $X$ denote the number of females (out of $N$ individuals additionally screened) and so $X \sim Binomial(N, p=0.4)$. Find $Var(X)$. 
 
 5. The number of defects per yard in a certain fabric, $Y$, was known to have a Poisson distribution with parameter $\lambda$. The parameter $\lambda$ was assumed to be a random variable with a Exponential(1) distribution. Find $E(Y)$ and $Var(Y)$. Notice that $E(\lambda)=1$ and $1 = Var(Y|\lambda=1) < Var(Y)$.
 
