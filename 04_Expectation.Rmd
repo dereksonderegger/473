@@ -26,7 +26,7 @@ or
 $$\int_{-\infty}^0 x\,f(x)\, dx = -\infty \;\;\;\;\;\; \textrm{ and } \;\;\;\;\;\int_{0}^\infty x\,f(x)\,dx = \infty$$
 then the resulting expectation could be written as $-\infty + \infty$ and that quantity _does not exist_.
 
-**Example** Suppose that the lifetime, $X$, of an applience has a pdf 
+**Example** Suppose that the lifetime, $X$, of an appliance has a pdf 
 $$f(x) = 2 e^{-2x}\;\cdot I(x>0)$$
 Then the expectation of $X$ is
 $$E(X) = \int_{-\infty}^{\infty} x \,f(x) \, dx = \int_0^\infty x \, 2e^{-2x} \, dx = 2\int_0^\infty x \, e^{-2x} \, dx$$ 
@@ -43,7 +43,7 @@ $$\begin{aligned} E(X)
   \end{aligned}$$
 
 **Expectations of functions of a RV**
-Suppose we have a random variable $X$ and some function $Y=r(X)$, then I might want to know the expectation of the random variable $Y$.  We could just derive the pdf of $Y$ and calculate its expectation, but that is just a bunch of integration and differientation that cancels out because (_in the continuous case and assuming $r(x)$ is invertable_)
+Suppose we have a random variable $X$ and some function $Y=r(X)$, then I might want to know the expectation of the random variable $Y$.  We could just derive the pdf of $Y$ and calculate its expectation, but that is just a bunch of integration and differentiation that cancels out because (_in the continuous case and assuming $r(x)$ is invertable_)
 $$\begin{aligned} E(Y) 
   &= \int y \, g(y) \, dy \\
   &= \int r(x)\, f\big( r(x) \big) \Bigg\vert \frac{dx}{dy} \Bigg\vert \,dy \\
@@ -103,7 +103,7 @@ _When we say $X_1, X_2, \dots$ are sampled from a distribution, we actually mean
 
 6. *Bernoulli Expectation* Suppose that the random variable $X_i$ can take on values $0$ or $1$ and the probability it takes on $1$ is $f(1)=p$.  What is the expected value of $X_i$?
 
-7. *Binomial Expectation* Suppose that we have $n$ indentically distributed Bernoulli random variables, each of which having probability of success $f_i(1)=p$. Letting $Y=\sum_1^n X_i$, what is the expected value of $Y$?
+7. *Binomial Expectation* Suppose that we have $n$ identically distributed Bernoulli random variables, each of which having probability of success $f_i(1)=p$. Letting $Y=\sum_1^n X_i$, what is the expected value of $Y$?
  
 8. *Hypergeometric Expectation* Suppose that we have a bag with $N$ balls, of which $M$ are red and $N-M$ are blue.  We will draw $n$ balls out (without replacement) and we are interested in the total number of red balls drawn. Let $X_i$ be $1$ if the $i$th draw was a red ball.
     a) First consider the case where we draw $n=1$ ball.  What is the probability that we draw a red ball on the first draw and therefore what is $E(X_1)$?
@@ -114,7 +114,7 @@ _When we say $X_1, X_2, \dots$ are sampled from a distribution, we actually mean
 $$E\left( \prod_{i=1}^n X_i \right) = \prod_{i=1}^n E(X_i)$$
 Notice that this result requires that the variables are independent, whereas the result in 4.2.3 did not require independence.
 
-10. A gambler will play a game where he is equally likey to win or lose on a given play. When the gambler wins, her fortune is doubled, but when she loses, it is cut in half. Given that the gambler started the game with a fortune of $c$, what is the expected fortune after $n$ plays?
+10. A gambler will play a game where he is equally likely to win or lose on a given play. When the gambler wins, her fortune is doubled, but when she loses, it is cut in half. Given that the gambler started the game with a fortune of $c$, what is the expected fortune after $n$ plays?
 
 
 It can be shown that for non-negative, continuous random variables 
@@ -166,7 +166,7 @@ $$Var(Y) = a^2 Var(X)$$
 Notice that shifting the entire distribution of $X$ by some constant $b$ does not affect the _spread_ of the shifted distribution.
 
 
-Next we condider the sum of independent random variables $X_1+X_2$.
+Next we consider the sum of independent random variables $X_1+X_2$.
 $$\begin{aligned} Var( X_1 + X_2 ) 
   &= E\Bigg[ \bigg[ (X_1 + X_2) - E(X_1+X_2) \bigg]^2 \Bigg] \\
   &= E\Bigg[ \bigg[ X_1 + X_2 - \mu_1 - \mu_2 \bigg]^2 \Bigg] \\
@@ -276,9 +276,9 @@ $$\psi_Y(t) = \prod_{i=1}^n \psi_i(t)$$
 $$f(x)=\frac{\lambda^x}{x!}e^{-\lambda}\,\cdot I(x\in \{0,1,2,\dots\})$$
 The random variable $X$ has a $Poisson(\lambda)$ distribution. Derive the mgf of this distribution. _Hint: what is the summation constant in the pf?_
 
-9. Suppose that $X_1, X_2, \dots, X_n$ are indepenent random variables each with distribution $Poisson(\lambda)$. Derive the moment generating function of the distribution of $Y=\sum X_i$ and state its distribution.
+9. Suppose that $X_1, X_2, \dots, X_n$ are independent random variables each with distribution $Poisson(\lambda)$. Derive the moment generating function of the distribution of $Y=\sum X_i$ and state its distribution.
 
-10. Suppose that $X_1, X_2, \dots, X_n$ are indepenent random variables each with distribution $Exponential(\beta)=Gamma(1,\beta)$. Derive the moment generating function of the distribution of $Y=\sum X_i$ and state its distribution.
+10. Suppose that $X_1, X_2, \dots, X_n$ are independent random variables each with distribution $Exponential(\beta)=Gamma(1,\beta)$. Derive the moment generating function of the distribution of $Y=\sum X_i$ and state its distribution.
 
 ## Mean vs Median
 We will skip this section.
@@ -342,7 +342,7 @@ $$-1 \le \rho(X,Y) \le 1$$
 
 4. Prove that if $X$ and $Y$ are independent random variables, each with finite variances, then $Cov(X,Y)=0$. 
 
-5. Show that the preceeding statement is not an "if and only if" statement by considering the following case.  Let be uniformly $X$ distributed on the integers $-1, 0,$ and $1$. Let $Y=X^2$. Show that $X$ and $Y$ are not independent but that $Cov(X,Y)=0$.
+5. Show that the preceding statement is not an "if and only if" statement by considering the following case.  Let be uniformly $X$ distributed on the integers $-1, 0,$ and $1$. Let $Y=X^2$. Show that $X$ and $Y$ are not independent but that $Cov(X,Y)=0$.
 
 6. Prove that for random variables $X$ and $Y$ and constants $a,b,c$ and $d$ that 
 $$Cov( aX+b, cY+d) = ac\,Cov(X,Y)$$
@@ -364,7 +364,7 @@ Determine the value of $Var( 2X -3Y +8 )$
 
 In many real-world scenarios, the phenomena of interest is best modeled in a "multilevel" fashion.  For example, suppose that we are interested in understanding radon levels within homes and we have radon levels from thousands of houses across the US.  Because houses within a county are more similar to each other than houses that are states apart, it makes sense to model the data using a multilevel approach that models each county and then the houses within the county.  In this section, we will develop certain mathematical tools that will be useful for these situations.
 
-_Example_ Recall the Beta-Binomial hierarcical relationship where we have some observation $X$ that is the number of successes out of $n$ independent Bernoulli$(P)$ trials, and the probability of success $P$ was also a random variable but with a Beta($\alpha$,$\beta$) distribution.
+_Example_ Recall the Beta-Binomial hierarchical relationship where we have some observation $X$ that is the number of successes out of $n$ independent Bernoulli$(P)$ trials, and the probability of success $P$ was also a random variable but with a Beta($\alpha$,$\beta$) distribution.
 $$X \sim Binomial(n,P) \;\;\;\;\;\;\textrm{where }\;\;\; P \sim Beta(\alpha, \beta)$$
 Recall the probability and probability density functions were
 $$\begin{aligned} 
@@ -372,7 +372,7 @@ $$\begin{aligned}
   f(p) &= \frac{\Gamma(\alpha,\beta)}{\Gamma(\alpha)\Gamma(\beta)} p^{\alpha-1}(1-p)^{\beta-1} \; \cdot I(0 < p < 1) 
   \end{aligned}$$
 
-If we regard $P=p=0$ as a known quantity, then 
+If we regard $P=p=0.6$ as a known quantity, then 
 $$E(X\,|\,P=0.6) = np = n(0.60)$$
 However, if we don't know the value of $P$ and continue to consider it a random variable, then
 $$E(X|P) = nP$$
@@ -393,14 +393,14 @@ _Hint: Start with the definition of $E(Y)$ using the double integral and joint d
 
 2. Suppose that $X\sim Binomial(n,P)$ and $P\sim Beta(\alpha=4,\beta=6)$. Find $E(X)$. _Hint: Though we haven't proven it (yet!), the expectation of a Beta random variable is $\alpha/(\alpha + \beta)$_. 
 
-3. Suppose that an unknown number of individuals (denoted as $N$) will be independently randomly choosen for "additional screening" by the TSA. Suppose that we allow $N\sim Poisson(\lambda)$ individuals are selected and that the probability that a selected person is female is $0.4$. Let $X$ denote the number of females (out of $N$ individuals additionally screened) and so $X \sim Binomial(N, p=0.5)$. Find $E(X)$. _Hint: Though we haven't proven it yet, the variance of a Poisson random variable is also $\lambda$._
+3. Suppose that an unknown number of individuals (denoted as $N$) will be independently randomly chosen for "additional screening" by the TSA. Suppose that we allow $N\sim Poisson(\lambda)$ individuals are selected and that the probability that a selected person is female is $0.4$. Let $X$ denote the number of females (out of $N$ individuals additionally screened) and so $X \sim Binomial(N, p=0.5)$. Find $E(X)$. _Hint: Though we haven't proven it yet, the variance of a Poisson random variable is also $\lambda$._
 
 ```{definition}
 The conditional variance of $Y|X=x$ is defined similarly to the unconditional case
 $$Var(Y|x) = E\bigg[ \Big(Y - E(Y|x) \Big)^2 \bigg] = E\Big[ \big(Y|x\big)^2 \Big] - \Big[ E(Y|x) \Big]^2$$
 ```
 
-```{theorm}
+```{theorem}
 If $X$ and $Y$ are random variables which have finite expectation and variances, then
 $$Var(Y) = E\Big[ Var(Y|X) \Big] + Var\Big[ E(Y|X) \Big]$$
 ```
@@ -421,7 +421,7 @@ $$\begin{aligned} Var(Y)
 ```  
   
 
-4. Suppose that an unknown number of individuals (denoted as $N$) will be independently randomly choosen for "additional screening" by the TSA. Suppose that we allow $N\sim Poisson(\lambda)$ individuals are selected and that the probability that a selected person is female is $0.4$. Let $X$ denote the number of females (out of $N$ individuals additionally screened) and so $X \sim Binomial(N, p=0.5)$. Find $Var(X)$. 
+4. Suppose that an unknown number of individuals (denoted as $N$) will be independently randomly chosen for "additional screening" by the TSA. Suppose that we allow $N\sim Poisson(\lambda)$ individuals are selected and that the probability that a selected person is female is $0.4$. Let $X$ denote the number of females (out of $N$ individuals additionally screened) and so $X \sim Binomial(N, p=0.5)$. Find $Var(X)$. 
 
 5. The number of defects per yard in a certain fabric, $Y$, was known to have a Poisson distribution with parameter $\lambda$. The parameter $\lambda$ was assumed to be a random variable with a Exponential(1) distribution. Find $E(Y)$ and $Var(Y)$. Notice that $E(\lambda)=1$ and $1 = Var(Y|\lambda=1) < Var(Y)$.
 
