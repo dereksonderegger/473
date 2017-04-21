@@ -393,7 +393,7 @@ _Hint: Start with the definition of $E(Y)$ using the double integral and joint d
 
 2. Suppose that $X\sim Binomial(n,P)$ and $P\sim Beta(\alpha=4,\beta=6)$. Find $E(X)$. _Hint: Though we haven't proven it (yet!), the expectation of a Beta random variable is $\alpha/(\alpha + \beta)$_. 
 
-3. Suppose that an unknown number of individuals (denoted as $N$) will be independently randomly chosen for "additional screening" by the TSA. Suppose that we allow $N\sim Poisson(\lambda)$ individuals are selected and that the probability that a selected person is female is $0.4$. Let $X$ denote the number of females (out of $N$ individuals additionally screened) and so $X \sim Binomial(N, p=0.5)$. Find $E(X)$. _Hint: Though we haven't proven it yet, the variance of a Poisson random variable is also $\lambda$._
+3. Suppose that an unknown number of individuals (denoted as $N$) will be independently randomly chosen for "additional screening" by the TSA. Suppose that we allow $N\sim Poisson(\lambda)$ individuals are selected and that the probability that a selected person is female is $0.4$. Let $X$ denote the number of females (out of $N$ individuals additionally screened) and so $X \sim Binomial(N, p=0.4)$. Find $E(X)$. _Hint: Though we haven't proven it yet, the variance of a Poisson random variable is also $\lambda$._
 
 ```{definition}
 The conditional variance of $Y|X=x$ is defined similarly to the unconditional case
