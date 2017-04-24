@@ -72,3 +72,7 @@ $$\Gamma(x+1) \approx \sqrt{ 2 \pi x } \left( \frac{x}{e} \right)^x$$
 ### $e^x$
 In many calculus books, the following is shown:
 $$e^x = \sum_{i=0}^\infty \frac{x^i}{i!}$$
+
+### Geometric Series
+For $0 < \alpha < 1$, it is known that
+$$\sum_{x=0}^\infty \alpha^x = \frac{1}{1-\alpha}$$

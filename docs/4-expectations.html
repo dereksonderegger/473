@@ -26,7 +26,7 @@
 <meta name="author" content="Derek L. Sonderegger">
 
 
-<meta name="date" content="2017-04-21">
+<meta name="date" content="2017-04-24">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -151,19 +151,21 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="5" data-path="5-common-distributions.html"><a href="5-common-distributions.html"><i class="fa fa-check"></i><b>5</b> Common Distributions</a><ul>
 <li class="chapter" data-level="5.1" data-path="5-common-distributions.html"><a href="5-common-distributions.html#bernoulli-and-binomial"><i class="fa fa-check"></i><b>5.1</b> Bernoulli and Binomial</a></li>
-<li class="chapter" data-level="5.2" data-path="5-common-distributions.html"><a href="5-common-distributions.html#poisson"><i class="fa fa-check"></i><b>5.2</b> Poisson</a></li>
-<li class="chapter" data-level="5.3" data-path="5-common-distributions.html"><a href="5-common-distributions.html#geometric-and-negative-binomial"><i class="fa fa-check"></i><b>5.3</b> Geometric and Negative Binomial</a></li>
-<li class="chapter" data-level="5.4" data-path="5-common-distributions.html"><a href="5-common-distributions.html#uniform"><i class="fa fa-check"></i><b>5.4</b> Uniform</a></li>
-<li class="chapter" data-level="5.5" data-path="5-common-distributions.html"><a href="5-common-distributions.html#exponential-and-gamma"><i class="fa fa-check"></i><b>5.5</b> Exponential and Gamma</a></li>
-<li class="chapter" data-level="5.6" data-path="5-common-distributions.html"><a href="5-common-distributions.html#beta"><i class="fa fa-check"></i><b>5.6</b> Beta</a></li>
-<li class="chapter" data-level="5.7" data-path="5-common-distributions.html"><a href="5-common-distributions.html#normal"><i class="fa fa-check"></i><b>5.7</b> Normal</a></li>
-<li class="chapter" data-level="5.8" data-path="5-common-distributions.html"><a href="5-common-distributions.html#bivariate-normal"><i class="fa fa-check"></i><b>5.8</b> Bivariate Normal</a></li>
+<li class="chapter" data-level="5.2" data-path="5-common-distributions.html"><a href="5-common-distributions.html#hypergeometric"><i class="fa fa-check"></i><b>5.2</b> Hypergeometric</a></li>
+<li class="chapter" data-level="5.3" data-path="5-common-distributions.html"><a href="5-common-distributions.html#poisson"><i class="fa fa-check"></i><b>5.3</b> Poisson</a></li>
+<li class="chapter" data-level="5.4" data-path="5-common-distributions.html"><a href="5-common-distributions.html#geometric-and-negative-binomial"><i class="fa fa-check"></i><b>5.4</b> Geometric and Negative Binomial</a></li>
+<li class="chapter" data-level="5.5" data-path="5-common-distributions.html"><a href="5-common-distributions.html#uniform"><i class="fa fa-check"></i><b>5.5</b> Uniform</a></li>
+<li class="chapter" data-level="5.6" data-path="5-common-distributions.html"><a href="5-common-distributions.html#exponential-and-gamma"><i class="fa fa-check"></i><b>5.6</b> Exponential and Gamma</a></li>
+<li class="chapter" data-level="5.7" data-path="5-common-distributions.html"><a href="5-common-distributions.html#beta"><i class="fa fa-check"></i><b>5.7</b> Beta</a></li>
+<li class="chapter" data-level="5.8" data-path="5-common-distributions.html"><a href="5-common-distributions.html#normal"><i class="fa fa-check"></i><b>5.8</b> Normal</a></li>
+<li class="chapter" data-level="5.9" data-path="5-common-distributions.html"><a href="5-common-distributions.html#bivariate-normal"><i class="fa fa-check"></i><b>5.9</b> Bivariate Normal</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="A-useful-functions.html"><a href="A-useful-functions.html"><i class="fa fa-check"></i><b>A</b> Useful functions</a><ul>
 <li class="chapter" data-level="A.1" data-path="A-useful-functions.html"><a href="A-useful-functions.html#gamma-function"><i class="fa fa-check"></i><b>A.1</b> Gamma Function</a></li>
 <li class="chapter" data-level="A.2" data-path="A-useful-functions.html"><a href="A-useful-functions.html#useful-series-results"><i class="fa fa-check"></i><b>A.2</b> Useful Series Results</a><ul>
 <li class="chapter" data-level="A.2.1" data-path="A-useful-functions.html"><a href="A-useful-functions.html#ex"><i class="fa fa-check"></i><b>A.2.1</b> <span class="math inline">\(e^x\)</span></a></li>
+<li class="chapter" data-level="A.2.2" data-path="A-useful-functions.html"><a href="A-useful-functions.html#geometric-series"><i class="fa fa-check"></i><b>A.2.2</b> Geometric Series</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -435,7 +437,7 @@ are what we call the <span class="math inline">\(k\)</span>th moment of the dist
 <div id="conditional-expectation" class="section level2">
 <h2><span class="header-section-number">4.7</span> Conditional Expectation</h2>
 <p>In many real-world scenarios, the phenomena of interest is best modeled in a “multilevel” fashion. For example, suppose that we are interested in understanding radon levels within homes and we have radon levels from thousands of houses across the US. Because houses within a county are more similar to each other than houses that are states apart, it makes sense to model the data using a multilevel approach that models each county and then the houses within the county. In this section, we will develop certain mathematical tools that will be useful for these situations.</p>
-<p><em>Example</em> Recall the Beta-Binomial hierarchical relationship where we have some observation <span class="math inline">\(X\)</span> that is the number of successes out of <span class="math inline">\(n\)</span> independent Bernoulli<span class="math inline">\((P)\)</span> trials, and the probability of success <span class="math inline">\(P\)</span> was also a random variable but with a Beta(<span class="math inline">\(\alpha\)</span>,<span class="math inline">\(\beta\)</span>) distribution. <span class="math display">\[X \sim Binomial(n,P) \;\;\;\;\;\;\textrm{where }\;\;\; P \sim Beta(\alpha, \beta)\]</span> Recall the probability and probability density functions were <span class="math display">\[\begin{aligned} 
+<p><em>Example</em> Recall the Beta-Binomial hierarchical relationship where we have some observation <span class="math inline">\(X\)</span> that is the number of successes out of <span class="math inline">\(n\)</span> independent Bernoulli<span class="math inline">\((P)\)</span> trials, and the probability of success <span class="math inline">\(P\)</span> was also a random variable but with a Beta(<span class="math inline">\(\alpha\)</span>,<span class="math inline">\(\beta\)</span>) distribution. <span class="math display">\[X|P \sim Binomial(n,P) \;\;\;\;\;\;\textrm{where }\;\;\; P \sim Beta(\alpha, \beta)\]</span> Recall the probability and probability density functions were <span class="math display">\[\begin{aligned} 
   g(x|p) &amp;= {n \choose x} p^x (1-p)^{n-x} \;\cdot I(x\in 0,1,\dots,n)\\
   f(p) &amp;= \frac{\Gamma(\alpha,\beta)}{\Gamma(\alpha)\Gamma(\beta)} p^{\alpha-1}(1-p)^{\beta-1} \; \cdot I(0 &lt; p &lt; 1) 
   \end{aligned}\]</span></p>
@@ -448,8 +450,8 @@ are what we call the <span class="math inline">\(k\)</span>th moment of the dist
 <p>Similarly we can define the conditional expectation of some function <span class="math inline">\(h(y)\)</span> of <span class="math inline">\(Y\)</span> as <span class="math display">\[E( h(Y) | x ) = \int_{-\infty}^\infty h(y) \, g_2(y|x) \,dy.\]</span></p>
 <ol style="list-style-type: decimal">
 <li><p>Suppose that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are continuous random variables where <span class="math inline">\(Y\)</span> has a finite expectation. Prove that <span class="math display">\[E\left[ E(Y|X) \right] = E(Y)\]</span> <em>Hint: Start with the definition of <span class="math inline">\(E(Y)\)</span> using the double integral and joint distribution and then split the joint distribution into the product of the conditional and marginal. Finally recognize the inner integral as <span class="math inline">\(E(Y|X=x)\)</span></em>.</p></li>
-<li><p>Suppose that <span class="math inline">\(X\sim Binomial(n,P)\)</span> and <span class="math inline">\(P\sim Beta(\alpha=4,\beta=6)\)</span>. Find <span class="math inline">\(E(X)\)</span>. <em>Hint: Though we haven’t proven it (yet!), the expectation of a Beta random variable is <span class="math inline">\(\alpha/(\alpha + \beta)\)</span></em>.</p></li>
-<li><p>Suppose that an unknown number of individuals (denoted as <span class="math inline">\(N\)</span>) will be independently randomly chosen for “additional screening” by the TSA. Suppose that we allow <span class="math inline">\(N\sim Poisson(\lambda)\)</span> individuals are selected and that the probability that a selected person is female is <span class="math inline">\(0.4\)</span>. Let <span class="math inline">\(X\)</span> denote the number of females (out of <span class="math inline">\(N\)</span> individuals additionally screened) and so <span class="math inline">\(X \sim Binomial(N, p=0.4)\)</span>. Find <span class="math inline">\(E(X)\)</span>. <em>Hint: Though we haven’t proven it yet, the variance of a Poisson random variable is also <span class="math inline">\(\lambda\)</span>.</em></p></li>
+<li><p>Suppose that <span class="math inline">\(X|P \sim Binomial(n,P)\)</span> and <span class="math inline">\(P\sim Beta(\alpha=4,\beta=6)\)</span>. Find <span class="math inline">\(E(X)\)</span>. <em>Hint: Though we haven’t proven it (yet!), the expectation of a Beta random variable is <span class="math inline">\(\alpha/(\alpha + \beta)\)</span></em>.</p></li>
+<li><p>Suppose that an unknown number of individuals (denoted as <span class="math inline">\(N\)</span>) will be independently randomly chosen for “additional screening” by the TSA. Suppose that we allow <span class="math inline">\(N\sim Poisson(\lambda)\)</span> individuals are selected and that the probability that a selected person is female is <span class="math inline">\(0.4\)</span>. Let <span class="math inline">\(X\)</span> denote the number of females (out of <span class="math inline">\(N\)</span> individuals additionally screened) and so <span class="math inline">\(X|N \sim Binomial(N, p=0.4)\)</span>. Find <span class="math inline">\(E(X)\)</span>. <em>Hint: Though we haven’t proven it yet, the variance of a Poisson random variable is also <span class="math inline">\(\lambda\)</span>.</em></p></li>
 </ol>
 
 <div class="definition">
@@ -472,9 +474,9 @@ are what we call the <span class="math inline">\(k\)</span>th moment of the dist
 </div>
 <p></p>
 <ol start="4" style="list-style-type: decimal">
-<li><p>Suppose that an unknown number of individuals (denoted as <span class="math inline">\(N\)</span>) will be independently randomly chosen for “additional screening” by the TSA. Suppose that we allow <span class="math inline">\(N\sim Poisson(\lambda)\)</span> individuals are selected and that the probability that a selected person is female is <span class="math inline">\(0.4\)</span>. Let <span class="math inline">\(X\)</span> denote the number of females (out of <span class="math inline">\(N\)</span> individuals additionally screened) and so <span class="math inline">\(X \sim Binomial(N, p=0.4)\)</span>. Find <span class="math inline">\(Var(X)\)</span>.</p></li>
+<li><p>Suppose that an unknown number of individuals (denoted as <span class="math inline">\(N\)</span>) will be independently randomly chosen for “additional screening” by the TSA. Suppose that we allow <span class="math inline">\(N\sim Poisson(\lambda)\)</span> individuals are selected and that the probability that a selected person is female is <span class="math inline">\(0.4\)</span>. Let <span class="math inline">\(X\)</span> denote the number of females (out of <span class="math inline">\(N\)</span> individuals additionally screened) and so <span class="math inline">\(X|N \sim Binomial(N, p=0.4)\)</span>. Find <span class="math inline">\(Var(X)\)</span>.</p></li>
 <li><p>The number of defects per yard in a certain fabric, <span class="math inline">\(Y\)</span>, was known to have a Poisson distribution with parameter <span class="math inline">\(\lambda\)</span>. The parameter <span class="math inline">\(\lambda\)</span> was assumed to be a random variable with a Exponential(1) distribution. Find <span class="math inline">\(E(Y)\)</span> and <span class="math inline">\(Var(Y)\)</span>. Notice that <span class="math inline">\(E(\lambda)=1\)</span> and <span class="math inline">\(1 = Var(Y|\lambda=1) &lt; Var(Y)\)</span>.</p></li>
-<li><p>Suppose we have random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> with joint pdf <span class="math display">\[f(x,y) = (x+y) \, \cdot I(0 \le x \le 1)I(0 \le y \le 1)\]</span> Find <span class="math inline">\(E(Y|X)\)</span> and <span class="math inline">\(Var(Y|X)\)</span>.</p></li>
+<li><p>Suppose we have random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> with joint pdf <span class="math display">\[f(x,y) = (x+y) \, \cdot I(0 \le x \le 1)I(0 \le y \le 1)\]</span> Find <span class="math inline">\(E(Y|X)\)</span> and <span class="math inline">\(Var(Y|X)\)</span>. <em>Feel free to set up all the necessary integrals and then use software to calculate them.</em></p></li>
 </ol>
 
 </div>

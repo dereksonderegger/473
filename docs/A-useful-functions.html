@@ -26,7 +26,7 @@
 <meta name="author" content="Derek L. Sonderegger">
 
 
-<meta name="date" content="2017-04-21">
+<meta name="date" content="2017-04-24">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -151,19 +151,21 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="5" data-path="5-common-distributions.html"><a href="5-common-distributions.html"><i class="fa fa-check"></i><b>5</b> Common Distributions</a><ul>
 <li class="chapter" data-level="5.1" data-path="5-common-distributions.html"><a href="5-common-distributions.html#bernoulli-and-binomial"><i class="fa fa-check"></i><b>5.1</b> Bernoulli and Binomial</a></li>
-<li class="chapter" data-level="5.2" data-path="5-common-distributions.html"><a href="5-common-distributions.html#poisson"><i class="fa fa-check"></i><b>5.2</b> Poisson</a></li>
-<li class="chapter" data-level="5.3" data-path="5-common-distributions.html"><a href="5-common-distributions.html#geometric-and-negative-binomial"><i class="fa fa-check"></i><b>5.3</b> Geometric and Negative Binomial</a></li>
-<li class="chapter" data-level="5.4" data-path="5-common-distributions.html"><a href="5-common-distributions.html#uniform"><i class="fa fa-check"></i><b>5.4</b> Uniform</a></li>
-<li class="chapter" data-level="5.5" data-path="5-common-distributions.html"><a href="5-common-distributions.html#exponential-and-gamma"><i class="fa fa-check"></i><b>5.5</b> Exponential and Gamma</a></li>
-<li class="chapter" data-level="5.6" data-path="5-common-distributions.html"><a href="5-common-distributions.html#beta"><i class="fa fa-check"></i><b>5.6</b> Beta</a></li>
-<li class="chapter" data-level="5.7" data-path="5-common-distributions.html"><a href="5-common-distributions.html#normal"><i class="fa fa-check"></i><b>5.7</b> Normal</a></li>
-<li class="chapter" data-level="5.8" data-path="5-common-distributions.html"><a href="5-common-distributions.html#bivariate-normal"><i class="fa fa-check"></i><b>5.8</b> Bivariate Normal</a></li>
+<li class="chapter" data-level="5.2" data-path="5-common-distributions.html"><a href="5-common-distributions.html#hypergeometric"><i class="fa fa-check"></i><b>5.2</b> Hypergeometric</a></li>
+<li class="chapter" data-level="5.3" data-path="5-common-distributions.html"><a href="5-common-distributions.html#poisson"><i class="fa fa-check"></i><b>5.3</b> Poisson</a></li>
+<li class="chapter" data-level="5.4" data-path="5-common-distributions.html"><a href="5-common-distributions.html#geometric-and-negative-binomial"><i class="fa fa-check"></i><b>5.4</b> Geometric and Negative Binomial</a></li>
+<li class="chapter" data-level="5.5" data-path="5-common-distributions.html"><a href="5-common-distributions.html#uniform"><i class="fa fa-check"></i><b>5.5</b> Uniform</a></li>
+<li class="chapter" data-level="5.6" data-path="5-common-distributions.html"><a href="5-common-distributions.html#exponential-and-gamma"><i class="fa fa-check"></i><b>5.6</b> Exponential and Gamma</a></li>
+<li class="chapter" data-level="5.7" data-path="5-common-distributions.html"><a href="5-common-distributions.html#beta"><i class="fa fa-check"></i><b>5.7</b> Beta</a></li>
+<li class="chapter" data-level="5.8" data-path="5-common-distributions.html"><a href="5-common-distributions.html#normal"><i class="fa fa-check"></i><b>5.8</b> Normal</a></li>
+<li class="chapter" data-level="5.9" data-path="5-common-distributions.html"><a href="5-common-distributions.html#bivariate-normal"><i class="fa fa-check"></i><b>5.9</b> Bivariate Normal</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="A-useful-functions.html"><a href="A-useful-functions.html"><i class="fa fa-check"></i><b>A</b> Useful functions</a><ul>
 <li class="chapter" data-level="A.1" data-path="A-useful-functions.html"><a href="A-useful-functions.html#gamma-function"><i class="fa fa-check"></i><b>A.1</b> Gamma Function</a></li>
 <li class="chapter" data-level="A.2" data-path="A-useful-functions.html"><a href="A-useful-functions.html#useful-series-results"><i class="fa fa-check"></i><b>A.2</b> Useful Series Results</a><ul>
 <li class="chapter" data-level="A.2.1" data-path="A-useful-functions.html"><a href="A-useful-functions.html#ex"><i class="fa fa-check"></i><b>A.2.1</b> <span class="math inline">\(e^x\)</span></a></li>
+<li class="chapter" data-level="A.2.2" data-path="A-useful-functions.html"><a href="A-useful-functions.html#geometric-series"><i class="fa fa-check"></i><b>A.2.2</b> Geometric Series</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -216,6 +218,10 @@ du = (x-1)z^{x-2}\,dx &amp;\;\;\;  &amp; v  = -e^{-z}
 <div id="ex" class="section level3">
 <h3><span class="header-section-number">A.2.1</span> <span class="math inline">\(e^x\)</span></h3>
 <p>In many calculus books, the following is shown: <span class="math display">\[e^x = \sum_{i=0}^\infty \frac{x^i}{i!}\]</span></p>
+</div>
+<div id="geometric-series" class="section level3">
+<h3><span class="header-section-number">A.2.2</span> Geometric Series</h3>
+<p>For <span class="math inline">\(0 &lt; \alpha &lt; 1\)</span>, it is known that <span class="math display">\[\sum_{x=0}^\infty \alpha^x = \frac{1}{1-\alpha}\]</span></p>
 
 </div>
 </div>

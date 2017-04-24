@@ -365,7 +365,7 @@ Determine the value of $Var( 2X -3Y +8 )$
 In many real-world scenarios, the phenomena of interest is best modeled in a "multilevel" fashion.  For example, suppose that we are interested in understanding radon levels within homes and we have radon levels from thousands of houses across the US.  Because houses within a county are more similar to each other than houses that are states apart, it makes sense to model the data using a multilevel approach that models each county and then the houses within the county.  In this section, we will develop certain mathematical tools that will be useful for these situations.
 
 _Example_ Recall the Beta-Binomial hierarchical relationship where we have some observation $X$ that is the number of successes out of $n$ independent Bernoulli$(P)$ trials, and the probability of success $P$ was also a random variable but with a Beta($\alpha$,$\beta$) distribution.
-$$X \sim Binomial(n,P) \;\;\;\;\;\;\textrm{where }\;\;\; P \sim Beta(\alpha, \beta)$$
+$$X|P \sim Binomial(n,P) \;\;\;\;\;\;\textrm{where }\;\;\; P \sim Beta(\alpha, \beta)$$
 Recall the probability and probability density functions were
 $$\begin{aligned} 
   g(x|p) &= {n \choose x} p^x (1-p)^{n-x} \;\cdot I(x\in 0,1,\dots,n)\\
@@ -391,9 +391,9 @@ $$E( h(Y) | x ) = \int_{-\infty}^\infty h(y) \, g_2(y|x) \,dy.$$
 $$E\left[ E(Y|X) \right] = E(Y)$$
 _Hint: Start with the definition of $E(Y)$ using the double integral and joint distribution and then split the joint distribution into the product of the conditional and marginal. Finally recognize the inner integral as $E(Y|X=x)$_.
 
-2. Suppose that $X\sim Binomial(n,P)$ and $P\sim Beta(\alpha=4,\beta=6)$. Find $E(X)$. _Hint: Though we haven't proven it (yet!), the expectation of a Beta random variable is $\alpha/(\alpha + \beta)$_. 
+2. Suppose that $X|P \sim Binomial(n,P)$ and $P\sim Beta(\alpha=4,\beta=6)$. Find $E(X)$. _Hint: Though we haven't proven it (yet!), the expectation of a Beta random variable is $\alpha/(\alpha + \beta)$_. 
 
-3. Suppose that an unknown number of individuals (denoted as $N$) will be independently randomly chosen for "additional screening" by the TSA. Suppose that we allow $N\sim Poisson(\lambda)$ individuals are selected and that the probability that a selected person is female is $0.4$. Let $X$ denote the number of females (out of $N$ individuals additionally screened) and so $X \sim Binomial(N, p=0.4)$. Find $E(X)$. _Hint: Though we haven't proven it yet, the variance of a Poisson random variable is also $\lambda$._
+3. Suppose that an unknown number of individuals (denoted as $N$) will be independently randomly chosen for "additional screening" by the TSA. Suppose that we allow $N\sim Poisson(\lambda)$ individuals are selected and that the probability that a selected person is female is $0.4$. Let $X$ denote the number of females (out of $N$ individuals additionally screened) and so $X|N \sim Binomial(N, p=0.4)$. Find $E(X)$. _Hint: Though we haven't proven it yet, the variance of a Poisson random variable is also $\lambda$._
 
 ```{definition}
 The conditional variance of $Y|X=x$ is defined similarly to the unconditional case
@@ -421,10 +421,10 @@ $$\begin{aligned} Var(Y)
 ```  
   
 
-4. Suppose that an unknown number of individuals (denoted as $N$) will be independently randomly chosen for "additional screening" by the TSA. Suppose that we allow $N\sim Poisson(\lambda)$ individuals are selected and that the probability that a selected person is female is $0.4$. Let $X$ denote the number of females (out of $N$ individuals additionally screened) and so $X \sim Binomial(N, p=0.4)$. Find $Var(X)$. 
+4. Suppose that an unknown number of individuals (denoted as $N$) will be independently randomly chosen for "additional screening" by the TSA. Suppose that we allow $N\sim Poisson(\lambda)$ individuals are selected and that the probability that a selected person is female is $0.4$. Let $X$ denote the number of females (out of $N$ individuals additionally screened) and so $X|N \sim Binomial(N, p=0.4)$. Find $Var(X)$. 
 
 5. The number of defects per yard in a certain fabric, $Y$, was known to have a Poisson distribution with parameter $\lambda$. The parameter $\lambda$ was assumed to be a random variable with a Exponential(1) distribution. Find $E(Y)$ and $Var(Y)$. Notice that $E(\lambda)=1$ and $1 = Var(Y|\lambda=1) < Var(Y)$.
 
 6. Suppose we have random variables $X$ and $Y$ with joint pdf 
 $$f(x,y) = (x+y) \, \cdot I(0 \le x \le 1)I(0 \le y \le 1)$$
-Find $E(Y|X)$ and $Var(Y|X)$.
+Find $E(Y|X)$ and $Var(Y|X)$. _Feel free to set up all the necessary integrals and then use software to calculate them._

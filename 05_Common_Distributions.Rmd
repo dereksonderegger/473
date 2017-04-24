@@ -18,19 +18,45 @@ Define a Binomial random variable as the sum of $n$ independent and identically 
 ```
 The pf of a Binomial random variable is
 $$f(x)= {n \choose x}p^x (1-p)^{n-x} \;\;\cdot I(x\in \{0,1,2,\dots,n\})$$
+
 2. Show that if $X \sim Bin(n,p)$ then
     a) The expectation of $X$ is $E(X) = np$
     b) The variance of $X$ is $Var(X) = np(1-p)$
     c) The moment generating function of $X$ is $\left( pe^t + (1-p) \right)^n$
 
-The pf of a Bernoulli random variable is written as
-$$f(x) = p^x (1-p)^{1-x} \, \cdot I(x \in {0,1})$$
-    a) Show that if 
+## Hypergeometric
+
+We next consider a distribution that is the sum of _dependent_ Bernoulli random variables.  Consider the scenario where there are $A$ balls that are _amber_ and $B$ balls that are _blue_.  The balls are thoroughly mixed and we will select $n$ of those _without replacement_. Of interest is $Y$, the number of amber balls drawn. It is helpful to think of randomly arranging all $A+B$ balls into some order and then selecting the first $n$ balls.  Define $X_i=1$ if the $i$th ball is amber and $X_i=0$ if the $i$th ball is blue.  Finally we note that $X_i$ is *not* independent of $X_j$ and that 
+$$Y=\sum_{i=1}^n X_i$$
+
+1. Derive the pf of $Y \sim Hypergeometric(A,B,n)$.
+    a) How many ways are there to draw, without replacement, $n$ balls from $A+B$ when order doesn't matter?
+    b) How many ways are there to draw $x$ amber balls and $n-x$ blue balls (assuming $x\le A$ and $n-x \le B$)?
+    c) Give the pf of a Hypergeometric(A,B,n) distribution.
+    
+2. Notice that absent any information about the other $X_j$ balls, $X_i \sim Bernoulli \Big( \frac{A}{A+B} \Big)$.  Use this information to derive the expectation of $Y$.
+
+3. Because $X_i$ is negatively correlated with $X_j$, we can't easily derive the variance of $Y$.  Instead we will be *obnoxiously* clever.
+    a) Let $n=A+B$ so that we are selecting all the balls. Argue that $Var(Y) = 0$.
+    b) Because of the symmetry of the random assignments of balls, then $Cov(X_i,X_j)$ is the same for all $i\ne j$. _There isn't anything thing to do here, but this part of our arguement is critical._
+    c) We know that for any set of random variables
+        $$Var(Y) = \sum_{i=1}^n Var(X_i) + \sum_{i \ne j} Cov(X_i,X_j)$$
+        Use this information, along with parts (a) and (b), to solve for the $Cov(X_i, X_j)$.  _The hard part here is figuring out how many covariance terms there are._
+    d) Finally, show that 
+    $$Var(Y) = \frac{nAB}{(A+B)^2}\cdot \frac{A+B-n}{A+B-1}$$
+    
+4. Suppose that we have $Y \sim Hypergeometric(A,B,n)$ and separately we have $W \sim Bernoulli \Big( n, \frac{A}{A+B} \Big)$. Show that for $n > 1$ that $Var(W) > Var(Y)$.
+
+5. My daughter recently mixed $20$ M&Ms and $30$ Skittles in a bowl and left them for me to find. 
+    a) What is the probability that I select **all** M&Ms when I select 6 pieces of candy? 
+    b) What is the expected number of M&Ms in the next 6 pieces (from the 50)?
+
 
 ## Poisson
-The Poisson distribution is used to model the number of events that happen in some unit time.  The critical idea is that the number of events that occur in any two disjoint time periods are independent, regardless of the length of the period. By splitting the time unit into _many_ subintervals, each of which that could only have 0 or 1 event and considering those subintervals as independent Bernoulli RVs, it is possible to justify the following probability function
+The Poisson distribution is used to model the number of events that happen in some unit time.  The critical idea is that the number of events that occur in any two disjoint time periods are independent, regardless of the length of the period. By splitting the time unit into _many_ sub-intervals, each of which that could only have 0 or 1 event and considering those sub-intervals as independent Bernoulli RVs, it is possible to justify the following probability function
 $$f(x) = \frac{e^\lambda \lambda^x}{x!} \;\;\cdot I(x \in \{0,1,2,\dots\} )$$
 where the parameter $\lambda$ represents the mean number of events that should happen per time interval of some specific size.
+
 1. Suppose that $X\sim Poisson(\lambda)$. Show that
     a) This is a valid pf by showing that $f(x) \ge 0$ for all $x$ and that $\sum_{x=0}^\infty f(x) = 1$. _Hint, look at the series expansion of $e^\lambda$_.
     b) The expectation of $X$ is $E(X)=\lambda$.
@@ -41,7 +67,33 @@ where the parameter $\lambda$ represents the mean number of events that should h
 $$X_i \stackrel{iid}{\sim} Poisson(\lambda)$$ 
 then $$Y=\sum(X_i) \sim Poisson(n\lambda).$$
 
+
 ## Geometric and Negative Binomial
+We will first define the _geometric_ distribution. Here we consider another version of multiple Bernoulli random variables. This time, we consider an experiment where we repeatedly sample from a $Bernoulli(p)$ distribution, where $p$ is the probability the draw was a success, and each draw is independent of all previous draws. We are interested in _"the number of failures before the first success."_ 
+
+1.  We first consider $Y \sim Geometric(p)$.
+    a) What is the probability that there are no failures?  That is, what is the probability that the first success occurs on the first draw. 
+        $$f(0) = Pr( Y = 0 ) = \;\;?$$
+    b) What is the probability that there is one failure followed by a success?  What is the probability that there are $y$ failures before the first success?
+    c) Use this to derive the pf of a $Geometric(p)$ distribution.
+    
+2.  Show that the Moment Generating Function for the $Geometric(p)$ distribution is
+    $$\psi(t) = \frac{p}{1-(1-p)e^t}$$
+    _Hint, the Geometric distribution is named as such because the Geometric Series result is necessary to show this._ 
+
+3.  Utilize the mfg to derive the expected value and variance of a $Geometric(p)$ distribution.
+
+The Negative Binomial distribution extends the idea of "number of failures until the first success" to the number of failures until the $r$th success. 
+
+4. The pf of the $Y \sim Negative \;Binomial(r,p)$ distribution can be derived with the following:
+    a) What is the probability of observing exactly $y$ failures in a row, followed by $r$ successes?
+    b) How many ways are there to distribute the $r$ successes among the $r+y$ draws, keeping in mind that the final draw must be a success?
+    c) Use the above ideas to derive the pf.
+    
+5.  A second way of thinking about the negative binomial distribution is as the sum of $r$ independent Geometric random variables.  Utilize this interpretation to derive the expectation, variance, and moment generating function of a $Negative \;Binomial(r,p)$ distribution.
+
+_Some books parameterize the geometric (and negative binomial) distributions as the total number of draws before the first (or $n$th) success. Whenever you are looking up properties of this distribution, make sure it is defined how you want it.  For example, the wikipedia page for the geometric (and negative binomial) have the information for both definitions._
+
 
 ## Uniform
 

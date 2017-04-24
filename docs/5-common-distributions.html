@@ -26,7 +26,7 @@
 <meta name="author" content="Derek L. Sonderegger">
 
 
-<meta name="date" content="2017-04-21">
+<meta name="date" content="2017-04-24">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -151,19 +151,21 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="5" data-path="5-common-distributions.html"><a href="5-common-distributions.html"><i class="fa fa-check"></i><b>5</b> Common Distributions</a><ul>
 <li class="chapter" data-level="5.1" data-path="5-common-distributions.html"><a href="5-common-distributions.html#bernoulli-and-binomial"><i class="fa fa-check"></i><b>5.1</b> Bernoulli and Binomial</a></li>
-<li class="chapter" data-level="5.2" data-path="5-common-distributions.html"><a href="5-common-distributions.html#poisson"><i class="fa fa-check"></i><b>5.2</b> Poisson</a></li>
-<li class="chapter" data-level="5.3" data-path="5-common-distributions.html"><a href="5-common-distributions.html#geometric-and-negative-binomial"><i class="fa fa-check"></i><b>5.3</b> Geometric and Negative Binomial</a></li>
-<li class="chapter" data-level="5.4" data-path="5-common-distributions.html"><a href="5-common-distributions.html#uniform"><i class="fa fa-check"></i><b>5.4</b> Uniform</a></li>
-<li class="chapter" data-level="5.5" data-path="5-common-distributions.html"><a href="5-common-distributions.html#exponential-and-gamma"><i class="fa fa-check"></i><b>5.5</b> Exponential and Gamma</a></li>
-<li class="chapter" data-level="5.6" data-path="5-common-distributions.html"><a href="5-common-distributions.html#beta"><i class="fa fa-check"></i><b>5.6</b> Beta</a></li>
-<li class="chapter" data-level="5.7" data-path="5-common-distributions.html"><a href="5-common-distributions.html#normal"><i class="fa fa-check"></i><b>5.7</b> Normal</a></li>
-<li class="chapter" data-level="5.8" data-path="5-common-distributions.html"><a href="5-common-distributions.html#bivariate-normal"><i class="fa fa-check"></i><b>5.8</b> Bivariate Normal</a></li>
+<li class="chapter" data-level="5.2" data-path="5-common-distributions.html"><a href="5-common-distributions.html#hypergeometric"><i class="fa fa-check"></i><b>5.2</b> Hypergeometric</a></li>
+<li class="chapter" data-level="5.3" data-path="5-common-distributions.html"><a href="5-common-distributions.html#poisson"><i class="fa fa-check"></i><b>5.3</b> Poisson</a></li>
+<li class="chapter" data-level="5.4" data-path="5-common-distributions.html"><a href="5-common-distributions.html#geometric-and-negative-binomial"><i class="fa fa-check"></i><b>5.4</b> Geometric and Negative Binomial</a></li>
+<li class="chapter" data-level="5.5" data-path="5-common-distributions.html"><a href="5-common-distributions.html#uniform"><i class="fa fa-check"></i><b>5.5</b> Uniform</a></li>
+<li class="chapter" data-level="5.6" data-path="5-common-distributions.html"><a href="5-common-distributions.html#exponential-and-gamma"><i class="fa fa-check"></i><b>5.6</b> Exponential and Gamma</a></li>
+<li class="chapter" data-level="5.7" data-path="5-common-distributions.html"><a href="5-common-distributions.html#beta"><i class="fa fa-check"></i><b>5.7</b> Beta</a></li>
+<li class="chapter" data-level="5.8" data-path="5-common-distributions.html"><a href="5-common-distributions.html#normal"><i class="fa fa-check"></i><b>5.8</b> Normal</a></li>
+<li class="chapter" data-level="5.9" data-path="5-common-distributions.html"><a href="5-common-distributions.html#bivariate-normal"><i class="fa fa-check"></i><b>5.9</b> Bivariate Normal</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="A-useful-functions.html"><a href="A-useful-functions.html"><i class="fa fa-check"></i><b>A</b> Useful functions</a><ul>
 <li class="chapter" data-level="A.1" data-path="A-useful-functions.html"><a href="A-useful-functions.html#gamma-function"><i class="fa fa-check"></i><b>A.1</b> Gamma Function</a></li>
 <li class="chapter" data-level="A.2" data-path="A-useful-functions.html"><a href="A-useful-functions.html#useful-series-results"><i class="fa fa-check"></i><b>A.2</b> Useful Series Results</a><ul>
 <li class="chapter" data-level="A.2.1" data-path="A-useful-functions.html"><a href="A-useful-functions.html#ex"><i class="fa fa-check"></i><b>A.2.1</b> <span class="math inline">\(e^x\)</span></a></li>
+<li class="chapter" data-level="A.2.2" data-path="A-useful-functions.html"><a href="A-useful-functions.html#geometric-series"><i class="fa fa-check"></i><b>A.2.2</b> Geometric Series</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -204,33 +206,95 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="definition">
 <span id="def:unnamed-chunk-24" class="definition"><strong>Definition 5.2 </strong></span>Define a Binomial random variable as the sum of <span class="math inline">\(n\)</span> independent and identically distributed Bernoulli(p) random variables. We will write <span class="math inline">\(X \sim Bin(n,p)\)</span>
 </div>
-<p> The pf of a Binomial random variable is <span class="math display">\[f(x)= {n \choose x}p^x (1-p)^{n-x} \;\;\cdot I(x\in \{0,1,2,\dots,n\})\]</span> 2. Show that if <span class="math inline">\(X \sim Bin(n,p)\)</span> then a) The expectation of <span class="math inline">\(X\)</span> is <span class="math inline">\(E(X) = np\)</span> b) The variance of <span class="math inline">\(X\)</span> is <span class="math inline">\(Var(X) = np(1-p)\)</span> c) The moment generating function of <span class="math inline">\(X\)</span> is <span class="math inline">\(\left( pe^t + (1-p) \right)^n\)</span></p>
-<p>The pf of a Bernoulli random variable is written as <span class="math display">\[f(x) = p^x (1-p)^{1-x} \, \cdot I(x \in {0,1})\]</span> a) Show that if</p>
+<p> The pf of a Binomial random variable is <span class="math display">\[f(x)= {n \choose x}p^x (1-p)^{n-x} \;\;\cdot I(x\in \{0,1,2,\dots,n\})\]</span></p>
+<ol start="2" style="list-style-type: decimal">
+<li>Show that if <span class="math inline">\(X \sim Bin(n,p)\)</span> then
+<ol style="list-style-type: lower-alpha">
+<li>The expectation of <span class="math inline">\(X\)</span> is <span class="math inline">\(E(X) = np\)</span></li>
+<li>The variance of <span class="math inline">\(X\)</span> is <span class="math inline">\(Var(X) = np(1-p)\)</span></li>
+<li>The moment generating function of <span class="math inline">\(X\)</span> is <span class="math inline">\(\left( pe^t + (1-p) \right)^n\)</span></li>
+</ol></li>
+</ol>
+</div>
+<div id="hypergeometric" class="section level2">
+<h2><span class="header-section-number">5.2</span> Hypergeometric</h2>
+<p>We next consider a distribution that is the sum of <em>dependent</em> Bernoulli random variables. Consider the scenario where there are <span class="math inline">\(A\)</span> balls that are <em>amber</em> and <span class="math inline">\(B\)</span> balls that are <em>blue</em>. The balls are thoroughly mixed and we will select <span class="math inline">\(n\)</span> of those <em>without replacement</em>. Of interest is <span class="math inline">\(Y\)</span>, the number of amber balls drawn. It is helpful to think of randomly arranging all <span class="math inline">\(A+B\)</span> balls into some order and then selecting the first <span class="math inline">\(n\)</span> balls. Define <span class="math inline">\(X_i=1\)</span> if the <span class="math inline">\(i\)</span>th ball is amber and <span class="math inline">\(X_i=0\)</span> if the <span class="math inline">\(i\)</span>th ball is blue. Finally we note that <span class="math inline">\(X_i\)</span> is <em>not</em> independent of <span class="math inline">\(X_j\)</span> and that <span class="math display">\[Y=\sum_{i=1}^n X_i\]</span></p>
+<ol style="list-style-type: decimal">
+<li>Derive the pf of <span class="math inline">\(Y \sim Hypergeometric(A,B,n)\)</span>.
+<ol style="list-style-type: lower-alpha">
+<li>How many ways are there to draw, without replacement, <span class="math inline">\(n\)</span> balls from <span class="math inline">\(A+B\)</span> when order doesn’t matter?</li>
+<li>How many ways are there to draw <span class="math inline">\(x\)</span> amber balls and <span class="math inline">\(n-x\)</span> blue balls (assuming <span class="math inline">\(x\le A\)</span> and <span class="math inline">\(n-x \le B\)</span>)?</li>
+<li>Give the pf of a Hypergeometric(A,B,n) distribution.</li>
+</ol></li>
+<li><p>Notice that absent any information about the other <span class="math inline">\(X_j\)</span> balls, <span class="math inline">\(X_i \sim Bernoulli \Big( \frac{A}{A+B} \Big)\)</span>. Use this information to derive the expectation of <span class="math inline">\(Y\)</span>.</p></li>
+<li>Because <span class="math inline">\(X_i\)</span> is negatively correlated with <span class="math inline">\(X_j\)</span>, we can’t easily derive the variance of <span class="math inline">\(Y\)</span>. Instead we will be <em>obnoxiously</em> clever.
+<ol style="list-style-type: lower-alpha">
+<li>Let <span class="math inline">\(n=A+B\)</span> so that we are selecting all the balls. Argue that <span class="math inline">\(Var(Y) = 0\)</span>.</li>
+<li>Because of the symmetry of the random assignments of balls, then <span class="math inline">\(Cov(X_i,X_j)\)</span> is the same for all <span class="math inline">\(i\ne j\)</span>. <em>There isn’t anything thing to do here, but this part of our arguement is critical.</em></li>
+<li>We know that for any set of random variables <span class="math display">\[Var(Y) = \sum_{i=1}^n Var(X_i) + \sum_{i \ne j} Cov(X_i,X_j)\]</span> Use this information, along with parts (a) and (b), to solve for the <span class="math inline">\(Cov(X_i, X_j)\)</span>. <em>The hard part here is figuring out how many covariance terms there are.</em></li>
+<li>Finally, show that <span class="math display">\[Var(Y) = \frac{nAB}{(A+B)^2}\cdot \frac{A+B-n}{A+B-1}\]</span></li>
+</ol></li>
+<li><p>Suppose that we have <span class="math inline">\(Y \sim Hypergeometric(A,B,n)\)</span> and separately we have <span class="math inline">\(W \sim Bernoulli \Big( n, \frac{A}{A+B} \Big)\)</span>. Show that for <span class="math inline">\(n &gt; 1\)</span> that <span class="math inline">\(Var(W) &gt; Var(Y)\)</span>.</p></li>
+<li>My daughter recently mixed <span class="math inline">\(20\)</span> M&amp;Ms and <span class="math inline">\(30\)</span> Skittles in a bowl and left them for me to find.
+<ol style="list-style-type: lower-alpha">
+<li>What is the probability that I select <strong>all</strong> M&amp;Ms when I select 6 pieces of candy?</li>
+<li>What is the expected number of M&amp;Ms in the next 6 pieces (from the 50)?</li>
+</ol></li>
+</ol>
 </div>
 <div id="poisson" class="section level2">
-<h2><span class="header-section-number">5.2</span> Poisson</h2>
-<p>The Poisson distribution is used to model the number of events that happen in some unit time. The critical idea is that the number of events that occur in any two disjoint time periods are independent, regardless of the length of the period. By splitting the time unit into <em>many</em> subintervals, each of which that could only have 0 or 1 event and considering those subintervals as independent Bernoulli RVs, it is possible to justify the following probability function <span class="math display">\[f(x) = \frac{e^\lambda \lambda^x}{x!} \;\;\cdot I(x \in \{0,1,2,\dots\} )\]</span> where the parameter <span class="math inline">\(\lambda\)</span> represents the mean number of events that should happen per time interval of some specific size. 1. Suppose that <span class="math inline">\(X\sim Poisson(\lambda)\)</span>. Show that a) This is a valid pf by showing that <span class="math inline">\(f(x) \ge 0\)</span> for all <span class="math inline">\(x\)</span> and that <span class="math inline">\(\sum_{x=0}^\infty f(x) = 1\)</span>. <em>Hint, look at the series expansion of <span class="math inline">\(e^\lambda\)</span></em>. b) The expectation of <span class="math inline">\(X\)</span> is <span class="math inline">\(E(X)=\lambda\)</span>. c) The variance of <span class="math inline">\(X\)</span> is <span class="math inline">\(Var(X)=\lambda\)</span>. <em>Hint, derive <span class="math inline">\(E[ X(X-1) ]\)</span> and use that to figure out <span class="math inline">\(E[X^2]\)</span>.</em> d) The moment generating function of <span class="math inline">\(X\)</span> is <span class="math display">\[\psi(t)=e^{\lambda(e^t-1)}\]</span></p>
-<ol start="2" style="list-style-type: decimal">
+<h2><span class="header-section-number">5.3</span> Poisson</h2>
+<p>The Poisson distribution is used to model the number of events that happen in some unit time. The critical idea is that the number of events that occur in any two disjoint time periods are independent, regardless of the length of the period. By splitting the time unit into <em>many</em> sub-intervals, each of which that could only have 0 or 1 event and considering those sub-intervals as independent Bernoulli RVs, it is possible to justify the following probability function <span class="math display">\[f(x) = \frac{e^\lambda \lambda^x}{x!} \;\;\cdot I(x \in \{0,1,2,\dots\} )\]</span> where the parameter <span class="math inline">\(\lambda\)</span> represents the mean number of events that should happen per time interval of some specific size.</p>
+<ol style="list-style-type: decimal">
+<li>Suppose that <span class="math inline">\(X\sim Poisson(\lambda)\)</span>. Show that
+<ol style="list-style-type: lower-alpha">
+<li>This is a valid pf by showing that <span class="math inline">\(f(x) \ge 0\)</span> for all <span class="math inline">\(x\)</span> and that <span class="math inline">\(\sum_{x=0}^\infty f(x) = 1\)</span>. <em>Hint, look at the series expansion of <span class="math inline">\(e^\lambda\)</span></em>.</li>
+<li>The expectation of <span class="math inline">\(X\)</span> is <span class="math inline">\(E(X)=\lambda\)</span>.</li>
+<li>The variance of <span class="math inline">\(X\)</span> is <span class="math inline">\(Var(X)=\lambda\)</span>. <em>Hint, derive <span class="math inline">\(E[ X(X-1) ]\)</span> and use that to figure out <span class="math inline">\(E[X^2]\)</span>.</em></li>
+<li>The moment generating function of <span class="math inline">\(X\)</span> is <span class="math display">\[\psi(t)=e^{\lambda(e^t-1)}\]</span></li>
+</ol></li>
 <li>Show that if <span class="math inline">\(X_1,\dots,X_n\)</span> are independent and identically distributed <span class="math inline">\(Poisson(\lambda)\)</span> random variables, which we denote as <span class="math display">\[X_i \stackrel{iid}{\sim} Poisson(\lambda)\]</span> then <span class="math display">\[Y=\sum(X_i) \sim Poisson(n\lambda).\]</span></li>
 </ol>
 </div>
 <div id="geometric-and-negative-binomial" class="section level2">
-<h2><span class="header-section-number">5.3</span> Geometric and Negative Binomial</h2>
+<h2><span class="header-section-number">5.4</span> Geometric and Negative Binomial</h2>
+<p>We will first define the <em>geometric</em> distribution. Here we consider another version of multiple Bernoulli random variables. This time, we consider an experiment where we repeatedly sample from a <span class="math inline">\(Bernoulli(p)\)</span> distribution, where <span class="math inline">\(p\)</span> is the probability the draw was a success, and each draw is independent of all previous draws. We are interested in <em>“the number of failures before the first success.”</em></p>
+<ol style="list-style-type: decimal">
+<li>We first consider <span class="math inline">\(Y \sim Geometric(p)\)</span>.
+<ol style="list-style-type: lower-alpha">
+<li>What is the probability that there are no failures? That is, what is the probability that the first success occurs on the first draw. <span class="math display">\[f(0) = Pr( Y = 0 ) = \;\;?\]</span></li>
+<li>What is the probability that there is one failure followed by a success? What is the probability that there are <span class="math inline">\(y\)</span> failures before the first success?</li>
+<li>Use this to derive the pf of a <span class="math inline">\(Geometric(p)\)</span> distribution.</li>
+</ol></li>
+<li><p>Show that the Moment Generating Function for the <span class="math inline">\(Geometric(p)\)</span> distribution is <span class="math display">\[\psi(t) = \frac{p}{1-(1-p)e^t}\]</span> <em>Hint, the Geometric distribution is named as such because the Geometric Series result is necessary to show this.</em></p></li>
+<li><p>Utilize the mfg to derive the expected value and variance of a <span class="math inline">\(Geometric(p)\)</span> distribution.</p></li>
+</ol>
+<p>The Negative Binomial distribution extends the idea of “number of failures until the first success” to the number of failures until the <span class="math inline">\(r\)</span>th success.</p>
+<ol start="4" style="list-style-type: decimal">
+<li>The pf of the <span class="math inline">\(Y \sim Negative \;Binomial(r,p)\)</span> distribution can be derived with the following:
+<ol style="list-style-type: lower-alpha">
+<li>What is the probability of observing exactly <span class="math inline">\(y\)</span> failures in a row, followed by <span class="math inline">\(r\)</span> successes?</li>
+<li>How many ways are there to distribute the <span class="math inline">\(r\)</span> successes among the <span class="math inline">\(r+y\)</span> draws, keeping in mind that the final draw must be a success?</li>
+<li>Use the above ideas to derive the pf.</li>
+</ol></li>
+<li>A second way of thinking about the negative binomial distribution is as the sum of <span class="math inline">\(r\)</span> independent Geometric random variables. Utilize this interpretation to derive the expectation, variance, and moment generating function of a <span class="math inline">\(Negative \;Binomial(r,p)\)</span> distribution.</li>
+</ol>
+<p><em>Some books parameterize the geometric (and negative binomial) distributions as the total number of draws before the first (or <span class="math inline">\(n\)</span>th) success. Whenever you are looking up properties of this distribution, make sure it is defined how you want it. For example, the wikipedia page for the geometric (and negative binomial) have the information for both definitions.</em></p>
 </div>
 <div id="uniform" class="section level2">
-<h2><span class="header-section-number">5.4</span> Uniform</h2>
+<h2><span class="header-section-number">5.5</span> Uniform</h2>
 </div>
 <div id="exponential-and-gamma" class="section level2">
-<h2><span class="header-section-number">5.5</span> Exponential and Gamma</h2>
+<h2><span class="header-section-number">5.6</span> Exponential and Gamma</h2>
 </div>
 <div id="beta" class="section level2">
-<h2><span class="header-section-number">5.6</span> Beta</h2>
+<h2><span class="header-section-number">5.7</span> Beta</h2>
 </div>
 <div id="normal" class="section level2">
-<h2><span class="header-section-number">5.7</span> Normal</h2>
+<h2><span class="header-section-number">5.8</span> Normal</h2>
 </div>
 <div id="bivariate-normal" class="section level2">
-<h2><span class="header-section-number">5.8</span> Bivariate Normal</h2>
+<h2><span class="header-section-number">5.9</span> Bivariate Normal</h2>
 
 </div>
 </div>
