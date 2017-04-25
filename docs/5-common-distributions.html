@@ -237,14 +237,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><p>Suppose that we have <span class="math inline">\(Y \sim Hypergeometric(A,B,n)\)</span> and separately we have <span class="math inline">\(W \sim Bernoulli \Big( n, \frac{A}{A+B} \Big)\)</span>. Show that for <span class="math inline">\(n &gt; 1\)</span> that <span class="math inline">\(Var(W) &gt; Var(Y)\)</span>.</p></li>
 <li>My daughter recently mixed <span class="math inline">\(20\)</span> M&amp;Ms and <span class="math inline">\(30\)</span> Skittles in a bowl and left them for me to find.
 <ol style="list-style-type: lower-alpha">
-<li>What is the probability that I select <strong>all</strong> M&amp;Ms when I select 6 pieces of candy?</li>
+<li>What is the probability that I select <strong>only</strong> M&amp;Ms when I select 6 pieces of candy?</li>
 <li>What is the expected number of M&amp;Ms in the next 6 pieces (from the 50)?</li>
 </ol></li>
 </ol>
 </div>
 <div id="poisson" class="section level2">
 <h2><span class="header-section-number">5.3</span> Poisson</h2>
-<p>The Poisson distribution is used to model the number of events that happen in some unit time. The critical idea is that the number of events that occur in any two disjoint time periods are independent, regardless of the length of the period. By splitting the time unit into <em>many</em> sub-intervals, each of which that could only have 0 or 1 event and considering those sub-intervals as independent Bernoulli RVs, it is possible to justify the following probability function <span class="math display">\[f(x) = \frac{e^\lambda \lambda^x}{x!} \;\;\cdot I(x \in \{0,1,2,\dots\} )\]</span> where the parameter <span class="math inline">\(\lambda\)</span> represents the mean number of events that should happen per time interval of some specific size.</p>
+<p>The Poisson distribution is used to model the number of events that happen in some unit time. The critical idea is that the number of events that occur in any two disjoint time periods are independent, regardless of the length of the period. By splitting the time unit into <em>many</em> sub-intervals, each of which that could only have 0 or 1 event and considering those sub-intervals as independent Bernoulli RVs, it is possible to justify the following probability function <span class="math display">\[f(x) = \frac{e^{-\lambda} \lambda^x}{x!} \;\;\cdot I(x \in \{0,1,2,\dots\} )\]</span> where the parameter <span class="math inline">\(\lambda\)</span> represents the mean number of events that should happen per time interval of some specific size.</p>
 <ol style="list-style-type: decimal">
 <li>Suppose that <span class="math inline">\(X\sim Poisson(\lambda)\)</span>. Show that
 <ol style="list-style-type: lower-alpha">

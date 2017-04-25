@@ -48,13 +48,13 @@ $$Y=\sum_{i=1}^n X_i$$
 4. Suppose that we have $Y \sim Hypergeometric(A,B,n)$ and separately we have $W \sim Bernoulli \Big( n, \frac{A}{A+B} \Big)$. Show that for $n > 1$ that $Var(W) > Var(Y)$.
 
 5. My daughter recently mixed $20$ M&Ms and $30$ Skittles in a bowl and left them for me to find. 
-    a) What is the probability that I select **all** M&Ms when I select 6 pieces of candy? 
+    a) What is the probability that I select **only** M&Ms when I select 6 pieces of candy? 
     b) What is the expected number of M&Ms in the next 6 pieces (from the 50)?
 
 
 ## Poisson
 The Poisson distribution is used to model the number of events that happen in some unit time.  The critical idea is that the number of events that occur in any two disjoint time periods are independent, regardless of the length of the period. By splitting the time unit into _many_ sub-intervals, each of which that could only have 0 or 1 event and considering those sub-intervals as independent Bernoulli RVs, it is possible to justify the following probability function
-$$f(x) = \frac{e^\lambda \lambda^x}{x!} \;\;\cdot I(x \in \{0,1,2,\dots\} )$$
+$$f(x) = \frac{e^{-\lambda} \lambda^x}{x!} \;\;\cdot I(x \in \{0,1,2,\dots\} )$$
 where the parameter $\lambda$ represents the mean number of events that should happen per time interval of some specific size.
 
 1. Suppose that $X\sim Poisson(\lambda)$. Show that

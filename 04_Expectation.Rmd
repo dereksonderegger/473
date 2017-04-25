@@ -257,7 +257,7 @@ If the mgfs of two random variables are finite and identical for all values of $
 This theorem allows us to compare the mgf of some variable of interest to the set of known mgfs and claim that because the mgfs match, then the variable of interest must follow the matching distribution.  This is often a very easy way to show that a variable has a particular distribution and is the reason that we have introduced moment generating functions.  
 ```
 
-1. Suppose that the random variable $X$ has an $Exponential(\beta)$ distribution which is a special case of the Gamma distribution. $Exponential(\beta) = Gamma(1,\beta)$ distribution. The table of distributions in your book shows that the $Var(X)=\beta^2$. Derive the mgf of the Exponential distribution and use it to derive both the expectation and variance.
+1. Suppose that the random variable $X$ has an $Exponential(\beta)$ distribution which is a special case of the Gamma distribution. $Exponential(\beta) = Gamma(1,\beta)$ distribution. The table of distributions in your book shows that the $Var(X)=\frac{1}{\beta^2}$. Derive the mgf of the Exponential distribution and use it to derive both the expectation and variance.
 
 2. **Mgf of a linear transformation** Suppose that we have a random variable $X$ with mgf $\psi_1(t)$.  Show that $Y=aX+b$ for real constants $a$ and $b$ has the mgf $$\psi_2(t) = e^{bt}\psi_1(at)$$
 
