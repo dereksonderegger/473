@@ -26,7 +26,7 @@
 <meta name="author" content="Derek L. Sonderegger">
 
 
-<meta name="date" content="2017-04-24">
+<meta name="date" content="2017-05-01">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -154,10 +154,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.2" data-path="5-common-distributions.html"><a href="5-common-distributions.html#hypergeometric"><i class="fa fa-check"></i><b>5.2</b> Hypergeometric</a></li>
 <li class="chapter" data-level="5.3" data-path="5-common-distributions.html"><a href="5-common-distributions.html#poisson"><i class="fa fa-check"></i><b>5.3</b> Poisson</a></li>
 <li class="chapter" data-level="5.4" data-path="5-common-distributions.html"><a href="5-common-distributions.html#geometric-and-negative-binomial"><i class="fa fa-check"></i><b>5.4</b> Geometric and Negative Binomial</a></li>
-<li class="chapter" data-level="5.5" data-path="5-common-distributions.html"><a href="5-common-distributions.html#uniform"><i class="fa fa-check"></i><b>5.5</b> Uniform</a></li>
-<li class="chapter" data-level="5.6" data-path="5-common-distributions.html"><a href="5-common-distributions.html#exponential-and-gamma"><i class="fa fa-check"></i><b>5.6</b> Exponential and Gamma</a></li>
-<li class="chapter" data-level="5.7" data-path="5-common-distributions.html"><a href="5-common-distributions.html#beta"><i class="fa fa-check"></i><b>5.7</b> Beta</a></li>
-<li class="chapter" data-level="5.8" data-path="5-common-distributions.html"><a href="5-common-distributions.html#normal"><i class="fa fa-check"></i><b>5.8</b> Normal</a></li>
+<li class="chapter" data-level="5.5" data-path="5-common-distributions.html"><a href="5-common-distributions.html#normal"><i class="fa fa-check"></i><b>5.5</b> Normal</a></li>
+<li class="chapter" data-level="5.6" data-path="5-common-distributions.html"><a href="5-common-distributions.html#uniform"><i class="fa fa-check"></i><b>5.6</b> Uniform</a></li>
+<li class="chapter" data-level="5.7" data-path="5-common-distributions.html"><a href="5-common-distributions.html#exponential-and-gamma"><i class="fa fa-check"></i><b>5.7</b> Exponential and Gamma</a></li>
+<li class="chapter" data-level="5.8" data-path="5-common-distributions.html"><a href="5-common-distributions.html#beta"><i class="fa fa-check"></i><b>5.8</b> Beta</a></li>
 <li class="chapter" data-level="5.9" data-path="5-common-distributions.html"><a href="5-common-distributions.html#bivariate-normal"><i class="fa fa-check"></i><b>5.9</b> Bivariate Normal</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
@@ -166,6 +166,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="A.2" data-path="A-useful-functions.html"><a href="A-useful-functions.html#useful-series-results"><i class="fa fa-check"></i><b>A.2</b> Useful Series Results</a><ul>
 <li class="chapter" data-level="A.2.1" data-path="A-useful-functions.html"><a href="A-useful-functions.html#ex"><i class="fa fa-check"></i><b>A.2.1</b> <span class="math inline">\(e^x\)</span></a></li>
 <li class="chapter" data-level="A.2.2" data-path="A-useful-functions.html"><a href="A-useful-functions.html#geometric-series"><i class="fa fa-check"></i><b>A.2.2</b> Geometric Series</a></li>
+</ul></li>
+<li class="chapter" data-level="A.3" data-path="A-useful-functions.html"><a href="A-useful-functions.html#tedious-results"><i class="fa fa-check"></i><b>A.3</b> Tedious results</a><ul>
+<li class="chapter" data-level="A.3.1" data-path="A-useful-functions.html"><a href="A-useful-functions.html#normal-distribution"><i class="fa fa-check"></i><b>A.3.1</b> Normal distribution</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -281,17 +284,37 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ol>
 <p><em>Some books parameterize the geometric (and negative binomial) distributions as the total number of draws before the first (or <span class="math inline">\(n\)</span>th) success. Whenever you are looking up properties of this distribution, make sure it is defined how you want it. For example, the wikipedia page for the geometric (and negative binomial) have the information for both definitions.</em></p>
 </div>
+<div id="normal" class="section level2">
+<h2><span class="header-section-number">5.5</span> Normal</h2>
+<p>The normal distribution plays a central role in statistics because there are many many asymptotic results that show that some quantity converges to a normal distribution.</p>
+<p>The normal distribution is defined by it’s expectation <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span> and has pdf <span class="math display">\[f(x) = \frac{1}{\sqrt{2\pi}\sigma} \exp \left[ -\frac{(x-\mu)^2}{2\sigma^2} \right]\]</span> where <span class="math inline">\(\exp [w] = e^w\)</span> is just a notational convenience. Notice that we have no indicator function, and <span class="math inline">\(f(x) &gt; 0\)</span> for all <span class="math inline">\(x\in \mathbb{R}\)</span>.</p>
+<p>One of the most tedious result to derive is that the pdf integrates to one (see the appendix) but can easily be done using the appropriate polar-coordinate transformation.</p>
+<p>For our first result, we will derive the moment generating function.</p>
+<p><span class="math display">\[\begin{aligned} \psi(t) 
+  &amp;= E(e^{tX}) \\
+  &amp;= \int_{-\infty}^\infty e^{tx} \; \frac{1}{\sqrt{2\pi}\sigma} \exp \left[ -\frac{(x-\mu)^2}{2\sigma^2} \right] \,dx\\
+  &amp;= \int_{-\infty}^\infty \frac{1}{\sqrt{2\pi}\sigma} \exp \left[ tx -\frac{(x-\mu)^2}{2\sigma^2} \right] \,dx\\
+  \end{aligned}\]</span> We then expand the square twice in the exponent by adding and subtracting the term <span class="math inline">\(\mu t + \frac{1}{2}\sigma^2 t^2\)</span> and then re-arranging to find</p>
+<p><span class="math display">\[\begin{aligned} \psi(t) 
+  &amp;= \int_{-\infty}^\infty \frac{1}{\sqrt{2\pi}\sigma} \exp \left[ \mu t + \frac{1}{2} \sigma^2 t^2 - \frac{\Big(x-(\mu+\sigma^2t)\Big)^2}{2\sigma^2} \right] \,dx\\
+  &amp;= \exp \left[ \mu t + \frac{1}{2} \sigma^2 t^2 \right] + \int_{-\infty}^\infty \frac{1}{\sqrt{2\pi}\sigma} \exp \left[ - \frac{\Big(x-(\mu+\sigma^2t)\Big)^2}{2\sigma^2} \right] \,dx \\
+  &amp;= \exp \left[ \mu t + \frac{1}{2} \sigma^2 t^2 \right]
+  \end{aligned}\]</span></p>
+<ol style="list-style-type: decimal">
+<li><p>Show that if <span class="math inline">\(X \sim N(\mu, \sigma^2)\)</span>, then <span class="math inline">\(E(X) = \mu\)</span>. <em>Hint, use the mgf.</em></p></li>
+<li><p>Show that if <span class="math inline">\(X \sim N(\mu, \sigma^2)\)</span>, then <span class="math inline">\(Var(X) = \sigma^2\)</span>. <em>Hint, use the mgf.</em></p></li>
+<li><p>Show that if <span class="math inline">\(X \sim N(\mu, \sigma^2)\)</span>, then <span class="math inline">\(Y=aX + b\)</span> has distribution <span class="math inline">\(Y\sim N(a\mu+b, \,a^2 \sigma^2)\)</span>.</p></li>
+<li><p>Show that if <span class="math inline">\(X_i \sim N(\mu_i,\, \sigma^2_i)\)</span> for <span class="math inline">\(i \in \{1,2,\dots,n\}\)</span> where <span class="math inline">\(X_i\)</span> are all independent, then <span class="math inline">\(Y=\sum X_i\)</span> has distribution <span class="math inline">\(Y \sim N\left( \sum \mu_i, \sum \sigma^2_i \right)\)</span></p></li>
+</ol>
+</div>
 <div id="uniform" class="section level2">
-<h2><span class="header-section-number">5.5</span> Uniform</h2>
+<h2><span class="header-section-number">5.6</span> Uniform</h2>
 </div>
 <div id="exponential-and-gamma" class="section level2">
-<h2><span class="header-section-number">5.6</span> Exponential and Gamma</h2>
+<h2><span class="header-section-number">5.7</span> Exponential and Gamma</h2>
 </div>
 <div id="beta" class="section level2">
-<h2><span class="header-section-number">5.7</span> Beta</h2>
-</div>
-<div id="normal" class="section level2">
-<h2><span class="header-section-number">5.8</span> Normal</h2>
+<h2><span class="header-section-number">5.8</span> Beta</h2>
 </div>
 <div id="bivariate-normal" class="section level2">
 <h2><span class="header-section-number">5.9</span> Bivariate Normal</h2>

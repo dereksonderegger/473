@@ -95,12 +95,46 @@ The Negative Binomial distribution extends the idea of "number of failures until
 _Some books parameterize the geometric (and negative binomial) distributions as the total number of draws before the first (or $n$th) success. Whenever you are looking up properties of this distribution, make sure it is defined how you want it.  For example, the wikipedia page for the geometric (and negative binomial) have the information for both definitions._
 
 
+## Normal
+
+The normal distribution plays a central role in statistics because there are many many asymptotic results that show that some quantity converges to a normal distribution.
+
+The normal distribution is defined by it's expectation $\mu$ and variance $\sigma^2$ and has pdf
+$$f(x) = \frac{1}{\sqrt{2\pi}\sigma} \exp \left[ -\frac{(x-\mu)^2}{2\sigma^2} \right]$$
+where $\exp [w] = e^w$ is just a notational convenience. Notice that we have no indicator function, and $f(x) > 0$ for all $x\in \mathbb{R}$.
+
+One of the most tedious result to derive is that the pdf integrates to one (see the appendix) but can easily be done using the appropriate polar-coordinate transformation.
+
+For our first result, we will derive the moment generating function.
+
+$$\begin{aligned} \psi(t) 
+  &= E(e^{tX}) \\
+  &= \int_{-\infty}^\infty e^{tx} \; \frac{1}{\sqrt{2\pi}\sigma} \exp \left[ -\frac{(x-\mu)^2}{2\sigma^2} \right] \,dx\\
+  &= \int_{-\infty}^\infty \frac{1}{\sqrt{2\pi}\sigma} \exp \left[ tx -\frac{(x-\mu)^2}{2\sigma^2} \right] \,dx\\
+  \end{aligned}$$
+We then expand the square twice in the exponent by adding and subtracting the term $\mu t + \frac{1}{2}\sigma^2 t^2$ and then re-arranging to find 
+
+$$\begin{aligned} \psi(t) 
+  &= \int_{-\infty}^\infty \frac{1}{\sqrt{2\pi}\sigma} \exp \left[ \mu t + \frac{1}{2} \sigma^2 t^2 - \frac{\Big(x-(\mu+\sigma^2t)\Big)^2}{2\sigma^2} \right] \,dx\\
+  &= \exp \left[ \mu t + \frac{1}{2} \sigma^2 t^2 \right] + \int_{-\infty}^\infty \frac{1}{\sqrt{2\pi}\sigma} \exp \left[ - \frac{\Big(x-(\mu+\sigma^2t)\Big)^2}{2\sigma^2} \right] \,dx \\
+  &= \exp \left[ \mu t + \frac{1}{2} \sigma^2 t^2 \right]
+  \end{aligned}$$
+
+
+1. Show that if $X \sim N(\mu, \sigma^2)$, then $E(X) = \mu$.  _Hint, use the mgf._
+
+2. Show that if $X \sim N(\mu, \sigma^2)$, then $Var(X) = \sigma^2$.  _Hint, use the mgf._
+
+3. Show that if $X \sim N(\mu, \sigma^2)$, then $Y=aX + b$ has distribution $Y\sim N(a\mu+b, \,a^2 \sigma^2)$. 
+
+4. Show that if $X_i \sim N(\mu_i,\, \sigma^2_i)$ for $i \in \{1,2,\dots,n\}$ where $X_i$ are all independent, then $Y=\sum X_i$ has distribution 
+$Y \sim N\left( \sum \mu_i, \sum \sigma^2_i \right)$
+
 ## Uniform
 
 ## Exponential and Gamma
 
 ## Beta
 
-## Normal
 
 ## Bivariate Normal

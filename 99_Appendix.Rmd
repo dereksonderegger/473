@@ -74,5 +74,43 @@ In many calculus books, the following is shown:
 $$e^x = \sum_{i=0}^\infty \frac{x^i}{i!}$$
 
 ### Geometric Series
-For $0 < \alpha < 1$, it is known that
-$$\sum_{x=0}^\infty \alpha^x = \frac{1}{1-\alpha}$$
+The geometric series result is that 
+$$\sum_{x=0}^\infty \alpha^x = \frac{1}{1-\alpha}\;\;\;\; \textrm{ if } \;\;\;\vert\alpha\vert<1$$
+
+By repeatedly differentiating both sides we can derive
+$$\sum_{x=1}^\infty x \alpha ^{x-1} = \frac{1}{ (1-\alpha)^2 }\;\;\;\; \textrm{ if } \;\;\;\vert\alpha\vert<1$$
+and
+$$\sum_{x=2}^\infty x(x-1) \alpha^{x-2} = \frac{2}{(1-\alpha)^3}\;\;\;\; \textrm{ if } \;\;\;\vert\alpha\vert<1$$
+
+## Tedious results
+
+### Normal distribution
+
+The normal distribution with parameters $\mu$ and $\sigma^2 > 0$ has pdf
+$$f(x) = \frac{1}{\sqrt{2\pi} \sigma} \exp \left[ -\frac{(x-\mu)^2}{2 \sigma^2} \right]$$ 
+It is clear $f(x)>0$ for all $x$, but we should confirm that this pdf integrates to one. Unfortunately this integral is one of those that either you know how to solve or you waste a huge amount of time with.
+
+First, we will perform a substitution of $z=\frac{x-\mu}{\sigma}$ and therefore $dz = dx/\sigma$ and we are interested in showing that 
+$$\int_{-\infty}^{\infty} \frac{1}{\sqrt{2\pi}} e^{z^2/2} \, dz = 1$$
+or equivalently that 
+$$\underbrace{\int_{-\infty}^{\infty} e^{z^2/2} \, dz}_{I} = \sqrt{2\pi}$$
+or that
+$$I^2 = 2\pi$$
+We will consider this $I^2$ value as
+$$\begin{aligned} I^2 
+  &= \int_{-\infty}^{\infty} e^{z^2/2} \, dz \; \int_{-\infty}^{\infty} e^{w^2/2} \, dw \\
+  &= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} e^{z^2/2} \,e^{w^2/2} \, dz\,dw \\
+  &= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} e^{-\frac{1}{2}(z^2 + w^2)} \, dz\,dw \\
+  \end{aligned}$$
+  
+Because $z^2 + w^2$ is the equation of a circle in the $z,w$ plane, we think to convert to polar coordinates with the subsitution $z=r \cos \theta$ and $w= r \sin \theta$ and therefore $z^2 + w^2 = r^2$ and $dx\,dw = r\, dr\, d\theta$ therefore
+$$\begin{aligned} I^2 
+  &= \int_0^{2\pi} \int_0^{\infty} e^{-\frac{1}{2} r^2} \,r \, dr \, d\theta
+  \end{aligned}$$
+Finally this integral can be attacked using common methods and we'll do a $u$-substitution with $u=r^2/2$ and therefore $du=r\,dr$ and we have
+
+$$\begin{aligned} I^2 
+  &= \int_0^{2\pi} \int_0^{\infty} e^{-u}  \, du \, d\theta \\
+  &= \int_0^{2\pi} 1 \, d\theta \\
+  &= 2 \pi
+  \end{aligned}$$
