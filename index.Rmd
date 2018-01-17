@@ -1,20 +1,18 @@
 --- 
-title: "STA 473 - Probability"
+title: "STA 474 - Mathematical Statistics"
 author: "Derek L. Sonderegger"
-date: "`r Sys.Date()`"
+date: "`r format(Sys.Date(), '%B %d, %Y')`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
-github-repo: dereksonderegger/473
+github-repo: dereksonderegger/474
 description: ""
 ---
 
 # Preface {-}
-This is a set of questions to be used in an _Inquiry Based Learning_ class for an undergraduate level course in probability.
+This is a location for distributing homework questions for STA 474, Mathematical Statistics.  I am teaching this course out of DeGroot and Schervish, but I want to be able to expand the homework questions.  The first four chapters are commonly covered in STA 473, but I included them here in part because I want the chapter numbering scheme to match up with the book's numbering and also to show how the IBL version of 473 goes.
 
-## Acknowledgements {-}
-Many people have helped.  I should thank them.
 

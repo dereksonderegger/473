@@ -1,4 +1,7 @@
-# Common Distributions
+# Common Distributions 
+
+## Introduction
+No Problems.
 
 ## Bernoulli and Binomial
 

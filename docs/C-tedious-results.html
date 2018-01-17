@@ -5,20 +5,19 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>STA 473 - Probability</title>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
-  <meta name="description" content="STA 473 - Probability">
-  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+  <title>STA 474 - Mathematical Statistics</title>
+  <meta name="description" content="STA 474 - Mathematical Statistics">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
 
-  <meta property="og:title" content="STA 473 - Probability" />
+  <meta property="og:title" content="STA 474 - Mathematical Statistics" />
   <meta property="og:type" content="book" />
   
   
   
-  <meta name="github-repo" content="dereksonderegger/473" />
+  <meta name="github-repo" content="dereksonderegger/474" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="STA 473 - Probability" />
+  <meta name="twitter:title" content="STA 474 - Mathematical Statistics" />
   
   
   
@@ -26,7 +25,7 @@
 <meta name="author" content="Derek L. Sonderegger">
 
 
-<meta name="date" content="2017-05-08">
+<meta name="date" content="2018-01-17">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -34,7 +33,6 @@
   
   
 <link rel="prev" href="B-useful-series-results.html">
-<link rel="next" href="D-distributions.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -95,6 +93,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <body>
 
 
+
   <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
 
     <div class="book-summary">
@@ -102,11 +101,63 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <ul class="summary">
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
-<li class="chapter" data-level="1" data-path="1-introduction-to-probability.html"><a href="1-introduction-to-probability.html"><i class="fa fa-check"></i><b>1</b> Introduction to Probability</a></li>
-<li class="chapter" data-level="2" data-path="2-conditional-probability.html"><a href="2-conditional-probability.html"><i class="fa fa-check"></i><b>2</b> Conditional Probability</a></li>
-<li class="chapter" data-level="3" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html"><i class="fa fa-check"></i><b>3</b> Random Variables and Distributions</a></li>
-<li class="chapter" data-level="4" data-path="4-expectations.html"><a href="4-expectations.html"><i class="fa fa-check"></i><b>4</b> Expectations</a></li>
-<li class="chapter" data-level="5" data-path="5-common-distributions.html"><a href="5-common-distributions.html"><i class="fa fa-check"></i><b>5</b> Common Distributions</a></li>
+<li class="chapter" data-level="1" data-path="1-introduction-to-probability.html"><a href="1-introduction-to-probability.html"><i class="fa fa-check"></i><b>1</b> Introduction to Probability</a><ul>
+<li class="chapter" data-level="1.1" data-path="1-introduction-to-probability.html"><a href="1-introduction-to-probability.html#history-of-probability"><i class="fa fa-check"></i><b>1.1</b> History of Probability</a></li>
+<li class="chapter" data-level="1.2" data-path="1-introduction-to-probability.html"><a href="1-introduction-to-probability.html#interpretations-of-probability"><i class="fa fa-check"></i><b>1.2</b> Interpretations of Probability</a></li>
+<li class="chapter" data-level="1.3" data-path="1-introduction-to-probability.html"><a href="1-introduction-to-probability.html#experiments-and-events"><i class="fa fa-check"></i><b>1.3</b> Experiments and Events</a></li>
+<li class="chapter" data-level="1.4" data-path="1-introduction-to-probability.html"><a href="1-introduction-to-probability.html#review-of-set-theory-ds-1.4"><i class="fa fa-check"></i><b>1.4</b> Review of Set Theory (D&amp;S 1.4)</a></li>
+<li class="chapter" data-level="1.5" data-path="1-introduction-to-probability.html"><a href="1-introduction-to-probability.html#definition-of-probability-ds-1.5"><i class="fa fa-check"></i><b>1.5</b> Definition of Probability (D&amp;S 1.5)</a></li>
+<li class="chapter" data-level="1.6" data-path="1-introduction-to-probability.html"><a href="1-introduction-to-probability.html#finite-sample-spaces-ds-1.6"><i class="fa fa-check"></i><b>1.6</b> Finite Sample Spaces (D&amp;S 1.6)</a></li>
+<li class="chapter" data-level="1.7" data-path="1-introduction-to-probability.html"><a href="1-introduction-to-probability.html#ordered-counting-ds-1.7"><i class="fa fa-check"></i><b>1.7</b> Ordered Counting (D&amp;S 1.7)</a></li>
+<li class="chapter" data-level="1.8" data-path="1-introduction-to-probability.html"><a href="1-introduction-to-probability.html#combinations-ds-1.8"><i class="fa fa-check"></i><b>1.8</b> Combinations (D&amp;S 1.8)</a></li>
+<li class="chapter" data-level="1.9" data-path="1-introduction-to-probability.html"><a href="1-introduction-to-probability.html#multinomial-coefficients-ds-1.9"><i class="fa fa-check"></i><b>1.9</b> Multinomial Coefficients (D&amp;S 1.9)</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="2-conditional-probability.html"><a href="2-conditional-probability.html"><i class="fa fa-check"></i><b>2</b> Conditional Probability</a><ul>
+<li class="chapter" data-level="2.1" data-path="2-conditional-probability.html"><a href="2-conditional-probability.html#defining-conditional-probability-ds-2.1"><i class="fa fa-check"></i><b>2.1</b> Defining Conditional Probability (D&amp;S 2.1)</a></li>
+<li class="chapter" data-level="2.2" data-path="2-conditional-probability.html"><a href="2-conditional-probability.html#independence"><i class="fa fa-check"></i><b>2.2</b> Independence</a></li>
+<li class="chapter" data-level="2.3" data-path="2-conditional-probability.html"><a href="2-conditional-probability.html#bayes-theorem"><i class="fa fa-check"></i><b>2.3</b> Bayes’ Theorem</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html"><i class="fa fa-check"></i><b>3</b> Random Variables and Distributions</a><ul>
+<li class="chapter" data-level="3.1" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#defining-random-variables-and-discrete-distributions"><i class="fa fa-check"></i><b>3.1</b> Defining Random Variables and Discrete Distributions</a></li>
+<li class="chapter" data-level="3.2" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#continuous-distributions"><i class="fa fa-check"></i><b>3.2</b> Continuous Distributions</a></li>
+<li class="chapter" data-level="3.3" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#cumulative-distribution-function"><i class="fa fa-check"></i><b>3.3</b> Cumulative Distribution Function</a></li>
+<li class="chapter" data-level="3.4" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#bivariate-distributions"><i class="fa fa-check"></i><b>3.4</b> Bivariate Distributions</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#bivariate-discrete"><i class="fa fa-check"></i><b>3.4.1</b> Bivariate Discrete</a></li>
+<li class="chapter" data-level="3.4.2" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#bivariate-continuous"><i class="fa fa-check"></i><b>3.4.2</b> Bivariate Continuous</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#marginal-distributions"><i class="fa fa-check"></i><b>3.5</b> Marginal Distributions</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#discrete-case"><i class="fa fa-check"></i><b>3.5.1</b> Discrete Case</a></li>
+<li class="chapter" data-level="3.5.2" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#continuous-case"><i class="fa fa-check"></i><b>3.5.2</b> Continuous Case</a></li>
+<li class="chapter" data-level="3.5.3" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#independence-1"><i class="fa fa-check"></i><b>3.5.3</b> Independence</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#conditional-distributions"><i class="fa fa-check"></i><b>3.6</b> Conditional Distributions</a></li>
+<li class="chapter" data-level="3.7" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#functions-of-random-variables"><i class="fa fa-check"></i><b>3.7</b> Functions of Random Variables</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#cdf-method"><i class="fa fa-check"></i><b>3.7.1</b> CDF Method</a></li>
+<li class="chapter" data-level="3.7.2" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#pdf-method"><i class="fa fa-check"></i><b>3.7.2</b> pdf Method</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="3-random-variables-and-distributions.html"><a href="3-random-variables-and-distributions.html#multivariate-transformations"><i class="fa fa-check"></i><b>3.8</b> Multivariate Transformations</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="4-expectations.html"><a href="4-expectations.html"><i class="fa fa-check"></i><b>4</b> Expectations</a><ul>
+<li class="chapter" data-level="4.1" data-path="4-expectations.html"><a href="4-expectations.html#expectation-of-a-rv"><i class="fa fa-check"></i><b>4.1</b> Expectation of a RV</a></li>
+<li class="chapter" data-level="4.2" data-path="4-expectations.html"><a href="4-expectations.html#properties-of-expectations"><i class="fa fa-check"></i><b>4.2</b> Properties of Expectations</a></li>
+<li class="chapter" data-level="4.3" data-path="4-expectations.html"><a href="4-expectations.html#variance"><i class="fa fa-check"></i><b>4.3</b> Variance</a></li>
+<li class="chapter" data-level="4.4" data-path="4-expectations.html"><a href="4-expectations.html#moments-and-moment-generating-functions"><i class="fa fa-check"></i><b>4.4</b> Moments and Moment Generating Functions</a></li>
+<li class="chapter" data-level="4.5" data-path="4-expectations.html"><a href="4-expectations.html#mean-vs-median"><i class="fa fa-check"></i><b>4.5</b> Mean vs Median</a></li>
+<li class="chapter" data-level="4.6" data-path="4-expectations.html"><a href="4-expectations.html#covariance-and-correlation"><i class="fa fa-check"></i><b>4.6</b> Covariance and Correlation</a></li>
+<li class="chapter" data-level="4.7" data-path="4-expectations.html"><a href="4-expectations.html#conditional-expectation"><i class="fa fa-check"></i><b>4.7</b> Conditional Expectation</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="5-common-distributions.html"><a href="5-common-distributions.html"><i class="fa fa-check"></i><b>5</b> Common Distributions</a><ul>
+<li class="chapter" data-level="5.1" data-path="5-common-distributions.html"><a href="5-common-distributions.html#introduction"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="5-common-distributions.html"><a href="5-common-distributions.html#bernoulli-and-binomial"><i class="fa fa-check"></i><b>5.2</b> Bernoulli and Binomial</a></li>
+<li class="chapter" data-level="5.3" data-path="5-common-distributions.html"><a href="5-common-distributions.html#hypergeometric"><i class="fa fa-check"></i><b>5.3</b> Hypergeometric</a></li>
+<li class="chapter" data-level="5.4" data-path="5-common-distributions.html"><a href="5-common-distributions.html#poisson"><i class="fa fa-check"></i><b>5.4</b> Poisson</a></li>
+<li class="chapter" data-level="5.5" data-path="5-common-distributions.html"><a href="5-common-distributions.html#geometric-and-negative-binomial"><i class="fa fa-check"></i><b>5.5</b> Geometric and Negative Binomial</a></li>
+<li class="chapter" data-level="5.6" data-path="5-common-distributions.html"><a href="5-common-distributions.html#normal"><i class="fa fa-check"></i><b>5.6</b> Normal</a></li>
+<li class="chapter" data-level="5.7" data-path="5-common-distributions.html"><a href="5-common-distributions.html#uniform"><i class="fa fa-check"></i><b>5.7</b> Uniform</a></li>
+<li class="chapter" data-level="5.8" data-path="5-common-distributions.html"><a href="5-common-distributions.html#exponential-and-gamma"><i class="fa fa-check"></i><b>5.8</b> Exponential and Gamma</a></li>
+<li class="chapter" data-level="5.9" data-path="5-common-distributions.html"><a href="5-common-distributions.html#beta"><i class="fa fa-check"></i><b>5.9</b> Beta</a></li>
+<li class="chapter" data-level="5.10" data-path="5-common-distributions.html"><a href="5-common-distributions.html#bivariate-normal"><i class="fa fa-check"></i><b>5.10</b> Bivariate Normal</a></li>
+</ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="A-gamma-function.html"><a href="A-gamma-function.html"><i class="fa fa-check"></i><b>A</b> Gamma Function</a></li>
 <li class="chapter" data-level="B" data-path="B-useful-series-results.html"><a href="B-useful-series-results.html"><i class="fa fa-check"></i><b>B</b> Useful Series Results</a><ul>
@@ -114,9 +165,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="C" data-path="C-tedious-results.html"><a href="C-tedious-results.html"><i class="fa fa-check"></i><b>C</b> Tedious results</a><ul>
 <li class="chapter" data-level="C.1" data-path="C-tedious-results.html"><a href="C-tedious-results.html#normal-distribution"><i class="fa fa-check"></i><b>C.1</b> Normal distribution</a></li>
-</ul></li>
-<li class="chapter" data-level="D" data-path="D-distributions.html"><a href="D-distributions.html"><i class="fa fa-check"></i><b>D</b> Distributions</a><ul>
-<li class="chapter" data-level="D.1" data-path="D-distributions.html"><a href="D-distributions.html#discrete-distributions"><i class="fa fa-check"></i><b>D.1</b> Discrete Distributions</a></li>
 </ul></li>
 </ul>
 
@@ -127,7 +175,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">STA 473 - Probability</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">STA 474 - Mathematical Statistics</a>
           </h1>
         </div>
 
@@ -153,6 +201,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   &amp;= \int_0^{2\pi} 1 \, d\theta \\
   &amp;= 2 \pi
   \end{aligned}\]</span></p>
+
 </div>
 </div>
             </section>
@@ -160,9 +209,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-<a href="B-useful-series-results.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="D-distributions.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="B-useful-series-results.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
+    </div>
+  </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
@@ -171,7 +221,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
 <script>
-require(["gitbook"], function(gitbook) {
+gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
 "github": false,
@@ -189,7 +239,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/dereksonderegger/edit/master/473/99_Appendix.Rmd",
+"link": "https://github.com/dereksonderegger/edit/master/474/99_Appendix.Rmd",
 "text": "Edit"
 },
 "download": [["Probability.pdf", "PDF"], ["Probability.epub", "EPUB"]],
@@ -207,7 +257,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(script.src))
       script.src  = script.src.replace(/^https?:/, '');
     document.getElementsByTagName("head")[0].appendChild(script);

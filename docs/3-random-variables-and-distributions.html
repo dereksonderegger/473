@@ -5,20 +5,19 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>STA 473 - Probability</title>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
-  <meta name="description" content="STA 473 - Probability">
-  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+  <title>STA 474 - Mathematical Statistics</title>
+  <meta name="description" content="STA 474 - Mathematical Statistics">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
 
-  <meta property="og:title" content="STA 473 - Probability" />
+  <meta property="og:title" content="STA 474 - Mathematical Statistics" />
   <meta property="og:type" content="book" />
   
   
   
-  <meta name="github-repo" content="dereksonderegger/473" />
+  <meta name="github-repo" content="dereksonderegger/474" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="STA 473 - Probability" />
+  <meta name="twitter:title" content="STA 474 - Mathematical Statistics" />
   
   
   
@@ -26,7 +25,7 @@
 <meta name="author" content="Derek L. Sonderegger">
 
 
-<meta name="date" content="2017-05-03">
+<meta name="date" content="2018-01-17">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -35,7 +34,6 @@
   
 <link rel="prev" href="2-conditional-probability.html">
 <link rel="next" href="4-expectations.html">
-
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -95,15 +93,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <body>
 
 
+
   <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
 
     <div class="book-summary">
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
-</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
 <li class="chapter" data-level="1" data-path="1-introduction-to-probability.html"><a href="1-introduction-to-probability.html"><i class="fa fa-check"></i><b>1</b> Introduction to Probability</a><ul>
 <li class="chapter" data-level="1.1" data-path="1-introduction-to-probability.html"><a href="1-introduction-to-probability.html#history-of-probability"><i class="fa fa-check"></i><b>1.1</b> History of Probability</a></li>
 <li class="chapter" data-level="1.2" data-path="1-introduction-to-probability.html"><a href="1-introduction-to-probability.html#interpretations-of-probability"><i class="fa fa-check"></i><b>1.2</b> Interpretations of Probability</a></li>
@@ -150,15 +147,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.7" data-path="4-expectations.html"><a href="4-expectations.html#conditional-expectation"><i class="fa fa-check"></i><b>4.7</b> Conditional Expectation</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="5-common-distributions.html"><a href="5-common-distributions.html"><i class="fa fa-check"></i><b>5</b> Common Distributions</a><ul>
-<li class="chapter" data-level="5.1" data-path="5-common-distributions.html"><a href="5-common-distributions.html#bernoulli-and-binomial"><i class="fa fa-check"></i><b>5.1</b> Bernoulli and Binomial</a></li>
-<li class="chapter" data-level="5.2" data-path="5-common-distributions.html"><a href="5-common-distributions.html#hypergeometric"><i class="fa fa-check"></i><b>5.2</b> Hypergeometric</a></li>
-<li class="chapter" data-level="5.3" data-path="5-common-distributions.html"><a href="5-common-distributions.html#poisson"><i class="fa fa-check"></i><b>5.3</b> Poisson</a></li>
-<li class="chapter" data-level="5.4" data-path="5-common-distributions.html"><a href="5-common-distributions.html#geometric-and-negative-binomial"><i class="fa fa-check"></i><b>5.4</b> Geometric and Negative Binomial</a></li>
-<li class="chapter" data-level="5.5" data-path="5-common-distributions.html"><a href="5-common-distributions.html#normal"><i class="fa fa-check"></i><b>5.5</b> Normal</a></li>
-<li class="chapter" data-level="5.6" data-path="5-common-distributions.html"><a href="5-common-distributions.html#uniform"><i class="fa fa-check"></i><b>5.6</b> Uniform</a></li>
-<li class="chapter" data-level="5.7" data-path="5-common-distributions.html"><a href="5-common-distributions.html#exponential-and-gamma"><i class="fa fa-check"></i><b>5.7</b> Exponential and Gamma</a></li>
-<li class="chapter" data-level="5.8" data-path="5-common-distributions.html"><a href="5-common-distributions.html#beta"><i class="fa fa-check"></i><b>5.8</b> Beta</a></li>
-<li class="chapter" data-level="5.9" data-path="5-common-distributions.html"><a href="5-common-distributions.html#bivariate-normal"><i class="fa fa-check"></i><b>5.9</b> Bivariate Normal</a></li>
+<li class="chapter" data-level="5.1" data-path="5-common-distributions.html"><a href="5-common-distributions.html#introduction"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="5-common-distributions.html"><a href="5-common-distributions.html#bernoulli-and-binomial"><i class="fa fa-check"></i><b>5.2</b> Bernoulli and Binomial</a></li>
+<li class="chapter" data-level="5.3" data-path="5-common-distributions.html"><a href="5-common-distributions.html#hypergeometric"><i class="fa fa-check"></i><b>5.3</b> Hypergeometric</a></li>
+<li class="chapter" data-level="5.4" data-path="5-common-distributions.html"><a href="5-common-distributions.html#poisson"><i class="fa fa-check"></i><b>5.4</b> Poisson</a></li>
+<li class="chapter" data-level="5.5" data-path="5-common-distributions.html"><a href="5-common-distributions.html#geometric-and-negative-binomial"><i class="fa fa-check"></i><b>5.5</b> Geometric and Negative Binomial</a></li>
+<li class="chapter" data-level="5.6" data-path="5-common-distributions.html"><a href="5-common-distributions.html#normal"><i class="fa fa-check"></i><b>5.6</b> Normal</a></li>
+<li class="chapter" data-level="5.7" data-path="5-common-distributions.html"><a href="5-common-distributions.html#uniform"><i class="fa fa-check"></i><b>5.7</b> Uniform</a></li>
+<li class="chapter" data-level="5.8" data-path="5-common-distributions.html"><a href="5-common-distributions.html#exponential-and-gamma"><i class="fa fa-check"></i><b>5.8</b> Exponential and Gamma</a></li>
+<li class="chapter" data-level="5.9" data-path="5-common-distributions.html"><a href="5-common-distributions.html#beta"><i class="fa fa-check"></i><b>5.9</b> Beta</a></li>
+<li class="chapter" data-level="5.10" data-path="5-common-distributions.html"><a href="5-common-distributions.html#bivariate-normal"><i class="fa fa-check"></i><b>5.10</b> Bivariate Normal</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="A-gamma-function.html"><a href="A-gamma-function.html"><i class="fa fa-check"></i><b>A</b> Gamma Function</a></li>
@@ -177,7 +175,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">STA 473 - Probability</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">STA 474 - Mathematical Statistics</a>
           </h1>
         </div>
 
@@ -314,7 +312,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>We now have defined both the probability function (pf) for discrete random variables and probability density function (pdf) for continuous random variables. We now try to make a physics analogy to describe the difference between the two. In both cases we want to think about probability as physical mass.</p>
 <p><strong>Discrete Case</strong> In this case, all the probability mass is concentrated at precise points. So we have little nuggets of probability mass, at discrete points. If I want to know, say <span class="math inline">\(Pr(X \le 3)\)</span> then we have to sum the probability across all the discrete locations such that <span class="math inline">\(X \le 3\)</span>.</p>
 <p><strong>Continuous Case</strong> In this case, the probability mass is spread out across <span class="math inline">\(\mathbb{R}\)</span> and the concentration of mass is not uniform, some spots have more concentrated mass. In this case, we don’t have a definite amount of mass at a particular point, but we do have a description of how dense the mass is at any point. In this case if we want to know <span class="math inline">\(Pr(X \le 3)\)</span> then we have to break up <span class="math inline">\(\mathbb{R}\)</span> into a bunch of intervals and then combine the length of the interval along with information about the average density of each interval.</p>
-<p><img src="Probability_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p><img src="Mathematical_Statistics_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <p>Each bar has some probability mass (mass is the length of the interval times the average density along the interval) and then we just sum up the bars. If we take the limit as we make the bars narrower, then we end up with <span class="math display">\[Pr(X \le 3) = \int_{-\infty}^3 f(x) \, dx\]</span></p>
 <p>You might be a little freaked out because typically you would think about mass being the <em>area</em> or <em>volume</em> times the density, but we need to start in the 1-dimension case before we address the 2-dimension and 3-dimension cases.</p>
 </div>
@@ -452,7 +450,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> have a bivariate continuous distribution if there exists a non-negative function <span class="math inline">\(f(x,y)\)</span> such that for every subset <span class="math inline">\(C\)</span> of the <span class="math inline">\(xy\)</span>-plane <span class="math display">\[Pr\Big[ (X,Y)\in C\Big] = \iint_C f(x,y)\]</span></p>
 <p>Unsurprisingly, the requirements for a function <span class="math inline">\(f(x,y)\)</span> to be a joint pdf are: <span class="math display">\[f(x,y) \ge 0 \textrm{ for all } (x,y) \textrm{ in } \mathbb{R}^2\]</span> <span class="math display">\[\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f(x,y) \, dx\,dy = 1\]</span></p>
 <p>Consider the case where we have the joint pdf <span class="math display">\[f(x,y) = 3x \, \cdot I(0\le y \le x \le 1)\]</span> We could visualize this in 3-D but I find it easier to visualize the <span class="math inline">\(xy\)</span>-plane and then let the height of the density function be represented by color.</p>
-<p><img src="Probability_files/figure-html/unnamed-chunk-3-1.jpeg" width="672" /></p>
+<p><img src="Mathematical_Statistics_files/figure-html/unnamed-chunk-3-1.jpeg" width="672" /></p>
 <p>We might now ask question such as “What is the probability that <span class="math inline">\(X \le 0.5\)</span>?” or “What is the probability that <span class="math inline">\(Y&gt;X^2\)</span>? In both cases, we just need to integrate the density across the full area of interest.</p>
 <p><span class="math display">\[\begin{aligned} Pr( X \le 0.5 ) 
   &amp;= \int_0^{0.5} \int_0^x f(x,y) \,dy\,dx \\
@@ -464,7 +462,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   &amp;= \frac{1}{8}
   \end{aligned}\]</span></p>
 <p>Notice that you could ask Wolfram Alpha for this by using the following:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Integrate[ Integrate[ <span class="dv">3</span>*x, {y,<span class="dv">0</span>,x}], {x,<span class="dv">0</span>,<span class="fl">0.5</span>} ] ]</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Integrate[ Integrate[ <span class="dv">3</span><span class="op">*</span>x, {y,<span class="dv">0</span>,x}], {x,<span class="dv">0</span>,<span class="fl">0.5</span>} ] ]</code></pre></div>
 <p>Similarly we could ask <span class="math display">\[\begin{aligned} Pr( Y &gt; X^2 ) 
   &amp;= \int_0^{1} \int_{x^2}^x f(x,y) \,dy\,dx \\
   &amp;= \int_0^{1} \int_{x^2}^x 3x \,dy\,dx \\
@@ -474,7 +472,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   &amp;= \frac{1}{4}
   \end{aligned}\]</span></p>
 <p>and verify this via Wolfram…</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Integrate[ Integrate[ <span class="dv">3</span>*x, {y,x^<span class="dv">2</span>,x}], {x,<span class="dv">0</span>,<span class="dv">1</span>} ] ]</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Integrate[ Integrate[ <span class="dv">3</span><span class="op">*</span>x, {y,x<span class="op">^</span><span class="dv">2</span>,x}], {x,<span class="dv">0</span>,<span class="dv">1</span>} ] ]</code></pre></div>
 <p>The joint CDF of the bivariate distribution is defined as we would expect it: <span class="math display">\[F(x,y) = Pr( X\le x, \textrm{ and } Y\le y)\]</span></p>
 <p>Just as in the univariate case, <span class="math inline">\(F(x,y)\)</span> is non-decreasing <span class="math inline">\(x\)</span> for every fixed value of <span class="math inline">\(y\)</span> and as well as non-decreasing in <span class="math inline">\(y\)</span> for every fixed value of <span class="math inline">\(x\)</span>.</p>
 <p><strong>Claims</strong>: Suppose that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> have joint cdf <span class="math inline">\(F(x,y)\)</span>. Define the cdf of <span class="math inline">\(X\)</span> as <span class="math inline">\(F_1(x)\)</span> and the cdf of <span class="math inline">\(Y\)</span> as <span class="math inline">\(F_2(y)\)</span>. Then <span class="math display">\[F_1(x) = \lim_{y\to\infty} F(x,y)\]</span> <span class="math display">\[F_2(y) = \lim_{x\to\infty} F(x,y)\]</span> <span class="math display">\[F(x,y) = \int_{-\infty}^x \int_{-\infty}^y f(u,v) \, dv\,du\]</span> <span class="math display">\[f(x,y) = \frac{\partial^2 F(x,y)}{\partial x \partial y} = \frac{\partial^2 F(x,y)}{\partial y \partial x}\]</span> assuming the integrals and derivatives exist.</p>
@@ -854,7 +852,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><strong>Example</strong> Suppose that we have <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> that are independent with joint pdf <span class="math display">\[\beta^2 e^{-\beta (x_1+x_2)} \; \cdot I(x_1&gt;0, x_2&gt;0)\]</span> where <span class="math inline">\(\beta&gt;0\)</span>. What we really care about is the sum of the two variables <span class="math inline">\(Y = X_1 + X_2\)</span>. Then we could figure out the cdf of <span class="math inline">\(Y\)</span> by <span class="math display">\[\begin{aligned} G(Y) 
   = Pr( Y \le y ) 
   = Pr( X_1 + X_2 \le y ) 
-  \end{aligned}\]</span> <img src="Probability_files/figure-html/unnamed-chunk-6-1.jpeg" width="672" /></p>
+  \end{aligned}\]</span> <img src="Mathematical_Statistics_files/figure-html/unnamed-chunk-6-1.jpeg" width="672" /></p>
 <p><span class="math display">\[\begin{aligned} G(Y) 
   &amp;= Pr( X_1 + X_2 \le y ) \\
   &amp;= \int_0^y \int_0^{y-x_1} f(x_1,x_2) \,dx_2 \,dx_1 \\
@@ -885,7 +883,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   y   &amp; \textrm{ if }\; 0 &lt; y \le 1   \\
   2-y &amp; \textrm{ if }\; 1 &lt; y &lt; 2   \\
   0   &amp; \textrm{ if }\; 2 \le y       
-  \end{cases}\]</span> <img src="Probability_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+  \end{cases}\]</span> <img src="Mathematical_Statistics_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <ol start="2" style="list-style-type: decimal">
 <li><p>Suppose that we have independent random variables <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> with uniform distributions on <span class="math inline">\(a,b\)</span> where <span class="math inline">\(a&lt;b\)</span>. <span class="math display">\[f_1(x_1) = \frac{1}{b-a} \;\cdot I(a &lt; x_1 &lt; b)\]</span> <span class="math display">\[f_2(x_2) = \frac{1}{b-a} \;\cdot I(a &lt; x_2 &lt; b)\]</span> Find the pdf of <span class="math inline">\(Y=X_1+X_2\)</span>.</p></li>
 <li><p>Suppose that we have independent random variables <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> with pdfs <span class="math display">\[f_1(x_1) = \beta e^{-\beta x_1} \;\cdot I(x_1&gt;0)\]</span> <span class="math display">\[f_2(x_2) = \beta e^{-\beta x_2} \;\cdot I(x_2&gt;0)\]</span> where <span class="math inline">\(\beta &gt; 0\)</span>. Show that the pdf of <span class="math inline">\(Y=X_1 + X_2\)</span> is <span class="math display">\[g(y) = \beta^2 y e^{-\beta y} \; \cdot I(y&gt;0)\]</span> <em>Hint: Don’t ignore the indicator functions.</em></p></li>
@@ -941,8 +939,9 @@ y_2 &amp; y_1 \\
         </div>
       </div>
 <a href="2-conditional-probability.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="4-expectations.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
-
+<a href="4-expectations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
@@ -951,7 +950,7 @@ y_2 &amp; y_1 \\
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
 <script>
-require(["gitbook"], function(gitbook) {
+gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
 "github": false,
@@ -969,7 +968,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/dereksonderegger/edit/master/473/03_Random_Variables.Rmd",
+"link": "https://github.com/dereksonderegger/edit/master/474/03_Random_Variables.Rmd",
 "text": "Edit"
 },
 "download": [["Probability.pdf", "PDF"], ["Probability.epub", "EPUB"]],
@@ -987,7 +986,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(script.src))
       script.src  = script.src.replace(/^https?:/, '');
     document.getElementsByTagName("head")[0].appendChild(script);
