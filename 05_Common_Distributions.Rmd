@@ -116,7 +116,7 @@ We then expand the square twice in the exponent by adding and subtracting the te
 
 $$\begin{aligned} \psi(t) 
   &= \int_{-\infty}^\infty \frac{1}{\sqrt{2\pi}\sigma} \exp \left[ \mu t + \frac{1}{2} \sigma^2 t^2 - \frac{\Big(x-(\mu+\sigma^2t)\Big)^2}{2\sigma^2} \right] \,dx\\
-  &= \exp \left[ \mu t + \frac{1}{2} \sigma^2 t^2 \right] + \int_{-\infty}^\infty \frac{1}{\sqrt{2\pi}\sigma} \exp \left[ - \frac{\Big(x-(\mu+\sigma^2t)\Big)^2}{2\sigma^2} \right] \,dx \\
+  &= \exp \left[ \mu t + \frac{1}{2} \sigma^2 t^2 \right]  \int_{-\infty}^\infty \frac{1}{\sqrt{2\pi}\sigma} \exp \left[ - \frac{\Big(x-(\mu+\sigma^2t)\Big)^2}{2\sigma^2} \right] \,dx \\
   &= \exp \left[ \mu t + \frac{1}{2} \sigma^2 t^2 \right]
   \end{aligned}$$
 
@@ -132,9 +132,21 @@ $Y \sim N\left( \sum \mu_i, \sum \sigma^2_i \right)$
 
 ## Uniform
 
+The continuous uniform distribution on the interval $(a,b)$ where $a<b$ has a density function
+$$f(x) = \frac{1}{b-a} \;\cdot I(a < x < b)$$
+1. Show that if $X\sim Unif(a,b)$ then $E(X) = \frac{1}{b-a}$
+
+2. Show that the moment generating function of a $Uniform(a,b)$ distribution is
+$$\psi(t) = \frac{e^{bt} - e^{at}}{t(b-a)}$$
+
+3. Show that if $U \sim Uniform(0,1)$ then $X=(b-a)U + a$ has a $Uniform(a,b)$ distribution.
+
+4. Show that the $Uniform(0,1)$ distribution has expectation $\frac{1}{2}$ and variance $\frac{1}{12}$.  
+
+5. Show that the $Uniform(a,b)$ distribution has expectation $\frac{a+b}{2}$ and variance $\frac{(b-a)^2}{12}$
+
 ## Exponential and Gamma
 
 ## Beta
-
 
 ## Bivariate Normal
