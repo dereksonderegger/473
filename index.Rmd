@@ -1,5 +1,5 @@
 --- 
-title: "STA 474 - Mathematical Statistics"
+title: "STA 473 - Probability"
 author: "Derek L. Sonderegger"
 date: "`r format(Sys.Date(), '%B %d, %Y')`"
 site: bookdown::bookdown_site
@@ -13,6 +13,8 @@ description: ""
 ---
 
 # Preface {-}
-This is a location for distributing homework questions for STA 474, Mathematical Statistics.  I am teaching this course out of DeGroot and Schervish, but I want to be able to expand the homework questions.  The first four chapters are commonly covered in STA 473, but I included them here in part because I want the chapter numbering scheme to match up with the book's numbering and also to show how the IBL version of 473 goes.
+This is a location for distributing homework questions for STA 473, Probability.  I am teaching this course in an IBL style where there is little to no lecturing, but rather studeents prove the fundamental theorems. As such, these notes lay out big ideas and definitions, but leave the proofs for students to work on as problems. I am basing the structure of the course on DeGroot and Schervish, but the problems are generally of my own making.
+
+
 
 
